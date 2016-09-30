@@ -3,8 +3,8 @@
 This repo contains source codes for the book series:
 
 *Art of Algorithms and Programming Contests &mdash; Rujia Liu*
-- *Beginning Algorithm Contests*
-- *Training Guide*
+- *Beginning Algorithm Contests* (BAC & BAC_2nd)
+- *Training Guide* (TG)
 
 Found on online open-sources repos, all rights belongs to original authors.
 

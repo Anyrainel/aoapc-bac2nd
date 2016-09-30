@@ -1,12 +1,12 @@
 ### aoapc codes
 
-============
+This repo contains source codes for the book series:
 
-Source codes for the book series:
-
-*Art of Algorithms and Programming Contests*
+*Art of Algorithms and Programming Contests &mdash; Rujia Liu*
 - *Beginning Algorithm Contests*
 - *Training Guide*
+
+Found on online open-sources repos, all rights belongs to original authors.
 
 中文：
 
@@ -18,6 +18,7 @@ Source codes for the book series:
 
 ==============
 ### Sources
+
 - https://code.google.com/archive/p/aoapc-book/source/default/source
 	- [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 - https://github.com/aoapc-book/aoapc-bac2nd

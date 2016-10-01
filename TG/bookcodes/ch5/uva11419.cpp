@@ -6,17 +6,17 @@
 #include <algorithm>
 using namespace std;
 
-const int maxn = 1000 + 5; // µ¥²à¶¥µãµÄ×î´óÊıÄ¿
+const int maxn = 1000 + 5; // å•ä¾§é¡¶ç‚¹çš„æœ€å¤§æ•°ç›®
 
-// ¶ş·ÖÍ¼×î´ó»ùÊıÆ¥Åä
+// äºŒåˆ†å›¾æœ€å¤§åŸºæ•°åŒ¹é…
 struct BPM {
-  int n, m;               // ×óÓÒ¶¥µã¸öÊı
-  vector<int> G[maxn];    // ÁÚ½Ó±í
-  int left[maxn];         // left[i]ÎªÓÒ±ßµÚi¸öµãµÄÆ¥Åäµã±àºÅ£¬-1±íÊ¾²»´æÔÚ
-  bool T[maxn];           // T[i]ÎªÓÒ±ßµÚi¸öµãÊÇ·ñÒÑ±ê¼Ç
+  int n, m;               // å·¦å³é¡¶ç‚¹ä¸ªæ•°
+  vector<int> G[maxn];    // é‚»æ¥è¡¨
+  int left[maxn];         // left[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹çš„åŒ¹é…ç‚¹ç¼–å·ï¼Œ-1è¡¨ç¤ºä¸å­˜åœ¨
+  bool T[maxn];           // T[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹æ˜¯å¦å·²æ ‡è®°
 
-  int right[maxn];        // Çó×îĞ¡¸²¸ÇÓÃ
-  bool S[maxn];           // Çó×îĞ¡¸²¸ÇÓÃ
+  int right[maxn];        // æ±‚æœ€å°è¦†ç›–ç”¨
+  bool S[maxn];           // æ±‚æœ€å°è¦†ç›–ç”¨
 
   void init(int n, int m) {
     this->n = n;
@@ -44,12 +44,12 @@ struct BPM {
     return false;
   }
 
-  // Çó×î´óÆ¥Åä
+  // æ±‚æœ€å¤§åŒ¹é…
   int solve() {
     memset(left, -1, sizeof(left));
     memset(right, -1, sizeof(right));
     int ans = 0;
-    for(int u = 0; u < n; u++) { // ´Ó×ó±ß½áµãu¿ªÊ¼Ôö¹ã
+    for(int u = 0; u < n; u++) { // ä»å·¦è¾¹ç»“ç‚¹uå¼€å§‹å¢å¹¿
       memset(S, 0, sizeof(S));
       memset(T, 0, sizeof(T));
       if(match(u)) ans++;
@@ -57,17 +57,17 @@ struct BPM {
     return ans;
   }
 
-  // Çó×îĞ¡¸²¸Ç¡£XºÍYÎª×îĞ¡¸²¸ÇÖĞµÄµã¼¯
+  // æ±‚æœ€å°è¦†ç›–ã€‚Xå’ŒYä¸ºæœ€å°è¦†ç›–ä¸­çš„ç‚¹é›†
   int mincover(vector<int>& X, vector<int>& Y) {
     int ans = solve();
     memset(S, 0, sizeof(S));
     memset(T, 0, sizeof(T));
     for(int u = 0; u < n; u++)
-      if(right[u] == -1) match(u); // ´ÓËùÓĞXÎ´¸Çµã³ö·¢Ôö¹ã
+      if(right[u] == -1) match(u); // ä»æ‰€æœ‰Xæœªç›–ç‚¹å‡ºå‘å¢å¹¿
     for(int u = 0; u < n; u++)
-      if(!S[u]) X.push_back(u); // XÖĞµÄÎ´±ê¼Çµã
+      if(!S[u]) X.push_back(u); // Xä¸­çš„æœªæ ‡è®°ç‚¹
     for(int v = 0; v < m; v++)
-      if(T[v]) Y.push_back(v);  // YÖĞµÄÒÑ±ê¼Çµã
+      if(T[v]) Y.push_back(v);  // Yä¸­çš„å·²æ ‡è®°ç‚¹
    return ans;
   }
 };

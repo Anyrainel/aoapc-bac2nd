@@ -1,7 +1,7 @@
 // UVa10099 The Tourist Guide
 // Rujia Liu
-// ���⣺����һ�������Ȩͼ����T���ο�Ҫ��S�㵽D�㡣ÿ��·���������ƣ�����ÿ�ζ�Ҫ�е��δ���������Ҫ�߼��ˡ�����û���رߡ�
-// �㷨�����ε�floyd�������S��D�����ƿ��·Ȩֵv����Ҫ(T-1)/(v-1)+1�Ρ�
+// 题意：输入一个无项带权图，有T个游客要从S点到D点。每条路有人数限制，而且每次都要有导游带。问至少要走几趟。本题没有重边。
+// 算法：变形的floyd，先求出S到D最最大瓶颈路权值v，需要(T-1)/(v-1)+1次。
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -13,13 +13,13 @@ int d[maxn][maxn];
 int main() {
   int n, m, u, v, w, kase = 0;
   while(scanf("%d%d", &n, &m) == 2 && n) {
-    // ��ʼ����ֱ�ӿ�����ȫͼ�������ڵı߿��ɳ���Ϊ0�������������
+    // 初始化。直接看成完全图，不存在的边看成长度为0（而不是正无穷）
     memset(d, 0, sizeof(d));
     for(int i = 0; i < m; i++) {
       scanf("%d%d%d", &u, &v, &w); u--; v--;
       d[u][v] = d[v][u] = w;
     }
-    // ���㷨
+    // 主算法
     for(int k = 0; k < n; k++)
       for(int i = 0; i < n; i++)
         for(int j = 0; j < n; j++)

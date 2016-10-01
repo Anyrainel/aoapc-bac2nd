@@ -12,14 +12,14 @@ int main() {
     scanf("%d", &n);
     for(int i = 0; i < n; i++) scanf("%s", grid[i]);
     for(int i = 0; i < n; i++)
-      for(int j = 0; j < n; j++) if(grid[i][j] == '.') {//Ã»Ìî¹ıµÄ×ÖÄ¸²ÅĞèÒªÌî
-        for(char ch = 'A'; ch <= 'Z'; ch++) { 		//°´ÕÕ×ÖµäĞòÒÀ´Î³¢ÊÔ
+      for(int j = 0; j < n; j++) if(grid[i][j] == '.') {//æ²¡å¡«è¿‡çš„å­—æ¯æ‰éœ€è¦å¡«
+        for(char ch = 'A'; ch <= 'Z'; ch++) { 		//æŒ‰ç…§å­—å…¸åºä¾æ¬¡å°è¯•
           bool ok = true;
-          if(i>0 && grid[i-1][j] == ch) ok = false; 	//ºÍÉÏÃæµÄ×ÖÄ¸³åÍ»
+          if(i>0 && grid[i-1][j] == ch) ok = false; 	//å’Œä¸Šé¢çš„å­—æ¯å†²çª
           if(i<n-1 && grid[i+1][j] == ch) ok = false;
           if(j>0 && grid[i][j-1] == ch) ok = false;
           if(j<n-1 && grid[i][j+1] == ch) ok = false;
-          if(ok) { grid[i][j] = ch; break; } //Ã»ÓĞ³åÍ»£¬Ìî½øÍø¸ñ£¬Í£Ö¹¼ÌĞø³¢ÊÔ
+          if(ok) { grid[i][j] = ch; break; } //æ²¡æœ‰å†²çªï¼Œå¡«è¿›ç½‘æ ¼ï¼Œåœæ­¢ç»§ç»­å°è¯•
         }
       }
     printf("Case %d:\n", kase);

@@ -1,7 +1,7 @@
 // UVa111 The Twin Towers
 // Rujia Liu
-// 题意：求两个序列的LCS长度
-// 算法：LCS
+// 棰樻剰锛氭眰涓や釜搴忓垪鐨凩CS闀垮害
+// 绠楁硶锛歀CS
 #include<iostream>
 #include<cstring>
 #include<algorithm>

@@ -9,10 +9,10 @@ int next(int n, int k) {
   if(!k) return 0;
   long long k2 = (long long)k * k;
   int L = 0;
-  while(k2 > 0) { buf[L++] = k2 % 10; k2 /= 10; } // ·ÖÀë²¢±£´æk2µÄ¸÷¸öÊı×Ö
+  while(k2 > 0) { buf[L++] = k2 % 10; k2 /= 10; } // åˆ†ç¦»å¹¶ä¿å­˜k2çš„å„ä¸ªæ•°å­—
   if(n > L) n = L;
   int ans = 0;
-  for(int i = 0; i < n; i++) // °ÑÇ°min{n,L}Î»ÖØĞÂ×éºÏ
+  for(int i = 0; i < n; i++) // æŠŠå‰min{n,L}ä½é‡æ–°ç»„åˆ
     ans = ans * 10 + buf[--L];
   return ans;
 }
@@ -26,10 +26,10 @@ int main() {
     int ans = k;
     int k1 = k, k2 = k;
     do {
-      k1 = next(n, k1); // Ğ¡º¢1
-      k2 = next(n, k2); if(k2 > ans) ans = k2; // Ğ¡º¢2£¬µÚÒ»²½
-      k2 = next(n, k2); if(k2 > ans) ans = k2; // Ğ¡º¢2£¬µÚ¶ş²½
-    } while(k1 != k2); // ×·ÉÏÒÔºó²ÅÍ£Ö¹
+      k1 = next(n, k1); // å°å­©1
+      k2 = next(n, k2); if(k2 > ans) ans = k2; // å°å­©2ï¼Œç¬¬ä¸€æ­¥
+      k2 = next(n, k2); if(k2 > ans) ans = k2; // å°å­©2ï¼Œç¬¬äºŒæ­¥
+    } while(k1 != k2); // è¿½ä¸Šä»¥åæ‰åœæ­¢
     cout << ans << endl;
   }
   return 0;

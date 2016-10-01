@@ -1,8 +1,8 @@
 // UVa10304 Optimal Binary Search Tree
 // Rujia Liu
-// ���⣺�����OBST����
-// �㷨����d[i][j]Ϊ�ؼ���i~j�������OBST����С���ã�sum(i,j)Ϊi~j��Ȩֵ֮��
-// d[i][j] = min{d[i][k-1] + d[k+1][j]} + sum(i,j) - f[k]����ʾ�����Ϊk�����˸�֮���������ĸ߶ȼ�1����˷���Ҫ����Ȩֵ��
+// 题意：经典的OBST问题
+// 算法：设d[i][j]为关键字i~j构造出的OBST的最小费用，sum(i,j)为i~j的权值之和
+// d[i][j] = min{d[i][k-1] + d[k+1][j]} + sum(i,j) - f[k]，表示根结点为k，除了根之外其他结点的高度加1，因此费用要加上权值。
 #include<cstdio>
 #include<cstring>
 const int maxn = 250 + 5;

@@ -1,12 +1,12 @@
 // UVa10344 23 Out of 5
 // Rujia Liu
-// ÌâÒâ£ºÊäÈë5¸öÕûÊý£¬°´ÕÕÄ³ÖÖË³ÐòÅÅÁÐºóÒÀ´Î½øÐÐ+, -»òÕß*£¬Ê¹µÃ×îÖÕ½á¹ûÎª23¡£ÅÐ¶ÏÊÇ·ñÓÐ½â
-// Ëã·¨£º»ØËÝ
+// é¢˜æ„ï¼šè¾“å…¥5ä¸ªæ•´æ•°ï¼ŒæŒ‰ç…§æŸç§é¡ºåºæŽ’åˆ—åŽä¾æ¬¡è¿›è¡Œ+, -æˆ–è€…*ï¼Œä½¿å¾—æœ€ç»ˆç»“æžœä¸º23ã€‚åˆ¤æ–­æ˜¯å¦æœ‰è§£
+// ç®—æ³•ï¼šå›žæº¯
 #include<cstdio>
 #include<cstring>
 int a[5], vis[5];
 
-// dÎªµ±Ç°²ãÊý£¬vÎªµ±Ç°ÊýÖµ
+// dä¸ºå½“å‰å±‚æ•°ï¼Œvä¸ºå½“å‰æ•°å€¼
 bool dfs(int d, int v) {
   if(d == 5) return v == 23;
   for(int i = 0; i < 5; i++) if(!vis[i]) {

@@ -1,14 +1,14 @@
 // UVa10717 Mint
 // Rujia Liu
-// ���⣺��һ���������ӣ�ÿ�������ȶ�����һ�ֲ�ͬ��Ӳ����������ɵġ��ĸ������ȱ���ȸߡ�
-// ����4<=n<=50��Ӳ�ҵĸ߶ȣ��Լ�t������������ȸ߶ȣ�����ÿ������߶�h������ڿ��ܴﵽ�������ȸ߶��У�<=h�����߶Ⱥ�>=h����С�߶ȡ�
-// �㷨��ö����������Ӳ�ң�����С����������һ������Ԥ����������ظ����㣩��Ȼ�����������
+// 题意：有一种新型桌子，每个桌子腿都是由一种不同的硬币摞起来组成的。四个桌子腿必须等高。
+// 输入4<=n<=50种硬币的高度，以及t个理想的桌子腿高度，对于每个理想高度h，输出在可能达到的桌子腿高度中，<=h的最大高度和>=h的最小高度。
+// 算法：枚举用哪四种硬币，求最小公倍数（这一步可以预处理，免得重复计算），然后更新所求结果
 #include<iostream>
 #define FOR(i,a,b) for(int i = (a); i < (b); ++i)
 using namespace std;
 
 const int maxn = 50 + 5;
-int coin[maxn], minh[maxn][maxn][maxn][maxn]; // Ԥ�������
+int coin[maxn], minh[maxn][maxn][maxn][maxn]; // 预处理结果
 
 int gcd(int a, int b) {
   return b == 0 ? a : gcd(b, a % b);

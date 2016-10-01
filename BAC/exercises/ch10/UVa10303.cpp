@@ -1,7 +1,7 @@
 // UVa10303 How Many Trees?
 // Rujia Liu
-// ÌâÒâ£ºÇónÔªËØÅÅĞò¶ş²æÊ÷µÄ¸öÊı
-// Ëã·¨£º¾ÍÊÇCatalanÊı£¨´ÓC[0]¿ªÊ¼£©£¬¼´£º1, 1, 2, 5, 14, ... C[n+1] = C[n] * (4n+2)/(n+2)
+// é¢˜æ„ï¼šæ±‚nå…ƒç´ æ’åºäºŒå‰æ ‘çš„ä¸ªæ•°
+// ç®—æ³•ï¼šå°±æ˜¯Catalanæ•°ï¼ˆä»C[0]å¼€å§‹ï¼‰ï¼Œå³ï¼š1, 1, 2, 5, 14, ... C[n+1] = C[n] * (4n+2)/(n+2)
 #include<cstdio>
 #include<cstring>
 #include<iostream>
@@ -43,7 +43,7 @@ struct BigInteger {
     if(s.size() != b.s.size()) return s.size() < b.s.size();
     for(int i = s.size()-1; i >= 0; i--)
       if(s[i] != b.s[i]) return s[i] < b.s[i];
-    return false; // ÏàµÈ
+    return false; // ç›¸ç­‰
   }
 
   bool operator <= (const BigInteger& b) const {

@@ -10,13 +10,13 @@ using namespace std;
 const int SIGMA_SIZE = 26;
 const int MAXNODE = 10000 + 10;
 
-void process_match(int pos, int v); // AC×Ô¶¯»úÃ¿ÕÒµ½Ò»¸öÆ¥Åä»áµ÷ÓÃÒ»´Î£¬½áÊøÎ»ÖÃÎªpos£¬valÎªv
+void process_match(int pos, int v); // ACè‡ªåŠ¨æœºæ¯æ‰¾åˆ°ä¸€ä¸ªåŒ¹é…ä¼šè°ƒç”¨ä¸€æ¬¡ï¼Œç»“æŸä½ç½®ä¸ºposï¼Œvalä¸ºv
 
 struct AhoCorasickAutomata {
   int ch[MAXNODE][SIGMA_SIZE];
-  int f[MAXNODE];    // failº¯Êı
-  int val[MAXNODE];  // Ã¿¸ö×Ö·û´®µÄ½áÎ²½áµã¶¼ÓĞÒ»¸ö·Ç0µÄval
-  int last[MAXNODE]; // Êä³öÁ´±íµÄÏÂÒ»¸ö½áµã
+  int f[MAXNODE];    // failå‡½æ•°
+  int val[MAXNODE];  // æ¯ä¸ªå­—ç¬¦ä¸²çš„ç»“å°¾ç»“ç‚¹éƒ½æœ‰ä¸€ä¸ªé0çš„val
+  int last[MAXNODE]; // è¾“å‡ºé“¾è¡¨çš„ä¸‹ä¸€ä¸ªç»“ç‚¹
   int sz;
 
   void init() {
@@ -24,12 +24,12 @@ struct AhoCorasickAutomata {
     memset(ch[0], 0, sizeof(ch[0]));
   }
 
-  // ×Ö·ûcµÄ±àºÅ
+  // å­—ç¬¦cçš„ç¼–å·
   int idx(char c) {
     return c-'a';
   }
 
-  // ²åÈë×Ö·û´®¡£v±ØĞë·Ç0
+  // æ’å…¥å­—ç¬¦ä¸²ã€‚vå¿…é¡»é0
   void insert(char *s, int v) {
     int u = 0, n = strlen(s);
     for(int i = 0; i < n; i++) {
@@ -44,7 +44,7 @@ struct AhoCorasickAutomata {
     val[u] = v;
   }
 
-  // µİ¹é´òÓ¡ÒÔ½áµãj½áÎ²µÄËùÓĞ×Ö·û´®
+  // é€’å½’æ‰“å°ä»¥ç»“ç‚¹jç»“å°¾çš„æ‰€æœ‰å­—ç¬¦ä¸²
   void report(int pos, int j) {
     if(j) {
       process_match(pos, val[j]);
@@ -52,29 +52,29 @@ struct AhoCorasickAutomata {
     }
   }
 
-  // ÔÚTÖĞÕÒÄ£°å
+  // åœ¨Tä¸­æ‰¾æ¨¡æ¿
   int find(char* T) {
     int n = strlen(T);
-    int j = 0; // µ±Ç°½áµã±àºÅ£¬³õÊ¼Îª¸ù½áµã
-    for(int i = 0; i < n; i++) { // ÎÄ±¾´®µ±Ç°Ö¸Õë
+    int j = 0; // å½“å‰ç»“ç‚¹ç¼–å·ï¼Œåˆå§‹ä¸ºæ ¹ç»“ç‚¹
+    for(int i = 0; i < n; i++) { // æ–‡æœ¬ä¸²å½“å‰æŒ‡é’ˆ
       int c = idx(T[i]);
-      while(j && !ch[j][c]) j = f[j]; // Ë³×ÅÏ¸±ß×ß£¬Ö±µ½¿ÉÒÔÆ¥Åä
+      while(j && !ch[j][c]) j = f[j]; // é¡ºç€ç»†è¾¹èµ°ï¼Œç›´åˆ°å¯ä»¥åŒ¹é…
       j = ch[j][c];
       if(val[j]) report(i, j);
-      else if(last[j]) report(i, last[j]); // ÕÒµ½ÁË£¡
+      else if(last[j]) report(i, last[j]); // æ‰¾åˆ°äº†ï¼
     }
   }
 
-  // ¼ÆËãfailº¯Êı
+  // è®¡ç®—failå‡½æ•°
   void getFail() {
     queue<int> q;
     f[0] = 0;
-    // ³õÊ¼»¯¶ÓÁĞ
+    // åˆå§‹åŒ–é˜Ÿåˆ—
     for(int c = 0; c < SIGMA_SIZE; c++) {
       int u = ch[0][c];
       if(u) { f[u] = 0; q.push(u); last[u] = 0; }
     }
-    // °´BFSË³Ğò¼ÆËãfail
+    // æŒ‰BFSé¡ºåºè®¡ç®—fail
     while(!q.empty()) {
       int r = q.front(); q.pop();
       for(int c = 0; c < SIGMA_SIZE; c++) {
@@ -99,17 +99,17 @@ const int maxx = 100 + 10;
 const int maxy = 100 + 10;
 char text[maxn][maxm], P[maxx][maxy];
 
-int repr[maxx]; // repr[i]ÎªÄ£°åµÚiĞĞµÄ¡°´ú±íÔª¡±
-int next[maxx]; // next[i]ÎªÄ£°åÖĞÓëµÚiĞĞÏàµÈµÄÏÂÒ»¸öĞĞ±àºÅ
-int len[maxx]; // Ä£°å¸÷ĞĞµÄ³¤¶È
+int repr[maxx]; // repr[i]ä¸ºæ¨¡æ¿ç¬¬iè¡Œçš„â€œä»£è¡¨å…ƒâ€
+int next[maxx]; // next[i]ä¸ºæ¨¡æ¿ä¸­ä¸ç¬¬iè¡Œç›¸ç­‰çš„ä¸‹ä¸€ä¸ªè¡Œç¼–å·
+int len[maxx]; // æ¨¡æ¿å„è¡Œçš„é•¿åº¦
 
-int tr; // µ±Ç°ÎÄ±¾ĞĞ±àºÅ
+int tr; // å½“å‰æ–‡æœ¬è¡Œç¼–å·
 int cnt[maxn][maxm];
 void process_match(int pos, int v) {
-  int pr = repr[v - 1]; // Æ¥Åäµ½µÃÄ£°åĞĞ±àºÅ
+  int pr = repr[v - 1]; // åŒ¹é…åˆ°å¾—æ¨¡æ¿è¡Œç¼–å·
   int c = pos - len[pr] + 1;
   while(pr >= 0) {
-    if(tr >= pr) // PµÄĞĞpr³öÏÖÔÚÔÚTµÄtrĞĞ£¬ÆğÊ¼ÁĞ±àºÅÎªc
+    if(tr >= pr) // Pçš„è¡Œprå‡ºç°åœ¨åœ¨Tçš„trè¡Œï¼Œèµ·å§‹åˆ—ç¼–å·ä¸ºc
       cnt[tr - pr][c]++;
     pr = next[pr];
   }

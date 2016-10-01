@@ -1,8 +1,8 @@
 /*
-  Ï°Ìâ2-8. ×ÓÐòÁÐµÄºÍ£¨subsequence£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜2-8. å­åºåˆ—çš„å’Œï¼ˆsubsequenceï¼‰
+  åˆ˜æ±ä½³
 
-  ±¾ÌâµÄÏÝÚåÊÇ£ºÈç¹ûÐ´³Ésum += 1.0/(i*i)µÄ»°£¬»áÔÚ¼ÆËãi*iµÄÊ±ºòÒç³ö
+  æœ¬é¢˜çš„é™·é˜±æ˜¯ï¼šå¦‚æžœå†™æˆsum += 1.0/(i*i)çš„è¯ï¼Œä¼šåœ¨è®¡ç®—i*içš„æ—¶å€™æº¢å‡º
 */
 
 #include<stdio.h>

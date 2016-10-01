@@ -7,34 +7,34 @@ using namespace std;
 const int maxnode = 4000 * 1000 + 10;
 const int sigma_size = 26;
 
-// ×ÖÄ¸±íÎªÈ«ÌåĞ¡Ğ´×ÖÄ¸µÄTrie
+// å­—æ¯è¡¨ä¸ºå…¨ä½“å°å†™å­—æ¯çš„Trie
 struct Trie {
-  int head[maxnode]; // head[i]ÎªµÚi¸ö½áµãµÄ×ó¶ù×Ó±àºÅ
-  int next[maxnode]; // next[i]ÎªµÚi¸ö½áµãµÄÓÒĞÖµÜ±àºÅ
-  char ch[maxnode];  // ch[i]ÎªµÚi¸ö½áµãÉÏµÄ×Ö·û
-  int tot[maxnode];  // tot[i]ÎªµÚi¸ö½áµãÎª¸ùµÄ×ÓÊ÷°üº¬µÄÒ¶½áµã×ÜÊı
-  int sz; // ½áµã×ÜÊı
-  long long ans; // ´ğ°¸
-  void clear() { sz = 1; tot[0] = head[0] = next[0] = 0; } // ³õÊ¼Ê±Ö»ÓĞÒ»¸ö¸ù½áµã
+  int head[maxnode]; // head[i]ä¸ºç¬¬iä¸ªç»“ç‚¹çš„å·¦å„¿å­ç¼–å·
+  int next[maxnode]; // next[i]ä¸ºç¬¬iä¸ªç»“ç‚¹çš„å³å…„å¼Ÿç¼–å·
+  char ch[maxnode];  // ch[i]ä¸ºç¬¬iä¸ªç»“ç‚¹ä¸Šçš„å­—ç¬¦
+  int tot[maxnode];  // tot[i]ä¸ºç¬¬iä¸ªç»“ç‚¹ä¸ºæ ¹çš„å­æ ‘åŒ…å«çš„å¶ç»“ç‚¹æ€»æ•°
+  int sz; // ç»“ç‚¹æ€»æ•°
+  long long ans; // ç­”æ¡ˆ
+  void clear() { sz = 1; tot[0] = head[0] = next[0] = 0; } // åˆå§‹æ—¶åªæœ‰ä¸€ä¸ªæ ¹ç»“ç‚¹
 
-  // ²åÈë×Ö·û´®s£¨°üÀ¨×îºóµÄ'\0'£©£¬ÑØÍ¾¸üĞÂtot
+  // æ’å…¥å­—ç¬¦ä¸²sï¼ˆåŒ…æ‹¬æœ€åçš„'\0'ï¼‰ï¼Œæ²¿é€”æ›´æ–°tot
   void insert(const char *s) {
     int u = 0, v, n = strlen(s);
     tot[0]++;
     for(int i = 0; i <= n; i++) {
-      // ÕÒ×Ö·ûa[i]
+      // æ‰¾å­—ç¬¦a[i]
       bool found = false;
       for(v = head[u]; v != 0; v = next[v])
-        if(ch[v] == s[i]) { // ÕÒµ½ÁË
+        if(ch[v] == s[i]) { // æ‰¾åˆ°äº†
           found = true;
           break;
         }
       if(!found) {
-        v = sz++; // ĞÂ½¨½áµã
+        v = sz++; // æ–°å»ºç»“ç‚¹
         tot[v] = 0;
         ch[v] = s[i];
         next[v] = head[u];
-        head[u] = v; // ²åÈëµ½Á´±íµÄÊ×²¿
+        head[u] = v; // æ’å…¥åˆ°é“¾è¡¨çš„é¦–éƒ¨
         head[v] = 0;
       }
       u = v;
@@ -42,21 +42,21 @@ struct Trie {
     }
   }
 
-  // Í³¼ÆLCP=uµÄËùÓĞµ¥´ÊÁ½Á½µÄ±È½Ï´ÎÊıÖ®ºÍ
+  // ç»Ÿè®¡LCP=uçš„æ‰€æœ‰å•è¯ä¸¤ä¸¤çš„æ¯”è¾ƒæ¬¡æ•°ä¹‹å’Œ
   void dfs(int depth, int u) {
-    if(head[u] == 0) // Ò¶½áµã
+    if(head[u] == 0) // å¶ç»“ç‚¹
       ans += tot[u] * (tot[u] - 1) * depth;
     else {
       int sum = 0;
       for(int v = head[u]; v != 0; v = next[v])
-        sum += tot[v] * (tot[u] - tot[v]); // ×ÓÊ÷vÖĞÑ¡Ò»¸ö´®£¬ÆäËû×ÓÊ÷ÖĞÔÙÑ¡Ò»¸ö
-      ans += sum / 2 * (2 * depth + 1); // ³ıÒÔ2ÊÇÃ¿ÖÖÑ¡·¨Í³¼ÆÁËÁ½´Î
+        sum += tot[v] * (tot[u] - tot[v]); // å­æ ‘vä¸­é€‰ä¸€ä¸ªä¸²ï¼Œå…¶ä»–å­æ ‘ä¸­å†é€‰ä¸€ä¸ª
+      ans += sum / 2 * (2 * depth + 1); // é™¤ä»¥2æ˜¯æ¯ç§é€‰æ³•ç»Ÿè®¡äº†ä¸¤æ¬¡
       for(int v = head[u]; v != 0; v = next[v])
         dfs(depth+1, v);
     }
   }
 
-  // Í³¼Æ
+  // ç»Ÿè®¡
   long long count() {
     ans = 0;
     dfs(0, 0);
@@ -65,7 +65,7 @@ struct Trie {
 };
 
 #include<cstdio>
-const int maxl = 1000 + 10;   // Ã¿¸öµ¥´Ê×î´ó³¤¶È
+const int maxl = 1000 + 10;   // æ¯ä¸ªå•è¯æœ€å¤§é•¿åº¦
 
 int n;
 char word[maxl];

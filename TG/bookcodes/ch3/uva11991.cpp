@@ -5,7 +5,7 @@
 #include<map>
 using namespace std;
 
-map<int, vector<int> > a; // ×îºóÁ½¸ö>²»ÒªÁ¬Ð´£¬·ñÔò»á±»ÎóÈÏÎª>>
+map<int, vector<int> > a; // æœ€åŽä¸¤ä¸ª>ä¸è¦è¿žå†™ï¼Œå¦åˆ™ä¼šè¢«è¯¯è®¤ä¸º>>
 
 int main() {
   int n, m, x, y;

@@ -6,17 +6,17 @@
 #include <algorithm>
 using namespace std;
 
-const int maxn = 500 + 5; // ¶¥µãµÄ×î´óÊıÄ¿
+const int maxn = 500 + 5; // é¡¶ç‚¹çš„æœ€å¤§æ•°ç›®
 const int INF = 1000000000;
 
-// ×î´óÈ¨Æ¥Åä
+// æœ€å¤§æƒåŒ¹é…
 struct KM {
-  int n;                  // ×óÓÒ¶¥µã¸öÊı
-  vector<int> G[maxn];    // ÁÚ½Ó±í
-  int W[maxn][maxn];      // È¨Öµ
-  int Lx[maxn], Ly[maxn]; // ¶¥±ê
-  int left[maxn];         // left[i]ÎªÓÒ±ßµÚi¸öµãµÄÆ¥Åäµã±àºÅ£¬-1±íÊ¾²»´æÔÚ
-  bool S[maxn], T[maxn];  // S[i]ºÍT[i]Îª×ó/ÓÒµÚi¸öµãÊÇ·ñÒÑ±ê¼Ç
+  int n;                  // å·¦å³é¡¶ç‚¹ä¸ªæ•°
+  vector<int> G[maxn];    // é‚»æ¥è¡¨
+  int W[maxn][maxn];      // æƒå€¼
+  int Lx[maxn], Ly[maxn]; // é¡¶æ ‡
+  int left[maxn];         // left[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹çš„åŒ¹é…ç‚¹ç¼–å·ï¼Œ-1è¡¨ç¤ºä¸å­˜åœ¨
+  bool S[maxn], T[maxn];  // S[i]å’ŒT[i]ä¸ºå·¦/å³ç¬¬iä¸ªç‚¹æ˜¯å¦å·²æ ‡è®°
 
   void init(int n) {
     this->n = n;
@@ -74,23 +74,23 @@ struct KM {
 
 KM solver;
 
-const int maxp = 50 + 5; // ³ÌĞò(program)µÄ×î´óÊıÄ¿
-const int maxr = 10 + 5; // ÇøÓò(region)µÄ×î´óÊıÄ¿
-int n, m;                // ³ÌĞòÊıÄ¿ºÍÇøÓòÊıÄ¿
-int runtime[maxp][maxr]; // runtime[p][r]Îª³ÌĞòpÔÚÇøÓòrÖĞµÄÔËĞĞÊ±¼ä
+const int maxp = 50 + 5; // ç¨‹åº(program)çš„æœ€å¤§æ•°ç›®
+const int maxr = 10 + 5; // åŒºåŸŸ(region)çš„æœ€å¤§æ•°ç›®
+int n, m;                // ç¨‹åºæ•°ç›®å’ŒåŒºåŸŸæ•°ç›®
+int runtime[maxp][maxr]; // runtime[p][r]ä¸ºç¨‹åºpåœ¨åŒºåŸŸrä¸­çš„è¿è¡Œæ—¶é—´
 
-// ´òÓ¡¾ßÌå·½°¸
+// æ‰“å°å…·ä½“æ–¹æ¡ˆ
 void print_solution() {
-  int start[maxp], region_number[maxp], total = 0; // ÆğÊ¼Ê±¿Ì¡¢·ÖÅäµ½µÃÇøÓò±àºÅ¡¢×Ü»Ø×ªÊ±¼ä
+  int start[maxp], region_number[maxp], total = 0; // èµ·å§‹æ—¶åˆ»ã€åˆ†é…åˆ°å¾—åŒºåŸŸç¼–å·ã€æ€»å›è½¬æ—¶é—´
   for(int region = 0; region < m; region++) {
-    vector<int> programs; // ±¾regionÖ´ĞĞµÄËùÓĞ³ÌĞò£¬°´ÕÕÄæĞòÅÅÁĞ£¨ÒòÎªÊÇÖ¸¡°µ¹Êı¡±µÚpos¸ö³ÌĞò£©
+    vector<int> programs; // æœ¬regionæ‰§è¡Œçš„æ‰€æœ‰ç¨‹åºï¼ŒæŒ‰ç…§é€†åºæ’åˆ—ï¼ˆå› ä¸ºæ˜¯æŒ‡â€œå€’æ•°â€ç¬¬posä¸ªç¨‹åºï¼‰
     for(int pos = 0; pos < n; pos++) {
       int right = region * n + pos;
       int left = solver.left[right];
-      if(left >= n) break; // Æ¥Åäµ½ĞéÄâ½áµã£¬ËµÃ÷±¾regionÒÑ¾­Ã»ÓĞ¸ü¶à³ÌĞòÁË
+      if(left >= n) break; // åŒ¹é…åˆ°è™šæ‹Ÿç»“ç‚¹ï¼Œè¯´æ˜æœ¬regionå·²ç»æ²¡æœ‰æ›´å¤šç¨‹åºäº†
       programs.push_back(left);
       region_number[left] = region;
-      total -= solver.W[left][right]; // È¨ÖµÈ¡¹ıÏà·´Êı
+      total -= solver.W[left][right]; // æƒå€¼å–è¿‡ç›¸åæ•°
     }
     reverse(programs.begin(), programs.end());
     int time = 0;
@@ -118,7 +118,7 @@ int main(){
       for(int i = 0; i < k; i++) scanf("%d%d", &s[i], &t[i]);
 
       for(int region = 0; region < m; region++) {
-        // ¼ÆËã³ÌĞòpÔÚÄÚ´æÇøÓòrÖĞµÄÔËĞĞÊ±¼ä
+        // è®¡ç®—ç¨‹åºpåœ¨å†…å­˜åŒºåŸŸrä¸­çš„è¿è¡Œæ—¶é—´
         int& time = runtime[program][region];
         time = INF;
         if(size[region] < s[0]) continue;
@@ -128,13 +128,13 @@ int main(){
             break;
           }
 
-        // Á¬±ßX(program) -> Y(region,pos)
+        // è¿è¾¹X(program) -> Y(region,pos)
         for(int pos = 0; pos < n; pos++)
-          solver.AddEdge(program, region * n + pos, -(pos + 1) * time); // ±¾ÌâÒªÇó×îĞ¡Öµ£¬È¨ÖµÒªÈ¡Ïà·´Êı
+          solver.AddEdge(program, region * n + pos, -(pos + 1) * time); // æœ¬é¢˜è¦æ±‚æœ€å°å€¼ï¼Œæƒå€¼è¦å–ç›¸åæ•°
       }
     }
 
-    // ²¹ÍêÆäËû±ß
+    // è¡¥å®Œå…¶ä»–è¾¹
     for(int i = n; i < n*m; i++)
       for(int j = 0; j < n*m; j++)
         solver.AddEdge(i, j, 1);

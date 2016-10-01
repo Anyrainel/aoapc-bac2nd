@@ -42,15 +42,15 @@ int log_mod(int a, int b) {
   return -1;
 }
 
-// ¼ÆËã¿É±ä²¿·ÖµÄ·½°¸Êı
+// è®¡ç®—å¯å˜éƒ¨åˆ†çš„æ–¹æ¡ˆæ•°
 int count() {
-  int c = 0; // ÓĞkÖÖÍ¿·¨µÄ¸ñ×ÓÊı
+  int c = 0; // æœ‰kç§æ¶‚æ³•çš„æ ¼å­æ•°
   for(int i = 0; i < b; i++) {
-    if(x[i] != m && !bset.count(make_pair(x[i]+1, y[i]))) c++; // ²»¿ÉÍ¿É«¸ñÏÂÃæµÄ¿ÉÍ¿É«¸ñ
+    if(x[i] != m && !bset.count(make_pair(x[i]+1, y[i]))) c++; // ä¸å¯æ¶‚è‰²æ ¼ä¸‹é¢çš„å¯æ¶‚è‰²æ ¼
   }
-  c += n; // µÚÒ»ĞĞËùÓĞ¿Õ¸ñ¶¼ÓĞkÖÖÍ¿·¨
+  c += n; // ç¬¬ä¸€è¡Œæ‰€æœ‰ç©ºæ ¼éƒ½æœ‰kç§æ¶‚æ³•
   for(int i = 0; i < b; i++)
-    if(x[i] == 1) c--; // ¿Û³ıÄÇĞ©²»ÄÜÍ¿É«µÄ¸ñ×Ó
+    if(x[i] == 1) c--; // æ‰£é™¤é‚£äº›ä¸èƒ½æ¶‚è‰²çš„æ ¼å­
 
   // ans = k^c * (k-1)^(mn - b - c)
   return mul_mod(pow_mod(k, c), pow_mod(k-1, (long long)m*n - b - c));
@@ -58,15 +58,15 @@ int count() {
 
 int doit() {
   int cnt = count();
-  if(cnt == r) return m; // ²»±ä²¿·ÖÎª¿Õ
+  if(cnt == r) return m; // ä¸å˜éƒ¨åˆ†ä¸ºç©º
 
   int c = 0;
   for(int i = 0; i < b; i++)
-    if(x[i] == m) c++; // ¿É±ä²¿·ÖµÚÒ»ĞĞÖĞÓĞkÖÖÍ¿·¨µÄ¸ñ×ÓÊı
-  m++; // ¶àÁËÒ»ĞĞ£¨¿É±ä²¿·ÖµÄµÚÒ»ĞĞ£©
+    if(x[i] == m) c++; // å¯å˜éƒ¨åˆ†ç¬¬ä¸€è¡Œä¸­æœ‰kç§æ¶‚æ³•çš„æ ¼å­æ•°
+  m++; // å¤šäº†ä¸€è¡Œï¼ˆå¯å˜éƒ¨åˆ†çš„ç¬¬ä¸€è¡Œï¼‰
   cnt = mul_mod(cnt, pow_mod(k, c));
   cnt = mul_mod(cnt, pow_mod(k-1, n - c));
-  if(cnt == r) return m; // ´ËÊ±cntÎª²»±ä²¿·ÖºÍ¿É±ä²¿·ÖµÚÒ»ĞĞµÄ·½°¸×ÜÊı
+  if(cnt == r) return m; // æ­¤æ—¶cntä¸ºä¸å˜éƒ¨åˆ†å’Œå¯å˜éƒ¨åˆ†ç¬¬ä¸€è¡Œçš„æ–¹æ¡ˆæ€»æ•°
 
   return log_mod(pow_mod(k-1,n), mul_mod(r, inv(cnt))) + m;
 }
@@ -80,7 +80,7 @@ int main() {
     m = 1;
     for(int i = 0; i < b; i++) {
       scanf("%d%d", &x[i], &y[i]);
-      if(x[i] > m) m = x[i]; // ¸üĞÂ²»±ä²¿·ÖµÄĞĞÊı
+      if(x[i] > m) m = x[i]; // æ›´æ–°ä¸å˜éƒ¨åˆ†çš„è¡Œæ•°
       bset.insert(make_pair(x[i], y[i]));
     }
     printf("Case %d: %d\n", t, doit());

@@ -20,11 +20,11 @@ bool operator < (const Edge& a, const Edge& b) {
 
 struct Dinic {
   int n, m, s, t;
-  vector<Edge> edges;    // ±ßÊıµÄÁ½±¶
-  vector<int> G[maxn];   // ÁÚ½Ó±í£¬G[i][j]±íÊ¾½áµãiµÄµÚjÌõ±ßÔÚeÊı×éÖĞµÄĞòºÅ
-  bool vis[maxn];        // BFSÊ¹ÓÃ
-  int d[maxn];           // ´ÓÆğµãµ½iµÄ¾àÀë
-  int cur[maxn];         // µ±Ç°»¡Ö¸Õë
+  vector<Edge> edges;    // è¾¹æ•°çš„ä¸¤å€
+  vector<int> G[maxn];   // é‚»æ¥è¡¨ï¼ŒG[i][j]è¡¨ç¤ºç»“ç‚¹içš„ç¬¬jæ¡è¾¹åœ¨eæ•°ç»„ä¸­çš„åºå·
+  bool vis[maxn];        // BFSä½¿ç”¨
+  int d[maxn];           // ä»èµ·ç‚¹åˆ°içš„è·ç¦»
+  int cur[maxn];         // å½“å‰å¼§æŒ‡é’ˆ
 
   void init() { edges.clear(); }
 
@@ -76,14 +76,14 @@ struct Dinic {
     return flow;
   }
 
-  // Çós-t×î´óÁ÷¡£Èç¹û×î´óÁ÷³¬¹ılimit£¬ÔòÖ»ÕÒÒ»¸öÁ÷Á¿ÎªlimitµÄÁ÷
+  // æ±‚s-tæœ€å¤§æµã€‚å¦‚æœæœ€å¤§æµè¶…è¿‡limitï¼Œåˆ™åªæ‰¾ä¸€ä¸ªæµé‡ä¸ºlimitçš„æµ
   int Maxflow(int s, int t, int limit) {
     this->s = s; this->t = t;
     int flow = 0;
     while(BFS()) {
       memset(cur, 0, sizeof(cur));
       flow += DFS(s, limit - flow);
-      if(flow == limit) break; // ´ïµ½Á÷Á¿ÏŞÖÆ£¬Ö±½ÓÍË³ö
+      if(flow == limit) break; // è¾¾åˆ°æµé‡é™åˆ¶ï¼Œç›´æ¥é€€å‡º
     }
     return flow;
   }
@@ -94,18 +94,18 @@ Dinic g;
 const int maxm = 200 + 10;
 int main() {
   int n, m, k, S, T;
-  int u[maxm], v[maxm]; // ÊäÈë±ß
+  int u[maxm], v[maxm]; // è¾“å…¥è¾¹
   while(scanf("%d%d%d%d%d", &n, &m, &k, &S, &T) == 5) {
     for(int i = 0; i < m; i++) scanf("%d%d", &u[i], &v[i]);
     g.init();
     int day = 1;
-    g.clearNodes(0, n-1); // µÚÒ»²ã½áµã±àºÅÎª0~n-1¡£µÚday²ã(day>=1)½áµã±àºÅÎªday*n~day*n+n-1
+    g.clearNodes(0, n-1); // ç¬¬ä¸€å±‚ç»“ç‚¹ç¼–å·ä¸º0~n-1ã€‚ç¬¬dayå±‚(day>=1)ç»“ç‚¹ç¼–å·ä¸ºday*n~day*n+n-1
     int flow = 0;
     for(;;) {
-      // ÅĞ¶ÏdayÌìÊÇ·ñÓĞ½â
-      // Ò»¼Ü·É´¬×î¶àĞèÒªn-1Ììµ½´ïÄ¿µÄµØ£¬ÑØ×ÅÕâÒ»Â·Ïß×î¶àĞèÒªn+k-2Ìì¾Í¿ÉÒÔÔËÍêËùÓĞ·É´¬£¬×Ü½áµãÊı²»³¬¹ı(n+k-1)n
+      // åˆ¤æ–­dayå¤©æ˜¯å¦æœ‰è§£
+      // ä¸€æ¶é£èˆ¹æœ€å¤šéœ€è¦n-1å¤©åˆ°è¾¾ç›®çš„åœ°ï¼Œæ²¿ç€è¿™ä¸€è·¯çº¿æœ€å¤šéœ€è¦n+k-2å¤©å°±å¯ä»¥è¿å®Œæ‰€æœ‰é£èˆ¹ï¼Œæ€»ç»“ç‚¹æ•°ä¸è¶…è¿‡(n+k-1)n
       g.clearNodes(day*n, day*n+n-1);
-      for(int i = 0; i < n; i++) g.AddEdge((day-1)*n+i, day*n+i, INF); // Ô­µØ²»¶¯
+      for(int i = 0; i < n; i++) g.AddEdge((day-1)*n+i, day*n+i, INF); // åŸåœ°ä¸åŠ¨
       for(int i = 0; i < m; i++) {
         g.AddEdge((day-1)*n+u[i]-1, day*n+v[i]-1, 1); // u[i]->v[i]
         g.AddEdge((day-1)*n+v[i]-1, day*n+u[i]-1, 1); // v[i]->u[i]
@@ -115,14 +115,14 @@ int main() {
       day++;
     }
 
-    // Êä³ö½â
+    // è¾“å‡ºè§£
     printf("%d\n", day);
     int idx = 0;
-    vector<int> location(k, S); // Ã¿¼Ü·É´¬µÄµ±Ç°Î»ÖÃ
+    vector<int> location(k, S); // æ¯æ¶é£èˆ¹çš„å½“å‰ä½ç½®
     for(int d = 1; d <= day; d++) {
       idx += n*2;
-      vector<int> moved(k, 0); // µÚdÌìÓĞÃ»ÓĞÒÆ¶¯·É´¬i
-      vector<int> a, b;        // µÚdÌìÓĞÒ»¼Ü·É´¬´Óa[i]µ½b[i]
+      vector<int> moved(k, 0); // ç¬¬då¤©æœ‰æ²¡æœ‰ç§»åŠ¨é£èˆ¹i
+      vector<int> a, b;        // ç¬¬då¤©æœ‰ä¸€æ¶é£èˆ¹ä»a[i]åˆ°b[i]
       for(int i = 0; i < m; i++) {
         int f1 = g.edges[idx].flow; idx += 2;
         int f2 = g.edges[idx].flow; idx += 2;
@@ -131,7 +131,7 @@ int main() {
       }
       printf("%d", a.size());
       for(int i = 0; i < a.size(); i++) {
-        // ²éÕÒÊÇÄÄ¼Ü·É´¬´Óa[i]ÒÆ¶¯µ½ÁËb[i]
+        // æŸ¥æ‰¾æ˜¯å“ªæ¶é£èˆ¹ä»a[i]ç§»åŠ¨åˆ°äº†b[i]
         for(int j = 0; j < k; j++)
           if(!moved[j] && location[j] == a[i]) {
             printf(" %d %d", j+1, b[i]);

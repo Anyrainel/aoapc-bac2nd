@@ -12,22 +12,22 @@ const char* mahjong[] = {
 "ZHONG","FA","BAI"
 };
 
-int convert(char *s){ // Ö»ÔÚÔ¤´¦ÀíÊ±µ÷ÓÃ£¬Òò´ËËÙ¶ÈÎŞ¹Ø½ôÒª
+int convert(char *s){ // åªåœ¨é¢„å¤„ç†æ—¶è°ƒç”¨ï¼Œå› æ­¤é€Ÿåº¦æ— å…³ç´§è¦
   for(int i = 0; i < 34; i++)
     if(strcmp(mahjong[i], s) == 0) return i;
   return -1;
 }
 
 int c[34];
-bool search(int dep){ // »ØËİ·¨µİ¹é¹ı³Ì
+bool search(int dep){ // å›æº¯æ³•é€’å½’è¿‡ç¨‹
   int i;
-  for(i = 0; i < 34; i++) if (c[i] >= 3){ // ¿Ì×Ó
+  for(i = 0; i < 34; i++) if (c[i] >= 3){ // åˆ»å­
     if(dep == 3) return true; 
     c[i] -= 3; 
     if(search(dep+1)) return true; 
     c[i] += 3;
   }
-  for(i = 0; i <= 24; i++) if (i % 9 <= 6 && c[i] >= 1 && c[i+1] >= 1 && c[i+2] >= 1){ 											//Ë³×Ó
+  for(i = 0; i <= 24; i++) if (i % 9 <= 6 && c[i] >= 1 && c[i+1] >= 1 && c[i+2] >= 1){ 											//é¡ºå­
     if(dep == 3) return true; 
     c[i]--; c[i+1]--; c[i+2]--;
     if(search(dep+1)) return true; 
@@ -39,7 +39,7 @@ bool search(int dep){ // »ØËİ·¨µİ¹é¹ı³Ì
 bool check(){
   int i;
   for(i = 0; i < 34; i++)
-    if(c[i] >= 2){ // ½«ÅÆ
+    if(c[i] >= 2){ // å°†ç‰Œ
       c[i] -= 2;
       if(search(0)) return true;
       c[i] += 2;
@@ -65,10 +65,10 @@ int main(){
     for(i = 0; i < 34; i++){
       memset(c, 0, sizeof(c));
       for(j = 0; j < 13; j++) c[mj[j]]++;
-      if(c[i] >= 4) continue; // Ã¿ÖÖÅÆ×î¶àÖ»ÓĞ4ÕÅ
-      c[i]++;  // ¼ÙÉèÓµÓĞÕâÕÅÅÆ
-      if(check()){ // Èç¹û¡°ºÍ¡±ÁË
-        ok = true; // ËµÃ÷ÌıÕâÕÅÅÆ
+      if(c[i] >= 4) continue; // æ¯ç§ç‰Œæœ€å¤šåªæœ‰4å¼ 
+      c[i]++;  // å‡è®¾æ‹¥æœ‰è¿™å¼ ç‰Œ
+      if(check()){ // å¦‚æœâ€œå’Œâ€äº†
+        ok = true; // è¯´æ˜å¬è¿™å¼ ç‰Œ
         printf(" %s", mahjong[i]);
       }
       c[i]--;

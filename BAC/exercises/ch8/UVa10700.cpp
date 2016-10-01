@@ -1,6 +1,6 @@
 // UVa10700 Camel trading
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸ö°üº¬1~12µÄÕûÊı¡¢¼ÓºÅºÍ³ËºÅµÄ±í´ïÊ½£¬ËæÒâ¼ÓÀ¨ºÅºó¼ÆËã£¬ÇóËùÄÜµÃµ½µÄ×î´óÖµºÍ×îĞ¡Öµ
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªåŒ…å«1~12çš„æ•´æ•°ã€åŠ å·å’Œä¹˜å·çš„è¡¨è¾¾å¼ï¼Œéšæ„åŠ æ‹¬å·åè®¡ç®—ï¼Œæ±‚æ‰€èƒ½å¾—åˆ°çš„æœ€å¤§å€¼å’Œæœ€å°å€¼
 #include<string>
 #include<sstream>
 #include<iostream>
@@ -22,7 +22,7 @@ long long calc(const string& s, char op) {
   return ans;
 }
 
-// ÏÈËãop1£¬ÔÙËãop2
+// å…ˆç®—op1ï¼Œå†ç®—op2
 long long calc(const string& s, char op1, char op2) {
   string s2 = s;
   for(int i = 0; i < s2.length(); i++)

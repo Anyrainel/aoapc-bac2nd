@@ -27,16 +27,16 @@ int gen_primes(int n) {
 
 typedef int Matrix[maxn][maxn];
 
-// m¸ö·½³Ì£¬n¸ö±äÁ¿
+// mä¸ªæ–¹ç¨‹ï¼Œnä¸ªå˜é‡
 int rank(Matrix A, int m, int n) {
   int i = 0, j = 0, k, r, u;
-  while(i < m && j < n) { // µ±Ç°ÕıÔÚ´¦ÀíµÚi¸ö·½³Ì£¬µÚj¸ö±äÁ¿
+  while(i < m && j < n) { // å½“å‰æ­£åœ¨å¤„ç†ç¬¬iä¸ªæ–¹ç¨‹ï¼Œç¬¬jä¸ªå˜é‡
     r = i;
     for(k = i; k < m; k++)
       if(A[k][j]) { r = k; break; }
     if(A[r][j]) {
       if(r != i) for(k = 0; k <= n; k++) swap(A[r][k], A[i][k]);
-      // ÏûÔªºóµÚiĞĞµÄµÚÒ»¸ö·Ç0ÁĞÊÇµÚjÁĞ£¬ÇÒµÚu>iĞĞµÄµÚjÁĞ¾ùÎª0
+      // æ¶ˆå…ƒåç¬¬iè¡Œçš„ç¬¬ä¸€ä¸ªé0åˆ—æ˜¯ç¬¬jåˆ—ï¼Œä¸”ç¬¬u>iè¡Œçš„ç¬¬jåˆ—å‡ä¸º0
       for(u = i+1; u < m; u++) if(A[u][j])
         for(k = i; k <= n; k++) A[u][k] ^= A[i][k];
       i++;
@@ -55,18 +55,18 @@ int main() {
   cin >> T;
   while(T--) {
     int n, maxp = 0;
-    long long x; // ×¢ÒâxµÄ·¶Î§
+    long long x; // æ³¨æ„xçš„èŒƒå›´
     cin >> n;
     memset(A, 0, sizeof(A));
     for(int i = 0; i < n; i++) {
       cin >> x;
-      for(int j = 0; j < m; j++) // ÇóxÖĞµÄprime[j]µÄÃİ£¬²¢¸üĞÂÏµÊı¾ØÕó
+      for(int j = 0; j < m; j++) // æ±‚xä¸­çš„prime[j]çš„å¹‚ï¼Œå¹¶æ›´æ–°ç³»æ•°çŸ©é˜µ
         while(x % prime[j] == 0) {
           maxp = max(maxp, j); x /= prime[j]; A[j][i] ^= 1;
         }
     }
-    int r = rank(A, maxp+1, n); // Ö»ÓÃµ½ÁËÇ°maxp+1¸öËØÊı
-    cout << (1LL << (n-r))-1 << endl; // ¿Õ¼¯²»ÊÇ½â£¬ËùÒÔÒª¼õ1
+    int r = rank(A, maxp+1, n); // åªç”¨åˆ°äº†å‰maxp+1ä¸ªç´ æ•°
+    cout << (1LL << (n-r))-1 << endl; // ç©ºé›†ä¸æ˜¯è§£ï¼Œæ‰€ä»¥è¦å‡1
   }
   return 0;
 }

@@ -1,4 +1,4 @@
-// UVa11248 Frequency Hopping£ºÊ¹ÓÃDinicËã·¨
+// UVa11248 Frequency Hoppingï¼šä½¿ç”¨Dinicç®—æ³•
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
@@ -20,11 +20,11 @@ bool operator < (const Edge& a, const Edge& b) {
 
 struct Dinic {
   int n, m, s, t;
-  vector<Edge> edges;    // ±ßÊıµÄÁ½±¶
-  vector<int> G[maxn];   // ÁÚ½Ó±í£¬G[i][j]±íÊ¾½áµãiµÄµÚjÌõ±ßÔÚeÊı×éÖĞµÄĞòºÅ
-  bool vis[maxn];         // BFSÊ¹ÓÃ
-  int d[maxn];           // ´ÓÆğµãµ½iµÄ¾àÀë
-  int cur[maxn];        // µ±Ç°»¡Ö¸Õë
+  vector<Edge> edges;    // è¾¹æ•°çš„ä¸¤å€
+  vector<int> G[maxn];   // é‚»æ¥è¡¨ï¼ŒG[i][j]è¡¨ç¤ºç»“ç‚¹içš„ç¬¬jæ¡è¾¹åœ¨eæ•°ç»„ä¸­çš„åºå·
+  bool vis[maxn];         // BFSä½¿ç”¨
+  int d[maxn];           // ä»èµ·ç‚¹åˆ°içš„è·ç¦»
+  int cur[maxn];        // å½“å‰å¼§æŒ‡é’ˆ
 
   void ClearAll(int n) {
     for(int i = 0; i < n; i++) G[i].clear();

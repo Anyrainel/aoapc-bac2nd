@@ -1,7 +1,7 @@
 // UVa11069 A Graph Problem
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»Ìõ³¤¶ÈÎªnµÄÁ´¡£ÇóËüÓÐ¶àÉÙ¸ö¼«´ó¶ÀÁ¢¼¯
-// Ëã·¨£º¿¼ÂÇÑ¡²»Ñ¡µÚÒ»¸öµãµÄÇé¿ö£¬¿ÉÒÔµÃµ½f(n)=f(n-2)+f(n-3)
+// é¢˜æ„ï¼šç»™ä¸€æ¡é•¿åº¦ä¸ºnçš„é“¾ã€‚æ±‚å®ƒæœ‰å¤šå°‘ä¸ªæžå¤§ç‹¬ç«‹é›†
+// ç®—æ³•ï¼šè€ƒè™‘é€‰ä¸é€‰ç¬¬ä¸€ä¸ªç‚¹çš„æƒ…å†µï¼Œå¯ä»¥å¾—åˆ°f(n)=f(n-2)+f(n-3)
 #include<cstdio>
 const int maxn = 76;
 int f[maxn+1];

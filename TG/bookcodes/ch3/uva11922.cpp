@@ -52,7 +52,7 @@ void splay(Node* &o, int k) {
   }
 }
 
-// ºÏ²¢leftºÍright¡£¼Ù¶¨leftµÄËùÓĞÔªËØ±ÈrightĞ¡¡£×¢Òâright¿ÉÒÔÊÇnull£¬µ«left²»¿ÉÒÔ
+// åˆå¹¶leftå’Œrightã€‚å‡å®šleftçš„æ‰€æœ‰å…ƒç´ æ¯”rightå°ã€‚æ³¨æ„rightå¯ä»¥æ˜¯nullï¼Œä½†leftä¸å¯ä»¥
 Node* merge(Node* left, Node* right) {
   splay(left, left->s);
   left->ch[1] = right;
@@ -60,7 +60,7 @@ Node* merge(Node* left, Node* right) {
   return left;
 }
 
-// °ÑoµÄÇ°kĞ¡½áµã·ÅÔÚleftÀï£¬ÆäËûµÄ·ÅÔÚrightÀï¡£1<=k<=o->s¡£µ±k=o->sÊ±£¬right=null
+// æŠŠoçš„å‰kå°ç»“ç‚¹æ”¾åœ¨lefté‡Œï¼Œå…¶ä»–çš„æ”¾åœ¨righté‡Œã€‚1<=k<=o->sã€‚å½“k=o->sæ—¶ï¼Œright=null
 void split(Node* o, int k, Node* &left, Node* &right) {
   splay(o, k);
   left = o;
@@ -79,7 +79,7 @@ struct SplaySequence {
     if(!sz) return null;
     Node* L = build(sz/2);
     Node* o = &seq[++n];
-    o->v = n; // ½Úµã±àºÅ
+    o->v = n; // èŠ‚ç‚¹ç¼–å·
     o->ch[0] = L;
     o->ch[1] = build(sz - sz/2 - 1);
     o->flip = o->s = 0;
@@ -118,13 +118,13 @@ int main()
 {
   int n, m;
   scanf("%d%d", &n, &m);
-  ss.init(n+1); // ×îÇ°ÃæÓĞÒ»¸öĞéÄâ½áµã
+  ss.init(n+1); // æœ€å‰é¢æœ‰ä¸€ä¸ªè™šæ‹Ÿç»“ç‚¹
 
   while (m--) {
     int a, b;
     scanf("%d%d", &a, &b);
     Node *left, *mid, *right, *o;
-    split(ss.root, a, left, o); // Èç¹ûÃ»ÓĞĞéÄâ½áµã£¬a½«¸Ä³Éa-1£¬Î¥·´splitµÄÏŞÖÆ
+    split(ss.root, a, left, o); // å¦‚æœæ²¡æœ‰è™šæ‹Ÿç»“ç‚¹ï¼Œaå°†æ”¹æˆa-1ï¼Œè¿åsplitçš„é™åˆ¶
     split(o, b-a+1, mid, right);
     mid->flip ^= 1;
     ss.root = merge(merge(left, right), mid);
@@ -132,7 +132,7 @@ int main()
 
   print(ss.root);
   for(int i = 1; i < ans.size(); i++)
-    printf("%d\n", ans[i]-1); // ½Úµã±àºÅ¼õ1²ÅÊÇ±¾ÌâµÄÔªËØÖµ
+    printf("%d\n", ans[i]-1); // èŠ‚ç‚¹ç¼–å·å‡1æ‰æ˜¯æœ¬é¢˜çš„å…ƒç´ å€¼
 
   return 0;
 }

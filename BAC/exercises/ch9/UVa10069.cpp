@@ -1,8 +1,8 @@
 // UVa10069 Distinct Subsequences
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÁ½¸ö×Ö·û´®XºÍZ£¬ÇóXÓÐ¶àÉÙ¸ö×ÓÐòÁÐµÈÓÚZ
-// Ëã·¨£ºÉèd[i][j]ÎªX[1..i]ÓÐ¶àÉÙ¸ö×ÓÐòÁÐµÈÓÚZ[1..j]¡£
-// µ±X[i]==Z[j]Ê±ÓÐd[i][j]=d[i-1][j]+d[i-1][j-1]£¬·ñÔòd[i][j]=d[i-1][j]¡£±ß½çÎªd[*][0]=1¡£ÐèÒªÓÐ¸ß¾«¶È
+// é¢˜æ„ï¼šè¾“å…¥ä¸¤ä¸ªå­—ç¬¦ä¸²Xå’ŒZï¼Œæ±‚Xæœ‰å¤šå°‘ä¸ªå­åºåˆ—ç­‰äºŽZ
+// ç®—æ³•ï¼šè®¾d[i][j]ä¸ºX[1..i]æœ‰å¤šå°‘ä¸ªå­åºåˆ—ç­‰äºŽZ[1..j]ã€‚
+// å½“X[i]==Z[j]æ—¶æœ‰d[i][j]=d[i-1][j]+d[i-1][j-1]ï¼Œå¦åˆ™d[i][j]=d[i-1][j]ã€‚è¾¹ç•Œä¸ºd[*][0]=1ã€‚éœ€è¦æœ‰é«˜ç²¾åº¦
 #include<cstdio>
 #include<cstring>
 #include<iostream>

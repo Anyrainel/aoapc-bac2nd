@@ -1,19 +1,19 @@
 #include<stdio.h>
 int A[100];
 
-// Êä³ö1~nµÄÈ«ÅÅÁÐ
+// è¾“å‡º1~nçš„å…¨æŽ’åˆ—
 void print_permutation(int n, int* A, int cur) {
   int i, j;
-  if(cur == n) { // µÝ¹é±ß½ç
+  if(cur == n) { // é€’å½’è¾¹ç•Œ
     for(i = 0; i < n; i++) printf("%d ", A[i]);
     printf("\n");
-  } else for(i = 1; i <= n; i++) { // ³¢ÊÔÔÚA[cur]ÖÐÌî¸÷ÖÖÕûÊýi
+  } else for(i = 1; i <= n; i++) { // å°è¯•åœ¨A[cur]ä¸­å¡«å„ç§æ•´æ•°i
     int ok = 1;
     for(j = 0; j < cur; j++)
-      if(A[j] == i) ok = 0; // Èç¹ûiÒÑ¾­ÔÚA[0]~A[cur-1]³öÏÖ¹ý£¬Ôò²»ÄÜÔÙÑ¡
+      if(A[j] == i) ok = 0; // å¦‚æžœiå·²ç»åœ¨A[0]~A[cur-1]å‡ºçŽ°è¿‡ï¼Œåˆ™ä¸èƒ½å†é€‰
     if(ok) {
       A[cur] = i;
-      print_permutation(n, A, cur+1); // µÝ¹éµ÷ÓÃ
+      print_permutation(n, A, cur+1); // é€’å½’è°ƒç”¨
     }
   }
 }

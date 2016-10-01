@@ -39,8 +39,8 @@ void bfs(int kind) {
 
 int ans;
 void check(int r, int c) {
-  if(maze[r][c] != '.' || !vis[r][c][0]) return; // ±ØÐëÊÇJoe¿É´ïµÄ±ß½ç¸ñ×Ó
-  if(!vis[r][c][1] || d[r][c][0] < d[r][c][1]) ans = min(ans, d[r][c][0] + 1); // Joe±ØÐëÏÈÓÚ»ðµ½´ï
+  if(maze[r][c] != '.' || !vis[r][c][0]) return; // å¿…é¡»æ˜¯Joeå¯è¾¾çš„è¾¹ç•Œæ ¼å­
+  if(!vis[r][c][1] || d[r][c][0] < d[r][c][1]) ans = min(ans, d[r][c][0] + 1); // Joeå¿…é¡»å…ˆäºŽç«åˆ°è¾¾
 }
 
 int main() {
@@ -71,7 +71,7 @@ int main() {
     }
     bfs(1);
 
-    // ¼ÆËã´ð°¸
+    // è®¡ç®—ç­”æ¡ˆ
     ans = INF;
     for(int i = 0; i < R; i++) { check(i,0); check(i,C-1); }
     for(int i = 0; i < C; i++) { check(0,i); check(R-1,i); }

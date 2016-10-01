@@ -25,9 +25,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -54,7 +54,7 @@ struct Dijkstra {
       done[u] = true;
       for(int i = 0; i < G[u].size(); i++) {
         Edge& e = edges[G[u][i]];
-        if(e.dist > 0 && d[e.to] > d[u] + e.dist) { // ´Ë´¦ºÍÄ£°å²»Í¬£¬ºöÂÔÁËdist=-1µÄ±ß¡£´ËÎªÉ¾³ı±ê¼Ç¡£¸ù¾İÌâÒâºÍdijkstraËã·¨µÄÇ°Ìá£¬Õı³£µÄ±ßdist>0
+        if(e.dist > 0 && d[e.to] > d[u] + e.dist) { // æ­¤å¤„å’Œæ¨¡æ¿ä¸åŒï¼Œå¿½ç•¥äº†dist=-1çš„è¾¹ã€‚æ­¤ä¸ºåˆ é™¤æ ‡è®°ã€‚æ ¹æ®é¢˜æ„å’Œdijkstraç®—æ³•çš„å‰æï¼Œæ­£å¸¸çš„è¾¹dist>0
           d[e.to] = d[u] + e.dist;
           p[e.to] = G[u][i];
           Q.push((HeapNode){d[e.to], e.to});
@@ -64,13 +64,13 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 Dijkstra solver;
 int n, m, L;
-vector<int> gr[maxn][maxn]; // Á½µãÖ®¼äµÄÔ­Ê¼±ßÈ¨
-int used[maxn][maxn][maxn]; // used[src][a][b]±íÊ¾Ô´µãÎªsrcµÄ×î¶ÌÂ·Ê÷ÊÇ·ñ°üº¬±ßa->b
-int idx[maxn][maxn]; // idx[u][v]Îª±ßu->vÔÚDijkstraÇó½âÆ÷ÖĞµÄ±àºÅ
-int sum_single[maxn]; // sum_single[src]±íÊ¾Ô´µãÎªsrcµÄ×î¶ÌÂ·Ê÷µÄËùÓĞdÖ®ºÍ
+vector<int> gr[maxn][maxn]; // ä¸¤ç‚¹ä¹‹é—´çš„åŸå§‹è¾¹æƒ
+int used[maxn][maxn][maxn]; // used[src][a][b]è¡¨ç¤ºæºç‚¹ä¸ºsrcçš„æœ€çŸ­è·¯æ ‘æ˜¯å¦åŒ…å«è¾¹a->b
+int idx[maxn][maxn]; // idx[u][v]ä¸ºè¾¹u->våœ¨Dijkstraæ±‚è§£å™¨ä¸­çš„ç¼–å·
+int sum_single[maxn]; // sum_single[src]è¡¨ç¤ºæºç‚¹ä¸ºsrcçš„æœ€çŸ­è·¯æ ‘çš„æ‰€æœ‰dä¹‹å’Œ
 
 int compute_c() {
   int ans = 0;
@@ -115,7 +115,7 @@ int main() {
       gr[b][a].push_back(s);
     }
 
-    // ¹¹ÔìÍøÂç
+    // æ„é€ ç½‘ç»œ
     for(int i = 0; i < n; i++)
       for(int j = i+1; j < n; j++) if(!gr[i][j].empty()) {
         sort(gr[i][j].begin(), gr[i][j].end());
@@ -132,9 +132,9 @@ int main() {
         int& e1 = solver.edges[idx[i][j]].dist;
         int& e2 = solver.edges[idx[j][i]].dist;
         if(gr[i][j].size() == 1) e1 = e2 = -1;
-        else e1 = e2 = gr[i][j][1]; // ´ó¶ş¶Ì±ß
+        else e1 = e2 = gr[i][j][1]; // å¤§äºŒçŸ­è¾¹
         c2 = max(c2, compute_newc(i, j));
-        e1 = e2 = gr[i][j][0]; // »Ö¸´
+        e1 = e2 = gr[i][j][0]; // æ¢å¤
       }
 
     printf("%d %d\n", c, c2);

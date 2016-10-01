@@ -1,8 +1,8 @@
 // UVa10516 Another Counting Problem
 // Rujia Liu
-// ÌâÒâ£ºÊäÈën, d£¬Í³¼ÆÉî¶ÈÎªd£¨¼´Ò¶×ÓÉî¶È×î´óÖµÎªd¡£¸ùµÄÉî¶ÈÎª0£©µÄÑÏ¸ñn²æÊ÷£¨¼´Ã¿¸ö·ÇÒ¶½áµã¶¼ÓÐn¸ö¶ù×Ó£©µÄ¸öÊý¡£
-// Ëã·¨£º¸ø¶¨n£¬ÉèÉî¶È²»³¬¹ýdµÄÊ÷µÄ¸öÊýÎªf[d]£¬Ôò´ð°¸Îªf[d]-f[d-1]¡£
-// Éî¶È²»³¬¹ýdµÄÊ÷ÒªÃ´¾ÍÊÇÒ»¸öµ¥½áµã£¬ÒªÃ´Ã¿¸ö×ÓÊ÷¶¼ÊÇÉî¶È²»³¬¹ýd-1µÄ£¬Òò´Ëf[d]=f[d-1]^n+1
+// é¢˜æ„ï¼šè¾“å…¥n, dï¼Œç»Ÿè®¡æ·±åº¦ä¸ºdï¼ˆå³å¶å­æ·±åº¦æœ€å¤§å€¼ä¸ºdã€‚æ ¹çš„æ·±åº¦ä¸º0ï¼‰çš„ä¸¥æ ¼nå‰æ ‘ï¼ˆå³æ¯ä¸ªéžå¶ç»“ç‚¹éƒ½æœ‰nä¸ªå„¿å­ï¼‰çš„ä¸ªæ•°ã€‚
+// ç®—æ³•ï¼šç»™å®šnï¼Œè®¾æ·±åº¦ä¸è¶…è¿‡dçš„æ ‘çš„ä¸ªæ•°ä¸ºf[d]ï¼Œåˆ™ç­”æ¡ˆä¸ºf[d]-f[d-1]ã€‚
+// æ·±åº¦ä¸è¶…è¿‡dçš„æ ‘è¦ä¹ˆå°±æ˜¯ä¸€ä¸ªå•ç»“ç‚¹ï¼Œè¦ä¹ˆæ¯ä¸ªå­æ ‘éƒ½æ˜¯æ·±åº¦ä¸è¶…è¿‡d-1çš„ï¼Œå› æ­¤f[d]=f[d-1]^n+1
 #include<cstdio>
 #include<cstring>
 #include<iostream>

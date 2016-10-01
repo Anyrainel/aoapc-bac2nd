@@ -24,9 +24,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -73,7 +73,7 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 #include<map>
 
 int n_cities;
@@ -113,12 +113,12 @@ int main() {
       solver.init(n_cities * len);
       for(int ticket = 0; ticket < NT; ticket++)
         for(int visited = 1; visited < len; visited++) {
-          int cur = cities[ticket][0]; // µ±Ç°×´Ì¬Îª(visited, cur)
-          int next = visited;          // ÏÂÒ»¸öĞèÒª·ÃÎÊµÄ³ÇÊĞÔÚitiÖĞµÄÏÂ±ê
-          for(int leg = 1; leg < cities[ticket].size(); leg++) { // Ê¹ÓÃÇ°leg¶Î
-            if(cities[ticket][leg] == iti[next]) next++; // ĞĞ³ÌÉÏ¶à¾­¹ıÒ»¸ö³ÇÊĞ
+          int cur = cities[ticket][0]; // å½“å‰çŠ¶æ€ä¸º(visited, cur)
+          int next = visited;          // ä¸‹ä¸€ä¸ªéœ€è¦è®¿é—®çš„åŸå¸‚åœ¨itiä¸­çš„ä¸‹æ ‡
+          for(int leg = 1; leg < cities[ticket].size(); leg++) { // ä½¿ç”¨å‰legæ®µ
+            if(cities[ticket][leg] == iti[next]) next++; // è¡Œç¨‹ä¸Šå¤šç»è¿‡ä¸€ä¸ªåŸå¸‚
             solver.AddEdge(ID(visited, cur), ID(next, cities[ticket][leg]), cost[ticket], ticket+1);
-            if(next == len) break; // ĞĞ³Ìµ¥ÒÑ¾­×ßÍê
+            if(next == len) break; // è¡Œç¨‹å•å·²ç»èµ°å®Œ
           }
         }
       int src = ID(1, iti[0]), dest = ID(len, iti[len-1]);

@@ -8,7 +8,7 @@ int main() {
     queue<int> q;
     for(int i = 0; i < n; i++) q.push(i+1);
     int idx = 1;
-    printf("Discarded cards:"); // Ã°ºÅºó²»ÄÜ´òÓ¡¿Õ¸ñ£¬·ñÔòn=1Ê±ÐÐÄ©»áÓÐ¶àÓà¿Õ¸ñ
+    printf("Discarded cards:"); // å†’å·åŽä¸èƒ½æ‰“å°ç©ºæ ¼ï¼Œå¦åˆ™n=1æ—¶è¡Œæœ«ä¼šæœ‰å¤šä½™ç©ºæ ¼
     for(int i = 0; i < n-1; i++) {
       if(i == 0) printf(" "); else printf(", ");
       printf("%d", q.front());

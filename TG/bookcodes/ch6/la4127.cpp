@@ -70,29 +70,4 @@ int main() {
           x[c++] = GetLineIntersection(P1, P2-P1, P3, P4-P3).x;
       }
 
-    // 根据所有交点离散化
-    sort(x, x+c);
-    c = unique(x, x+c) - x;
-
-    double ans = 0;
-    Point lastp;
-    for(int k = 0; k < c; k++) {
-      // 计算直线x=x[k]和山相交的最高点
-      Point P(x[k], 0);
-      Vector V(0, 1);
-      double maxy = -1;
-      for(int i = 0; i < n; i++) for(int a = 0; a < 2; a++) {
-        Point P1 = L[i][a][0], P2 = L[i][a][1];
-        Point intersection = GetLineIntersection(P, V, P1, P2-P1);
-        if(dcmp(intersection.x-P1.x) >= 0 && dcmp(intersection.x-P2.x) <= 0)
-          maxy = max(maxy, intersection.y);
-      }
-      Point newp(x[k], maxy);
-      if(k > 0 && (dcmp(lastp.y) > 0 || dcmp(maxy) > 0)) ans += Length(newp - lastp);
-      lastp = newp;
-    }
-
-    printf("Case %d: %.0lf\n\n", ++kase, ans);
-  }
-  return 0;
-}
+    // 

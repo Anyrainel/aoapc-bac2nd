@@ -10,12 +10,12 @@ int main() {
   for(int kase = 1; kase <= T; kase++) {
     int n, a, b;
     double d[maxn][maxn], p;
-    scanf("%d/%d%d", &a, &b, &n); // Çë×¢ÒâscanfµÄ¼¼ÇÉ
+    scanf("%d/%d%d", &a, &b, &n); // è¯·æ³¨æ„scanfçš„æŠ€å·§
     p = (double)a/b;
     memset(d, 0, sizeof(d));
     d[0][0] = 1.0; d[0][1] = 0.0;
     for(int i = 1; i <= n; i++)
-      for(int j = 0; j*b <= a*i; j++) { // µÈ¼ÛÓÚÃ¶¾ÙÂú×ãj/i <= a/bµÄj£¬µ«±ÜÃâÁËÎó²î
+      for(int j = 0; j*b <= a*i; j++) { // ç­‰ä»·äºæšä¸¾æ»¡è¶³j/i <= a/bçš„jï¼Œä½†é¿å…äº†è¯¯å·®
         d[i][j] = d[i-1][j]*(1-p);
         if(j) d[i][j] += d[i-1][j-1]*p;
       }

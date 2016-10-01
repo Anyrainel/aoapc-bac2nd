@@ -1,6 +1,6 @@
 /*
-  Ï°Ìâ1-2 ÎÂ¶È£¨temperature£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜1-2 æ¸©åº¦ï¼ˆtemperatureï¼‰
+  åˆ˜æ±ä½³
 */
 
 #include<stdio.h>

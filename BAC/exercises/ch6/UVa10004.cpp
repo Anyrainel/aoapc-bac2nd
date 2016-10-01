@@ -1,6 +1,6 @@
 // UVa10004 Bicoloring
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸öÎŞÏòÍ¼£¬ÅĞ¶ÏÊÇ·ñÄÜ¶ş×ÅÉ«
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªæ— å‘å›¾ï¼Œåˆ¤æ–­æ˜¯å¦èƒ½äºŒç€è‰²
 #include<cstdio>
 #include<cstring>
 const int maxn = 200 + 5;

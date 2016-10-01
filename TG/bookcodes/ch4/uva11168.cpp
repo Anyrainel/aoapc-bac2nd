@@ -29,11 +29,11 @@ bool operator == (const Point& p1, const Point& p2) {
   return p1.x == p2.x && p1.y == p2.y;
 }
 
-// µã¼¯Í¹°ü
-// Èç¹û²»Ï£ÍûÔÚÍ¹°üµÄ±ßÉÏÓĞÊäÈëµã£¬°ÑÁ½¸ö <= ¸Ä³É <
-// Èç¹û²»½éÒâµã¼¯±»ĞŞ¸Ä£¬¿ÉÒÔ¸Ä³É´«µİÒıÓÃ
+// ç‚¹é›†å‡¸åŒ…
+// å¦‚æœä¸å¸Œæœ›åœ¨å‡¸åŒ…çš„è¾¹ä¸Šæœ‰è¾“å…¥ç‚¹ï¼ŒæŠŠä¸¤ä¸ª <= æ”¹æˆ <
+// å¦‚æœä¸ä»‹æ„ç‚¹é›†è¢«ä¿®æ”¹ï¼Œå¯ä»¥æ”¹æˆä¼ é€’å¼•ç”¨
 vector<Point> ConvexHull(vector<Point> p) {
-  // Ô¤´¦Àí£¬É¾³ıÖØ¸´µã
+  // é¢„å¤„ç†ï¼Œåˆ é™¤é‡å¤ç‚¹
   sort(p.begin(), p.end());
   p.erase(unique(p.begin(), p.end()), p.end());
 
@@ -54,7 +54,7 @@ vector<Point> ConvexHull(vector<Point> p) {
   return ch;
 }
 
-// ¹ıÁ½µãp1, p2µÄÖ±ÏßÒ»°ã·½³Ìax+by+c=0
+// è¿‡ä¸¤ç‚¹p1, p2çš„ç›´çº¿ä¸€èˆ¬æ–¹ç¨‹ax+by+c=0
 // (x2-x1)(y-y1) = (y2-y1)(x-x1)
 void getLineGeneralEquation(const Point& p1, const Point& p2, double& a, double& b, double &c) {
   a = p2.y-p1.y;
@@ -79,7 +79,7 @@ int main() {
     vector<Point> ch = ConvexHull(P);
     int m = ch.size();
     double ans = 1e9;
-    if(m <= 2) ans = 0; // Í¹°üÍË»¯³Éµã»òÏß¶Î£¬Ôò´ğ°¸Îª0
+    if(m <= 2) ans = 0; // å‡¸åŒ…é€€åŒ–æˆç‚¹æˆ–çº¿æ®µï¼Œåˆ™ç­”æ¡ˆä¸º0
     else for(int i = 0; i < ch.size(); i++) {
       double a, b, c;
       getLineGeneralEquation(ch[i], ch[(i+1)%ch.size()], a, b, c);

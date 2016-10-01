@@ -1,8 +1,8 @@
 // UVa10739 String to Palindrome
 // Rujia Liu
-// ���⣺����һ��Сд��ĸ��ɵ��ַ��������Բ��롢ɾ�����޸��ַ��������ٵ��޸Ĵ�����ɻ��Ĵ�
-// �㷨�������ǲ��صġ���d[i][j]Ϊ�Ӵ�S[i..j]��Ҫ�޸ĵ����ٴ���
-// ���S[i]==S[j]��d[i][j]=d[i+1][j-1]����������滻(d[i+1][j-1]+1)����ɾ��ĳһ��(d[i+1][j]+1����d[i][j-1]+1)
+// 题意：输入一个小写字母组成的字符串，可以插入、删除和修改字符。用最少的修改次数变成回文串
+// 算法：插入是不必的。设d[i][j]为子串S[i..j]需要修改的最少次数
+// 如果S[i]==S[j]则d[i][j]=d[i+1][j-1]，否则可以替换(d[i+1][j-1]+1)或者删除某一个(d[i+1][j]+1或者d[i][j-1]+1)
 #include<cstdio>
 #include<cstring>
 #include<iostream>

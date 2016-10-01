@@ -1,7 +1,7 @@
 // UVa10006 Carmichael Numbers
 // Rujia Liu
-// ÌâÒâ£ºÊäÈën£¬ÅĞ¶ÏÊÇ·ñÎªCarmichael number£¬¼´n±¾Éí²»ÊÇËØÊı£¬µ«¶ÔÓÚËùÓĞ1<=a<n, a^n mod n = a
-// Ëã·¨£ºÃ¶¾Ùa£¬¼ÆËã¿ìËÙÃİÈ¡Ä£
+// é¢˜æ„ï¼šè¾“å…¥nï¼Œåˆ¤æ–­æ˜¯å¦ä¸ºCarmichael numberï¼Œå³næœ¬èº«ä¸æ˜¯ç´ æ•°ï¼Œä½†å¯¹äºæ‰€æœ‰1<=a<n, a^n mod n = a
+// ç®—æ³•ï¼šæšä¸¾aï¼Œè®¡ç®—å¿«é€Ÿå¹‚å–æ¨¡
 #include<cstdio>
 #include<cmath>
 

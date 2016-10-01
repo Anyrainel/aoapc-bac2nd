@@ -15,8 +15,8 @@ int main() {
     int ans = n+1;
     int i = 1;
     for(int j = 1; j <= n; j++) {
-      if(B[i-1] > B[j]-S) continue; // (1)没有满足条件的i，换下一个j
-      while(B[i] <= B[j]-S) i++;    // (2)求满足B[i-1]<=B[j]-S的最大i
+      if(B[i-1] > B[j]-S) continue; // (1)娌℃湁婊¤冻鏉′欢鐨刬锛屾崲涓嬩竴涓猨
+      while(B[i] <= B[j]-S) i++;    // (2)姹傛弧瓒矪[i-1]<=B[j]-S鐨勬渶澶
       ans = min(ans, j-i+1);
     }
     printf("%d\n", ans == n+1 ? 0 : ans);

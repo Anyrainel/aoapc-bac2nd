@@ -1,6 +1,6 @@
 /*
-  Ï°Ìâ2-7. ½üËÆ¼ÆËã£¨approximation£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜2-7. è¿‘ä¼¼è®¡ç®—ï¼ˆapproximationï¼‰
+  åˆ˜æ±ä½³
 */
 
 #include<stdio.h>

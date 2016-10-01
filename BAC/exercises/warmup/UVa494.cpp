@@ -1,6 +1,6 @@
 // UVa494 Kindergarten Counting Game 
 // Rujia Liu
-// 题意：统计输入每行的单词个数。单词为连续的字母（大小写均可）
+// 棰樻剰锛氱粺璁¤緭鍏ユ瘡琛岀殑鍗曡瘝涓暟銆傚崟璇嶄负杩炵画鐨勫瓧姣嶏紙澶у皬鍐欏潎鍙級
 #include<cstdio>
 #include<cstring>
 #include<cctype>

@@ -20,22 +20,22 @@ int main() {
       }
 
     int ans = 0;
-    for(int i = 0; i < m; i++) { // ´ÓÉÏµ½ÏÂÖğĞĞ´¦Àí
+    for(int i = 0; i < m; i++) { // ä»ä¸Šåˆ°ä¸‹é€è¡Œå¤„ç†
       int lo = -1, ro = n;
-      for(int j = 0; j < n; j++) // ´Ó×óµ½ÓÒÉ¨Ãè£¬Î¬»¤upºÍleft
+      for(int j = 0; j < n; j++) // ä»å·¦åˆ°å³æ‰«æï¼Œç»´æŠ¤upå’Œleft
         if(mat[i][j] == 1) { up[i][j] = left[i][j] = 0; lo = j; } 
         else {
           up[i][j] = i == 0 ? 1 : up[i-1][j] + 1;
           left[i][j] = i == 0 ? lo+1 : max(left[i-1][j], lo+1);
         }
-      for(int j = n-1; j >= 0; j--) // ´ÓÓÒµ½×óÉ¨Ãè£¬Î¬»¤right²¢¸üĞÂ´ğ°¸
+      for(int j = n-1; j >= 0; j--) // ä»å³åˆ°å·¦æ‰«æï¼Œç»´æŠ¤rightå¹¶æ›´æ–°ç­”æ¡ˆ
         if(mat[i][j] == 1) { right[i][j] = n; ro = j; }
         else {
           right[i][j] = i == 0 ? ro-1 : min(right[i-1][j], ro-1);
           ans = max(ans, up[i][j]*(right[i][j]-left[i][j]+1));
         }
     }
-    printf("%d\n", ans*3); // ÌâÄ¿ÒªÇóÊä³ö×î´óÃæ»ı³ËÒÔ3ºóµÄ½á¹û
+    printf("%d\n", ans*3); // é¢˜ç›®è¦æ±‚è¾“å‡ºæœ€å¤§é¢ç§¯ä¹˜ä»¥3åçš„ç»“æœ
   }
   return 0;
 }

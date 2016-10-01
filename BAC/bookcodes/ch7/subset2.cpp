@@ -3,13 +3,13 @@
 void print_subset(int n, int* B, int cur) {
   if(cur == n) {
     for(int i = 0; i < cur; i++)
-      if(B[i]) printf("%d ", i); // ´òÓ¡µ±Ç°¼¯ºÏ
+      if(B[i]) printf("%d ", i); // æ‰“å°å½“å‰é›†åˆ
     printf("\n");
     return;
   }
-  B[cur] = 1; // Ñ¡µÚcur¸öÔªËØ
+  B[cur] = 1; // é€‰ç¬¬curä¸ªå…ƒç´ 
   print_subset(n, B, cur+1);
-  B[cur] = 0; // ²»Ñ¡µÚcur¸öÔªËØ
+  B[cur] = 0; // ä¸é€‰ç¬¬curä¸ªå…ƒç´ 
   print_subset(n, B, cur+1);
 }
 

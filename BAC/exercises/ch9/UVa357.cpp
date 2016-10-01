@@ -1,7 +1,7 @@
 // UVa357 Let Me Count The Ways
 // Rujia Liu
-// Ã‚“‚£∫”–50c, 25c, 10c, 5c, 1c”≤±“°£ ‰»În£¨Œ n∑÷«Æ”–∂‡…Ÿ÷÷◊È≥…∑Ω∑®°£n<=30000
-// À„∑®£∫Õ¨UVa674°£
+// È¢òÊÑèÔºöÊúâ50c, 25c, 10c, 5c, 1cÁ°¨Â∏Å„ÄÇËæìÂÖ•nÔºåÈóÆnÂàÜÈí±ÊúâÂ§öÂ∞ëÁßçÁªÑÊàêÊñπÊ≥ï„ÄÇn<=30000
+// ÁÆóÊ≥ïÔºöÂêåUVa674„ÄÇ
 #include<cstdio>
 const int maxn = 30000;
 const int n_coins = 5;
@@ -11,7 +11,7 @@ long long d[n_coins][maxn + 1];
 void dp(int n) {
   for(int i = 0; i < n_coins; i++)
     for(int j = 0; j <= n; j++) {
-      if(i == 0) d[i][j] = 1; // ”√1∑÷«Æ◊È≥…»Œ“‚µƒj∂º÷ª”–“ª÷÷∑Ω∑®
+      if(i == 0) d[i][j] = 1; // Áî®1ÂàÜÈí±ÁªÑÊàê‰ªªÊÑèÁöÑjÈÉΩÂè™Êúâ‰∏ÄÁßçÊñπÊ≥ï
       else {
         d[i][j] = 0;
         for(int k = 0; k <= j; k += coins[i]) d[i][j] += d[i-1][j-k];

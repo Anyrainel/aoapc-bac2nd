@@ -17,10 +17,10 @@ struct BellmanFord {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool inq[maxn];     // ÊÇ·ñÔÚ¶ÓÁÐÖÐ
-  double d[maxn];     // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖÐµÄÉÏÒ»Ìõ»¡
-  int cnt[maxn];      // ½ø¶Ó´ÎÊý
+  bool inq[maxn];     // æ˜¯å¦åœ¨é˜Ÿåˆ—ä¸­
+  double d[maxn];     // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
+  int cnt[maxn];      // è¿›é˜Ÿæ¬¡æ•°
 
   void init(int n) {
     this->n = n;

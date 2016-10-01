@@ -1,6 +1,6 @@
 // LA3218/UVa1340 Find the Border
 // Rujia Liu
-// ×¢Òâ£º±¾Ìâ¿ÉÒÔÖ±½ÓÊ¹ÓÃ¡°¾í°ü¹ü¡±·¨Çó³öÍâÂÖÀª¡£±¾³ÌĞòÖ»ÊÇÎªÁËÑİÊ¾PSLGµÄÊµÏÖ
+// æ³¨æ„ï¼šæœ¬é¢˜å¯ä»¥ç›´æ¥ä½¿ç”¨â€œå·åŒ…è£¹â€æ³•æ±‚å‡ºå¤–è½®å»“ã€‚æœ¬ç¨‹åºåªæ˜¯ä¸ºäº†æ¼”ç¤ºPSLGçš„å®ç°
 #include<cstdio>
 #include<vector>
 #include<cmath>
@@ -33,8 +33,8 @@ Vector operator * (Vector A, double p) {
   return Vector(A.x*p, A.y*p);
 }
 
-// ÀíÂÛÉÏÕâ¸ö¡°Ğ¡ÓÚ¡±ÔËËã·ûÊÇ´íµÄ£¬ÒòÎª¿ÉÄÜÓĞÈı¸öµãa, b, c, aºÍbºÜ½Ó½ü£¨¼´a<bºÃb<a¶¼²»³ÉÁ¢£©£¬bºÍcºÜ½Ó½ü£¬µ«aºÍc²»½Ó½ü
-// ËùÒÔÊ¹ÓÃÕâÖÖ¡°Ğ¡ÓÚ¡±ÔËËã·ûµÄÇ°ÌáÊÇÄÜÅÅ³ıÉÏÊöÇé¿ö
+// ç†è®ºä¸Šè¿™ä¸ªâ€œå°äºâ€è¿ç®—ç¬¦æ˜¯é”™çš„ï¼Œå› ä¸ºå¯èƒ½æœ‰ä¸‰ä¸ªç‚¹a, b, c, aå’Œbå¾ˆæ¥è¿‘ï¼ˆå³a<bå¥½b<aéƒ½ä¸æˆç«‹ï¼‰ï¼Œbå’Œcå¾ˆæ¥è¿‘ï¼Œä½†aå’Œcä¸æ¥è¿‘
+// æ‰€ä»¥ä½¿ç”¨è¿™ç§â€œå°äºâ€è¿ç®—ç¬¦çš„å‰ææ˜¯èƒ½æ’é™¤ä¸Šè¿°æƒ…å†µ
 bool operator < (const Point& a, const Point& b) {
   return dcmp(a.x - b.x) < 0 || (dcmp(a.x - b.x) == 0 && dcmp(a.y - b.y) < 0);
 }
@@ -65,7 +65,7 @@ bool OnSegment(Point p, Point a1, Point a2) {
   return dcmp(Cross(a1-p, a2-p)) == 0 && dcmp(Dot(a1-p, a2-p)) < 0;
 }
 
-// ¶à±ßĞÎµÄÓĞÏòÃæ»ı
+// å¤šè¾¹å½¢çš„æœ‰å‘é¢ç§¯
 double PolygonArea(Polygon poly) {
   double area = 0;
   int n = poly.size();
@@ -75,24 +75,24 @@ double PolygonArea(Polygon poly) {
 }
 
 struct Edge {
-  int from, to; // Æğµã£¬ÖÕµã£¬×ó±ßµÄÃæ±àºÅ
+  int from, to; // èµ·ç‚¹ï¼Œç»ˆç‚¹ï¼Œå·¦è¾¹çš„é¢ç¼–å·
   double ang;
 };
 
-const int maxn = 10000 + 10; // ×î´ó±ßÊı
+const int maxn = 10000 + 10; // æœ€å¤§è¾¹æ•°
 
-// Æ½ÃæÖ±ÏßÍ¼£¨PSGL£©ÊµÏÖ
+// å¹³é¢ç›´çº¿å›¾ï¼ˆPSGLï¼‰å®ç°
 struct PSLG {
   int n, m, face_cnt;
   double x[maxn], y[maxn];
   vector<Edge> edges;
   vector<int> G[maxn];
-  int vis[maxn*2];  // Ã¿Ìõ±ßÊÇ·ñÒÑ¾­·ÃÎÊ¹ı
-  int left[maxn*2]; // ×óÃæµÄ±àºÅ
-  int prev[maxn*2]; // ÏàÍ¬ÆğµãµÄÉÏÒ»Ìõ±ß£¨¼´Ë³Ê±ÕëĞı×ªÅöµ½µÄÏÂÒ»Ìõ±ß£©µÄ±àºÅ
+  int vis[maxn*2];  // æ¯æ¡è¾¹æ˜¯å¦å·²ç»è®¿é—®è¿‡
+  int left[maxn*2]; // å·¦é¢çš„ç¼–å·
+  int prev[maxn*2]; // ç›¸åŒèµ·ç‚¹çš„ä¸Šä¸€æ¡è¾¹ï¼ˆå³é¡ºæ—¶é’ˆæ—‹è½¬ç¢°åˆ°çš„ä¸‹ä¸€æ¡è¾¹ï¼‰çš„ç¼–å·
 
   vector<Polygon> faces;
-  double area[maxn]; // Ã¿¸öpolygonµÄÃæ»ı
+  double area[maxn]; // æ¯ä¸ªpolygonçš„é¢ç§¯
 
   void init(int n) {
     this->n = n;
@@ -101,7 +101,7 @@ struct PSLG {
     faces.clear();
   }
 
-  // ÓĞÏòÏß¶Îfrom->toµÄ¼«½Ç
+  // æœ‰å‘çº¿æ®µfrom->toçš„æè§’
   double getAngle(int from, int to) {
     return atan2(y[to]-y[from], x[to]-x[from]);
   }
@@ -114,13 +114,13 @@ struct PSLG {
     G[to].push_back(m-1);
   }
 
-  // ÕÒ³öfaces²¢¼ÆËãÃæ»ı
+  // æ‰¾å‡ºfaceså¹¶è®¡ç®—é¢ç§¯
   void Build() {
     for(int u = 0; u < n; u++) {
-      // ¸ø´Óu³ö·¢µÄ¸÷Ìõ±ß°´¼«½ÇÅÅĞò
+      // ç»™ä»uå‡ºå‘çš„å„æ¡è¾¹æŒ‰æè§’æ’åº
       int d = G[u].size();
       for(int i = 0; i < d; i++)
-        for(int j = i+1; j < d; j++) // ÕâÀïÍµ¸öÀÁ£¬¼ÙÉè´ÓÃ¿¸öµã³ö·¢µÄÏß¶Î²»»áÌ«¶à
+        for(int j = i+1; j < d; j++) // è¿™é‡Œå·ä¸ªæ‡’ï¼Œå‡è®¾ä»æ¯ä¸ªç‚¹å‡ºå‘çš„çº¿æ®µä¸ä¼šå¤ªå¤š
           if(edges[G[u][i]].ang > edges[G[u][j]].ang) swap(G[u][i], G[u][j]);
       for(int i = 0; i < d; i++)
         prev[G[u][(i+1)%d]] = G[u][i];
@@ -131,7 +131,7 @@ struct PSLG {
     for(int u = 0; u < n; u++)
       for(int i = 0; i < G[u].size(); i++) {
         int e = G[u][i];
-        if(!vis[e]) { // ÄæÊ±ÕëÕÒÈ¦
+        if(!vis[e]) { // é€†æ—¶é’ˆæ‰¾åœˆ
           face_cnt++;
           Polygon poly;
           for(;;) {
@@ -160,12 +160,12 @@ Point P[maxp];
 
 Point V[maxp*(maxp-1)/2+maxp];
 
-// ÔÚVÊı×éÀïÕÒµ½µãp
+// åœ¨Væ•°ç»„é‡Œæ‰¾åˆ°ç‚¹p
 int ID(Point p) {
   return lower_bound(V, V+c, p) - V;
 }
 
-// ¼Ù¶¨polyÃ»ÓĞÏàÁÚµãÖØºÏµÄÇé¿ö£¬Ö»ĞèÒªÉ¾³ıÈıµã¹²ÏßµÄÇé¿ö
+// å‡å®špolyæ²¡æœ‰ç›¸é‚»ç‚¹é‡åˆçš„æƒ…å†µï¼Œåªéœ€è¦åˆ é™¤ä¸‰ç‚¹å…±çº¿çš„æƒ…å†µ
 Polygon simplify(const Polygon& poly) {
   Polygon ans;
   int n = poly.size();
@@ -183,7 +183,7 @@ void build_graph() {
   for(int i = 0; i < n; i++)
     V[i] = P[i];
 
-  vector<double> dist[maxp]; // dist[i][j]ÊÇµÚiÌõÏß¶ÎÉÏµÄµÚj¸öµãÀëÆğµã£¨P[i]£©µÄ¾àÀë
+  vector<double> dist[maxp]; // dist[i][j]æ˜¯ç¬¬iæ¡çº¿æ®µä¸Šçš„ç¬¬jä¸ªç‚¹ç¦»èµ·ç‚¹ï¼ˆP[i]ï¼‰çš„è·ç¦»
   for(int i = 0; i < n; i++)
     for(int j = i+1; j < n; j++)
       if(SegmentProperIntersection(P[i], P[(i+1)%n], P[j], P[(j+1)%n])) {
@@ -193,13 +193,13 @@ void build_graph() {
         dist[j].push_back(Length(p - P[j]));
       }
 
-  // ÎªÁË±£Ö¤¡°ºÜ½Ó½üµÄµã¡±±»¿´×÷Í¬Ò»¸ö£¬ÕâÀïÊ¹ÓÃÁËsort+uniqueµÄ·½·¨
-  // ±ØĞëÊ¹ÓÃÇ°ÃæÌáµ½µÄ¡°ÀíÂÛÉÏÊÇ´íÎó¡±µÄĞ¡ÓÚÔËËã·û£¬·ñÔò²»ÄÜ±£Ö¤¡°ºÜ½Ó½üµÄµã¡±ÔÚÅÅĞòºóÁ¬ĞøÅÅÁĞ
-  // ÁíÒ»¸ö³£¼ûµÄ´¦Àí·½Ê½ÊÇ°Ñ×ø±êÀ©´óºÜ¶à±¶£¨±ÈÈç100000±¶£©£¬È»ºóËÄÉáÎåÈë±ä³ÉÕûµã£¨¼ÆËãÍê±ÏºóÔÙ»¹Ô­£©£¬ÓÃÉÙĞíµÄ¾«¶ÈËğÊ§»»À´Â³°ôĞÔºÍËÙ¶È¡£
+  // ä¸ºäº†ä¿è¯â€œå¾ˆæ¥è¿‘çš„ç‚¹â€è¢«çœ‹ä½œåŒä¸€ä¸ªï¼Œè¿™é‡Œä½¿ç”¨äº†sort+uniqueçš„æ–¹æ³•
+  // å¿…é¡»ä½¿ç”¨å‰é¢æåˆ°çš„â€œç†è®ºä¸Šæ˜¯é”™è¯¯â€çš„å°äºè¿ç®—ç¬¦ï¼Œå¦åˆ™ä¸èƒ½ä¿è¯â€œå¾ˆæ¥è¿‘çš„ç‚¹â€åœ¨æ’åºåè¿ç»­æ’åˆ—
+  // å¦ä¸€ä¸ªå¸¸è§çš„å¤„ç†æ–¹å¼æ˜¯æŠŠåæ ‡æ‰©å¤§å¾ˆå¤šå€ï¼ˆæ¯”å¦‚100000å€ï¼‰ï¼Œç„¶åå››èˆäº”å…¥å˜æˆæ•´ç‚¹ï¼ˆè®¡ç®—å®Œæ¯•åå†è¿˜åŸï¼‰ï¼Œç”¨å°‘è®¸çš„ç²¾åº¦æŸå¤±æ¢æ¥é²æ£’æ€§å’Œé€Ÿåº¦ã€‚
   sort(V, V+c);
   c = unique(V, V+c) - V;
 
-  g.init(c); // cÊÇÆ½ÃæÍ¼µÄµãÊı
+  g.init(c); // cæ˜¯å¹³é¢å›¾çš„ç‚¹æ•°
   for(int i = 0; i < c; i++) {
     g.x[i] = V[i].x;
     g.y[i] = V[i].y;
@@ -223,17 +223,17 @@ void build_graph() {
 
   Polygon poly;
   for(int i = 0; i < g.faces.size(); i++)
-    if(g.area[i] < 0) { // ¶ÔÓÚÁ¬Í¨Í¼£¬Î©Ò»Ò»¸öÃæ»ıĞ¡ÓÚÁãµÄÃæÊÇÎŞÏŞÃæ
+    if(g.area[i] < 0) { // å¯¹äºè¿é€šå›¾ï¼ŒæƒŸä¸€ä¸€ä¸ªé¢ç§¯å°äºé›¶çš„é¢æ˜¯æ— é™é¢
       poly = g.faces[i];
-      reverse(poly.begin(), poly.end()); // ¶ÔÓÚÄÚ²¿ÇøÓòÀ´Ëµ£¬ÎŞÏŞÃæ¶à±ßĞÎµÄ¸÷¸ö¶¥µãÊÇË³Ê±ÕëµÄ
-      poly = simplify(poly); // ÎŞÏŞÃæ¶à±ßĞÎÉÏ¿ÉÄÜ»áÓĞÏàÁÚ¹²Ïßµã
+      reverse(poly.begin(), poly.end()); // å¯¹äºå†…éƒ¨åŒºåŸŸæ¥è¯´ï¼Œæ— é™é¢å¤šè¾¹å½¢çš„å„ä¸ªé¡¶ç‚¹æ˜¯é¡ºæ—¶é’ˆçš„
+      poly = simplify(poly); // æ— é™é¢å¤šè¾¹å½¢ä¸Šå¯èƒ½ä¼šæœ‰ç›¸é‚»å…±çº¿ç‚¹
       break;
     }
 
   int m = poly.size();
   printf("%d\n", m);
 
-  // ÌôÑ¡×ø±ê×îĞ¡µÄµã×÷ÎªÊä³öµÄÆğµã
+  // æŒ‘é€‰åæ ‡æœ€å°çš„ç‚¹ä½œä¸ºè¾“å‡ºçš„èµ·ç‚¹
   int start = 0;
   for(int i = 0; i < m; i++)
     if(poly[i] < poly[start]) start = i;

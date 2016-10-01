@@ -1,4 +1,4 @@
-// LA5059 Playing With Stones: ÕÒ¹æÂÉ´úÂë
+// LA5059 Playing With Stones: æ‰¾è§„å¾‹ä»£ç 
 // Rujia Liu
 #include<cstdio>
 #include<cstring>

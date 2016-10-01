@@ -13,7 +13,7 @@ long long C(long long n, long long m) {
 }
 
 const int maxn = 30 + 5;
-long long f[maxn], d[maxn][maxn]; //d(i,j)��ʾÿ����������i��Ҷ�ӣ�һ����j��Ҷ�ӵķ�����
+long long f[maxn], d[maxn][maxn]; //d(i,j)表示每棵树最多包含i个叶子，一共有j个叶子的方案数
 
 int main() {
   f[1] = 1;

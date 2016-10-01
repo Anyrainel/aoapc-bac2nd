@@ -1,7 +1,7 @@
 // UVa10192 Compromise
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÁ½¸ö×Ö·û´®ÐòÁÐ£¬Çó×î³¤¹«¹²×ÓÐòÁÐ£¬ÒªÇóÊä³ö·½°¸
-// Ëã·¨£ºLCS
+// é¢˜æ„ï¼šè¾“å…¥ä¸¤ä¸ªå­—ç¬¦ä¸²åºåˆ—ï¼Œæ±‚æœ€é•¿å…¬å…±å­åºåˆ—ï¼Œè¦æ±‚è¾“å‡ºæ–¹æ¡ˆ
+// ç®—æ³•ï¼šLCS
 #include<iostream>
 #include<cstring>
 #include<string>

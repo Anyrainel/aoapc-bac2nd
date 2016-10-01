@@ -1,8 +1,8 @@
 // UVa10131 Is Bigger Smarter?
 // Rujia Liu
-// ÌâÒâ£ºÊäÈënÖ»´óÏóµÄÌåÖØWºÍÖÇÁ¦S£¬ÇóÒ»¸ö×î³¤µÄ´óÏóÐòÁÐÊ¹µÃÌåÖØÑÏ¸ñµÝÔöÇÒÖÇÁ¦ÑÏ¸ñµÝ¼õ
-// Ëã·¨£ºÀàËÆÓÚLIS£¬ÏÈ°´ÕÕÌåÖØ´ÓÐ¡µ½´óÅÅÐò£¬È»ºó¶¯Ì¬¹æ»®
-// d[i]ÎªÒÔi½áÎ²µÄ×î³¤´óÏóÐòÁÐ£¬Ôòd[i] = max{0, d[j] | j < i, W[j] < W[i], S[j] > S[i]} + 1
+// é¢˜æ„ï¼šè¾“å…¥nåªå¤§è±¡çš„ä½“é‡Wå’Œæ™ºåŠ›Sï¼Œæ±‚ä¸€ä¸ªæœ€é•¿çš„å¤§è±¡åºåˆ—ä½¿å¾—ä½“é‡ä¸¥æ ¼é€’å¢žä¸”æ™ºåŠ›ä¸¥æ ¼é€’å‡
+// ç®—æ³•ï¼šç±»ä¼¼äºŽLISï¼Œå…ˆæŒ‰ç…§ä½“é‡ä»Žå°åˆ°å¤§æŽ’åºï¼Œç„¶åŽåŠ¨æ€è§„åˆ’
+// d[i]ä¸ºä»¥iç»“å°¾çš„æœ€é•¿å¤§è±¡åºåˆ—ï¼Œåˆ™d[i] = max{0, d[j] | j < i, W[j] < W[i], S[j] > S[i]} + 1
 #include<cstdio>
 #include<algorithm>
 using namespace std;

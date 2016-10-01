@@ -6,7 +6,7 @@
 #include<map>
 using namespace std;
 
-int cnt; // 组件的类型数
+int cnt; // 缁勪欢鐨勭被鍨嬫暟
 map<string,int> id;
 int ID(string s) {
   if(!id.count(s)) id[s] = cnt++;
@@ -19,10 +19,10 @@ struct Component {
   int price;
   int quality;
 };
-int n, b; // 组件的数目，预算
+int n, b; // 缁勪欢鐨勬暟鐩紝棰勭畻
 vector<Component> comp[maxn];
 
-// 品质因子不小于q的组件能否组装成一个不超过b元的电脑
+// 鍝佽川鍥犲瓙涓嶅皬浜巕鐨勭粍浠惰兘鍚︾粍瑁呮垚涓�涓笉瓒呰繃b鍏冪殑鐢佃剳
 bool ok(int q) {
   int sum = 0;
   for(int i = 0; i < cnt; i++) {

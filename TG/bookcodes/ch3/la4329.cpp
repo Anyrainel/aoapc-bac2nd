@@ -14,7 +14,7 @@ struct FenwickTree {
   void resize(int n) { this->n = n; C.resize(n); }
   void clear() { fill(C.begin(), C.end(), 0); }
 
-  // º∆À„A[1]+A[2]+...+A[x] (x<=n)
+  // ËÆ°ÁÆóA[1]+A[2]+...+A[x] (x<=n)
   int sum(int x) {
     int ret = 0;
     while(x > 0) {

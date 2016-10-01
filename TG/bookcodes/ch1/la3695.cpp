@@ -18,18 +18,18 @@ int n, m, y[maxn], on[maxn], on2[maxn], left[maxn];
 int solve() {
   sort(P, P+n);
   sort(y, y+n);
-  m = unique(y, y+n) - y; // ËùÓÐ²»Í¬µÄy×ø±êµÄ¸öÊý
-  if(m <= 2) return n; // ×î¶àÁ½ÖÖ²»Í¬µÄy
+  m = unique(y, y+n) - y; // æ‰€æœ‰ä¸åŒçš„yåæ ‡çš„ä¸ªæ•°
+  if(m <= 2) return n; // æœ€å¤šä¸¤ç§ä¸åŒçš„y
 
   int ans = 0;
   for(int a = 0; a < m; a++)
     for(int b = a+1; b < m; b++) {
-      int ymin = y[a], ymax = y[b]; // ¼ÆËãÉÏÏÂ±ß½ç·Ö±ðÎªyminºÍymaxÊ±µÄ½â
+      int ymin = y[a], ymax = y[b]; // è®¡ç®—ä¸Šä¸‹è¾¹ç•Œåˆ†åˆ«ä¸ºyminå’Œymaxæ—¶çš„è§£
 
-      // ¼ÆËãleft, on, on2
+      // è®¡ç®—left, on, on2
       int k = 0;
       for(int i = 0; i < n; i++) {
-        if(i == 0 || P[i].x != P[i-1].x) { // Ò»ÌõÐÂµÄÊúÏß
+        if(i == 0 || P[i].x != P[i-1].x) { // ä¸€æ¡æ–°çš„ç«–çº¿
           k++;
           on[k] = on2[k] = 0;
           left[k] = k == 0 ? 0 : left[k-1] + on2[k-1] - on[k-1];
@@ -37,7 +37,7 @@ int solve() {
         if(P[i].y > ymin && P[i].y < ymax) on[k]++;
         if(P[i].y >= ymin && P[i].y <= ymax) on2[k]++;
       }
-      if(k <= 2) return n; // ×î¶àÁ½ÖÖ²»Í¬µÄx
+      if(k <= 2) return n; // æœ€å¤šä¸¤ç§ä¸åŒçš„x
 
       int M = 0;
       for(int j = 1; j <= k; j++) {

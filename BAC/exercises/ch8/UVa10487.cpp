@@ -1,7 +1,7 @@
 // UVa10487 Closest Sums
 // Rujia Liu
-// ���⣺����n�����Լ�m����ѯ��ÿ�β�ѯһ����x����Ҫ��n�������ҵ�������֮�;����ӽ�x
-// �㷨�����ֲ��ҡ�lower_bound���ش��ڻ����x�ĵ�һ��λ��
+// 题意：输入n个数以及m个查询，每次查询一个数x，需要在n个数中找到两个数之和尽量接近x
+// 算法：二分查找。lower_bound返回大于或等于x的第一个位置
 #include<cstdio>
 #include<algorithm>
 using namespace std;

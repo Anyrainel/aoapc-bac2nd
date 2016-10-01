@@ -1,7 +1,7 @@
 // UVa108 Maximum Sum
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÒ»¸ön*n¾ØÕó£¬ÕÒÒ»¸öºÍ×î´óµÄ×Ó¾ØÕó
-// Ëã·¨£ºÊ×ÏÈ¼ÆËãÃ¿Ò»ÁĞµÄÇ°×ººÍ£¬È»ºóÃ¶¾ÙµÚÒ»ĞĞºÍ×îºóÒ»ĞĞ£¬°ÑÎÊÌâ×ª»¯ÎªÒ»Î¬×î´óÁ¬ĞøºÍÎÊÌâ
+// é¢˜æ„ï¼šè¾“å…¥ä¸€ä¸ªn*nçŸ©é˜µï¼Œæ‰¾ä¸€ä¸ªå’Œæœ€å¤§çš„å­çŸ©é˜µ
+// ç®—æ³•ï¼šé¦–å…ˆè®¡ç®—æ¯ä¸€åˆ—çš„å‰ç¼€å’Œï¼Œç„¶åæšä¸¾ç¬¬ä¸€è¡Œå’Œæœ€åä¸€è¡Œï¼ŒæŠŠé—®é¢˜è½¬åŒ–ä¸ºä¸€ç»´æœ€å¤§è¿ç»­å’Œé—®é¢˜
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -10,7 +10,7 @@ using namespace std;
 const int maxn = 100 + 5;
 int A[maxn][maxn], psum[maxn][maxn], B[maxn];
 
-// a[0~n-1]µÄ×î´óÁ¬ĞøºÍÎÊÌâ
+// a[0~n-1]çš„æœ€å¤§è¿ç»­å’Œé—®é¢˜
 int maximum1D(int* a, int n) {
   int v = a[0];
   int ans = v;
@@ -29,7 +29,7 @@ int main() {
     for(int j = 1; j <= n; j++)
       scanf("%d", &A[i][j]);
 
-  // ¼ÆËãÇ°×ººÍ
+  // è®¡ç®—å‰ç¼€å’Œ
   memset(psum, 0, sizeof(psum));
   for(int col = 1; col <= n; col++) {
     for(int row = 1; row <= n; row++)

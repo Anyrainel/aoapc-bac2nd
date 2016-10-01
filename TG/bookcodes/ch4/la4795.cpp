@@ -44,33 +44,33 @@ bool read_point3(Point3& p) {
   return true;
 }
 
-// µãpµ½Æ½Ãæp0-nµÄ¾àÀë¡£n±ØĞëÎªµ¥Î»ÏòÁ¿
+// ç‚¹påˆ°å¹³é¢p0-nçš„è·ç¦»ã€‚nå¿…é¡»ä¸ºå•ä½å‘é‡
 double DistanceToPlane(const Point3& p, const Point3& p0, const Vector3& n) {
-  return fabs(Dot(p-p0, n)); // Èç¹û²»È¡¾ø¶ÔÖµ£¬µÃµ½µÄÊÇÓĞÏò¾àÀë
+  return fabs(Dot(p-p0, n)); // å¦‚æœä¸å–ç»å¯¹å€¼ï¼Œå¾—åˆ°çš„æ˜¯æœ‰å‘è·ç¦»
 }
 
-// µãpÔÚÆ½Ãæp0-nÉÏµÄÍ¶Ó°¡£n±ØĞëÎªµ¥Î»ÏòÁ¿
+// ç‚¹påœ¨å¹³é¢p0-nä¸Šçš„æŠ•å½±ã€‚nå¿…é¡»ä¸ºå•ä½å‘é‡
 Point3 GetPlaneProjection(const Point3& p, const Point3& p0, const Vector3& n) {
   return p-n*Dot(p-p0, n);
 }
 
-// µãPµ½Ö±ÏßABµÄ¾àÀë
+// ç‚¹Påˆ°ç›´çº¿ABçš„è·ç¦»
 double DistanceToLine(const Point3& P, const Point3& A, const Point3& B) {
   Vector3 v1 = B - A, v2 = P - A;
   return Length(Cross(v1, v2)) / Length(v1);
 }
 
-// p1ºÍp2ÊÇ·ñÔÚÏß¶Îa-bµÄÍ¬²à
+// p1å’Œp2æ˜¯å¦åœ¨çº¿æ®µa-bçš„åŒä¾§
 bool SameSide(const Point3& p1, const Point3& p2, const Point3& a, const Point3& b) {
   return dcmp(Dot(Cross(b-a, p1-a), Cross(b-a, p2-a))) >= 0;
 }
 
-// µãÔÚÈı½ÇĞÎP0, P1, P2ÖĞ
+// ç‚¹åœ¨ä¸‰è§’å½¢P0, P1, P2ä¸­
 bool PointInTri(const Point3& P, const Point3& P0, const Point3& P1, const Point3& P2) {
   return SameSide(P, P0, P1, P2) && SameSide(P, P1, P0, P2) && SameSide(P, P2, P0, P1);
 }
 
-// ËÄÃæÌåµÄÖØĞÄ
+// å››é¢ä½“çš„é‡å¿ƒ
 Point3 Centroid(const Point3& A, const Point3& B, const Point3& C, const Point3& D) {
    return (A + B + C + D)/4.0;
 }
@@ -78,7 +78,7 @@ Point3 Centroid(const Point3& A, const Point3& B, const Point3& C, const Point3&
 #include<algorithm>
 using namespace std;
 
-// ÅĞ¶ÏPÊÇ·ñÔÚÈı½ÇĞÎA, B, CÖĞ£¬²¢ÇÒµ½ÈıÌõ±ßµÄ¾àÀë¶¼ÖÁÉÙÎªmindist¡£±£Ö¤P, A, B, C¹²Ãæ
+// åˆ¤æ–­Pæ˜¯å¦åœ¨ä¸‰è§’å½¢A, B, Cä¸­ï¼Œå¹¶ä¸”åˆ°ä¸‰æ¡è¾¹çš„è·ç¦»éƒ½è‡³å°‘ä¸ºmindistã€‚ä¿è¯P, A, B, Cå…±é¢
 bool InsideWithMinDistance(const Point3& P, const Point3& A, const Point3& B, const Point3& C, double mindist) {
   if(!PointInTri(P, A, B, C)) return false;
   if(DistanceToLine(P, A, B) < mindist) return false;
@@ -87,7 +87,7 @@ bool InsideWithMinDistance(const Point3& P, const Point3& A, const Point3& B, co
   return true;
 }
 
-// ÅĞ¶ÏPÊÇ·ñÔÚÍ¹ËÄ±ßĞÎABCD£¨Ë³Ê±Õë»òÄæÊ±Õë£©ÖĞ£¬²¢ÇÒµ½ËÄÌõ±ßµÄ¾àÀë¶¼ÖÁÉÙÎªmindist¡£±£Ö¤P, A, B, C, D¹²Ãæ
+// åˆ¤æ–­Pæ˜¯å¦åœ¨å‡¸å››è¾¹å½¢ABCDï¼ˆé¡ºæ—¶é’ˆæˆ–é€†æ—¶é’ˆï¼‰ä¸­ï¼Œå¹¶ä¸”åˆ°å››æ¡è¾¹çš„è·ç¦»éƒ½è‡³å°‘ä¸ºmindistã€‚ä¿è¯P, A, B, C, Då…±é¢
 bool InsideWithMinDistance(const Point3& P, const Point3& A, const Point3& B, const Point3& C, const Point3& D, double mindist) {
   if(!PointInTri(P, A, B, C)) return false;
   if(!PointInTri(P, C, D, A)) return false;
@@ -105,44 +105,44 @@ int main() {
       if(!read_point3(P[i])) return 0;
     read_point3(F);
 
-    // ÇóÖØĞÄ×ø±ê
+    // æ±‚é‡å¿ƒåæ ‡
     Point3 c1 = Centroid(P[0], P[1], P[2], P[3]);
     Point3 c2 = Centroid(P[0], P[1], P[2], P[4]);
     double vol1 = fabs(Volume6(P[0], P[1], P[2], P[3])) / 6.0;
     double vol2 = fabs(Volume6(P[0], P[1], P[2], P[4])) / 6.0;
     Point3 centroid = (c1 * vol1 + c2 * vol2) / (vol1 + vol2);
 
-    // Ã¶¾Ù·ÅÖÃ·½°¸
+    // æšä¸¾æ”¾ç½®æ–¹æ¡ˆ
     double mindist = 1e9, maxdist = -1e9;
     for(int i = 0; i < 5; i++)
       for(int j = i+1; j < 5; j++)
         for(int k = j+1; k < 5; k++) {
-          // ÕÒ³öÁíÍâÁ½¸öµãµÄÏÂ±êaºÍb
+          // æ‰¾å‡ºå¦å¤–ä¸¤ä¸ªç‚¹çš„ä¸‹æ ‡aå’Œb
           int vis[5] = {0};          
           vis[i] = vis[j] = vis[k] = 1;
           int a, b;
           for(a = 0; a < 5; a++) if(!vis[a]) { b = 10-i-j-k-a; break; }
 
-          // ÅĞ¶ÏaºÍbÊÇ·ñÔÚÆ½Ãæi-j-kµÄÒì²à
+          // åˆ¤æ–­aå’Œbæ˜¯å¦åœ¨å¹³é¢i-j-kçš„å¼‚ä¾§
           int d1 = dcmp(Volume6(P[i], P[j], P[k], P[a]));
           int d2 = dcmp(Volume6(P[i], P[j], P[k], P[b]));
-          if(d1 * d2 < 0) continue; // ÊÇ£¬Ôò·ÅÖÃ·½°¸²»ºÏ·¨
+          if(d1 * d2 < 0) continue; // æ˜¯ï¼Œåˆ™æ”¾ç½®æ–¹æ¡ˆä¸åˆæ³•
 
-          Vector3 n = Cross(P[j]-P[i], P[k]-P[i]); // ·¨ÏòÁ¿
-          n = n / Length(n); // µ¥Î»»¯
+          Vector3 n = Cross(P[j]-P[i], P[k]-P[i]); // æ³•å‘é‡
+          n = n / Length(n); // å•ä½åŒ–
 
-          Point3 proj = GetPlaneProjection(centroid, P[i], n); // ÖØĞÄÔÚÆ½Ãæi-j-kÉÏµÄÍ¶Ó°
+          Point3 proj = GetPlaneProjection(centroid, P[i], n); // é‡å¿ƒåœ¨å¹³é¢i-j-kä¸Šçš„æŠ•å½±
           bool ok = InsideWithMinDistance(proj, P[i], P[j], P[k], 0.2);
           if(!ok) {
-            if(d1 == 0) { // i-j-k-aËÄµã¹²Ãæ¡£iºÍjÒ»¶¨ÎªABCÈı¸ö¶¥µãÖ®Ò»£¬kºÍaÊÇD»òÕßE
+            if(d1 == 0) { // i-j-k-aå››ç‚¹å…±é¢ã€‚iå’Œjä¸€å®šä¸ºABCä¸‰ä¸ªé¡¶ç‚¹ä¹‹ä¸€ï¼Œkå’Œaæ˜¯Dæˆ–è€…E
               if(!InsideWithMinDistance(proj, P[i], P[k], P[j], P[a], 0.2)) continue;
-            } else if(d2 == 0) { // i-j-k-bËÄµã¹²Ãæ¡£iºÍjÒ»¶¨ÎªABCÈı¸ö¶¥µãÖ®Ò»£¬kºÍbÊÇD»òÕßE
+            } else if(d2 == 0) { // i-j-k-bå››ç‚¹å…±é¢ã€‚iå’Œjä¸€å®šä¸ºABCä¸‰ä¸ªé¡¶ç‚¹ä¹‹ä¸€ï¼Œkå’Œbæ˜¯Dæˆ–è€…E
               if(!InsideWithMinDistance(proj, P[i], P[k], P[j], P[b], 0.2)) continue;
             } else
               continue;
           }
 
-          // ¸üĞÂ´ğ°¸
+          // æ›´æ–°ç­”æ¡ˆ
           double dist = DistanceToPlane(F, P[i], n);
           mindist = min(mindist, dist);
           maxdist = max(maxdist, dist);

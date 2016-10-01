@@ -21,12 +21,12 @@ LL S[maxn+1], f[maxn+1];
 int main() {
   phi_table(maxn);
 
-  // 预处理f
+  // 棰勫鐞唂
   memset(f, 0, sizeof(f));
   for(int i = 1; i <= maxn; i++)
     for(int n = i*2; n <= maxn; n += i) f[n] += i * phi[n / i];
 
-  // 预处理S
+  // 棰勫鐞哠
   S[2] = f[2];
   for(int n = 3; n <= maxn; n++) S[n] = S[n-1] + f[n];
 

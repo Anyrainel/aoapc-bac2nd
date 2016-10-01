@@ -15,9 +15,9 @@ map<string,int> ms;
 
 struct AhoCorasickAutomata {
   int ch[MAXNODE][SIGMA_SIZE];
-  int f[MAXNODE];    // failº¯Êı
-  int val[MAXNODE];  // Ã¿¸ö×Ö·û´®µÄ½áÎ²½áµã¶¼ÓĞÒ»¸ö·Ç0µÄval
-  int last[MAXNODE]; // Êä³öÁ´±íµÄÏÂÒ»¸ö½áµã
+  int f[MAXNODE];    // failå‡½æ•°
+  int val[MAXNODE];  // æ¯ä¸ªå­—ç¬¦ä¸²çš„ç»“å°¾ç»“ç‚¹éƒ½æœ‰ä¸€ä¸ªé0çš„val
+  int last[MAXNODE]; // è¾“å‡ºé“¾è¡¨çš„ä¸‹ä¸€ä¸ªç»“ç‚¹
   int cnt[MAXS];
   int sz;
 
@@ -28,12 +28,12 @@ struct AhoCorasickAutomata {
     ms.clear();
   }
 
-  // ×Ö·ûcµÄ±àºÅ
+  // å­—ç¬¦cçš„ç¼–å·
   int idx(char c) {
     return c-'a';
   }
 
-  // ²åÈë×Ö·û´®¡£v±ØĞë·Ç0
+  // æ’å…¥å­—ç¬¦ä¸²ã€‚vå¿…é¡»é0
   void insert(char *s, int v) {
     int u = 0, n = strlen(s);
     for(int i = 0; i < n; i++) {
@@ -49,7 +49,7 @@ struct AhoCorasickAutomata {
     ms[string(s)] = v;
   }
 
-  // µİ¹é´òÓ¡ÒÔ½áµãj½áÎ²µÄËùÓĞ×Ö·û´®
+  // é€’å½’æ‰“å°ä»¥ç»“ç‚¹jç»“å°¾çš„æ‰€æœ‰å­—ç¬¦ä¸²
   void print(int j) {
     if(j) {
       cnt[val[j]]++;
@@ -57,29 +57,29 @@ struct AhoCorasickAutomata {
     }
   }
 
-  // ÔÚTÖĞÕÒÄ£°å
+  // åœ¨Tä¸­æ‰¾æ¨¡æ¿
   int find(char* T) {
     int n = strlen(T);
-    int j = 0; // µ±Ç°½áµã±àºÅ£¬³õÊ¼Îª¸ù½áµã
-    for(int i = 0; i < n; i++) { // ÎÄ±¾´®µ±Ç°Ö¸Õë
+    int j = 0; // å½“å‰ç»“ç‚¹ç¼–å·ï¼Œåˆå§‹ä¸ºæ ¹ç»“ç‚¹
+    for(int i = 0; i < n; i++) { // æ–‡æœ¬ä¸²å½“å‰æŒ‡é’ˆ
       int c = idx(T[i]);
-      while(j && !ch[j][c]) j = f[j]; // Ë³×ÅÏ¸±ß×ß£¬Ö±µ½¿ÉÒÔÆ¥Åä
+      while(j && !ch[j][c]) j = f[j]; // é¡ºç€ç»†è¾¹èµ°ï¼Œç›´åˆ°å¯ä»¥åŒ¹é…
       j = ch[j][c];
       if(val[j]) print(j);
-      else if(last[j]) print(last[j]); // ÕÒµ½ÁË£¡
+      else if(last[j]) print(last[j]); // æ‰¾åˆ°äº†ï¼
     }
   }
 
-  // ¼ÆËãfailº¯Êı
+  // è®¡ç®—failå‡½æ•°
   void getFail() {
     queue<int> q;
     f[0] = 0;
-    // ³õÊ¼»¯¶ÓÁĞ
+    // åˆå§‹åŒ–é˜Ÿåˆ—
     for(int c = 0; c < SIGMA_SIZE; c++) {
       int u = ch[0][c];
       if(u) { f[u] = 0; q.push(u); last[u] = 0; }
     }
-    // °´BFSË³Ğò¼ÆËãfail
+    // æŒ‰BFSé¡ºåºè®¡ç®—fail
     while(!q.empty()) {
       int r = q.front(); q.pop();
       for(int c = 0; c < SIGMA_SIZE; c++) {

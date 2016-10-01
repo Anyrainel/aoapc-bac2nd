@@ -1,7 +1,7 @@
 // UVa146 ID Codes
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÒ»¸öĞ¡Ğ´×Ö·û´®£¬Çó×ÖµäĞò±ÈËü´óµÄ×îĞ¡ÅÅÁĞ
-// Ëã·¨£ºÖ±½ÓÓÃnext_permutation
+// é¢˜æ„ï¼šè¾“å…¥ä¸€ä¸ªå°å†™å­—ç¬¦ä¸²ï¼Œæ±‚å­—å…¸åºæ¯”å®ƒå¤§çš„æœ€å°æ’åˆ—
+// ç®—æ³•ï¼šç›´æ¥ç”¨next_permutation
 #include<cstdio>
 #include<cstring>
 #include<algorithm>

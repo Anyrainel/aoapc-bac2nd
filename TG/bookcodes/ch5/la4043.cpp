@@ -12,9 +12,9 @@ const double INF = 1e30;
 
 int n;
 double W[maxn][maxn];
-double Lx[maxn], Ly[maxn];   // ¶¥±ê
-int left[maxn];          // left[i]ÎªÓÒ±ßµÚi¸öµãµÄÆ¥Åäµã±àºÅ
-bool S[maxn], T[maxn];   // S[i]ºÍT[i]Îª×ó/ÓÒµÚi¸öµãÊÇ·ñÒÑ±ê¼Ç
+double Lx[maxn], Ly[maxn];   // é¡¶æ ‡
+int left[maxn];          // left[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹çš„åŒ¹é…ç‚¹ç¼–å·
+bool S[maxn], T[maxn];   // S[i]å’ŒT[i]ä¸ºå·¦/å³ç¬¬iä¸ªç‚¹æ˜¯å¦å·²æ ‡è®°
 
 bool eq(double a, double b) {
   return fabs(a-b) < 1e-9;
@@ -68,7 +68,7 @@ int main(){
     for(int i = 1; i <= n; i++) // ant colony
       for(int j = 1; j <= n; j++) // apple tree
         W[j][i] = -sqrt((double)(x1[i]-x2[j])*(x1[i]-x2[j]) + (double)(y1[i]-y2[j])*(y1[i]-y2[j]));
-    KM(); // ×î´óÈ¨Æ¥Åä
+    KM(); // æœ€å¤§æƒåŒ¹é…
     for(int i = 1; i <= n; i++) printf("%d\n", left[i]);
   }
   return 0;

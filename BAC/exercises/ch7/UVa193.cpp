@@ -1,7 +1,7 @@
 // UVa193 Graph Coloring
 // Rujia Liu
-// ���⣺��ͼ���������������Ѿ�����Ľ��ͼ��ʹ�����������ڵ㲻����
-// �㷨�����ݡ�������ͨ��ά��ÿ���㡰���ںڵ�ĸ�������Ϣ�������ж�
+// 题意：求图的最大独立集，即把尽量多的结点图黑使得任意两个黑点不相邻
+// 算法：回溯。本程序通过维护每个点“相邻黑点的个数”信息来加速判断
 
 #include<cstdio>
 #include<cstring>
@@ -21,16 +21,16 @@ void dfs(int u, int cnt) {
     }
     return;
   }
-  if(cnt + n - u + 1 <= ans) return; // ��֦
+  if(cnt + n - u + 1 <= ans) return; // 剪枝
 
-  // �ȳ���Ϳ��
+  // 先尝试涂黑
   if(black_adjcnt[u] == 0) {
     for(int i = 0; i < G[u].size(); i++) black_adjcnt[G[u][i]]++;
     black[u] = 1;
     dfs(u+1, cnt+1);
     for(int i = 0; i < G[u].size(); i++) black_adjcnt[G[u][i]]--;
   }
-  // ���ǿ���Ϳ��
+  // 总是可以涂白
   black[u] = 0;
   dfs(u+1, cnt);
 }

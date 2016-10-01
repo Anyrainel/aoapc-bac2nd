@@ -63,7 +63,7 @@ Point GetLineProjection(Point P, Point A, Point B) {
 
 double DistanceToLine(Point P, Point A, Point B) {
   Vector v1 = B - A, v2 = P - A;
-  return fabs(Cross(v1, v2)) / Length(v1); // Èç¹û²»È¡¾ø¶ÔÖµ£¬µÃµ½µÄÊÇÓĞÏò¾àÀë
+  return fabs(Cross(v1, v2)) / Length(v1); // å¦‚æœä¸å–ç»å¯¹å€¼ï¼Œå¾—åˆ°çš„æ˜¯æœ‰å‘è·ç¦»
 }
 
 struct Line {
@@ -98,13 +98,13 @@ double angle(Vector v) {
 int getLineCircleIntersection(Line L, Circle C, double& t1, double& t2, vector<Point>& sol){
   double a = L.v.x, b = L.p.x - C.c.x, c = L.v.y, d = L.p.y - C.c.y;
   double e = a*a + c*c, f = 2*(a*b + c*d), g = b*b + d*d - C.r*C.r;
-  double delta = f*f - 4*e*g; // ÅĞ±ğÊ½
-  if(dcmp(delta) < 0) return 0; // ÏàÀë
-  if(dcmp(delta) == 0) { // ÏàÇĞ
+  double delta = f*f - 4*e*g; // åˆ¤åˆ«å¼
+  if(dcmp(delta) < 0) return 0; // ç›¸ç¦»
+  if(dcmp(delta) == 0) { // ç›¸åˆ‡
     t1 = t2 = -f / (2 * e); sol.push_back(L.point(t1));
     return 1;
   }
-  // Ïà½»
+  // ç›¸äº¤
   t1 = (-f - sqrt(delta)) / (2 * e); sol.push_back(L.point(t1));
   t2 = (-f + sqrt(delta)) / (2 * e); sol.push_back(L.point(t2));
   return 2;
@@ -113,7 +113,7 @@ int getLineCircleIntersection(Line L, Circle C, double& t1, double& t2, vector<P
 int getCircleCircleIntersection(Circle C1, Circle C2, vector<Point>& sol) {
   double d = Length(C1.c - C2.c);
   if(dcmp(d) == 0) {
-    if(dcmp(C1.r - C2.r) == 0) return -1; // ÖØºÏ£¬ÎŞÇî¶à½»µã
+    if(dcmp(C1.r - C2.r) == 0) return -1; // é‡åˆï¼Œæ— ç©·å¤šäº¤ç‚¹
     return 0;
   }
   if(dcmp(C1.r + C2.r - d) < 0) return 0;
@@ -153,12 +153,12 @@ Circle InscribedCircle(Point p1, Point p2, Point p3) {
 
 /******************* Problem 3 **********************/
 
-// ¹ıµãpµ½Ô²CµÄÇĞÏß¡£v[i]ÊÇµÚiÌõÇĞÏßµÄÏòÁ¿¡£·µ»ØÇĞÏßÌõÊı
+// è¿‡ç‚¹påˆ°åœ†Cçš„åˆ‡çº¿ã€‚v[i]æ˜¯ç¬¬iæ¡åˆ‡çº¿çš„å‘é‡ã€‚è¿”å›åˆ‡çº¿æ¡æ•°
 int getTangents(Point p, Circle C, Vector* v) {
   Vector u = C.c - p;
   double dist = Length(u);
   if(dist < C.r) return 0;
-  else if(dcmp(dist - C.r) == 0) { // pÔÚÔ²ÉÏ£¬Ö»ÓĞÒ»ÌõÇĞÏß
+  else if(dcmp(dist - C.r) == 0) { // påœ¨åœ†ä¸Šï¼Œåªæœ‰ä¸€æ¡åˆ‡çº¿
     v[0] = Rotate(u, PI/2);
     return 1;
   } else {

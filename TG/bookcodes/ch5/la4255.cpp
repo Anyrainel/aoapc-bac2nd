@@ -7,7 +7,7 @@
 using namespace std;
 const int maxn = 10 + 5;
 
-int n, G[maxn][maxn]; // ×¢Òâ±¾Ìâ½áµã±àºÅÎª0~n
+int n, G[maxn][maxn]; // æ³¨æ„æœ¬é¢˜ç»“ç‚¹ç¼–å·ä¸º0~n
 int c[maxn];
 vector<int> topo;
 
@@ -30,7 +30,7 @@ bool toposort(){
   return true;
 }
 
-// ÓÃ²¢²é¼¯ºÏ²¢ÏàµÈ½áµã
+// ç”¨å¹¶æŸ¥é›†åˆå¹¶ç›¸ç­‰ç»“ç‚¹
 int pa[maxn];
 int findset(int x) { return pa[x] != x ? pa[x] = findset(pa[x]) : x; }
 
@@ -45,10 +45,10 @@ int main() {
     for(int i = 1; i <= n; i++)
       for(int j = i; j <= n; j++) {
         S[i][j] = input[idx++];
-        if(S[i][j] == '0') pa[j] = i-1; // sum[j]-sum[i-1]=0£¬Òò´ËjºÍi-1ÊÇµÈ¼Û½áµã
+        if(S[i][j] == '0') pa[j] = i-1; // sum[j]-sum[i-1]=0ï¼Œå› æ­¤jå’Œi-1æ˜¯ç­‰ä»·ç»“ç‚¹
       }
 
-    // ÈôÇ°×ººÍsum[a] < sum[b]£¬Á¬±ßa->b£¬ÔÚÍØÆËĞòÖĞa»áÔÚbµÄÇ°Ãæ
+    // è‹¥å‰ç¼€å’Œsum[a] < sum[b]ï¼Œè¿è¾¹a->bï¼Œåœ¨æ‹“æ‰‘åºä¸­aä¼šåœ¨bçš„å‰é¢
     memset(G, 0, sizeof(G));
     for(int i = 1; i <= n; i++)
       for(int j = i; j <= n; j++) {
@@ -57,11 +57,11 @@ int main() {
       }
     toposort();
     int sum[maxn], cur = 0;
-    for(int i = 0; i <= n; i++) sum[topo[i]] = cur++; // °´ÕÕÍØÆËĞòÒÀ´Î¸³Öµ0, 1, 2, ...
+    for(int i = 0; i <= n; i++) sum[topo[i]] = cur++; // æŒ‰ç…§æ‹“æ‰‘åºä¾æ¬¡èµ‹å€¼0, 1, 2, ...
     for(int i = 1; i <= n; i++) {
       sum[i] = sum[findset(i)];
       if(i > 1) printf(" ");
-      printf("%d", sum[i] - sum[i-1]); // ×¢Òâ£¬sum[0]Î´±ØµÈÓÚ0
+      printf("%d", sum[i] - sum[i-1]); // æ³¨æ„ï¼Œsum[0]æœªå¿…ç­‰äº0
     }
     printf("\n");
   }

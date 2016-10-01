@@ -1,7 +1,7 @@
 // UVa10405 Longest Common Subsequence
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÁ½¸ö×Ö·û´®£¬Çó×î³¤¹«¹²×ÓĞòÁĞ³¤¶È
-// Ëã·¨£ºLCS
+// é¢˜æ„ï¼šè¾“å…¥ä¸¤ä¸ªå­—ç¬¦ä¸²ï¼Œæ±‚æœ€é•¿å…¬å…±å­åºåˆ—é•¿åº¦
+// ç®—æ³•ï¼šLCS
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -25,7 +25,7 @@ int LCS(const char* A, int n, const char* B, int m) {
 int main() {
   while(fgets(A, maxn, stdin) != NULL) {
     fgets(B, maxn, stdin);
-    printf("%d\n", LCS(A, strlen(A)-1, B, strlen(B)-1)); // ¼õ1ÊÇÒòÎªfgets»á¶Áµ½»Ø³µ
+    printf("%d\n", LCS(A, strlen(A)-1, B, strlen(B)-1)); // å‡1æ˜¯å› ä¸ºfgetsä¼šè¯»åˆ°å›è½¦
   }
   return 0;
 }

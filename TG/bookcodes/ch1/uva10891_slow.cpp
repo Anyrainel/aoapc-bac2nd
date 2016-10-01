@@ -10,10 +10,10 @@ int S[110], A[110], d[110][110], vis[110][110], n;
 int dp(int i, int j) {
   if(vis[i][j]) return d[i][j];
   vis[i][j] = 1;
-  int m = 0; // È«²¿È¡¹â
+  int m = 0; // å…¨éƒ¨å–å…‰
   for(int k = i+1; k <= j; k++) m = min(m, dp(k,j));
   for(int k = i; k < j; k++) m = min(m, dp(i,k));
-  d[i][j] = S[j]-S[i-1] - m; // Èç¹ûi´Ó0¿ªÊ¼±àºÅ£¬ÕâÀïµÃÅĞ¶ÏÒ»ÏÂÊÇ·ñi==0
+  d[i][j] = S[j]-S[i-1] - m; // å¦‚æœiä»0å¼€å§‹ç¼–å·ï¼Œè¿™é‡Œå¾—åˆ¤æ–­ä¸€ä¸‹æ˜¯å¦i==0
   return d[i][j];
 }
 
@@ -21,7 +21,7 @@ int main() {
   while(scanf("%d", &n) && n) {
     S[0] = 0;
     for(int i = 1; i <= n; i++) { scanf("%d", &A[i]); S[i]=S[i-1]+A[i]; }
-    memset(vis, 0, sizeof(vis)); // Ç§Íò²»ÒªÂ©µô
+    memset(vis, 0, sizeof(vis)); // åƒä¸‡ä¸è¦æ¼æ‰
     printf("%d\n", 2*dp(1,n)-S[n]);
   }
   return 0;

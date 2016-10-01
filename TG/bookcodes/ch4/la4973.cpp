@@ -57,7 +57,7 @@ void updatemin(Rat& A, const Rat& B) {
   if(A.a*B.b > B.a*A.b) A.a = B.a, A.b = B.b;
 }
 
-// µãPµ½Ïß¶ÎABµÄ¾àÀëµÄÆ½·½
+// ç‚¹Påˆ°çº¿æ®µABçš„è·ç¦»çš„å¹³æ–¹
 Rat Rat_Distance2ToSegment(const Point3& P, const Point3& A, const Point3& B) {
   if(A == B) return Length2(P-A);
   Vector3 v1 = B - A, v2 = P - A, v3 = P - B;
@@ -66,7 +66,7 @@ Rat Rat_Distance2ToSegment(const Point3& P, const Point3& A, const Point3& B) {
   else return Rat(Length2(Cross(v1, v2)), Length2(v1));
 }
 
-// ÇóÒìÃæÖ±Ïßp1+suºÍp2+tvµÄ¹«´¹Ïß¶ÔÓ¦µÄs¡£Èç¹ûÆ½ÐÐ/ÖØºÏ£¬·µ»Øfalse
+// æ±‚å¼‚é¢ç›´çº¿p1+suå’Œp2+tvçš„å…¬åž‚çº¿å¯¹åº”çš„sã€‚å¦‚æžœå¹³è¡Œ/é‡åˆï¼Œè¿”å›žfalse
 bool Rat_LineDistance3D(const Point3& p1, const Vector3& u, const Point3& p2, const Vector3& v, Rat& s) {
   LL b = (LL)Dot(u,u)*Dot(v,v) - (LL)Dot(u,v)*Dot(u,v);
   if(b == 0) return false;
@@ -100,13 +100,13 @@ int main() {
     if(Rat_LineDistance3D(A, B-A, C, D-C, s))
       if(s.a > 0 && s.a < s.b && Rat_LineDistance3D(C, D-C, A, B-A, t))
         if(t.a > 0 && t.a < t.b) {
-          ok = true; // ÒìÃæÖ±Ïß/Ïà½»Ö±Ïß
+          ok = true; // å¼‚é¢ç›´çº¿/ç›¸äº¤ç›´çº¿
           Rat x1, y1, z1, x2, y2, z2;
           Rat_GetPointOnLine(A, B, s, x1, y1, z1);
           Rat_GetPointOnLine(C, D, t, x2, y2, z2);
           ans = Rat_Distance2(x1, y1, z1, x2, y2, z2);
         }
-    if(!ok) { // Æ½ÐÐÖ±Ïß/ÖØºÏÖ±Ïß
+    if(!ok) { // å¹³è¡Œç›´çº¿/é‡åˆç›´çº¿
       updatemin(ans, Rat_Distance2ToSegment(A, C, D));
       updatemin(ans, Rat_Distance2ToSegment(B, C, D));
       updatemin(ans, Rat_Distance2ToSegment(C, A, B));

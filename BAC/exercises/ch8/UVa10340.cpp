@@ -1,6 +1,6 @@
 // UVa10340 All in All
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÁ½¸ö×Ö·û´®SºÍT£¬ÅÐ¶ÏSÊÇ·ñÎªTµÄ£¨²»Ò»¶¨Á¬ÐøµÄ£©×Ó´®
+// é¢˜æ„ï¼šè¾“å…¥ä¸¤ä¸ªå­—ç¬¦ä¸²Så’ŒTï¼Œåˆ¤æ–­Sæ˜¯å¦ä¸ºTçš„ï¼ˆä¸ä¸€å®šè¿žç»­çš„ï¼‰å­ä¸²
 #include<iostream>
 #include<string>
 using namespace std;

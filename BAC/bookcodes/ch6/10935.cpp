@@ -1,4 +1,4 @@
-// 注意：这个程序读写了非法内存（解释见书）
+// 娉ㄦ剰锛氳繖涓▼搴忚鍐欎簡闈炴硶鍐呭瓨锛堣В閲婅涔︼級
 #include<stdio.h>
 const int MAXN = 50;
 int queue[MAXN];

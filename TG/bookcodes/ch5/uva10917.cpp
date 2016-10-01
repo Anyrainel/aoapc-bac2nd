@@ -23,9 +23,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -62,12 +62,12 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 Dijkstra solver;
-int d[maxn]; // µ½¼Ò¾àÀë
+int d[maxn]; // åˆ°å®¶è·ç¦»
 
 int dp(int u) {
-  if(u == 1) return 1; // µ½¼ÒÁË
+  if(u == 1) return 1; // åˆ°å®¶äº†
 
   int& ans = d[u];
   if(ans >= 0) return ans;
@@ -91,9 +91,9 @@ int main() {
       solver.AddEdge(b, a, c);
     }
 
-    solver.dijkstra(1); // ¼Ò(1)µ½ËùÓĞµãµÄ¾àÀë¡£ÒòÎªµÀÂ·¶¼ÊÇË«ÏòµÄ£¬ËùÒÔ°Ñ¼Ò¿´×÷ÆğµãÒ²ĞĞ
+    solver.dijkstra(1); // å®¶(1)åˆ°æ‰€æœ‰ç‚¹çš„è·ç¦»ã€‚å› ä¸ºé“è·¯éƒ½æ˜¯åŒå‘çš„ï¼Œæ‰€ä»¥æŠŠå®¶çœ‹ä½œèµ·ç‚¹ä¹Ÿè¡Œ
     memset(d, -1, sizeof(d));
-    printf("%d\n", dp(0)); // °ì¹«ÊÒ(0)µ½¼ÒµÄ·ûºÏÌõ¼şµÄÂ·¾¶ÌõÊı
+    printf("%d\n", dp(0)); // åŠå…¬å®¤(0)åˆ°å®¶çš„ç¬¦åˆæ¡ä»¶çš„è·¯å¾„æ¡æ•°
   }
   return 0;
 }

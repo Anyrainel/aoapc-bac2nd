@@ -10,7 +10,7 @@ const int maxtot = 20000000 + 5;
 int n, c[maxn], start[maxn];
 int pre[maxtot], post[maxtot];
 
-// ·Çµİ¹édfs¡£ÓÉÓÚÃ»ÓĞÊ¹ÓÃºÄÊ±µÄmemset²Ù×÷£¬ÔÚ½áµãÈëÕ»Ö®Ç°ĞèÉèÖÃpre=0
+// éé€’å½’dfsã€‚ç”±äºæ²¡æœ‰ä½¿ç”¨è€—æ—¶çš„memsetæ“ä½œï¼Œåœ¨ç»“ç‚¹å…¥æ ˆä¹‹å‰éœ€è®¾ç½®pre=0
 void dfs(int root) {
   stack<int> st;
   pre[root] = 0; 
@@ -18,15 +18,15 @@ void dfs(int root) {
   int dfs_clock = 1;
   while(!st.empty()) {
     int u = st.top();
-    if(pre[u]) { // ½áµãu´¦ÀíÍê±Ï
+    if(pre[u]) { // ç»“ç‚¹uå¤„ç†å®Œæ¯•
       post[u] = dfs_clock++;
       st.pop();
       continue;
     }
-    pre[u] = dfs_clock++; // ½áµãu¿ªÊ¼´¦Àí
+    pre[u] = dfs_clock++; // ç»“ç‚¹uå¼€å§‹å¤„ç†
     for(int i = start[u]; i < start[u] + c[u]; i++) {
       if(i < n) { pre[i] = 0; st.push(i); }
-      else { pre[i] = dfs_clock++; post[i] = dfs_clock++; } // Ò¶½áµã²»ÓÃÈëÕ»£¬Ö±½Ó¼ÆËãpreºÍpost
+      else { pre[i] = dfs_clock++; post[i] = dfs_clock++; } // å¶ç»“ç‚¹ä¸ç”¨å…¥æ ˆï¼Œç›´æ¥è®¡ç®—preå’Œpost
     }
   }
 }

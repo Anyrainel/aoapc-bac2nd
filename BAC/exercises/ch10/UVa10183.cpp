@@ -1,7 +1,7 @@
 // UVa10183 How many Fibs?
 // Rujia Liu
-// ÌâÒâ£ºÊäÈë´óÕûÊıa, b, Çó[a,b]ÀïÓĞ¶àÉÙ¸öfibonacciÊı
-// Ëã·¨£ºÔ¤´¦Àí£¬È»ºóÖ±½ÓÅĞ¶Ï
+// é¢˜æ„ï¼šè¾“å…¥å¤§æ•´æ•°a, b, æ±‚[a,b]é‡Œæœ‰å¤šå°‘ä¸ªfibonacciæ•°
+// ç®—æ³•ï¼šé¢„å¤„ç†ï¼Œç„¶åç›´æ¥åˆ¤æ–­
 #include<cstdio>
 #include<cstring>
 #include<iostream>
@@ -35,7 +35,7 @@ struct BigInteger {
     if(s.size() != b.s.size()) return s.size() < b.s.size();
     for(int i = s.size()-1; i >= 0; i--)
       if(s[i] != b.s[i]) return s[i] < b.s[i];
-    return false; // ÏàµÈ
+    return false; // ç›¸ç­‰
   }
 
   bool operator <= (const BigInteger& b) const {

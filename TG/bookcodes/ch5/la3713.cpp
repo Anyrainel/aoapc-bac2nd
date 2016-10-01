@@ -50,7 +50,7 @@ struct TwoSAT {
   }
 };
 
-///////// ÌâÄ¿Ïà¹Ø
+///////// é¢˜ç›®ç›¸å…³
 #include<algorithm>
 int n, m, total_age, age[maxn];
 
@@ -70,16 +70,16 @@ int main() {
       int a, b;
       scanf("%d%d", &a, &b); a--; b--;
       if(a == b) continue;
-      solver.add_clause(a, 1, b, 1); // ²»ÄÜÍ¬È¥ÈÎÎñC
-      if(is_young(a) == is_young(b)) // Í¬ÀàÓîº½Ô±
-        solver.add_clause(a, 0, b, 0); // ²»ÄÜÍ¬È¥ÈÎÎñA»òÕßÈÎÎñB
+      solver.add_clause(a, 1, b, 1); // ä¸èƒ½åŒå»ä»»åŠ¡C
+      if(is_young(a) == is_young(b)) // åŒç±»å®‡èˆªå‘˜
+        solver.add_clause(a, 0, b, 0); // ä¸èƒ½åŒå»ä»»åŠ¡Aæˆ–è€…ä»»åŠ¡B
     }
 
     if(!solver.solve()) printf("No solution.\n");
     else for(int i = 0; i < n; i++)
-      if(solver.mark[i*2]) printf("C\n"); // x[i]=false£¬È¥ÈÎÎñC
-      else if(is_young(i)) printf("B\n"); // x[i]=trueµÄÄêÇáÓîº½Ô±È¥ÈÎÎñB
-      else printf("A\n"); // x[i]=trueµÄÄê³¤Óîº½Ô±È¥ÈÎÎñA
+      if(solver.mark[i*2]) printf("C\n"); // x[i]=falseï¼Œå»ä»»åŠ¡C
+      else if(is_young(i)) printf("B\n"); // x[i]=trueçš„å¹´è½»å®‡èˆªå‘˜å»ä»»åŠ¡B
+      else printf("A\n"); // x[i]=trueçš„å¹´é•¿å®‡èˆªå‘˜å»ä»»åŠ¡A
   }
   return 0;
 }

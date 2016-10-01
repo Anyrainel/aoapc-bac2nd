@@ -1,4 +1,4 @@
-// LA3510 Pixel Shuffle £¨ÏŞÓÚÆª·ù£¬ÊéÉÏÎŞ´Ë´úÂë£©
+// LA3510 Pixel Shuffle ï¼ˆé™äºç¯‡å¹…ï¼Œä¹¦ä¸Šæ— æ­¤ä»£ç ï¼‰
 // Rujia Liu
 #include<cctype>
 #include<cstring>
@@ -14,7 +14,7 @@ int lcm(int a, int b) {
 
 #define ID(i, j) ((i)*n+(j))
 
-// ÇóÎ»ÖÃ(i,j)¾­¹ı²Ù×÷op½øĞĞÕıÏò±ä»»ºóµÄĞÂÎ»ÖÃ
+// æ±‚ä½ç½®(i,j)ç»è¿‡æ“ä½œopè¿›è¡Œæ­£å‘å˜æ¢åçš„æ–°ä½ç½®
 int newpos(int n, int i, int j, const char* op) {
   if(op[0] == 'r') // rot
     return ID(n-1-j, i);
@@ -38,7 +38,7 @@ int newpos(int n, int i, int j, const char* op) {
 
 const int maxn = 1024;
 
-// ±ä»»Ò»ÕÅn*nÍ¼Æ¬
+// å˜æ¢ä¸€å¼ n*nå›¾ç‰‡
 int orig[maxn*maxn];
 void apply(int* image, int n, const char* op) {
   bool inv = op[strlen(op)-1] == '-';
@@ -51,14 +51,14 @@ void apply(int* image, int n, const char* op) {
     }
 }
 
-// ÒÑÖªnÔªËØÖÃ»»p£¬Çó×îĞ¡µÄmÊ¹µÃp^m=I
+// å·²çŸ¥nå…ƒç´ ç½®æ¢pï¼Œæ±‚æœ€å°çš„mä½¿å¾—p^m=I
 int vis[maxn*maxn];
 int solve(int* p, int n) {
   memset(vis, 0, sizeof(vis));
   int ans = 1;
   for(int i = 0; i < n; i++)
     if(!vis[i]) {
-      int j = i, len = 0; // lenÊÇÑ­»·½Ú
+      int j = i, len = 0; // lenæ˜¯å¾ªç¯èŠ‚
       do {
         vis[j] = 1;
         j = p[j];
@@ -89,7 +89,7 @@ int main() {
       if(isdigit(op[0])) { sscanf(op.c_str(), "%d", &n2); break; }
       ops.push_back(op);
     }
-    for(int i = ops.size()-1; i >= 0; i--) // ×¢Òâ£¬²Ù×÷ÊÇÄæĞòÖ´ĞĞµÄ
+    for(int i = ops.size()-1; i >= 0; i--) // æ³¨æ„ï¼Œæ“ä½œæ˜¯é€†åºæ‰§è¡Œçš„
       apply(cur, n, ops[i].c_str());
     cout << solve(cur, n*n) << "\n";
     if(T) cout << "\n";

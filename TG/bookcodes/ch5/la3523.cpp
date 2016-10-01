@@ -11,7 +11,7 @@ using namespace std;
 struct Edge { int u, v; };
 
 const int maxn = 1000 + 10;
-int pre[maxn], iscut[maxn], bccno[maxn], dfs_clock, bcc_cnt; // ¸î¶¥µÄbccnoÎŞÒâÒå
+int pre[maxn], iscut[maxn], bccno[maxn], dfs_clock, bcc_cnt; // å‰²é¡¶çš„bccnoæ— æ„ä¹‰
 vector<int> G[maxn], bcc[maxn];
 
 stack<Edge> S;
@@ -22,11 +22,11 @@ int dfs(int u, int fa) {
   for(int i = 0; i < G[u].size(); i++) {
     int v = G[u][i];
     Edge e = (Edge){u, v};
-    if(!pre[v]) { // Ã»ÓĞ·ÃÎÊ¹ıv
+    if(!pre[v]) { // æ²¡æœ‰è®¿é—®è¿‡v
       S.push(e);
       child++;
       int lowv = dfs(v, u);
-      lowu = min(lowu, lowv); // ÓÃºó´úµÄlowº¯Êı¸üĞÂ×Ô¼º
+      lowu = min(lowu, lowv); // ç”¨åä»£çš„lowå‡½æ•°æ›´æ–°è‡ªå·±
       if(lowv >= pre[u]) {
         iscut[u] = true;
         bcc_cnt++; bcc[bcc_cnt].clear();
@@ -40,7 +40,7 @@ int dfs(int u, int fa) {
     }
     else if(pre[v] < pre[u] && v != fa) {
       S.push(e);
-      lowu = min(lowu, pre[v]); // ÓÃ·´Ïò±ß¸üĞÂ×Ô¼º
+      lowu = min(lowu, pre[v]); // ç”¨åå‘è¾¹æ›´æ–°è‡ªå·±
     }
   }
   if(fa < 0 && child == 1) iscut[u] = 0;
@@ -48,7 +48,7 @@ int dfs(int u, int fa) {
 }
 
 void find_bcc(int n) {
-  // µ÷ÓÃ½áÊøºóS±£Ö¤Îª¿Õ£¬ËùÒÔ²»ÓÃÇå¿Õ
+  // è°ƒç”¨ç»“æŸåSä¿è¯ä¸ºç©ºï¼Œæ‰€ä»¥ä¸ç”¨æ¸…ç©º
   memset(pre, 0, sizeof(pre));
   memset(iscut, 0, sizeof(iscut));
   memset(bccno, 0, sizeof(bccno));
@@ -91,7 +91,7 @@ int main() {
     memset(odd, 0, sizeof(odd));
     for(int i = 1; i <= bcc_cnt; i++) {
       memset(color, 0, sizeof(color));
-      for(int j = 0; j < bcc[i].size(); j++) bccno[bcc[i][j]] = i; // Ö÷ÒªÊÇ´¦Àí¸î¶¥
+      for(int j = 0; j < bcc[i].size(); j++) bccno[bcc[i][j]] = i; // ä¸»è¦æ˜¯å¤„ç†å‰²é¡¶
       int u = bcc[i][0];
       color[u] = 1;
       if(!bipartite(u, i))

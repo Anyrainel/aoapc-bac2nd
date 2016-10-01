@@ -6,13 +6,13 @@ using namespace std;
 
 const int maxn = 1000 + 10;
 int pref[maxn][maxn], order[maxn][maxn], next[maxn], future_husband[maxn], future_wife[maxn];
-queue<int> q; // Î´¶©»éµÄÄĞÊ¿¶ÓÁĞ
+queue<int> q; // æœªè®¢å©šçš„ç”·å£«é˜Ÿåˆ—
 
 void engage(int man, int woman) {
   int m = future_husband[woman];
   if(m) {
-    future_wife[m] = 0; // Å×ÆúÏÖÈÎÎ´»é·ò£¨Èç¹ûÓĞµÄ»°£©
-    q.push(m); // ¼ÓÈëÎ´¶©»éÄĞÊ¿¶ÓÁĞ
+    future_wife[m] = 0; // æŠ›å¼ƒç°ä»»æœªå©šå¤«ï¼ˆå¦‚æœæœ‰çš„è¯ï¼‰
+    q.push(m); // åŠ å…¥æœªè®¢å©šç”·å£«é˜Ÿåˆ—
   }
   future_wife[man] = woman;
   future_husband[woman] = man;
@@ -27,9 +27,9 @@ int main() {
 
     for(int i = 1; i <= n; i++) {
       for(int j = 1; j <= n; j++)
-        scanf("%d", &pref[i][j]); // ±àºÅÎªiµÄÄĞÊ¿µÚjÏ²»¶µÄÈË
-      next[i] = 1; // ½ÓÏÂÀ´Ó¦ÏòÅÅÃûÎª1µÄÅ®Ê¿Çó»é
-      future_wife[i] = 0; // Ã»ÓĞÎ´»éÆŞ
+        scanf("%d", &pref[i][j]); // ç¼–å·ä¸ºiçš„ç”·å£«ç¬¬jå–œæ¬¢çš„äºº
+      next[i] = 1; // æ¥ä¸‹æ¥åº”å‘æ’åä¸º1çš„å¥³å£«æ±‚å©š
+      future_wife[i] = 0; // æ²¡æœ‰æœªå©šå¦»
       q.push(i);
     }
 
@@ -37,17 +37,17 @@ int main() {
       for(int j = 1; j <= n; j++) {
         int x;
         scanf("%d", &x);
-        order[i][x] = j; // ÔÚ±àºÅÎªiµÄÅ®Ê¿ĞÄÄ¿ÖĞ£¬±àºÅÎªxµÄÄĞÊ¿µÄÅÅÃû
+        order[i][x] = j; // åœ¨ç¼–å·ä¸ºiçš„å¥³å£«å¿ƒç›®ä¸­ï¼Œç¼–å·ä¸ºxçš„ç”·å£«çš„æ’å
       }
-      future_husband[i] = 0; // Ã»ÓĞÎ´»é·ò
+      future_husband[i] = 0; // æ²¡æœ‰æœªå©šå¤«
     }
 
     while(!q.empty()) {
       int man = q.front(); q.pop();
       int woman = pref[man][next[man]++];
-      if(!future_husband[woman]) engage(man, woman); // womanÃ»ÓĞÎ´»é·ò£¬Ö±½Ó¶©»é
-      else if(order[woman][man] < order[woman][future_husband[woman]]) engage(man, woman); // »»Î´»é·ò
-      else q.push(man); // ÏÂ´ÎÔÙÀ´
+      if(!future_husband[woman]) engage(man, woman); // womanæ²¡æœ‰æœªå©šå¤«ï¼Œç›´æ¥è®¢å©š
+      else if(order[woman][man] < order[woman][future_husband[woman]]) engage(man, woman); // æ¢æœªå©šå¤«
+      else q.push(man); // ä¸‹æ¬¡å†æ¥
     }
     while(!q.empty()) q.pop();
 

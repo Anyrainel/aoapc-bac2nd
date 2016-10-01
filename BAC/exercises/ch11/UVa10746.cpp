@@ -1,7 +1,7 @@
 // UVa10746 Crime Wave - The Sequel
 // Rujia Liu
-// ÌâÒâ£ºm¸ö¾¯²ìÑ¡n¸öÈ¥ÒøĞĞ£¬Ê¹µÃµ½ÒøĞĞµÄÆ½¾ùÊ±¼ä×îĞ¡¡£
-// Ëã·¨£º¾¯²ìÎªµã1~m£¬ÒøĞĞÎªµãm+1~m+n£¬Çóµã0µ½m+n+1µÄ×îĞ¡·ÑÓÃ×î´óÁ÷
+// é¢˜æ„ï¼šmä¸ªè­¦å¯Ÿé€‰nä¸ªå»é“¶è¡Œï¼Œä½¿å¾—åˆ°é“¶è¡Œçš„å¹³å‡æ—¶é—´æœ€å°ã€‚
+// ç®—æ³•ï¼šè­¦å¯Ÿä¸ºç‚¹1~mï¼Œé“¶è¡Œä¸ºç‚¹m+1~m+nï¼Œæ±‚ç‚¹0åˆ°m+n+1çš„æœ€å°è´¹ç”¨æœ€å¤§æµ
 #include<cstdio>
 #include<cstring>
 #include<queue>
@@ -23,10 +23,10 @@ struct MCMF {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  int inq[maxn];         // ÊÇ·ñÔÚ¶ÓÁĞÖĞ
+  int inq[maxn];         // æ˜¯å¦åœ¨é˜Ÿåˆ—ä¸­
   double d[maxn];        // Bellman-Ford
-  int p[maxn];           // ÉÏÒ»Ìõ»¡
-  int a[maxn];           // ¿É¸Ä½øÁ¿
+  int p[maxn];           // ä¸Šä¸€æ¡å¼§
+  int a[maxn];           // å¯æ”¹è¿›é‡
 
   void init(int n) {
     this->n = n;
@@ -72,7 +72,7 @@ struct MCMF {
     return true;
   }
 
-  // ĞèÒª±£Ö¤³õÊ¼ÍøÂçÖĞÃ»ÓĞ¸ºÈ¨È¦
+  // éœ€è¦ä¿è¯åˆå§‹ç½‘ç»œä¸­æ²¡æœ‰è´Ÿæƒåœˆ
   int MincostMaxflow(int s, int t, double& cost) {
     int flow = 0; cost = 0;
     while(BellmanFord(s, t, flow, cost));

@@ -1,7 +1,7 @@
 // UVa10300 Ecological Premium
 // Rujia Liu
-// 题意：输入n个三元组(a,b,c)，计算a*c之和
-// 注意事项：观察题目中的数值范围可以发现结果需要用long long保存
+// 棰樻剰锛氳緭鍏涓笁鍏冪粍(a,b,c)锛岃绠梐*c涔嬪拰
+// 娉ㄦ剰浜嬮」锛氳瀵熼鐩腑鐨勬暟鍊艰寖鍥村彲浠ュ彂鐜扮粨鏋滈渶瑕佺敤long long淇濆瓨
 #include<iostream>
 using namespace std;
 

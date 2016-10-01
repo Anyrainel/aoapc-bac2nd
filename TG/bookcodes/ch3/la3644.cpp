@@ -4,7 +4,7 @@
 const int maxn = 100000 + 10;
 int pa[maxn];
 
-// ²¢²é¼¯µÄ²éÕÒ²Ù×÷£¬´øÂ·¾¶Ñ¹Ëõ
+// å¹¶æŸ¥é›†çš„æŸ¥æ‰¾æ“ä½œï¼Œå¸¦è·¯å¾„å‹ç¼©
 int findset(int x) { return pa[x] != x ? pa[x] = findset(pa[x]) : x; } 
 
 int main() {
@@ -15,8 +15,8 @@ int main() {
     while(x != -1) {
       scanf("%d", &y);
       x = findset(x); y = findset(y);
-      if(x == y) ++refusals; // Èç¹ûxºÍyÔÚÍ¬Ò»¸ö¼¯ºÏ£¬Ôò¾Ü¾ø
-      else pa[x] = y; // ·ñÔòºÏ²¢¡£ÕâÀïÃ»ÓĞÊ¹ÓÃÆô·¢Ê½ºÏ²¢
+      if(x == y) ++refusals; // å¦‚æœxå’Œyåœ¨åŒä¸€ä¸ªé›†åˆï¼Œåˆ™æ‹’ç»
+      else pa[x] = y; // å¦åˆ™åˆå¹¶ã€‚è¿™é‡Œæ²¡æœ‰ä½¿ç”¨å¯å‘å¼åˆå¹¶
       scanf("%d", &x);
     }
     printf("%d\n", refusals);

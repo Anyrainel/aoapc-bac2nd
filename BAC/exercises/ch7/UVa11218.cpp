@@ -1,7 +1,7 @@
 // UVa11218 KTV
 // Rujia Liu
-// ÌâÒâ£º¸ø³ön¸ö´øÈ¨¼¯ºÏ£¬Ã¿¸ö¼¯ºÏ°üº¬1~9ÖÐµÄÈý¸öÕûÊý¡£ÕÒ³öÆäÖÐÈý¸ö¼¯ºÏ£¬Ê¹µÃ1~9Ç¡ºÃ¸÷³öÏÖÒ»´Î£¬ÇÒÈ¨ºÍ×î´ó
-// Ëã·¨£º±©Á¦n^2Ã¶¾ÙÇ°Á½¸ö¼¯ºÏ£¬Ö±½Ó¼ÆËã³öµÚÈý¸ö¼¯ºÏ¡£ÓÃÎ»ÔËËãÈÃ´úÂë¸ü¼òµ¥£¬ËÙ¶ÈÒ²¸ü¿ì
+// é¢˜æ„ï¼šç»™å‡ºnä¸ªå¸¦æƒé›†åˆï¼Œæ¯ä¸ªé›†åˆåŒ…å«1~9ä¸­çš„ä¸‰ä¸ªæ•´æ•°ã€‚æ‰¾å‡ºå…¶ä¸­ä¸‰ä¸ªé›†åˆï¼Œä½¿å¾—1~9æ°å¥½å„å‡ºçŽ°ä¸€æ¬¡ï¼Œä¸”æƒå’Œæœ€å¤§
+// ç®—æ³•ï¼šæš´åŠ›n^2æžšä¸¾å‰ä¸¤ä¸ªé›†åˆï¼Œç›´æŽ¥è®¡ç®—å‡ºç¬¬ä¸‰ä¸ªé›†åˆã€‚ç”¨ä½è¿ç®—è®©ä»£ç æ›´ç®€å•ï¼Œé€Ÿåº¦ä¹Ÿæ›´å¿«
 
 #include<cstdio>
 #include<cstring>
@@ -26,7 +26,7 @@ int main() {
     int ans = -1;
     for(int i = 0; i < n; i++)
       for(int j = i+1; j < n; j++) if((mask[i] & mask[j]) == 0) {
-        int last_mask = ALL ^ mask[i] ^ mask[j]; // ×îºóÒ»¸ö×éºÏµÄmask
+        int last_mask = ALL ^ mask[i] ^ mask[j]; // æœ€åŽä¸€ä¸ªç»„åˆçš„mask
         if(v[last_mask]) ans = max(ans, v[mask[i]] + v[mask[j]] + v[last_mask]);
       }
     printf("Case %d: %d\n", ++kase, ans);

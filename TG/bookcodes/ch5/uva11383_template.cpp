@@ -1,4 +1,4 @@
-// UVa11383 Golden Tiger Claw £¨¸üÊÊºÏ×÷ÎªÄ£°åµÄ°æ±¾£©
+// UVa11383 Golden Tiger Claw ï¼ˆæ›´é€‚åˆä½œä¸ºæ¨¡æ¿çš„ç‰ˆæœ¬ï¼‰
 // Rujia Liu
 #include <cstdio>
 #include <cstring>
@@ -6,16 +6,16 @@
 #include <algorithm>
 using namespace std;
 
-const int maxn = 500 + 5; // ¶¥µãµÄ×î´óÊıÄ¿
+const int maxn = 500 + 5; // é¡¶ç‚¹çš„æœ€å¤§æ•°ç›®
 const int INF = 1000000000;
 
 struct KM {
-  int n;                  // ×óÓÒ¶¥µã¸öÊı
-  vector<int> G[maxn];    // ÁÚ½Ó±í
-  int W[maxn][maxn];      // È¨Öµ
-  int Lx[maxn], Ly[maxn]; // ¶¥±ê
-  int left[maxn];         // left[i]ÎªÓÒ±ßµÚi¸öµãµÄÆ¥Åäµã±àºÅ£¬-1±íÊ¾²»´æÔÚ
-  bool S[maxn], T[maxn];  // S[i]ºÍT[i]Îª×ó/ÓÒµÚi¸öµãÊÇ·ñÒÑ±ê¼Ç
+  int n;                  // å·¦å³é¡¶ç‚¹ä¸ªæ•°
+  vector<int> G[maxn];    // é‚»æ¥è¡¨
+  int W[maxn][maxn];      // æƒå€¼
+  int Lx[maxn], Ly[maxn]; // é¡¶æ ‡
+  int left[maxn];         // left[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹çš„åŒ¹é…ç‚¹ç¼–å·ï¼Œ-1è¡¨ç¤ºä¸å­˜åœ¨
+  bool S[maxn], T[maxn];  // S[i]å’ŒT[i]ä¸ºå·¦/å³ç¬¬iä¸ªç‚¹æ˜¯å¦å·²æ ‡è®°
 
   void init(int n) {
     this->n = n;

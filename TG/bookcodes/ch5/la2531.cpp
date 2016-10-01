@@ -20,11 +20,11 @@ bool operator < (const Edge& a, const Edge& b) {
 
 struct Dinic {
   int n, m, s, t;
-  vector<Edge> edges;    // ±ßÊıµÄÁ½±¶
-  vector<int> G[maxn];   // ÁÚ½Ó±í£¬G[i][j]±íÊ¾½áµãiµÄµÚjÌõ±ßÔÚeÊı×éÖĞµÄĞòºÅ
-  bool vis[maxn];        // BFSÊ¹ÓÃ
-  int d[maxn];           // ´ÓÆğµãµ½iµÄ¾àÀë
-  int cur[maxn];         // µ±Ç°»¡Ö¸Õë
+  vector<Edge> edges;    // è¾¹æ•°çš„ä¸¤å€
+  vector<int> G[maxn];   // é‚»æ¥è¡¨ï¼ŒG[i][j]è¡¨ç¤ºç»“ç‚¹içš„ç¬¬jæ¡è¾¹åœ¨eæ•°ç»„ä¸­çš„åºå·
+  bool vis[maxn];        // BFSä½¿ç”¨
+  int d[maxn];           // ä»èµ·ç‚¹åˆ°içš„è·ç¦»
+  int cur[maxn];         // å½“å‰å¼§æŒ‡é’ˆ
 
   void init(int n) {
     for(int i = 0; i < n; i++) G[i].clear();
@@ -95,25 +95,25 @@ inline int ID(int u, int v) { return u*n+v+1; }
 inline int ID(int u) { return n*n+u+1; }
 
 bool canWin(int team) {
-  // ¼ÆËãteamÈ«Ê¤ºóµÄ×ÜÊ¤Àû³¡Êı
+  // è®¡ç®—teamå…¨èƒœåçš„æ€»èƒœåˆ©åœºæ•°
   int total = w[team];
   for(int i = 0; i < n; i++)
     total += a[team][i];
   for(int i = 0; i < n; i++)
     if(w[i] > total) return false;
 
-  // ¹¹Í¼¡£s=0, ½áµã(u,v)µÄ±àºÅÎªu*n+v+1, ½áµãuµÄ±àºÅÎªn^2+u+1, t=n^2+n+1
+  // æ„å›¾ã€‚s=0, ç»“ç‚¹(u,v)çš„ç¼–å·ä¸ºu*n+v+1, ç»“ç‚¹uçš„ç¼–å·ä¸ºn^2+u+1, t=n^2+n+1
   g.init(n*n+n+2);
   int full = 0;
   int s = 0, t = n*n+n+1;
   for(int u = 0; u < n; u++) {
     for(int v = u+1; v < n; v++) {
-      if(a[u][v] > 0) g.AddEdge(s, ID(u,v), a[u][v]); // Sµ½(u,v)µÄ»¡
+      if(a[u][v] > 0) g.AddEdge(s, ID(u,v), a[u][v]); // Såˆ°(u,v)çš„å¼§
       full += a[u][v];
-      g.AddEdge(ID(u,v), ID(u), INF); // (u,v)µ½uµÄ»¡
-      g.AddEdge(ID(u,v), ID(v), INF); // (u,v)µ½vµÄ»¡
+      g.AddEdge(ID(u,v), ID(u), INF); // (u,v)åˆ°uçš„å¼§
+      g.AddEdge(ID(u,v), ID(v), INF); // (u,v)åˆ°vçš„å¼§
     }
-    if(w[u] < total) g.AddEdge(ID(u), t, total-w[u]); // uµ½TµÄ»¡
+    if(w[u] < total) g.AddEdge(ID(u), t, total-w[u]); // uåˆ°Tçš„å¼§
   }
   return g.Maxflow(s, t) == full;
 }

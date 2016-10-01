@@ -7,18 +7,18 @@ using namespace std;
 const int maxn = 100000 + 10;
 int n, r[maxn], left[maxn], right[maxn]; 
 
-// ²âÊÔp¸öÀñÎïÊÇ·ñ×ã¹»¡£
-// left[i]ÊÇµÚi¸öÈËÄÃµ½µÄ¡°×ó±ßµÄÀñÎï¡±×ÜÊı£¬rightÀàËÆ
+// æµ‹è¯•pä¸ªç¤¼ç‰©æ˜¯å¦è¶³å¤Ÿã€‚
+// left[i]æ˜¯ç¬¬iä¸ªäººæ‹¿åˆ°çš„â€œå·¦è¾¹çš„ç¤¼ç‰©â€æ€»æ•°ï¼Œrightç±»ä¼¼
 bool test(int p) {
   int x = r[1], y = p - r[1];
   left[1] = x; right[1] = 0;
   for(int i = 2; i <= n; i++) {
     if(i % 2 == 1) {
-      right[i] = min(y - right[i-1], r[i]); // ¾¡Á¿ÄÃÓÒ±ßµÄÀñÎï
+      right[i] = min(y - right[i-1], r[i]); // å°½é‡æ‹¿å³è¾¹çš„ç¤¼ç‰©
       left[i] = r[i] - right[i];
     }
     else {
-      left[i] = min(x - left[i-1], r[i]); // ¾¡Á¿ÄÃ×ó±ßµÄÀñÎï
+      left[i] = min(x - left[i-1], r[i]); // å°½é‡æ‹¿å·¦è¾¹çš„ç¤¼ç‰©
       right[i] = r[i] - left[i];
     }
   }
@@ -28,7 +28,7 @@ bool test(int p) {
 int main() {
   while(scanf("%d", &n) == 1 && n) {
     for(int i = 1; i <= n; i++) scanf("%d", &r[i]);
-    if(n == 1) { printf("%d\n", r[1]); continue; } // ÌØÅĞn=1
+    if(n == 1) { printf("%d\n", r[1]); continue; } // ç‰¹åˆ¤n=1
     r[n+1] = r[1];
 
     int L = 0, R = 0;

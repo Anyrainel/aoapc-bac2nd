@@ -3,17 +3,17 @@
 #include<cstdio>
 #include<cmath>
 
-// sqrt(a^2+x^2)µÄÔ­º¯Êı
+// sqrt(a^2+x^2)çš„åŸå‡½æ•°
 double F(double a, double x) {
   double a2 = a*a, x2 = x*x;
   return (x*sqrt(a2+x2)+a2*log(fabs(x+sqrt(a2+x2))))/2;
 }
 
-// ¿í¶ÈÎªw£¬¸ß¶ÈÎªhµÄÅ×ÎïÏß³¤¶È£¬Ò²¾ÍÊÇÇ°ÎÄÖĞµÄp(w,h)
+// å®½åº¦ä¸ºwï¼Œé«˜åº¦ä¸ºhçš„æŠ›ç‰©çº¿é•¿åº¦ï¼Œä¹Ÿå°±æ˜¯å‰æ–‡ä¸­çš„p(w,h)
 double parabola_arc_length(double w, double h) {
   double a = 4.0*h/(w*w);
   double b = 1.0/(2*a);
-  return (F(b, w/2) - F(b, 0))*4*a; // Èç¹û²»ÓÃ¶Ô³ÆĞÔ£¬¾ÍÊÇ(F(b,w/2)-F(b,-w/2))*2*a
+  return (F(b, w/2) - F(b, 0))*4*a; // å¦‚æœä¸ç”¨å¯¹ç§°æ€§ï¼Œå°±æ˜¯(F(b,w/2)-F(b,-w/2))*2*a
 }
 
 int main() {
@@ -22,11 +22,11 @@ int main() {
   for(int kase = 1; kase <= T; kase++) {
     int D, H, B, L;
     scanf("%d%d%d%d", &D, &H, &B, &L);
-    int n = (B+D-1)/D; // ¼ä¸ôÊı
+    int n = (B+D-1)/D; // é—´éš”æ•°
     double D1 = (double)B / n;
     double L1 = (double)L / n;
     double x = 0, y = H;
-    while(y-x > 1e-5) { // ¶ş·Ö·¨Çó½â¸ß¶È
+    while(y-x > 1e-5) { // äºŒåˆ†æ³•æ±‚è§£é«˜åº¦
       double m = x + (y-x)/2;
       if(parabola_arc_length(D1, m) < L1) x = m; else y = m;
     }

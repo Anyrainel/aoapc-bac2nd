@@ -55,25 +55,25 @@ struct Face {
   Vector3 Normal(const vector<Point3>& P) const {
     return Cross(P[v[1]]-P[v[0]], P[v[2]]-P[v[0]]);
   }
-  // fÊÇ·ñÄÜ¿´¼ûP[i]
+  // fæ˜¯å¦èƒ½çœ‹è§P[i]
   int CanSee(const vector<Point3>& P, int i) const {
     return Dot(P[i]-P[v[0]], Normal(P)) > 0;
   }
 };
 
-// ÔöÁ¿·¨ÇóÈıÎ¬Í¹°ü
-// ×¢Òâ£ºÃ»ÓĞ¿¼ÂÇ¸÷ÖÖÌØÊâÇé¿ö£¨ÈçËÄµã¹²Ãæ£©¡£Êµ¼ùÖĞ£¬ÇëÔÚµ÷ÓÃÇ°¶ÔÊäÈëµã½øĞĞÎ¢Ğ¡ÈÅ¶¯
+// å¢é‡æ³•æ±‚ä¸‰ç»´å‡¸åŒ…
+// æ³¨æ„ï¼šæ²¡æœ‰è€ƒè™‘å„ç§ç‰¹æ®Šæƒ…å†µï¼ˆå¦‚å››ç‚¹å…±é¢ï¼‰ã€‚å®è·µä¸­ï¼Œè¯·åœ¨è°ƒç”¨å‰å¯¹è¾“å…¥ç‚¹è¿›è¡Œå¾®å°æ‰°åŠ¨
 vector<Face> CH3D(const vector<Point3>& P) {
   int n = P.size();
   vector<vector<int> > vis(n);
   for(int i = 0; i < n; i++) vis[i].resize(n);
 
   vector<Face> cur;  
-  cur.push_back(Face(0, 1, 2)); // ÓÉÓÚÒÑ¾­½øĞĞÈÅ¶¯£¬Ç°Èı¸öµã²»¹²Ïß
+  cur.push_back(Face(0, 1, 2)); // ç”±äºå·²ç»è¿›è¡Œæ‰°åŠ¨ï¼Œå‰ä¸‰ä¸ªç‚¹ä¸å…±çº¿
   cur.push_back(Face(2, 1, 0));
   for(int i = 3; i < n; i++) {
     vector<Face> next;
-    // ¼ÆËãÃ¿Ìõ±ßµÄ¡°×óÃæ¡±µÄ¿É¼ûĞÔ
+    // è®¡ç®—æ¯æ¡è¾¹çš„â€œå·¦é¢â€çš„å¯è§æ€§
     for(int j = 0; j < cur.size(); j++) {
       Face& f = cur[j];
       int res = f.CanSee(P, i);
@@ -83,7 +83,7 @@ vector<Face> CH3D(const vector<Point3>& P) {
     for(int j = 0; j < cur.size(); j++)
       for(int k = 0; k < 3; k++) {
         int a = cur[j].v[k], b = cur[j].v[(k+1)%3];
-        if(vis[a][b] != vis[b][a] && vis[a][b]) // (a,b)ÊÇ·Ö½çÏß£¬×ó±ß¶ÔP[i]¿É¼û
+        if(vis[a][b] != vis[b][a] && vis[a][b]) // (a,b)æ˜¯åˆ†ç•Œçº¿ï¼Œå·¦è¾¹å¯¹P[i]å¯è§
           next.push_back(Face(a, b, i));
       }
     cur = next;

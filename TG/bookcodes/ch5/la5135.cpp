@@ -14,7 +14,7 @@ typedef long long LL;
 struct Edge { int u, v; };
 
 const int maxn = 100000 + 10;
-int pre[maxn], iscut[maxn], bccno[maxn], dfs_clock, bcc_cnt; // ∏Ó∂•µƒbccnoŒﬁ“‚“Â
+int pre[maxn], iscut[maxn], bccno[maxn], dfs_clock, bcc_cnt; // Ââ≤È°∂ÁöÑbccnoÊó†ÊÑè‰πâ
 vector<int> G[maxn], bcc[maxn];
 
 stack<Edge> S;
@@ -25,11 +25,11 @@ int dfs(int u, int fa) {
   for(int i = 0; i < G[u].size(); i++) {
     int v = G[u][i];
     Edge e = (Edge){u, v};
-    if(!pre[v]) { // √ª”–∑√Œ π˝v
+    if(!pre[v]) { // Ê≤°ÊúâËÆøÈóÆËøáv
       S.push(e);
       child++;
       int lowv = dfs(v, u);
-      lowu = min(lowu, lowv); // ”√∫Û¥˙µƒlow∫Ø ˝∏¸–¬◊‘º∫
+      lowu = min(lowu, lowv); // Áî®Âêé‰ª£ÁöÑlowÂáΩÊï∞Êõ¥Êñ∞Ëá™Â∑±
       if(lowv >= pre[u]) {
         iscut[u] = true;
         bcc_cnt++; bcc[bcc_cnt].clear();
@@ -43,7 +43,7 @@ int dfs(int u, int fa) {
     }
     else if(pre[v] < pre[u] && v != fa) {
       S.push(e);
-      lowu = min(lowu, pre[v]); // ”√∑¥œÚ±ﬂ∏¸–¬◊‘º∫
+      lowu = min(lowu, pre[v]); // Áî®ÂèçÂêëËæπÊõ¥Êñ∞Ëá™Â∑±
     }
   }
   if(fa < 0 && child == 1) iscut[u] = 0;
@@ -76,7 +76,7 @@ int main() {
       u = id.get(u); v = id.get(v);
       G[u].push_back(v); G[v].push_back(u);
     }
-    dfs(0, -1); // µ˜”√Ω· ¯∫ÛS±£÷§Œ™ø’£¨À˘“‘≤ª”√«Âø’
+    dfs(0, -1); // Ë∞ÉÁî®ÁªìÊùüÂêéS‰øùËØÅ‰∏∫Á©∫ÔºåÊâÄ‰ª•‰∏çÁî®Ê∏ÖÁ©∫
 
     LL ans1 = 0, ans2 = 1;
     for(int i = 1; i <= bcc_cnt; i++) {

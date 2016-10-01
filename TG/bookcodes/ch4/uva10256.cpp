@@ -48,11 +48,11 @@ bool OnSegment(const Point& p, const Point& a1, const Point& a2) {
   return dcmp(Cross(a1-p, a2-p)) == 0 && dcmp(Dot(a1-p, a2-p)) < 0;
 }
 
-// µã¼¯Í¹°ü
-// Èç¹û²»Ï£ÍûÔÚÍ¹°üµÄ±ßÉÏÓĞÊäÈëµã£¬°ÑÁ½¸ö <= ¸Ä³É <
-// Èç¹û²»½éÒâµã¼¯±»ĞŞ¸Ä£¬¿ÉÒÔ¸Ä³É´«µİÒıÓÃ
+// ç‚¹é›†å‡¸åŒ…
+// å¦‚æœä¸å¸Œæœ›åœ¨å‡¸åŒ…çš„è¾¹ä¸Šæœ‰è¾“å…¥ç‚¹ï¼ŒæŠŠä¸¤ä¸ª <= æ”¹æˆ <
+// å¦‚æœä¸ä»‹æ„ç‚¹é›†è¢«ä¿®æ”¹ï¼Œå¯ä»¥æ”¹æˆä¼ é€’å¼•ç”¨
 vector<Point> ConvexHull(vector<Point> p) {
-  // Ô¤´¦Àí£¬É¾³ıÖØ¸´µã
+  // é¢„å¤„ç†ï¼Œåˆ é™¤é‡å¤ç‚¹
   sort(p.begin(), p.end());
   p.erase(unique(p.begin(), p.end()), p.end());
 
@@ -79,24 +79,24 @@ int IsPointInPolygon(const Point& p, const vector<Point>& poly){
   for(int i = 0; i < n; i++){
     const Point& p1 = poly[i];
     const Point& p2 = poly[(i+1)%n];
-    if(p1 == p || p2 == p || OnSegment(p, p1, p2)) return -1; // ÔÚ±ß½çÉÏ
+    if(p1 == p || p2 == p || OnSegment(p, p1, p2)) return -1; // åœ¨è¾¹ç•Œä¸Š
     int k = dcmp(Cross(p2-p1, p-p1));
     int d1 = dcmp(p1.y - p.y);
     int d2 = dcmp(p2.y - p.y);
     if(k > 0 && d1 <= 0 && d2 > 0) wn++;
     if(k < 0 && d2 <= 0 && d1 > 0) wn--;
   }
-  if (wn != 0) return 1; // ÄÚ²¿
-  return 0; // Íâ²¿
+  if (wn != 0) return 1; // å†…éƒ¨
+  return 0; // å¤–éƒ¨
 }
 
 bool ConvexPolygonDisjoint(const vector<Point> ch1, const vector<Point> ch2) {
   int c1 = ch1.size();
   int c2 = ch2.size();
   for(int i = 0; i < c1; i++)
-    if(IsPointInPolygon(ch1[i], ch2) != 0) return false; // ÄÚ²¿»ò±ß½çÉÏ
+    if(IsPointInPolygon(ch1[i], ch2) != 0) return false; // å†…éƒ¨æˆ–è¾¹ç•Œä¸Š
   for(int i = 0; i < c2; i++)
-    if(IsPointInPolygon(ch2[i], ch1) != 0) return false; // ÄÚ²¿»ò±ß½çÉÏ
+    if(IsPointInPolygon(ch2[i], ch1) != 0) return false; // å†…éƒ¨æˆ–è¾¹ç•Œä¸Š
   for(int i = 0; i < c1; i++)
     for(int j = 0; j < c2; j++)
       if(SegmentProperIntersection(ch1[i], ch1[(i+1)%c1], ch2[j], ch2[(j+1)%c2])) return false;

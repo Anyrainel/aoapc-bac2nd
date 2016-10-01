@@ -1,12 +1,12 @@
-// UVa11722 Joining with Friend £¨ÏŞÓÚÆª·ù£¬ÊéÉÏÎŞ´Ë´úÂë£©
+// UVa11722 Joining with Friend ï¼ˆé™äºç¯‡å¹…ï¼Œä¹¦ä¸Šæ— æ­¤ä»£ç ï¼‰
 // Rujia Liu
 #include<cstdio>
 double t1, t2, s1, s2, width, height;
 
-// ÇóÖ±Ïßy=x+wÉÏ·½±»¾ØĞÎ(s1,t1)-(s2,t2)ÇĞ¸îµÃµ½µÄÃæ»ı
+// æ±‚ç›´çº¿y=x+wä¸Šæ–¹è¢«çŸ©å½¢(s1,t1)-(s2,t2)åˆ‡å‰²å¾—åˆ°çš„é¢ç§¯
 double get_area(double w) {
-  double ly = t1+w, ry = t2+w; // ×óÓÒ½»µãµÄy×ø±ê
-  double tx = s2-w, bx = s1-w; // ÉÏÏÂ½»µãµÄx×ø±ê
+  double ly = t1+w, ry = t2+w; // å·¦å³äº¤ç‚¹çš„yåæ ‡
+  double tx = s2-w, bx = s1-w; // ä¸Šä¸‹äº¤ç‚¹çš„xåæ ‡
   bool on_left   = s1 <= ly && ly <= s2;
   bool on_right  = s1 <= ry && ry <= s2;
   bool on_top    = t1 <= tx && tx <= t2;

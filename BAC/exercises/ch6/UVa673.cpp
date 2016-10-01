@@ -1,8 +1,8 @@
 // UVa673 Parentheses Balance
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÒ»¸ö°üº¬()ºÍ[]µÄÀ¨ºÅÐòÁÐ£¬ÅÐ¶ÏÊÇ·ñºÏ·¨¡£
-// ¾ßÌåµÝ¹é¶¨ÒåÈçÏÂ£º1.¿Õ´®ºÏ·¨£»2.Èç¹ûAºÍB¶¼ºÏ·¨£¬ÔòABºÏ·¨£»3.Èç¹ûAºÏ·¨Ôò(A)ºÍ[A]¶¼ºÏ·¨¡£
-// Ëã·¨£ºÓÃÒ»¸öÕ»¡£×¢ÒâÊäÈë¿ÉÄÜÓÐ¿Õ´®
+// é¢˜æ„ï¼šè¾“å…¥ä¸€ä¸ªåŒ…å«()å’Œ[]çš„æ‹¬å·åºåˆ—ï¼Œåˆ¤æ–­æ˜¯å¦åˆæ³•ã€‚
+// å…·ä½“é€’å½’å®šä¹‰å¦‚ä¸‹ï¼š1.ç©ºä¸²åˆæ³•ï¼›2.å¦‚æžœAå’ŒBéƒ½åˆæ³•ï¼Œåˆ™ABåˆæ³•ï¼›3.å¦‚æžœAåˆæ³•åˆ™(A)å’Œ[A]éƒ½åˆæ³•ã€‚
+// ç®—æ³•ï¼šç”¨ä¸€ä¸ªæ ˆã€‚æ³¨æ„è¾“å…¥å¯èƒ½æœ‰ç©ºä¸²
 #include<iostream>
 #include<stack>
 #include<string>
@@ -28,7 +28,7 @@ int main() {
   int T;
   string s;
   cin >> T;
-  getline(cin, s); // ³ÔµôTºóÃæµÄ»Ø³µ
+  getline(cin, s); // åƒæŽ‰TåŽé¢çš„å›žè½¦
   while(T--) {
     getline(cin, s);
     if(judge(s)) cout << "Yes\n"; else cout << "No\n";

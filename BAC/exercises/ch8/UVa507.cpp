@@ -1,7 +1,7 @@
 // UVa507 Jill Rides Again
 // Rujia Liu
-// ���⣺��������n����1~n����֪����������֮���Ȩֵ����������(i,j)��ʹ��֮���Ȩֵ֮�;����Ĵ�����ж�⣬��j-i������������ж�⣬��i����С��
-// �㷨����׼�㷨��
+// 题意：数轴上有n个点1~n，已知相邻两个点之间的权值，找两个点(i,j)，使得之间的权值之和尽量的大。如果有多解，让j-i尽量大。如果还有多解，让i尽量小。
+// 算法：标准算法。
 #include<cstdio>
 int besti, bestj, ans;
 

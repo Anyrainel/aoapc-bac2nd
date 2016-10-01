@@ -1,4 +1,4 @@
-// LA3661 Animal Run£ºÁíÒ»ÖÖ½¨Ä£·½·¨£¨ÊéÉÏÊ¹ÓÃµÄ·½·¨£©£¬Í¼µÄ½áµã½Ï¶à£¬ËÙ¶È½ÏÂı
+// LA3661 Animal Runï¼šå¦ä¸€ç§å»ºæ¨¡æ–¹æ³•ï¼ˆä¹¦ä¸Šä½¿ç”¨çš„æ–¹æ³•ï¼‰ï¼Œå›¾çš„ç»“ç‚¹è¾ƒå¤šï¼Œé€Ÿåº¦è¾ƒæ…¢
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
@@ -24,9 +24,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -63,7 +63,7 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 #define REP(i,n) for(int i = 0; i < (n); ++i)
 
 int n, m;
@@ -88,9 +88,9 @@ void AddTriangleEdges(int* s1, int* s2, int* s3) {
 int main() {
   int kase = 0;
   while(scanf("%d%d", &n, &m) == 2 && n && m) {
-    REP(i,n) REP(j,m-1) scanf("%d", &cost[i][j][0]); // ºáÏß
-    REP(i,n-1) REP(j,m) scanf("%d", &cost[i][j][1]); // ÊúÏß
-    REP(i,n-1) REP(j,m-1) scanf("%d", &cost[i][j][2]); // Ğ±Ïß
+    REP(i,n) REP(j,m-1) scanf("%d", &cost[i][j][0]); // æ¨ªçº¿
+    REP(i,n-1) REP(j,m) scanf("%d", &cost[i][j][1]); // ç«–çº¿
+    REP(i,n-1) REP(j,m-1) scanf("%d", &cost[i][j][2]); // æ–œçº¿
     solver.init(3*n*m+1);
     REP(i,n-1) REP(j,m-1) {
       int top[]    = {i, j, 0};
@@ -101,15 +101,15 @@ int main() {
       AddTriangleEdges(top, slash, right);
       AddTriangleEdges(left, slash, bottom);
     }
-    // ´ÓÆğµãµ½×ó/ÏÂ±ß½çµÄ»¡
-    REP(i, n-1) solver.AddEdge(0, ID(i, 0, 1), cost[i][0][1]); // ×ó
-    REP(i, m-1) solver.AddEdge(0, ID(n-1, i, 0), cost[n-1][i][0]); // ÏÂ
+    // ä»èµ·ç‚¹åˆ°å·¦/ä¸‹è¾¹ç•Œçš„å¼§
+    REP(i, n-1) solver.AddEdge(0, ID(i, 0, 1), cost[i][0][1]); // å·¦
+    REP(i, m-1) solver.AddEdge(0, ID(n-1, i, 0), cost[n-1][i][0]); // ä¸‹
     solver.dijkstra(0);
 
-    // ÕÒ³öÓÒ/ÉÏ±ß½çµÄ×îÉÙdÖµ
+    // æ‰¾å‡ºå³/ä¸Šè¾¹ç•Œçš„æœ€å°‘då€¼
     int ans = 2000000000;
-    REP(i, n-1) ans = min(ans, solver.d[ID(i, m-1, 1)]); // ÓÒ
-    REP(i, m-1) ans = min(ans, solver.d[ID(0, i, 0)]); // ÉÏ
+    REP(i, n-1) ans = min(ans, solver.d[ID(i, m-1, 1)]); // å³
+    REP(i, m-1) ans = min(ans, solver.d[ID(0, i, 0)]); // ä¸Š
     printf("Case %d: Minimum = %d\n", ++kase, ans);
   }
   return 0;

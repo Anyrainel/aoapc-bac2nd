@@ -32,7 +32,7 @@ int mul_mod(int a, int b) {
   return mul_mod(a, b, MOD);
 }
 
-// fac[i] = (i!)%MOD, ifac[i]Îªfac[i]ÔÚÄ£MODÏÂµÄÄæ
+// fac[i] = (i!)%MOD, ifac[i]ä¸ºfac[i]åœ¨æ¨¡MODä¸‹çš„é€†
 void preprocess() {
   fac[0] = ifac[0] = 1;
   for(int i = 1; i < maxn; i++) {
@@ -41,15 +41,15 @@ void preprocess() {
   }
 }
 
-// ×éºÏÊıC(n,m)³ıÒÔMODµÄÓàÊı
+// ç»„åˆæ•°C(n,m)é™¤ä»¥MODçš„ä½™æ•°
 int C(int n, int m) {
   return mul_mod(mul_mod(fac[n], ifac[m]), ifac[n-m]);
 }
 
-// Í³¼ÆÒÔuÎª¸ùµÄ×ÓÊ÷ÓĞ¶àÉÙÖÖÅÅÁĞ¡£sizeÎª¸Ã×ÓÊ÷µÄ½áµã×ÜÊı
+// ç»Ÿè®¡ä»¥uä¸ºæ ¹çš„å­æ ‘æœ‰å¤šå°‘ç§æ’åˆ—ã€‚sizeä¸ºè¯¥å­æ ‘çš„ç»“ç‚¹æ€»æ•°
 int count(int u, int& size) {
   int d = sons[u].size();
-  vector<int> sonsize; // ¸÷×ÓÊ÷µÄ´óĞ¡
+  vector<int> sonsize; // å„å­æ ‘çš„å¤§å°
   size = 1;
   int ans = 1;
   for(int i = 0; i < d; i++) {
@@ -58,7 +58,7 @@ int count(int u, int& size) {
     size += sz;
     sonsize.push_back(sz);
   }
-  int sz = size-1; // ·Ç¸ù½áµãµÄ¸öÊı
+  int sz = size-1; // éæ ¹ç»“ç‚¹çš„ä¸ªæ•°
   for(int i = 0; i < d; i++) {
     ans = mul_mod(ans, C(sz, sonsize[i]));
     sz -= sonsize[i];
@@ -81,7 +81,7 @@ int main() {
       fa[a] = b;
       sons[b].push_back(a);
     }
-    // Ã»ÓĞ¸¸Ç×µÄ½áµã³ÆÎªĞéÄâ½áµãµÄ¶ù×Ó
+    // æ²¡æœ‰çˆ¶äº²çš„ç»“ç‚¹ç§°ä¸ºè™šæ‹Ÿç»“ç‚¹çš„å„¿å­
     for(int i = 1; i <= n; i++)
       if(!fa[i]) sons[0].push_back(i);
     int size;

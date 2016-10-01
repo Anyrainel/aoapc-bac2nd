@@ -9,17 +9,17 @@ using namespace std;
 const int INF = 1000000000;
 const int maxn = 100 + 10;
 
-// ¹Ì¶¨¸ùµÄ×îĞ¡Ê÷ĞÍÍ¼£¬ÁÚ½Ó¾ØÕóĞ´·¨
+// å›ºå®šæ ¹çš„æœ€å°æ ‘å‹å›¾ï¼Œé‚»æ¥çŸ©é˜µå†™æ³•
 struct MDST {
   int n;
-  int w[maxn][maxn]; // ±ßÈ¨
-  int vis[maxn];     // ·ÃÎÊ±ê¼Ç£¬½öÓÃÀ´ÅĞ¶ÏÎŞ½â
-  int ans;           // ¼ÆËã´ğ°¸
-  int removed[maxn]; // Ã¿¸öµãÊÇ·ñ±»É¾³ı
-  int cid[maxn];     // ËùÔÚÈ¦±àºÅ
-  int pre[maxn];     // ×îĞ¡Èë±ßµÄÆğµã
-  int iw[maxn];      // ×îĞ¡Èë±ßµÄÈ¨Öµ
-  int max_cid;       // ×î´óÈ¦±àºÅ
+  int w[maxn][maxn]; // è¾¹æƒ
+  int vis[maxn];     // è®¿é—®æ ‡è®°ï¼Œä»…ç”¨æ¥åˆ¤æ–­æ— è§£
+  int ans;           // è®¡ç®—ç­”æ¡ˆ
+  int removed[maxn]; // æ¯ä¸ªç‚¹æ˜¯å¦è¢«åˆ é™¤
+  int cid[maxn];     // æ‰€åœ¨åœˆç¼–å·
+  int pre[maxn];     // æœ€å°å…¥è¾¹çš„èµ·ç‚¹
+  int iw[maxn];      // æœ€å°å…¥è¾¹çš„æƒå€¼
+  int max_cid;       // æœ€å¤§åœˆç¼–å·
 
   void init(int n) {
     this->n = n;
@@ -28,10 +28,10 @@ struct MDST {
   }
 
   void AddEdge(int u, int v, int cost) {
-    w[u][v] = min(w[u][v], cost); // ÖØ±ßÈ¡È¨×îĞ¡µÄ
+    w[u][v] = min(w[u][v], cost); // é‡è¾¹å–æƒæœ€å°çš„
   }
 
-  // ´Ós³ö·¢ÄÜµ½´ï¶àÉÙ¸ö½áµã
+  // ä»så‡ºå‘èƒ½åˆ°è¾¾å¤šå°‘ä¸ªç»“ç‚¹
   int dfs(int s) {
     vis[s] = 1;
     int ans = 1;
@@ -40,7 +40,7 @@ struct MDST {
     return ans;
   }
 
-  // ´Óu³ö·¢ÑØ×ÅpreÖ¸ÕëÕÒÈ¦
+  // ä»uå‡ºå‘æ²¿ç€preæŒ‡é’ˆæ‰¾åœˆ
   bool cycle(int u) {
     max_cid++;
     int v = u;
@@ -48,7 +48,7 @@ struct MDST {
     return v == u;
   }
 
-  // ¼ÆËãuµÄ×îĞ¡Èë»¡£¬Èë»¡Æğµã²»µÃÔÚÈ¦cÖĞ
+  // è®¡ç®—uçš„æœ€å°å…¥å¼§ï¼Œå…¥å¼§èµ·ç‚¹ä¸å¾—åœ¨åœˆcä¸­
   void update(int u) {
     iw[u] = INF;
     for(int i = 0; i < n; i++)
@@ -58,7 +58,7 @@ struct MDST {
       }
   }
 
-  // ¸ù½áµãÎªs£¬Èç¹ûÊ§°ÜÔò·µ»Øfalse
+  // æ ¹ç»“ç‚¹ä¸ºsï¼Œå¦‚æœå¤±è´¥åˆ™è¿”å›false
   bool solve(int s) {    
     memset(vis, 0, sizeof(vis));
     if(dfs(s) != n) return false;
@@ -66,19 +66,19 @@ struct MDST {
     memset(removed, 0, sizeof(removed));
     memset(cid, 0, sizeof(cid));
     for(int u = 0; u < n; u++) update(u);
-    pre[s] = s; iw[s] = 0; // ¸ù½áµãÌØÊâ´¦Àí
+    pre[s] = s; iw[s] = 0; // æ ¹ç»“ç‚¹ç‰¹æ®Šå¤„ç†
     ans = max_cid = 0;
     for(;;) {
       bool have_cycle = false;
       for(int u = 0; u < n; u++) if(u != s && !removed[u] && cycle(u)){
         have_cycle = true;
-        // ÒÔÏÂ´úÂëËõÈ¦£¬È¦ÉÏ³ıÁËuÖ®ÍâµÄ½áµã¾ùÉ¾³ı
+        // ä»¥ä¸‹ä»£ç ç¼©åœˆï¼Œåœˆä¸Šé™¤äº†uä¹‹å¤–çš„ç»“ç‚¹å‡åˆ é™¤
         int v = u;
         do {
           if(v != u) removed[v] = 1;
           ans += iw[v];
-          // ¶ÔÓÚÈ¦Íâµãi£¬°Ñ±ßi->v¸Ä³Éi->u£¨²¢µ÷ÕûÈ¨Öµ£©£»v->i¸ÄÎªu->i
-          // ×¢ÒâÈ¦ÉÏ¿ÉÄÜ»¹ÓĞÒ»¸öv'Ê¹µÃi->v'»òÕßv'->i´æÔÚ£¬Òò´ËÖ»±£ÁôÈ¨Öµ×îĞ¡µÄi->uºÍu->i
+          // å¯¹äºåœˆå¤–ç‚¹iï¼ŒæŠŠè¾¹i->væ”¹æˆi->uï¼ˆå¹¶è°ƒæ•´æƒå€¼ï¼‰ï¼›v->iæ”¹ä¸ºu->i
+          // æ³¨æ„åœˆä¸Šå¯èƒ½è¿˜æœ‰ä¸€ä¸ªv'ä½¿å¾—i->v'æˆ–è€…v'->iå­˜åœ¨ï¼Œå› æ­¤åªä¿ç•™æƒå€¼æœ€å°çš„i->uå’Œu->i
           for(int i = 0; i < n; i++) if(cid[i] != cid[u] && !removed[i]) {
             if(w[i][v] < INF) w[i][u] = min(w[i][u], w[i][v]-iw[v]);
             w[u][i] = min(w[u][i], w[v][i]);
@@ -97,7 +97,7 @@ struct MDST {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 MDST solver;
 
 struct Edge {
@@ -111,7 +111,7 @@ const int maxm = 10000 + 10;
 int n, m, C;
 Edge edges[maxm];
 
-// È¡bÇ°cnt´óµÄ±ß¹¹ÔìÍøÂç£¬ÅĞ¶Ï×îĞ¡Ê÷ĞÍÍ¼µÄ±ßÈ¨ºÍÊÇ·ñĞ¡ÓÚC
+// å–bå‰cntå¤§çš„è¾¹æ„é€ ç½‘ç»œï¼Œåˆ¤æ–­æœ€å°æ ‘å‹å›¾çš„è¾¹æƒå’Œæ˜¯å¦å°äºC
 bool check(int cnt) {
   solver.init(n);
   for(int i = 0; i < cnt; i++)

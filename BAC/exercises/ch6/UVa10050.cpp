@@ -1,6 +1,6 @@
 // UVa10050 Hartals
 // Rujia Liu
-// ÌâÒâ£ºÊäÈënºÍp¸öÕûÊýH[i]£¬ÆäÖÐH[i]±íÊ¾Ã¿H[i]Ìì»áÓÐÒ»´Î»î¶¯£¨µ«ÖÜÎåÖÜÁù³ýÍâ£©¡£Êä³öÇ°nÌìÖÐÓÐ¶àÉÙÌìÓÐ»î¶¯¡£Ä£Äâ´ÓÖÜÈÕ¿ªÊ¼¡£
+// é¢˜æ„ï¼šè¾“å…¥nå’Œpä¸ªæ•´æ•°H[i]ï¼Œå…¶ä¸­H[i]è¡¨ç¤ºæ¯H[i]å¤©ä¼šæœ‰ä¸€æ¬¡æ´»åŠ¨ï¼ˆä½†å‘¨äº”å‘¨å…­é™¤å¤–ï¼‰ã€‚è¾“å‡ºå‰nå¤©ä¸­æœ‰å¤šå°‘å¤©æœ‰æ´»åŠ¨ã€‚æ¨¡æ‹Ÿä»Žå‘¨æ—¥å¼€å§‹ã€‚
 #include<cstdio>
 #include<cstring>
 const int maxn = 4000;

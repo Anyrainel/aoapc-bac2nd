@@ -13,16 +13,16 @@ int check(int s) {
   memset(B, 0, sizeof(B));
   for(int c = 0; c < n; c++) {
     if(s & (1<<c)) B[0][c] = 1;
-    else if(A[0][c] == 1) return INF; // 1²»ÄÜ±ä³É0
+    else if(A[0][c] == 1) return INF; // 1ä¸èƒ½å˜æˆ0
   }
   for(int r = 1; r < n; r++)
     for(int c = 0; c < n; c++) {
-      int sum = 0; // ÔªËØB[r-1][c]µÄÉÏ¡¢×ó¡¢ÓÒ3¸öÔªËØÖ®ºÍ
+      int sum = 0; // å…ƒç´ B[r-1][c]çš„ä¸Šã€å·¦ã€å³3ä¸ªå…ƒç´ ä¹‹å’Œ
       if(r > 1) sum += B[r-2][c];
       if(c > 0) sum += B[r-1][c-1];
       if(c < n-1) sum += B[r-1][c+1];
       B[r][c] = sum % 2;
-      if(A[r][c] == 1 && B[r][c] == 0) return INF; // 1²»ÄÜ±ä³É0
+      if(A[r][c] == 1 && B[r][c] == 0) return INF; // 1ä¸èƒ½å˜æˆ0
     }
   int cnt = 0;
   for(int r = 0; r < n; r++)

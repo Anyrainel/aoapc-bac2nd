@@ -1,7 +1,7 @@
 // UVa10192 Vacation
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÁ½¸ö×Ö·û´®£¬Çó×î³¤¹«¹²×ÓĞòÁĞ³¤¶È
-// Ëã·¨£ºLCS
+// é¢˜æ„ï¼šè¾“å…¥ä¸¤ä¸ªå­—ç¬¦ä¸²ï¼Œæ±‚æœ€é•¿å…¬å…±å­åºåˆ—é•¿åº¦
+// ç®—æ³•ï¼šLCS
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -27,7 +27,7 @@ int main() {
   while(fgets(A, maxn, stdin) != NULL) {
     if(A[0] == '#') break;
     fgets(B, maxn, stdin);
-    printf("Case #%d: you can visit at most %d cities.\n", ++kase, LCS(A, strlen(A)-1, B, strlen(B)-1)); // ¼õ1ÊÇÒòÎªfgets»á¶Áµ½»Ø³µ
+    printf("Case #%d: you can visit at most %d cities.\n", ++kase, LCS(A, strlen(A)-1, B, strlen(B)-1)); // å‡1æ˜¯å› ä¸ºfgetsä¼šè¯»åˆ°å›è½¦
   }
   return 0;
 }

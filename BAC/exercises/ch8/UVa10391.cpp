@@ -1,7 +1,7 @@
 // UVa10391 Compound Words
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸öµ¥´Ê¼¯ºÏS£¬ÆäÖÐÓÐ¶àÉÙ¸öµ¥´Êw¿ÉÒÔÐ´³Éa+b£¬ÆäÖÐa, b¶¼ÊÇSÀïµÄµ¥´Ê£¿ÊäÈë°´×ÖµäÐòÅÅÁÐ£¬Êä³öÒ²Ó¦°´×ÖµäÐòÅÅÁÐ
-// Ëã·¨£ºÖð¸öÅÐ¶ÏÃ¿¸öµ¥´ÊÊÇ·ñÂú×ãÌõ¼þ¡£ÅÐ¶Ï·½·¨ÊÇÃ¶¾ÙaµÄ³¤¶È
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªå•è¯é›†åˆSï¼Œå…¶ä¸­æœ‰å¤šå°‘ä¸ªå•è¯wå¯ä»¥å†™æˆa+bï¼Œå…¶ä¸­a, béƒ½æ˜¯Sé‡Œçš„å•è¯ï¼Ÿè¾“å…¥æŒ‰å­—å…¸åºæŽ’åˆ—ï¼Œè¾“å‡ºä¹Ÿåº”æŒ‰å­—å…¸åºæŽ’åˆ—
+// ç®—æ³•ï¼šé€ä¸ªåˆ¤æ–­æ¯ä¸ªå•è¯æ˜¯å¦æ»¡è¶³æ¡ä»¶ã€‚åˆ¤æ–­æ–¹æ³•æ˜¯æžšä¸¾açš„é•¿åº¦
 #include<iostream>
 #include<set>
 #include<vector>

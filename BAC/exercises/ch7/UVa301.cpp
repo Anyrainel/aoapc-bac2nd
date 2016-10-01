@@ -1,8 +1,8 @@
 // UVa301 Transportation
 // Rujia Liu
-// ���⣺��һ��������n���˵Ļ𳵴�վ0����������ͣ��վ1, 2, ..., m��
-// ��t������(from, to, num)�Ķ�������ʾ��num���˴�fromվ��toվ��Ʊ��Ϊ(to-from)*num����������һЩ������ʹ�����棨������Ʊ�ۣ����
-// �㷨�����ݡ�ע�Ȿ����һ������Ч�������Լ�֦
+// 题意：有一辆能容纳n个人的火车从站0出发，依次停靠站1, 2, ..., m。
+// 有t个形如(from, to, num)的订单，表示有num个人从from站到to站，票价为(to-from)*num。接受其中一些订单，使得收益（订单总票价）最大
+// 算法：回溯。注意本题有一个简单有效的最优性剪枝
 
 #include<cstdio>
 #include<cstring>
@@ -14,7 +14,7 @@ const int maxt = 25;
 int n, m, t, ans, from[maxt], to[maxt], num[maxt], cnt[maxm];
 
 void dfs(int d, int tot) {
-  // �����Լ�֦�����ʣ�����ж��������ܻ����޷�������ǰ�ҵ������Ž⣬���֦
+  // 最优性剪枝：如果剩下所有订单都接受还是无法超过当前找到的最优解，则剪枝
   int extra = 0;
   for(int i = d; i < t; i++) extra += num[i] * (to[i] - from[i]);
   if(tot + extra <= ans) return;
@@ -25,7 +25,7 @@ void dfs(int d, int tot) {
   bool ok = true;
   for(int i = from[d]; i < to[d]; i++) {
     cnt[i] += num[d];
-    if(cnt[i] > n) ok = false; // ������
+    if(cnt[i] > n) ok = false; // 坐不下
   }
   if(ok) dfs(d+1, tot + num[d] * (to[d] - from[d]));
   for(int i = from[d]; i < to[d]; i++) {

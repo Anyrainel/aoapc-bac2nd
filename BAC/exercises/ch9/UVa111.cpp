@@ -1,7 +1,7 @@
 // UVa111 History Grading
 // Rujia Liu
-// ���⣺��ʷ��������һ����������⣬�ٶ���ȷ���¼�˳��ΪA������д����B������ߵ�LCSΪ�÷֡�������ȷ�𰸺Ϳ�������ÿ���¼�����ţ������÷֡�
-// �㷨��ע���������ÿ���¼�����ţ���LCS����Եİ�ʱ��˳����¼�����
+// 题意：历史考试中有一道年代排序题，假定正确的事件顺序为A，考生写的是B，则二者的LCS为得分。输入正确答案和考生答案中每个事件的序号，求考生得分。
+// 算法：注意输入的是每个事件的序号，而LCS是针对的按时间顺序的事件排列
 #include<iostream>
 #include<cstring>
 #include<algorithm>

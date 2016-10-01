@@ -66,19 +66,19 @@ int main() {
       G[u].push_back(v);
     }
 
-    find_scc(n); // ÕÒÇ¿Á¬Í¨·ÖÁ¿
+    find_scc(n); // æ‰¾å¼ºè¿é€šåˆ†é‡
 
     memset(TG, 0, sizeof(TG));
     memset(size, 0, sizeof(size));
     for(int i = 0; i < n; i++) {
-      size[sccno[i]]++; // ÀÛ¼ÓÇ¿Á¬Í¨·ÖÁ¿´óĞ¡£¨½áµãÊı£©
+      size[sccno[i]]++; // ç´¯åŠ å¼ºè¿é€šåˆ†é‡å¤§å°ï¼ˆç»“ç‚¹æ•°ï¼‰
       for(int j = 0; j < G[i].size(); j++)
-        TG[sccno[i]][sccno[G[i][j]]] = 1; // ¹¹ÔìSCCÍ¼
+        TG[sccno[i]][sccno[G[i][j]]] = 1; // æ„é€ SCCå›¾
     }
 
     int ans = 0;
-    memset(d, -1, sizeof(d)); // ³õÊ¼»¯¶¯Ì¬¹æ»®¼ÇÒä»¯Êı×é
-    for(int i = 1; i <= scc_cnt; i++) // ×¢Òâ£¬SCC±àºÅÎª1~scc_cnt
+    memset(d, -1, sizeof(d)); // åˆå§‹åŒ–åŠ¨æ€è§„åˆ’è®°å¿†åŒ–æ•°ç»„
+    for(int i = 1; i <= scc_cnt; i++) // æ³¨æ„ï¼ŒSCCç¼–å·ä¸º1~scc_cnt
       ans = max(ans, dp(i));
     printf("%d\n", ans);
   }

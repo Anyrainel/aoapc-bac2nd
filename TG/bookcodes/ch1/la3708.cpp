@@ -9,10 +9,10 @@ int main() {
   while(scanf("%d%d", &n, &m) == 2) {
     double ans = 0.0;
     for(int i = 1; i < n; i++) {
-      double pos = (double)i / n * (n+m); //¼ÆËãÃ¿¸öÐèÒªÒÆ¶¯µÄµñËÜµÄ×ø±ê
-      ans += fabs(pos - floor(pos+0.5)) / (n+m); //ÀÛ¼ÓÒÆ¶¯¾àÀë
+      double pos = (double)i / n * (n+m); //è®¡ç®—æ¯ä¸ªéœ€è¦ç§»åŠ¨çš„é›•å¡‘çš„åæ ‡
+      ans += fabs(pos - floor(pos+0.5)) / (n+m); //ç´¯åŠ ç§»åŠ¨è·ç¦»
     }
-    printf("%.4lf\n", ans*10000); //µÈ±ÈÀýÀ©´ó×ø±ê
+    printf("%.4lf\n", ans*10000); //ç­‰æ¯”ä¾‹æ‰©å¤§åæ ‡
   }
   return 0;
 }

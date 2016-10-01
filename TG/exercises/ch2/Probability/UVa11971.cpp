@@ -19,7 +19,7 @@ int main() {
   cin >> T;
   for(int kase = 1; kase <= T; kase++) {
     cin >> n >> k;
-    // �鲻�ɵĸ���Ϊ(k+1)/2^k
+    // 组不成的概率为(k+1)/2^k
     LL b = 1LL << k;
     LL a = b - k - 1;
     reduce(a, b);

@@ -7,7 +7,7 @@ using namespace std;
 
 struct Job {
   int j, b;
-  bool operator < (const Job& x) const { // ÔËËã·ûÖØÔØ¡£²»ÒªÍü¼ÇconstÐÞÊÎ·û
+  bool operator < (const Job& x) const { // è¿ç®—ç¬¦é‡è½½ã€‚ä¸è¦å¿˜è®°constä¿®é¥°ç¬¦
     return j > x.j;
   }
 };
@@ -19,12 +19,12 @@ int main() {
     for(int i = 0; i < n; i++) {
       scanf("%d%d", &b, &j); v.push_back((Job){j,b});
     }
-    sort(v.begin(), v.end()); //Ê¹ÓÃJobÀà×Ô¼ºµÄ < ÔËËã·ûÅÅÐò
+    sort(v.begin(), v.end()); //ä½¿ç”¨Jobç±»è‡ªå·±çš„ < è¿ç®—ç¬¦æŽ’åº
     int s = 0;
     int ans = 0;
     for(int i = 0; i < n; i++) {
-      s += v[i].b;  //µ±Ç°ÈÎÎñµÄ¿ªÊ¼Ö´ÐÐÊ±¼ä
-      ans = max(ans, s+v[i].j);	//¸üÐÂÈÎÎñÖ´ÐÐÍê±ÏÊ±µÄ×îÍíÊ±¼ä
+      s += v[i].b;  //å½“å‰ä»»åŠ¡çš„å¼€å§‹æ‰§è¡Œæ—¶é—´
+      ans = max(ans, s+v[i].j);	//æ›´æ–°ä»»åŠ¡æ‰§è¡Œå®Œæ¯•æ—¶çš„æœ€æ™šæ—¶é—´
     }
     printf("Case %d: %d\n", kase++, ans);
   }

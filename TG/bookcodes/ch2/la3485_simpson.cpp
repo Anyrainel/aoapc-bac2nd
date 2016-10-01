@@ -1,24 +1,24 @@
-// LA3485 Bridge: ×ÔÊÊÓ¦ĞÁÆÕÉ­°æ
+// LA3485 Bridge: è‡ªé€‚åº”è¾›æ™®æ£®ç‰ˆ
 // Rujia Liu
 #include<cstdio>
 #include<cmath>
 
-// ÕâÀïÎªÁË·½±ã£¬°ÑaÉùÃ÷³ÉÈ«¾ÖµÄ¡£
-// Õâ²»ÊÇÒ»¸öºÃµÄ±à³ÌÏ°¹ß£¬µ«ÔÚ±¾ÌâÖĞÈ´¿ÉÒÔÌá¸ß´úÂëµÄ¿É¶ÁĞÔ
+// è¿™é‡Œä¸ºäº†æ–¹ä¾¿ï¼ŒæŠŠaå£°æ˜æˆå…¨å±€çš„ã€‚
+// è¿™ä¸æ˜¯ä¸€ä¸ªå¥½çš„ç¼–ç¨‹ä¹ æƒ¯ï¼Œä½†åœ¨æœ¬é¢˜ä¸­å´å¯ä»¥æé«˜ä»£ç çš„å¯è¯»æ€§
 double a; 
 
-// simpson¹«Ê½ÓÃµ½µÄº¯Êı
+// simpsonå…¬å¼ç”¨åˆ°çš„å‡½æ•°
 double F(double x) {
   return sqrt(1 + 4*a*a*x*x);
 }
 
-// Èıµãsimpson·¨¡£ÕâÀïÒªÇóFÊÇÒ»¸öÈ«¾Öº¯Êı
+// ä¸‰ç‚¹simpsonæ³•ã€‚è¿™é‡Œè¦æ±‚Fæ˜¯ä¸€ä¸ªå…¨å±€å‡½æ•°
 double simpson(double a, double b) {
   double c = a + (b-a)/2;
   return (F(a)+4*F(c)+F(b))*(b-a)/6;
 }
 
-// ×ÔÊÊÓ¦Simpson¹«Ê½£¨µİ¹é¹ı³Ì£©¡£ÒÑÖªÕû¸öÇø¼ä[a,b]ÉÏµÄÈıµãsimpsonÖµA
+// è‡ªé€‚åº”Simpsonå…¬å¼ï¼ˆé€’å½’è¿‡ç¨‹ï¼‰ã€‚å·²çŸ¥æ•´ä¸ªåŒºé—´[a,b]ä¸Šçš„ä¸‰ç‚¹simpsonå€¼A
 double asr(double a, double b, double eps, double A) {
   double c = a + (b-a)/2;
   double L = simpson(a, c), R = simpson(c, b);
@@ -26,14 +26,14 @@ double asr(double a, double b, double eps, double A) {
   return asr(a, c, eps/2, L) + asr(c, b, eps/2, R);
 }
 
-// ×ÔÊÊÓ¦Simpson¹«Ê½£¨Ö÷¹ı³Ì£©
+// è‡ªé€‚åº”Simpsonå…¬å¼ï¼ˆä¸»è¿‡ç¨‹ï¼‰
 double asr(double a, double b, double eps) {
   return asr(a, b, eps, simpson(a, b));
 }
 
-// ÓÃ×ÔÊÊÓ¦Simpson¹«Ê½¼ÆËã¿í¶ÈÎªw£¬¸ß¶ÈÎªhµÄÅ×ÎïÏß³¤
+// ç”¨è‡ªé€‚åº”Simpsonå…¬å¼è®¡ç®—å®½åº¦ä¸ºwï¼Œé«˜åº¦ä¸ºhçš„æŠ›ç‰©çº¿é•¿
 double parabola_arc_length(double w, double h) {
-  a = 4.0*h/(w*w); // ĞŞ¸ÄÈ«¾Ö±äÁ¿a£¬´Ó¶ø¸Ä±äÈ«¾Öº¯ÊıFµÄĞĞÎª
+  a = 4.0*h/(w*w); // ä¿®æ”¹å…¨å±€å˜é‡aï¼Œä»è€Œæ”¹å˜å…¨å±€å‡½æ•°Fçš„è¡Œä¸º
   return asr(0, w/2, 1e-5)*2;
 }
 
@@ -43,11 +43,11 @@ int main() {
   for(int kase = 1; kase <= T; kase++) {
     int D, H, B, L;
     scanf("%d%d%d%d", &D, &H, &B, &L);
-    int n = (B+D-1)/D; // ¼ä¸ôÊı
+    int n = (B+D-1)/D; // é—´éš”æ•°
     double D1 = (double)B / n;
     double L1 = (double)L / n;
     double x = 0, y = H;
-    while(y-x > 1e-5) { // ¶ş·Ö·¨Çó½â¸ß¶È
+    while(y-x > 1e-5) { // äºŒåˆ†æ³•æ±‚è§£é«˜åº¦
       double m = x + (y-x)/2;
       if(parabola_arc_length(D1, m) < L1) x = m; else y = m;
     }

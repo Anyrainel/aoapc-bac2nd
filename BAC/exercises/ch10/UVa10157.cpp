@@ -1,8 +1,8 @@
 // UVa10157 Expressions
 // Rujia Liu
-// ÌâÒâ£ºÇó³¤¶ÈÎªn£¬Éî¶ÈÎªdµÄÀ¨ºÅÐòÁÐÓÐ¶àÉÙÖÖ¡£À¨ºÅÐòÁÐÖ»°üº¬×Ö·û(ºÍ×Ö·û)¡£
-// Ëã·¨£ºÉèf[i][j]ÎªÓÐi¶ÔÀ¨ºÅÊ±Éî¶È²»³¬¹ýjµÄÀ¨ºÅÐòÁÐÊýÁ¿£¬Ôòf[i][j]=sum{f[k][j-1]*f[i-k-1][j]}
-// ÕâÀïkÎª×î×ó±ßµÄ'('¼°ÆäÅä¶Ô')'ÄÚº¬£¨°üÀ¨Æä±¾Éí£©¶àÉÙ¶ÔÀ¨ºÅ¡£´ð°¸Îªf[n/2][d]-f[n/2][d-1]
+// é¢˜æ„ï¼šæ±‚é•¿åº¦ä¸ºnï¼Œæ·±åº¦ä¸ºdçš„æ‹¬å·åºåˆ—æœ‰å¤šå°‘ç§ã€‚æ‹¬å·åºåˆ—åªåŒ…å«å­—ç¬¦(å’Œå­—ç¬¦)ã€‚
+// ç®—æ³•ï¼šè®¾f[i][j]ä¸ºæœ‰iå¯¹æ‹¬å·æ—¶æ·±åº¦ä¸è¶…è¿‡jçš„æ‹¬å·åºåˆ—æ•°é‡ï¼Œåˆ™f[i][j]=sum{f[k][j-1]*f[i-k-1][j]}
+// è¿™é‡Œkä¸ºæœ€å·¦è¾¹çš„'('åŠå…¶é…å¯¹')'å†…å«ï¼ˆåŒ…æ‹¬å…¶æœ¬èº«ï¼‰å¤šå°‘å¯¹æ‹¬å·ã€‚ç­”æ¡ˆä¸ºf[n/2][d]-f[n/2][d-1]
 #include<cstdio>
 #include<cstring>
 #include<iostream>

@@ -11,10 +11,10 @@ int main() {
     scanf("%d", &n);
     for(int i = 0; i < n; i++) scanf("%d", &A[i]);
     int ans = A[0]-A[1];
-    int MaxAi = A[0]; // MaxAi¶¯Ì¬Î¬»¤A[0]£¬A[1]£¬¡­£¬A[j-1]µÄ×î´óÖµ
-    for(int j = 1; j < n; j++) { // j´Ó1¶ø²»ÊÇ0¿ªÊ¼Ã¶¾Ù£¬ÒòÎªj=0Ê±£¬²»´æÔÚi
+    int MaxAi = A[0]; // MaxAiåŠ¨æ€ç»´æŠ¤A[0]ï¼ŒA[1]ï¼Œâ€¦ï¼ŒA[j-1]çš„æœ€å¤§å€¼
+    for(int j = 1; j < n; j++) { // jä»Ž1è€Œä¸æ˜¯0å¼€å§‹æžšä¸¾ï¼Œå› ä¸ºj=0æ—¶ï¼Œä¸å­˜åœ¨i
       ans = max(ans, MaxAi-A[j]);
-      MaxAi = max(A[j], MaxAi); //MaxAiÍíÓÚans¸üÐÂ¡£ÏëÒ»Ïë£¬ÎªÊ²Ã´
+      MaxAi = max(A[j], MaxAi); //MaxAiæ™šäºŽansæ›´æ–°ã€‚æƒ³ä¸€æƒ³ï¼Œä¸ºä»€ä¹ˆ
     }
     printf("%d\n", ans);
   }

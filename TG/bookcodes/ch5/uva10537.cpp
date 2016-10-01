@@ -10,8 +10,8 @@ const long long INF = 1LL << 60;
 typedef long long LL;
 
 int n, G[maxn][maxn], src, dest, p;
-int mark[maxn]; // ±Íº«
-LL d[maxn];     // d[i]±Ì æ¥”µ„i≥ˆ∑¢£®“—æ≠Ωªπ˝µ„iµƒÀ∞¡À£© ±÷¡…Ÿ“™¥¯∂‡…Ÿ∂´Œ˜£¨µΩdest ±ªπƒ‹ £p∏ˆ∂´Œ˜
+int mark[maxn]; // Ê†áËÆ∞
+LL d[maxn];     // d[i]Ë°®Á§∫‰ªéÁÇπiÂá∫ÂèëÔºàÂ∑≤Áªè‰∫§ËøáÁÇπiÁöÑÁ®é‰∫ÜÔºâÊó∂Ëá≥Â∞ëË¶ÅÂ∏¶Â§öÂ∞ë‰∏úË•øÔºåÂà∞destÊó∂ËøòËÉΩÂâ©p‰∏™‰∏úË•ø
 
 int read_node() {
   char ch[9];
@@ -24,23 +24,23 @@ char format_node(int u) {
   return u < 26 ? 'A' + u : 'a' + (u - 26);
 }
 
-// ƒ√◊≈item∏ˆ∂´Œ˜»•Ω·µ„next£¨ªπ £∂‡…Ÿ∏ˆ∂´Œ˜
+// ÊãøÁùÄitem‰∏™‰∏úË•øÂéªÁªìÁÇπnextÔºåËøòÂâ©Â§öÂ∞ë‰∏™‰∏úË•ø
 LL forward(LL item, int next) {
   if(next < 26) return item - (item + 19) / 20;
   return item - 1;
 }
 
-// ÷¡…Ÿ“™ƒ√◊≈∂‡…Ÿ∏ˆ∂´Œ˜µΩ¥ÔΩ·µ„u£¨ΩªÀ∞“‘∫Ûªπƒ‹ £d[u]∏ˆ∂´Œ˜
-// Œ™¡À π¥˙¬Î»›“◊¿ÌΩ‚£¨’‚¿Ô π”√“ª÷÷≤ªÃ´ ˝—ßµƒΩ‚∑®
+// Ëá≥Â∞ëË¶ÅÊãøÁùÄÂ§öÂ∞ë‰∏™‰∏úË•øÂà∞ËææÁªìÁÇπuÔºå‰∫§Á®é‰ª•ÂêéËøòËÉΩÂâ©d[u]‰∏™‰∏úË•ø
+// ‰∏∫‰∫Ü‰Ωø‰ª£Á†ÅÂÆπÊòìÁêÜËß£ÔºåËøôÈáå‰ΩøÁî®‰∏ÄÁßç‰∏çÂ§™Êï∞Â≠¶ÁöÑËß£Ê≥ï
 LL back(int u) {
   if(u >= 26) return d[u]+1;
-  LL X = d[u] * 20 / 19; // ≥ı º÷µ
-  while(forward(X, u) < d[u]) X++; // µ˜’˚
+  LL X = d[u] * 20 / 19; // ÂàùÂßãÂÄº
+  while(forward(X, u) < d[u]) X++; // Ë∞ÉÊï¥
   return X;
 }
 
 void solve() {
-  n = 52; // ◊‹ «”–52∏ˆΩ·µ„
+  n = 52; // ÊÄªÊòØÊúâ52‰∏™ÁªìÁÇπ
   memset(mark, 0, sizeof(mark));
   d[dest] = p;
   mark[dest] = 1;
@@ -49,28 +49,28 @@ void solve() {
     if(G[i][dest]) d[i] = back(dest);
   }
 
-  // Dijkstra÷˜π˝≥Ã£¨ƒÊÕ∆
+  // Dijkstra‰∏ªËøáÁ®ãÔºåÈÄÜÊé®
   while(!mark[src]) {
-    // ’“◊Ó–°µƒd
+    // ÊâæÊúÄÂ∞èÁöÑd
     int minu = -1;
     for(int i = 0; i < n; i++) if(!mark[i]) {
       if(minu < 0 || d[i] < d[minu]) minu = i;
     }
     mark[minu] = 1;
-    // ∏¸–¬∆‰À˚Ω·µ„µƒd
+    // Êõ¥Êñ∞ÂÖ∂‰ªñÁªìÁÇπÁöÑd
     for(int i = 0; i < n; i++) if(!mark[i]) {
       if(G[i][minu]) d[i] = min(d[i], back(minu));
     }
   }
 
-  //  ‰≥ˆ
+  // ËæìÂá∫
   printf("%lld\n", d[src]);
   printf("%c", format_node(src));
   int u = src;
   LL item = d[src];
   while(u != dest) {
     int next;
-    for(next = 0; next < n; next++) // ’“µΩµ⁄“ª∏ˆø…“‘◊ﬂµƒΩ·µ„
+    for(next = 0; next < n; next++) // ÊâæÂà∞Á¨¨‰∏Ä‰∏™ÂèØ‰ª•Ëµ∞ÁöÑÁªìÁÇπ
       if(G[u][next] && forward(item, next) >= d[next]) break;
     item = d[next];
     printf("-%c", format_node(next));

@@ -1,7 +1,7 @@
 // UVa558 Wormholes
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸ön¸öµãmÌõ±ßµÄÓĞÏò´øÈ¨Í¼£¬Çóµã0³ö·¢ÊÇ·ñÓĞ¸ºÈ¨È¦
-// Ëã·¨£ºBellman-Ford
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªnä¸ªç‚¹mæ¡è¾¹çš„æœ‰å‘å¸¦æƒå›¾ï¼Œæ±‚ç‚¹0å‡ºå‘æ˜¯å¦æœ‰è´Ÿæƒåœˆ
+// ç®—æ³•ï¼šBellman-Ford
 #include<cstdio>
 #include<cstring>
 #include<queue>
@@ -20,10 +20,10 @@ struct BellmanFord {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool inq[maxn];     // ÊÇ·ñÔÚ¶ÓÁĞÖĞ
-  double d[maxn];     // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
-  int cnt[maxn];      // ½ø¶Ó´ÎÊı
+  bool inq[maxn];     // æ˜¯å¦åœ¨é˜Ÿåˆ—ä¸­
+  double d[maxn];     // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
+  int cnt[maxn];      // è¿›é˜Ÿæ¬¡æ•°
 
   void init(int n) {
     this->n = n;

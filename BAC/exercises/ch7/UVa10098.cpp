@@ -1,7 +1,7 @@
 // UVa10098 Generating Fast, Sorted Permutation
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÒ»¸ö×Ö·û´®£¬°´×ÖµäĞòÊä³öËùÓĞÅÅÁĞ
-// Ëã·¨£ºÖ±½ÓÓÃnext_permutation
+// é¢˜æ„ï¼šè¾“å…¥ä¸€ä¸ªå­—ç¬¦ä¸²ï¼ŒæŒ‰å­—å…¸åºè¾“å‡ºæ‰€æœ‰æ’åˆ—
+// ç®—æ³•ï¼šç›´æ¥ç”¨next_permutation
 #include<cstdio>
 #include<cstring>
 #include<algorithm>

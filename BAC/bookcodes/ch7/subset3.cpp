@@ -1,14 +1,14 @@
 #include<stdio.h>
 
-void print_subset(int n, int s) {  // ´òÓ¡{0, 1, 2, ..., n-1}µÄ×Ó¼¯S
+void print_subset(int n, int s) {  // æ‰“å°{0, 1, 2, ..., n-1}çš„å­é›†S
   for(int i = 0; i < n; i++)
-    if(s&(1<<i)) printf("%d ", i); // ÕâÀïÀûÓÃÁËCÓïÑÔ¡°·Ç0Öµ¶¼ÎªÕæ¡±µÄ¹æ¶¨
+    if(s&(1<<i)) printf("%d ", i); // è¿™é‡Œåˆ©ç”¨äº†Cè¯­è¨€â€œé0å€¼éƒ½ä¸ºçœŸâ€çš„è§„å®š
   printf("\n");
 }
 
 int main() {
   int n = 5;
-  for(int i = 0; i < (1<<n); i++)  // Ã¶¾Ù¸÷×Ó¼¯Ëù¶ÔÓ¦µÄ±àÂë 0, 1, 2, ..., 2^n-1
+  for(int i = 0; i < (1<<n); i++)  // æšä¸¾å„å­é›†æ‰€å¯¹åº”çš„ç¼–ç  0, 1, 2, ..., 2^n-1
     print_subset(n, i);
   return 0;
 }

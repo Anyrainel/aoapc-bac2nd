@@ -70,7 +70,7 @@ int V;
 int G[maxv][maxv], vis[maxv];
 
 bool dfs(int u) {
-  if(u == 1) return true; // 1ÊÇÖÕµã
+  if(u == 1) return true; // 1æ˜¯ç»ˆç‚¹
   vis[u] = 1;
   for(int v = 0; v < V; v++)
     if(G[u][v] && !vis[v] && dfs(v)) return true;
@@ -81,14 +81,14 @@ const int maxn = 100 + 5;
 int n;
 Point p1[maxn], p2[maxn];
 
-// ÔÚÈÎºÎÒ»ÌõÏß¶ÎµÄÖÐ¼ä£¨ÔÚ¶Ëµã²»Ëã£©
+// åœ¨ä»»ä½•ä¸€æ¡çº¿æ®µçš„ä¸­é—´ï¼ˆåœ¨ç«¯ç‚¹ä¸ç®—ï¼‰
 bool OnAnySegment(Point p) {
   for(int i = 0; i < n; i++)
     if(OnSegment(p, p1[i], p2[i])) return true;
   return false;
 }
 
-// ÓëÈÎºÎÒ»ÌõÏß¶Î¹æ·¶Ïà½»
+// ä¸Žä»»ä½•ä¸€æ¡çº¿æ®µè§„èŒƒç›¸äº¤
 bool IntersectWithAnySegment(Point a, Point b) {
   for(int i = 0; i < n; i++)
     if(SegmentProperIntersection(a, b, p1[i], p2[i])) return true;
@@ -96,10 +96,10 @@ bool IntersectWithAnySegment(Point a, Point b) {
 }
 
 bool find_path() {
-  // ¹¹Í¼
+  // æž„å›¾
   vector<Point> vertices;
-  vertices.push_back(Point(0, 0)); // Æðµã
-  vertices.push_back(Point(1e5, 1e5)); // ÖÕµã
+  vertices.push_back(Point(0, 0)); // èµ·ç‚¹
+  vertices.push_back(Point(1e5, 1e5)); // ç»ˆç‚¹
   for(int i = 0; i < n; i++) {
     if(!OnAnySegment(p1[i])) vertices.push_back(p1[i]);
     if(!OnAnySegment(p2[i])) vertices.push_back(p2[i]);

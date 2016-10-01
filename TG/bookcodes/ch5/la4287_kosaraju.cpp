@@ -1,4 +1,4 @@
-// LA4287 Proving Equivalences£ºÓÃKosarajuËã·¨ËãSCC
+// LA4287 Proving Equivalencesï¼šç”¨Kosarajuç®—æ³•ç®—SCC
 // Rujia Liu
 #include<cstdio>
 #include<algorithm>

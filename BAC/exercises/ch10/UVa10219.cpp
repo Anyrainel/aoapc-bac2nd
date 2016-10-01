@@ -1,7 +1,7 @@
 // UVa10219 Find the ways !
 // Rujia Liu
-// ÌâÒâ£ºÇóC(n,k)ÔÚÊ®½øÖÆÏÂÊÇ¼¸Î»Êı
-// Ëã·¨£ºÇólog(10, C(n,k))¼´¿É
+// é¢˜æ„ï¼šæ±‚C(n,k)åœ¨åè¿›åˆ¶ä¸‹æ˜¯å‡ ä½æ•°
+// ç®—æ³•ï¼šæ±‚log(10, C(n,k))å³å¯
 #include<cstdio>
 #include<cmath>
 double lgC(int n, int m) {

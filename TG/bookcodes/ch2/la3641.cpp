@@ -11,10 +11,10 @@ int main() {
     memset(vis, 0, sizeof(vis));
     memset(cnt, 0, sizeof(cnt));
     for(int i = 0; i < 26; i++)
-      if(!vis[i]) { // ÕÒÒ»¸ö´Ói¿ªÊ¼µÄÑ­»·
+      if(!vis[i]) { // æ‰¾ä¸€ä¸ªä»Žiå¼€å§‹çš„å¾ªçŽ¯
         int j = i, n = 0;
         do {
-          vis[j] = 1; // ±ê¼ÇjÎª¡°ÒÑ·ÃÎÊ¡±
+          vis[j] = 1; // æ ‡è®°jä¸ºâ€œå·²è®¿é—®â€
           j = B[j] - 'A';
           n++;
         } while(j != i);

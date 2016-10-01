@@ -1,7 +1,7 @@
 #include<stdio.h>
 int P[100], A[100];
 
-// 输出数组P中元素的全排列。数组P中可能有重复元素
+// 杈撳嚭鏁扮粍P涓厓绱犵殑鍏ㄦ帓鍒椼�傛暟缁凱涓彲鑳芥湁閲嶅鍏冪礌
 void print_permutation(int n, int* P, int* A, int cur) {
   int i, j;
   if(cur == n) {

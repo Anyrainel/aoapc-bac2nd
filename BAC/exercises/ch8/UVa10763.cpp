@@ -1,6 +1,6 @@
 // UVa10763 Foreign Exchange
 // Rujia Liu
-// ÌâÒâ£ºÓÐn¸öÑ§ÉúÏë½»»»¡£ÓÃ(a,b)±íÊ¾Ò»¸öÏë´Ó¹ú¼Òa½»»»µ½¹ú¼ÒbµÄÑ§Éú¡£ÊÇ·ñ¿ÉÒÔ½²Ñ§ÉúÁ½Á½Åä¶ÔÊ¹µÃÅä¶ÔµÄÁ½¸öÑ§ÉúÐÎÈç(a,b)ºÍ(b,a)£¿
+// é¢˜æ„ï¼šæœ‰nä¸ªå­¦ç”Ÿæƒ³äº¤æ¢ã€‚ç”¨(a,b)è¡¨ç¤ºä¸€ä¸ªæƒ³ä»Žå›½å®¶aäº¤æ¢åˆ°å›½å®¶bçš„å­¦ç”Ÿã€‚æ˜¯å¦å¯ä»¥è®²å­¦ç”Ÿä¸¤ä¸¤é…å¯¹ä½¿å¾—é…å¯¹çš„ä¸¤ä¸ªå­¦ç”Ÿå½¢å¦‚(a,b)å’Œ(b,a)ï¼Ÿ
 #include<cstdio>
 #include<map>
 #include<algorithm>

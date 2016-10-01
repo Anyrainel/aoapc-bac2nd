@@ -1,9 +1,9 @@
 // Fast Sequence Operations II
 // Rujia Liu
-// ÊäÈë¸ñÊ½£º
-// n m     Êı×é·¶Î§ÊÇa[1]~a[n]£¬³õÊ¼»¯Îª0¡£²Ù×÷ÓĞm¸ö
-// 1 L R v ±íÊ¾Éèa[L]=a[L+1]=...=a[R] = v¡£ÆäÖĞv > 0
-// 2 L R   ²éÑ¯a[L]~a[R]µÄsum, minºÍmax
+// è¾“å…¥æ ¼å¼ï¼š
+// n m     æ•°ç»„èŒƒå›´æ˜¯a[1]~a[n]ï¼Œåˆå§‹åŒ–ä¸º0ã€‚æ“ä½œæœ‰mä¸ª
+// 1 L R v è¡¨ç¤ºè®¾a[L]=a[L+1]=...=a[R] = vã€‚å…¶ä¸­v > 0
+// 2 L R   æŸ¥è¯¢a[L]~a[R]çš„sum, minå’Œmax
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -16,7 +16,7 @@ int _sum, _min, _max, op, qL, qR, v;
 struct IntervalTree {
   int sumv[maxnode], minv[maxnode], maxv[maxnode], setv[maxnode];
 
-  // Î¬»¤ĞÅÏ¢
+  // ç»´æŠ¤ä¿¡æ¯
   void maintain(int o, int L, int R) {
     int lc = o*2, rc = o*2+1;
     if(R > L) {
@@ -27,18 +27,18 @@ struct IntervalTree {
     if(setv[o] >= 0) { minv[o] = maxv[o] = setv[o]; sumv[o] = setv[o] * (R-L+1); }
   }
 
-  // ±ê¼Ç´«µİ
+  // æ ‡è®°ä¼ é€’
   void pushdown(int o) {
     int lc = o*2, rc = o*2+1;
-    if(setv[o] >= 0) { //±¾½áµãÓĞ±ê¼Ç²Å´«µİ¡£×¢Òâ±¾ÌâÖĞsetÖµ·Ç¸º£¬ËùÒÔ-1´ú±íÃ»ÓĞ±ê¼Ç
+    if(setv[o] >= 0) { //æœ¬ç»“ç‚¹æœ‰æ ‡è®°æ‰ä¼ é€’ã€‚æ³¨æ„æœ¬é¢˜ä¸­setå€¼éè´Ÿï¼Œæ‰€ä»¥-1ä»£è¡¨æ²¡æœ‰æ ‡è®°
       setv[lc] = setv[rc] = setv[o];
-      setv[o] = -1; // Çå³ı±¾½áµã±ê¼Ç
+      setv[o] = -1; // æ¸…é™¤æœ¬ç»“ç‚¹æ ‡è®°
     }
   }
 
   void update(int o, int L, int R) {
     int lc = o*2, rc = o*2+1;
-    if(qL <= L && qR >= R) { // ±ê¼ÇĞŞ¸Ä
+    if(qL <= L && qR >= R) { // æ ‡è®°ä¿®æ”¹
       setv[o] = v;
     } else {
       pushdown(o);
@@ -50,15 +50,15 @@ struct IntervalTree {
   }
 
   void query(int o, int L, int R) {
-    if(setv[o] >= 0) { // µİ¹é±ß½ç1£ºÓĞset±ê¼Ç
+    if(setv[o] >= 0) { // é€’å½’è¾¹ç•Œ1ï¼šæœ‰setæ ‡è®°
       _sum += setv[o] * (min(R,qR)-max(L,qL)+1);
       _min = min(_min, setv[o]);
       _max = max(_max, setv[o]);
-    } else if(qL <= L && qR >= R) { // µİ¹é±ß½ç2£º±ß½çÇø¼ä
-      _sum += sumv[o]; // ´Ë±ß½çÇø¼äÃ»ÓĞ±»ÈÎºÎset²Ù×÷Ó°Ïì
+    } else if(qL <= L && qR >= R) { // é€’å½’è¾¹ç•Œ2ï¼šè¾¹ç•ŒåŒºé—´
+      _sum += sumv[o]; // æ­¤è¾¹ç•ŒåŒºé—´æ²¡æœ‰è¢«ä»»ä½•setæ“ä½œå½±å“
       _min = min(_min, minv[o]);
       _max = max(_max, maxv[o]);
-    } else { // µİ¹éÍ³¼Æ
+    } else { // é€’å½’ç»Ÿè®¡
       int M = L + (R-L)/2;
       if(qL <= M) query(o*2, L, M);
       if(qR > M) query(o*2+1, M+1, R);

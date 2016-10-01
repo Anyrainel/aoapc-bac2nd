@@ -6,7 +6,7 @@
 using namespace std;
 
 struct Item {
-  int s, b; // s=A[a]+B[b]。这里的a并不重要，因此不保存
+  int s, b; // s=A[a]+B[b]銆傝繖閲岀殑a骞朵笉閲嶈锛屽洜姝や笉淇濆瓨
   Item(int s, int b):s(s), b(b) { }
   bool operator < (const Item& rhs) const {
     return s > rhs.s;
@@ -18,10 +18,10 @@ void merge(int* A, int* B, int* C, int n) {
   for(int i = 0; i < n; i++)
     q.push(Item(A[i]+B[0], 0));
   for(int i = 0; i < n; i++) {
-    Item item = q.top(); q.pop();// 取出A[a]+B[b]
+    Item item = q.top(); q.pop();// 鍙栧嚭A[a]+B[b]
     C[i] = item.s;
     int b = item.b;
-    if(b+1 < n) q.push(Item(item.s-B[b]+B[b+1], b+1)); // 加入A[a]+B[b+1]=s-B[b]+B[b+1]
+    if(b+1 < n) q.push(Item(item.s-B[b]+B[b+1], b+1)); // 鍔犲叆A[a]+B[b+1]=s-B[b]+B[b+1]
   }
 }
 
@@ -35,10 +35,10 @@ int main() {
       for(int j = 0; j < n; j++) scanf("%d", &A[i][j]);
       sort(A[i], A[i]+n);
     }
-    for(int i = 1; i < n; i++) // 两两合并
+    for(int i = 1; i < n; i++) // 涓や袱鍚堝苟
       merge(A[0], A[i], A[0], n); // (*)
 
-    printf("%d", A[0][0]); // 输出结果
+    printf("%d", A[0][0]); // 杈撳嚭缁撴灉
     for(int i = 1; i < n; i++)
       printf(" %d", A[0][i]);
     printf("\n");

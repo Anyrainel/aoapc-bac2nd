@@ -25,12 +25,12 @@ int ans;
 queue<State> Q;
 
 void update(int r, int c, int dir, int color, int v) {
-  if(r < 0 || r >= R || c < 0 || c >= C) return; // 不能走出边界
+  if(r < 0 || r >= R || c < 0 || c >= C) return; // 涓嶈兘璧板嚭杈圭晫
   if(maze[r][c] == '.' && !vis[r][c][dir][color]) {
     Q.push(State(r, c, dir, color));
     vis[r][c][dir][color] = 1;
     d[r][c][dir][color] = v;
-    if(r == tr && c == tc && color == 0) ans = min(ans, v); // 更新答案
+    if(r == tr && c == tc && color == 0) ans = min(ans, v); // 鏇存柊绛旀
   }
 }
 
@@ -41,9 +41,9 @@ void bfs(State st) {
   while(!Q.empty()) {
     st = Q.front(); Q.pop();
     int v = d[st.r][st.c][st.dir][st.color] + 1;
-    update(st.r, st.c, (st.dir+1)%4, st.color, v); // 左转
-    update(st.r, st.c, (st.dir+3)%4, st.color, v); // 右转
-    update(st.r+dr[st.dir], st.c+dc[st.dir], st.dir, (st.color+1)%5, v); // 前进
+    update(st.r, st.c, (st.dir+1)%4, st.color, v); // 宸﹁浆
+    update(st.r, st.c, (st.dir+3)%4, st.color, v); // 鍙宠浆
+    update(st.r+dr[st.dir], st.c+dc[st.dir], st.dir, (st.color+1)%5, v); // 鍓嶈繘
   }
 }
 

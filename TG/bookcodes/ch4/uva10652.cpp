@@ -32,11 +32,11 @@ bool operator == (const Point& p1, const Point& p2) {
   return p1.x == p2.x && p1.y == p2.y;
 }
 
-// µã¼¯Í¹°ü
-// Èç¹û²»Ï£ÍûÔÚÍ¹°üµÄ±ßÉÏÓĞÊäÈëµã£¬°ÑÁ½¸ö <= ¸Ä³É <
-// Èç¹û²»½éÒâµã¼¯±»ĞŞ¸Ä£¬¿ÉÒÔ¸Ä³É´«µİÒıÓÃ
+// ç‚¹é›†å‡¸åŒ…
+// å¦‚æœä¸å¸Œæœ›åœ¨å‡¸åŒ…çš„è¾¹ä¸Šæœ‰è¾“å…¥ç‚¹ï¼ŒæŠŠä¸¤ä¸ª <= æ”¹æˆ <
+// å¦‚æœä¸ä»‹æ„ç‚¹é›†è¢«ä¿®æ”¹ï¼Œå¯ä»¥æ”¹æˆä¼ é€’å¼•ç”¨
 vector<Point> ConvexHull(vector<Point> p) {
-  // Ô¤´¦Àí£¬É¾³ıÖØ¸´µã
+  // é¢„å¤„ç†ï¼Œåˆ é™¤é‡å¤ç‚¹
   sort(p.begin(), p.end());
   p.erase(unique(p.begin(), p.end()), p.end());
 
@@ -57,7 +57,7 @@ vector<Point> ConvexHull(vector<Point> p) {
   return ch;
 }
 
-// ¶à±ßĞÎµÄÓĞÏòÃæ»ı
+// å¤šè¾¹å½¢çš„æœ‰å‘é¢ç§¯
 double PolygonArea(vector<Point> p) {
   double area = 0;
   int n = p.size();

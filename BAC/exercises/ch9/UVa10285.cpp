@@ -1,7 +1,7 @@
 // UVa10285 Longest Run on a Snowboard
 // Rujia Liu
-// ���⣺��һ��R*C������������һ�������·��ÿ��ֻ��������������һ��
-// �㷨��DAG�ϵ��·
+// 题意：在一个R*C整数矩阵上找一条递增最长路。每次只能往上下左右走一格。
+// 算法：DAG上的最长路
 #include<cstdio>
 #include<cstring>
 #include<algorithm>

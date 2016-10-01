@@ -1,4 +1,4 @@
-// UVa11275 3D Triangles£ºÓÃÃæ»ı·¨ÅĞ¶ÏµãÔÚÈı½ÇĞÎÄÚ
+// UVa11275 3D Trianglesï¼šç”¨é¢ç§¯æ³•åˆ¤æ–­ç‚¹åœ¨ä¸‰è§’å½¢å†…
 // Rujia Liu
 #include<cstdio>
 #include<cmath>
@@ -33,7 +33,7 @@ Point3 read_point3() {
   return p;
 }
 
-// µãÔÚÈı½ÇĞÎP0, P1, P2ÖĞ
+// ç‚¹åœ¨ä¸‰è§’å½¢P0, P1, P2ä¸­
 bool PointInTri(const Point3& P, const Point3& P0, const Point3& P1, const Point3& P2) {
   double area1 = Area2(P, P0, P1);
   double area2 = Area2(P, P1, P2);
@@ -41,14 +41,14 @@ bool PointInTri(const Point3& P, const Point3& P0, const Point3& P1, const Point
   return dcmp(area1 + area2 + area3 - Area2(P0, P1, P2)) == 0;
 }
 
-// Èı½ÇĞÎP0P1P2ÊÇ·ñºÍÏß¶ÎABÏà½»
+// ä¸‰è§’å½¢P0P1P2æ˜¯å¦å’Œçº¿æ®µABç›¸äº¤
 bool TriSegIntersection(const Point3& P0, const Point3& P1, const Point3& P2, const Point3& A, const Point3& B, Point3& P) {
   Vector3 n = Cross(P1-P0, P2-P0);
-  if(dcmp(Dot(n, B-A)) == 0) return false; // Ïß¶ÎA-BºÍÆ½ÃæP0P1P2Æ½ĞĞ»ò¹²Ãæ
-  else { // Æ½ÃæAºÍÖ±ÏßP1-P2ÓĞÎ©Ò»½»µã
+  if(dcmp(Dot(n, B-A)) == 0) return false; // çº¿æ®µA-Bå’Œå¹³é¢P0P1P2å¹³è¡Œæˆ–å…±é¢
+  else { // å¹³é¢Aå’Œç›´çº¿P1-P2æœ‰æƒŸä¸€äº¤ç‚¹
     double t = Dot(n, P0-A) / Dot(n, B-A);
-    if(dcmp(t) < 0 || dcmp(t-1) > 0) return false; // ²»ÔÚÏß¶ÎABÉÏ
-    P = A + (B-A)*t; // ½»µã
+    if(dcmp(t) < 0 || dcmp(t-1) > 0) return false; // ä¸åœ¨çº¿æ®µABä¸Š
+    P = A + (B-A)*t; // äº¤ç‚¹
     return PointInTri(P, P0, P1, P2);
   }
 }

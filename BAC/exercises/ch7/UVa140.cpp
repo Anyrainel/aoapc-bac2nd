@@ -1,7 +1,7 @@
 // UVa140 Bandwidth
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸ö×î¶à8¸ö½áµãµÄÎÞÏòÍ¼£¬°Ñ½áµãÖØÅÅºó¶ÔÓÚÍ¼ÖÐÃ¿Ìõ±ß(u,v)£¬uºÍvÔÚÅÅÁÐÖÐµÄ×î´ó¾àÀë³ÆÎª¸ÃÅÅÁÐµÄ´ø¿í¡£Çó´ø¿í×îÐ¡µÄÅÅÁÐ
-// Ëã·¨£ºÃ¶¾ÙÈ«ÅÅÁÐ¡£ÐèÒª×¢ÒâµÄÊÇ±¾ÌâµÄÊäÈë¸ñÊ½Ïà¶ÔÂé·³Ò»µã£¬ÐèÒª×ÐÏ¸Ó¦¶Ô
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªæœ€å¤š8ä¸ªç»“ç‚¹çš„æ— å‘å›¾ï¼ŒæŠŠç»“ç‚¹é‡æŽ’åŽå¯¹äºŽå›¾ä¸­æ¯æ¡è¾¹(u,v)ï¼Œuå’Œvåœ¨æŽ’åˆ—ä¸­çš„æœ€å¤§è·ç¦»ç§°ä¸ºè¯¥æŽ’åˆ—çš„å¸¦å®½ã€‚æ±‚å¸¦å®½æœ€å°çš„æŽ’åˆ—
+// ç®—æ³•ï¼šæžšä¸¾å…¨æŽ’åˆ—ã€‚éœ€è¦æ³¨æ„çš„æ˜¯æœ¬é¢˜çš„è¾“å…¥æ ¼å¼ç›¸å¯¹éº»çƒ¦ä¸€ç‚¹ï¼Œéœ€è¦ä»”ç»†åº”å¯¹
 #include<cstdio>
 #include<cstring>
 #include<vector>
@@ -14,7 +14,7 @@ int id[256], letter[maxn];
 int main() {
   char input[1000];
   while(scanf("%s", input) == 1 && input[0] != '#') {
-    // ¼ÆËã½áµã¸öÊý²¢¸ø×ÖÄ¸±àºÅ
+    // è®¡ç®—ç»“ç‚¹ä¸ªæ•°å¹¶ç»™å­—æ¯ç¼–å·
     int n = 0;
     for(char ch = 'A'; ch <= 'Z'; ch++)
       if(strchr(input, ch) != NULL) {
@@ -22,7 +22,7 @@ int main() {
         letter[id[ch]] = ch;
       }
 
-    // ´¦ÀíÊäÈë
+    // å¤„ç†è¾“å…¥
     int len = strlen(input), p = 0, q = 0;
     vector<int> u, v;
     for(;;) {
@@ -36,21 +36,21 @@ int main() {
       p++; q++;
     }
 
-    // Ã¶¾ÙÈ«ÅÅÁÐ
+    // æžšä¸¾å…¨æŽ’åˆ—
     int P[maxn], bestP[maxn], pos[maxn], ans = n;
     for(int i = 0; i < n; i++) P[i] = i;
     do {
-      for(int i = 0; i < n; i++) pos[P[i]] = i; // Ã¿¸ö×ÖÄ¸µÄÎ»ÖÃ
+      for(int i = 0; i < n; i++) pos[P[i]] = i; // æ¯ä¸ªå­—æ¯çš„ä½ç½®
       int bandwidth = 0;
       for(int i = 0; i < u.size(); i++)
-        bandwidth = max(bandwidth, abs(pos[u[i]] - pos[v[i]])); // ¼ÆËã´ø¿í
+        bandwidth = max(bandwidth, abs(pos[u[i]] - pos[v[i]])); // è®¡ç®—å¸¦å®½
       if(bandwidth < ans) {
         ans = bandwidth;
         memcpy(bestP, P, sizeof(P));
       }
     } while(next_permutation(P, P+n));
 
-    // Êä³ö
+    // è¾“å‡º
     for(int i = 0; i < n; i++) printf("%c ", letter[bestP[i]]);
     printf("-> %d\n", ans);
   }

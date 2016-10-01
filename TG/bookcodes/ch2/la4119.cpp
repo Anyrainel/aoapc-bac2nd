@@ -1,4 +1,4 @@
-// LA4119 Always an Integer £¨ÏŞÓÚÆª·ù£¬ÊéÉÏÎŞ´Ë´úÂë£©
+// LA4119 Always an Integer ï¼ˆé™äºç¯‡å¹…ï¼Œä¹¦ä¸Šæ— æ­¤ä»£ç ï¼‰
 // Rujia Liu
 #include<cstdio>
 #include<cstdlib>
@@ -10,41 +10,41 @@
 using namespace std;
 
 struct Polynomial {
-  vector<int> a, p; // µÚiÏîÎªa[i] * n^p[i]
-  void parse_polynomial(string expr) { // ½âÎö¶àÏîÊ½£¨²»´øÀ¨ºÅ£©
+  vector<int> a, p; // ç¬¬ié¡¹ä¸ºa[i] * n^p[i]
+  void parse_polynomial(string expr) { // è§£æå¤šé¡¹å¼ï¼ˆä¸å¸¦æ‹¬å·ï¼‰
     int i = 0, len = expr.size();
-    while(i < len) { // Ã¿´ÎÑ­»·Ìå½âÎöÒ»¸öa*n^p
+    while(i < len) { // æ¯æ¬¡å¾ªç¯ä½“è§£æä¸€ä¸ªa*n^p
       int sign = 1;
       if(expr[i] == '+') i++;
       if(expr[i] == '-') { sign = -1; i++; }
       int v = 0;
-      while(i < len && isdigit(expr[i])) v = v * 10 + expr[i++] - '0'; // ÏµÊıµÄ¾ø¶ÔÖµ
-      if(i == len) { a.push_back(v); p.push_back(0); } // ³£ÊıÏî
+      while(i < len && isdigit(expr[i])) v = v * 10 + expr[i++] - '0'; // ç³»æ•°çš„ç»å¯¹å€¼
+      if(i == len) { a.push_back(v); p.push_back(0); } // å¸¸æ•°é¡¹
       else {
         assert(expr[i] == 'n');
-        if(v == 0) v = 1; // ÎŞÏµÊı£¬°´1´¦Àí
+        if(v == 0) v = 1; // æ— ç³»æ•°ï¼ŒæŒ‰1å¤„ç†
         v *= sign;
-        if(expr[++i] == '^') { // ÓĞÖ¸ÊıÏî
+        if(expr[++i] == '^') { // æœ‰æŒ‡æ•°é¡¹
           a.push_back(v);
-          v = 0; // Çå¿Õv£¬½ÓÏÂÀ´ÓÃv±£´æÖ¸Êı
+          v = 0; // æ¸…ç©ºvï¼Œæ¥ä¸‹æ¥ç”¨vä¿å­˜æŒ‡æ•°
           i++;
           while(i < len && isdigit(expr[i])) v = v * 10 + expr[i++] - '0';
           p.push_back(v);
-        } else { // ÎŞÖ¸ÊıÏî
+        } else { // æ— æŒ‡æ•°é¡¹
           a.push_back(v); p.push_back(1);
         }
       }
     }
   }
 
-  // ¼ÆËãf(x)³ıÒÔMODµÄÓàÊı
+  // è®¡ç®—f(x)é™¤ä»¥MODçš„ä½™æ•°
   int mod(int x, int MOD) {
     int n = a.size();
     int ans = 0;
     for(int i = 0; i < n; i++) {
       int m = a[i];
-      for(int j = 0; j < p[i]; j++) m = (long long)m * x % MOD; // ×¢Òâ±ÜÃâÒç³ö
-      ans = ((long long)ans + m) % MOD; // ¼Ó·¨Ò²¿ÉÄÜ»áÒç³ö£¡
+      for(int j = 0; j < p[i]; j++) m = (long long)m * x % MOD; // æ³¨æ„é¿å…æº¢å‡º
+      ans = ((long long)ans + m) % MOD; // åŠ æ³•ä¹Ÿå¯èƒ½ä¼šæº¢å‡ºï¼
     }
     return ans;
   }

@@ -23,9 +23,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -62,12 +62,12 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 
 const int UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3;
 
 const int inv[] = {2, 3, 0, 1};
-const int dr[] = {-1, 0, 1, 0}; // ÉÏ×óÏÂÓÒ
+const int dr[] = {-1, 0, 1, 0}; // ä¸Šå·¦ä¸‹å³
 const int dc[] = {0, -1, 0, 1};
 const int maxr = 100;
 const int maxc = 100;
@@ -78,7 +78,7 @@ int n, id[maxr][maxc][5];
 
 int ID(int r, int c, int dir) {
   int& x = id[r][c][dir];
-  if(x == 0) x = ++n; // ´Ó1¿ªÊ¼±àºÅ
+  if(x == 0) x = ++n; // ä»1å¼€å§‹ç¼–å·
   return x;
 }
 
@@ -91,8 +91,8 @@ int readint() {
 int R, C;
 
 bool cango(int r, int c, int dir) {
-  if(r < 0 || r >= R || c < 0 || c >= C) return false; // ×ß³öÍø¸ñ
-  return grid[r][c][dir] > 0; // ´ËÂ·²»Í¨£¿
+  if(r < 0 || r >= R || c < 0 || c >= C) return false; // èµ°å‡ºç½‘æ ¼
+  return grid[r][c][dir] > 0; // æ­¤è·¯ä¸é€šï¼Ÿ
 }
 
 Dijkstra solver;
@@ -112,30 +112,30 @@ int main() {
     n = 0;
     memset(id, 0, sizeof(id));
 
-    // Ô´µã³ö·¢µÄ±ß
+    // æºç‚¹å‡ºå‘çš„è¾¹
     for(int dir = 0; dir < 4; dir++) if(cango(r1, c1, dir)) {
-       solver.AddEdge(0, ID(r1+dr[dir], c1+dc[dir], dir), grid[r1][c1][dir]*2); // ¿ªÊ¼×ßÏÂÈ¥
-       solver.AddEdge(0, ID(r1+dr[dir], c1+dc[dir], 4), grid[r1][c1][dir]*2); // ×ßÒ»²½Í£ÏÂÀ´
+       solver.AddEdge(0, ID(r1+dr[dir], c1+dc[dir], dir), grid[r1][c1][dir]*2); // å¼€å§‹èµ°ä¸‹å»
+       solver.AddEdge(0, ID(r1+dr[dir], c1+dc[dir], 4), grid[r1][c1][dir]*2); // èµ°ä¸€æ­¥åœä¸‹æ¥
     }
 
-    // ¼ÆËãÃ¿¸ö×´Ì¬(r,c,dir)µÄºó¼Ì×´Ì¬
+    // è®¡ç®—æ¯ä¸ªçŠ¶æ€(r,c,dir)çš„åç»§çŠ¶æ€
     for(int r = 0; r < R; r++)
       for(int c = 0; c < C; c++) {
         for(int dir = 0; dir < 4; dir++) if(cango(r, c, inv[dir])) {
-          solver.AddEdge(ID(r, c, dir), ID(r, c, 4), grid[r][c][inv[dir]]); // Í£ÏÂÀ´£¡
+          solver.AddEdge(ID(r, c, dir), ID(r, c, 4), grid[r][c][inv[dir]]); // åœä¸‹æ¥ï¼
           if(cango(r, c, dir))
-            solver.AddEdge(ID(r, c, dir), ID(r+dr[dir], c+dc[dir], dir), grid[r][c][dir]); // ¼ÌĞø×ß
+            solver.AddEdge(ID(r, c, dir), ID(r+dr[dir], c+dc[dir], dir), grid[r][c][dir]); // ç»§ç»­èµ°
         }
         for(int dir = 0; dir < 4; dir++) if(cango(r, c, dir)) {
-          solver.AddEdge(ID(r, c, 4), ID(r+dr[dir], c+dc[dir], dir), grid[r][c][dir]*2); // ÖØĞÂ¿ªÊ¼×ß
-          solver.AddEdge(ID(r, c, 4), ID(r+dr[dir], c+dc[dir], 4), grid[r][c][dir]*2); // ×ßÒ»²½Í£ÏÂÀ´
+          solver.AddEdge(ID(r, c, 4), ID(r+dr[dir], c+dc[dir], dir), grid[r][c][dir]*2); // é‡æ–°å¼€å§‹èµ°
+          solver.AddEdge(ID(r, c, 4), ID(r+dr[dir], c+dc[dir], 4), grid[r][c][dir]*2); // èµ°ä¸€æ­¥åœä¸‹æ¥
         }
       }
 
-    // ÅÜdijkstra
+    // è·‘dijkstra
     solver.dijkstra(0);
 
-    // ÕÒ×îÓÅ½â
+    // æ‰¾æœ€ä¼˜è§£
     int ans = solver.d[ID(r2, c2, 4)];
 
     printf("Case %d: ", ++kase);

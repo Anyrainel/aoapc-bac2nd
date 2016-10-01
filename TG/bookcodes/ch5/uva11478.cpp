@@ -13,15 +13,15 @@ struct Edge {
   int to, dist;
 };
 
-// ÁÚ½Ó±íĞ´·¨
+// é‚»æ¥è¡¨å†™æ³•
 struct BellmanFord {
   int n, m;
   Edge edges[maxm];
   int head[maxn];
   int next[maxm];
-  bool inq[maxn];   // ÊÇ·ñÔÚ¶ÓÁĞÖĞ
-  int d[maxn];      // sµ½¸÷¸öµãµÄ¾àÀë
-  int cnt[maxn];    // ½ø¶Ó´ÎÊı
+  bool inq[maxn];   // æ˜¯å¦åœ¨é˜Ÿåˆ—ä¸­
+  int d[maxn];      // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int cnt[maxn];    // è¿›é˜Ÿæ¬¡æ•°
 
   void init(int n) {
     this->n = n;
@@ -59,14 +59,14 @@ struct BellmanFord {
 
 BellmanFord solver;
 
-// ÅĞ¶ÏÔÚ³õÊ¼²î·ÖÔ¼ÊøÏµÍ³µÄÃ¿¸ö²»µÈÊ½ÓÒ²àÍ¬Ê±¼õÈ¥xÖ®ºóÊÇ·ñÓĞ½â
+// åˆ¤æ–­åœ¨åˆå§‹å·®åˆ†çº¦æŸç³»ç»Ÿçš„æ¯ä¸ªä¸ç­‰å¼å³ä¾§åŒæ—¶å‡å»xä¹‹åæ˜¯å¦æœ‰è§£
 bool test(int x) {
   for(int i = 0; i < solver.m; i++)
     solver.edges[i].dist -= x;
   bool ret = solver.negativeCycle();
   for(int i = 0; i < solver.m; i++)
     solver.edges[i].dist += x;
-  return !ret; // Èç¹ûÓĞ¸º»·£¬ËµÃ÷²î·ÖÔ¼ÊøÏµÍ³ÎŞ½â
+  return !ret; // å¦‚æœæœ‰è´Ÿç¯ï¼Œè¯´æ˜å·®åˆ†çº¦æŸç³»ç»Ÿæ— è§£
 }
 
 int main() {
@@ -80,7 +80,7 @@ int main() {
       solver.AddEdge(u-1, v-1, d);
     }
 
-    if(test(ub+1)) printf("Infinite\n"); // Èç¹û¿ÉÒÔÈÃÃ¿Ìõ±ßÈ¨¶¼>ub£¬ËµÃ÷Ã¿Ìõ±ßµÄÈ¨¶¼Ôö¼ÓÁË£¬ÖØ¸´Ò»´Î»áÔö¼ÓµÃ¸ü¶à...Ö±µ½ÎŞÏŞ
+    if(test(ub+1)) printf("Infinite\n"); // å¦‚æœå¯ä»¥è®©æ¯æ¡è¾¹æƒéƒ½>ubï¼Œè¯´æ˜æ¯æ¡è¾¹çš„æƒéƒ½å¢åŠ äº†ï¼Œé‡å¤ä¸€æ¬¡ä¼šå¢åŠ å¾—æ›´å¤š...ç›´åˆ°æ— é™
     else if(!test(1)) printf("No Solution\n");
     else {
       int L = 2, R = ub, ans = 1;

@@ -18,11 +18,11 @@ void gen_primes(int n) {
 }
 
 double dp(int x) {
-  if(x == 1) return 0.0; // ±ß½ç
-  if(vis[x]) return f[x]; // ¼ÇÒä»¯
+  if(x == 1) return 0.0; // è¾¹ç•Œ
+  if(vis[x]) return f[x]; // è®°å¿†åŒ–
   vis[x] = 1;
   double& ans = f[x];
-  int g = 0, p = 0; // ÀÛ¼Óg(x)ºÍp(x)
+  int g = 0, p = 0; // ç´¯åŠ g(x)å’Œp(x)
   ans = 0;
   for(int i = 0; primes[i] <= x; i++) {
     p++;

@@ -1,13 +1,13 @@
 // UVa387 A Puzzling Problem
 // Rujia Liu
-// ���⣺��n����ľ��ƴ��һ��4*4�������Σ�Ҫ��ÿ����ǡ����һ�Σ�������ת���߷�ת��������һ������
-// �㷨������д���кܶ࣬���ڹ�ģ�ǳ�С���������һ��Ч�ʲ���ߵ��Ϻ�ʵ�ֵķ�����ÿ������ѡһ�����û�ľ����ö��һ��λ�÷���ȥ
+// 题意：用n个积木块拼出一个4*4的正方形，要求每个块恰好用一次，不能旋转或者翻转。求任意一个方案
+// 算法：本题写法有很多，由于规模非常小，这里给出一个效率不算高但较好实现的方法：每层搜索选一个可用积木，再枚举一个位置放上去
 
 #include<cstdio>
 #include<cstring>
 const int maxn = 5;
 int n;
-int board[5][5]; // Ҫƴ����������
+int board[5][5]; // 要拼出的正方形
 
 struct Piece {
   int r, c, size;

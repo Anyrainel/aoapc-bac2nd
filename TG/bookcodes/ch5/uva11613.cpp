@@ -21,10 +21,10 @@ struct MCMF {
   int n, m, s, t;
   vector<Edge> edges;
   vector<int> G[maxn];
-  int inq[maxn];         // ÊÇ·ñÔÚ¶ÓÁĞÖĞ
+  int inq[maxn];         // æ˜¯å¦åœ¨é˜Ÿåˆ—ä¸­
   int d[maxn];           // Bellman-Ford
-  int p[maxn];           // ÉÏÒ»Ìõ»¡
-  int a[maxn];           // ¿É¸Ä½øÁ¿
+  int p[maxn];           // ä¸Šä¸€æ¡å¼§
+  int a[maxn];           // å¯æ”¹è¿›é‡
 
   void init(int n) {
     this->n = n;
@@ -71,7 +71,7 @@ struct MCMF {
     return true;
   }
 
-  // ĞèÒª±£Ö¤³õÊ¼ÍøÂçÖĞÃ»ÓĞ¸ºÈ¨È¦
+  // éœ€è¦ä¿è¯åˆå§‹ç½‘ç»œä¸­æ²¡æœ‰è´Ÿæƒåœˆ
   LL Mincost(int s, int t) {
     LL cost = 0;
     while(BellmanFord(s, t, cost));
@@ -93,9 +93,9 @@ int main() {
       int make_cost, make_limit, price, sell_limit, max_store;
       scanf("%d%d%d%d%d", &make_cost, &make_limit, &price, &sell_limit, &max_store);
       g.AddEdge(source, i, make_limit, make_cost);
-      g.AddEdge(month+i, sink, sell_limit, -price); // ÊÕÒæÊÇ¸º·ÑÓÃ
+      g.AddEdge(month+i, sink, sell_limit, -price); // æ”¶ç›Šæ˜¯è´Ÿè´¹ç”¨
       for(int j = 0; j <= max_store; j++) if(i + j <= month)
-        g.AddEdge(i, month+i+j, INF, store_cost * j); // ´æj¸öÔÂÒÔºóÂô
+        g.AddEdge(i, month+i+j, INF, store_cost * j); // å­˜jä¸ªæœˆä»¥åå–
     }
     printf("Case %d: %lld\n", kase, -g.Mincost(source, sink));
   }

@@ -7,8 +7,8 @@ using namespace std;
 
 const int maxn = 250 * 250;
 const int INF = 1000000000;
-int S[maxn], g[maxn], d[maxn]; // LISËùĞè
-int num[maxn]; // num[x]ÎªÕûÊıxµÄĞÂ±àºÅ,num[x]=0±íÊ¾xÃ»ÓĞÔÚAÖĞ³öÏÖ¹ı
+int S[maxn], g[maxn], d[maxn]; // LISæ‰€éœ€
+int num[maxn]; // num[x]ä¸ºæ•´æ•°xçš„æ–°ç¼–å·,num[x]=0è¡¨ç¤ºxæ²¡æœ‰åœ¨Aä¸­å‡ºç°è¿‡
 
 int main() {
   int T;
@@ -21,11 +21,11 @@ int main() {
     int n = 0;
     for(int i = 0; i < q+1; i++) { scanf("%d", &x); if(num[x]) S[n++] = num[x]; }
 
-    // Çó½âS[0]...S[n-1]µÄLIS
+    // æ±‚è§£S[0]...S[n-1]çš„LIS
     for(int i = 1; i <= n; i++) g[i] = INF;
     int ans = 0;
     for(int i = 0; i < n; i++) {
-      int k = lower_bound(g+1, g+n+1, S[i]) - g; // ÔÚg[1]~g[n]ÖĞ²éÕÒ
+      int k = lower_bound(g+1, g+n+1, S[i]) - g; // åœ¨g[1]~g[n]ä¸­æŸ¥æ‰¾
       d[i] = k;
       g[k] = S[i];
       ans = max(ans, d[i]);

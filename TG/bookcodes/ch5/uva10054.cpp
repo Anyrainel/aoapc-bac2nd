@@ -37,10 +37,10 @@ int main() {
       start = u;
     }
 
-    // ÎŞÏòÍ¼µÄÅ·À­»ØÂ·
+    // æ— å‘å›¾çš„æ¬§æ‹‰å›è·¯
     bool solved = true;
     for(int i = 1; i <= maxcolor; i++)
-      if(deg[i] % 2 == 1) { solved = false; break; } // ¼ì²é¶ÈÊı
+      if(deg[i] % 2 == 1) { solved = false; break; } // æ£€æŸ¥åº¦æ•°
     if(solved) {
       ans.clear();
       euler(start);

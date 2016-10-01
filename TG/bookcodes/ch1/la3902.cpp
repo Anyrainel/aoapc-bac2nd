@@ -11,7 +11,7 @@ vector<int> gr[maxn], nodes[maxn];
 int n, s, k, fa[maxn];
 bool covered[maxn];
 
-// ÎŞ¸ùÊ÷×ªÓĞ¸ùÊ÷£¬¼ÆËãfaÊı×é£¬¸ù¾İÉî¶È°ÑÒ¶×Ó½áµã²åÈënodes±íÀï
+// æ— æ ¹æ ‘è½¬æœ‰æ ¹æ ‘ï¼Œè®¡ç®—faæ•°ç»„ï¼Œæ ¹æ®æ·±åº¦æŠŠå¶å­ç»“ç‚¹æ’å…¥nodesè¡¨é‡Œ
 void dfs(int u, int f, int d) {
   fa[u] = f;
   int nc = gr[u].size();
@@ -27,7 +27,7 @@ void dfs2(int u, int f, int d) {
   int nc = gr[u].size();
   for(int i = 0; i < nc; i++) {
     int v = gr[u][i];
-    if(v != f && d < k) dfs2(v, u, d+1); // Ö»¸²¸Çµ½ĞÂ·şÎñÆ÷¾àÀë²»³¬¹ıkµÄ½áµã
+    if(v != f && d < k) dfs2(v, u, d+1); // åªè¦†ç›–åˆ°æ–°æœåŠ¡å™¨è·ç¦»ä¸è¶…è¿‡kçš„ç»“ç‚¹
   }
 }
 
@@ -37,11 +37,11 @@ int solve() {
   for(int d = n-1; d > k; d--) 
     for(int i = 0; i < nodes[d].size(); i++) {
       int u = nodes[d][i];
-      if(covered[u]) continue; // ²»¿¼ÂÇÒÑ¸²¸ÇµÄ½áµã
+      if(covered[u]) continue; // ä¸è€ƒè™‘å·²è¦†ç›–çš„ç»“ç‚¹
 
       int v = u;
-      for(int j = 0; j < k; j++) v = fa[v]; // vÊÇuµÄk¼¶×æÏÈ
-      dfs2(v, -1, 0); // ÔÚ½áµãv·Å·şÎñÆ÷
+      for(int j = 0; j < k; j++) v = fa[v]; // væ˜¯uçš„kçº§ç¥–å…ˆ
+      dfs2(v, -1, 0); // åœ¨ç»“ç‚¹væ”¾æœåŠ¡å™¨
       ans++;
     }
   return ans;

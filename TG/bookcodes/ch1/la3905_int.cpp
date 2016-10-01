@@ -6,7 +6,7 @@ using namespace std;
 // 0<x+at<w
 void update(int x, int a, int w, int& L, int& R) {
   if(a == 0) {
-    if(x <= 0 || x >= w) R = L-1; // 无解
+    if(x <= 0 || x >= w) R = L-1; // 鏃犺В
   } else if(a > 0) {
     L = max(L, -x*2520/a);
     R = min(R, (w-x)*2520/a);
@@ -22,7 +22,7 @@ struct Event {
   int x;
   int type;
   bool operator < (const Event& a) const {
-    return x < a.x || (x == a.x && type > a.type); // 先处理右端点
+    return x < a.x || (x == a.x && type > a.type); // 鍏堝鐞嗗彸绔偣
   }
 } events[maxn*2];
 

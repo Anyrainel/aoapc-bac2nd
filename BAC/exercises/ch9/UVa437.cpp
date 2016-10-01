@@ -1,7 +1,7 @@
 // UVa437 The Tower of Babylon
 // Rujia Liu
-// ���⣺����n�������壬����һ�����ӣ���������ѡ����һ������Ϊ�ߣ���Ҫ��ÿ��������ĵ��泤���ֱ��ϸ�С�����·�������ĵ��泤����Ҫ�����Ӿ�����
-// �㷨��DAG�ϵ��·��״̬Ϊ(idx, k)������ǰ����Ϊ������idx�����е�k���ߣ������Ϊ��
+// 题意：输入n个立方体，摞成一根柱子（可以自行选择哪一条边作为高），要求每个立方体的底面长宽分别严格小于它下方立方体的底面长宽。要求柱子尽量高
+// 算法：DAG上的最长路，状态为(idx, k)，即当前顶面为立方体idx，其中第k条边（排序后）为高
 #include<cstdio>
 #include<cstring>
 #include<algorithm>

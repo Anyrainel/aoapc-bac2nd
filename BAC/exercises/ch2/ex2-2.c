@@ -1,6 +1,6 @@
 /*
-  Ï°Ìâ2-2. Ë®ÏÉ»¨Êý£¨daffodil£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜2-2. æ°´ä»™èŠ±æ•°ï¼ˆdaffodilï¼‰
+  åˆ˜æ±ä½³
 */
 
 #include<stdio.h>

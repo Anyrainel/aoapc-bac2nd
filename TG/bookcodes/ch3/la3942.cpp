@@ -7,30 +7,30 @@ using namespace std;
 const int maxnode = 4000 * 100 + 10;
 const int sigma_size = 26;
 
-// ×ÖÄ¸±íÎªÈ«ÌåĞ¡Ğ´×ÖÄ¸µÄTrie
+// å­—æ¯è¡¨ä¸ºå…¨ä½“å°å†™å­—æ¯çš„Trie
 struct Trie {
   int ch[maxnode][sigma_size];
   int val[maxnode];
-  int sz; // ½áµã×ÜÊı
-  void clear() { sz = 1; memset(ch[0], 0, sizeof(ch[0])); } // ³õÊ¼Ê±Ö»ÓĞÒ»¸ö¸ù½áµã
-  int idx(char c) { return c - 'a'; } // ×Ö·ûcµÄ±àºÅ
+  int sz; // ç»“ç‚¹æ€»æ•°
+  void clear() { sz = 1; memset(ch[0], 0, sizeof(ch[0])); } // åˆå§‹æ—¶åªæœ‰ä¸€ä¸ªæ ¹ç»“ç‚¹
+  int idx(char c) { return c - 'a'; } // å­—ç¬¦cçš„ç¼–å·
 
-  // ²åÈë×Ö·û´®s£¬¸½¼ÓĞÅÏ¢Îªv¡£×¢Òâv±ØĞë·Ç0£¬ÒòÎª0´ú±í¡°±¾½áµã²»ÊÇµ¥´Ê½áµã¡±
+  // æ’å…¥å­—ç¬¦ä¸²sï¼Œé™„åŠ ä¿¡æ¯ä¸ºvã€‚æ³¨æ„vå¿…é¡»é0ï¼Œå› ä¸º0ä»£è¡¨â€œæœ¬ç»“ç‚¹ä¸æ˜¯å•è¯ç»“ç‚¹â€
   void insert(const char *s, int v) {
     int u = 0, n = strlen(s);
     for(int i = 0; i < n; i++) {
       int c = idx(s[i]);
-      if(!ch[u][c]) { // ½áµã²»´æÔÚ
+      if(!ch[u][c]) { // ç»“ç‚¹ä¸å­˜åœ¨
         memset(ch[sz], 0, sizeof(ch[sz]));
-        val[sz] = 0;  // ÖĞ¼ä½áµãµÄ¸½¼ÓĞÅÏ¢Îª0
-        ch[u][c] = sz++; // ĞÂ½¨½áµã
+        val[sz] = 0;  // ä¸­é—´ç»“ç‚¹çš„é™„åŠ ä¿¡æ¯ä¸º0
+        ch[u][c] = sz++; // æ–°å»ºç»“ç‚¹
       }
-      u = ch[u][c]; // ÍùÏÂ×ß
+      u = ch[u][c]; // å¾€ä¸‹èµ°
     }
-    val[u] = v; // ×Ö·û´®µÄ×îºóÒ»¸ö×Ö·ûµÄ¸½¼ÓĞÅÏ¢Îªv
+    val[u] = v; // å­—ç¬¦ä¸²çš„æœ€åä¸€ä¸ªå­—ç¬¦çš„é™„åŠ ä¿¡æ¯ä¸ºv
   }
 
-  // ÕÒ×Ö·û´®sµÄ³¤¶È²»³¬¹ılenµÄÇ°×º
+  // æ‰¾å­—ç¬¦ä¸²sçš„é•¿åº¦ä¸è¶…è¿‡lençš„å‰ç¼€
   void find_prefixes(const char *s, int len, vector<int>& ans) {
     int u = 0;
     for(int i = 0; i < len; i++) {
@@ -38,15 +38,15 @@ struct Trie {
       int c = idx(s[i]);
       if(!ch[u][c]) break;
       u = ch[u][c];
-      if(val[u] != 0) ans.push_back(val[u]); // ÕÒµ½Ò»¸öÇ°×º
+      if(val[u] != 0) ans.push_back(val[u]); // æ‰¾åˆ°ä¸€ä¸ªå‰ç¼€
     }
   }
 };
 
 #include<cstdio>
-const int maxl = 300000 + 10; // ÎÄ±¾´®×î´ó³¤¶È
-const int maxw = 4000 + 10;   // µ¥´Ê×î´ó¸öÊı
-const int maxwl = 100 + 10;   // Ã¿¸öµ¥´Ê×î´ó³¤¶È
+const int maxl = 300000 + 10; // æ–‡æœ¬ä¸²æœ€å¤§é•¿åº¦
+const int maxw = 4000 + 10;   // å•è¯æœ€å¤§ä¸ªæ•°
+const int maxwl = 100 + 10;   // æ¯ä¸ªå•è¯æœ€å¤§é•¿åº¦
 const int MOD = 20071027;
 
 int d[maxl], len[maxw], S;

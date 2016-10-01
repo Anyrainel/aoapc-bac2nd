@@ -9,9 +9,9 @@ const int maxn = 500 + 10;
 const int INF = 1000000000;
 
 int W[maxn][maxn], n;
-int Lx[maxn], Ly[maxn]; // ¶¥±ê
-int left[maxn];         // left[i]ÎªÓÒ±ßµÚi¸öµãµÄÆ¥Åäµã±àºÅ
-bool S[maxn], T[maxn];   // S[i]ºÍT[i]Îª×ó/ÓÒµÚi¸öµãÊÇ·ñÒÑ±ê¼Ç
+int Lx[maxn], Ly[maxn]; // é¡¶æ ‡
+int left[maxn];         // left[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹çš„åŒ¹é…ç‚¹ç¼–å·
+bool S[maxn], T[maxn];   // S[i]å’ŒT[i]ä¸ºå·¦/å³ç¬¬iä¸ªç‚¹æ˜¯å¦å·²æ ‡è®°
 
 bool match(int i){
   S[i] = true;

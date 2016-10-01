@@ -1,9 +1,9 @@
 // Dynamic RMQ
 // Rujia Liu
-// ÊäÈë¸ñÊ½£º
-// n m     Êı×é·¶Î§ÊÇa[1]~a[n]£¬³õÊ¼»¯Îª0¡£²Ù×÷ÓĞm¸ö
-// 1 p v   ±íÊ¾Éèa[p]=v
-// 2 L R   ²éÑ¯a[L]~a[R]µÄmin
+// è¾“å…¥æ ¼å¼ï¼š
+// n m     æ•°ç»„èŒƒå›´æ˜¯a[1]~a[n]ï¼Œåˆå§‹åŒ–ä¸º0ã€‚æ“ä½œæœ‰mä¸ª
+// 1 p v   è¡¨ç¤ºè®¾a[p]=v
+// 2 L R   æŸ¥è¯¢a[L]~a[R]çš„min
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -19,20 +19,20 @@ struct IntervalTree {
 
   void update(int o, int L, int R) {
     int M = L + (R-L)/2;
-    if(L == R) minv[o] = v; // Ò¶½áµã£¬Ö±½Ó¸üĞÂminv
+    if(L == R) minv[o] = v; // å¶ç»“ç‚¹ï¼Œç›´æ¥æ›´æ–°minv
     else {
-      // ÏÈµİ¹é¸üĞÂ×ó×ÓÊ÷»òÓÒ×ÓÊ÷
+      // å…ˆé€’å½’æ›´æ–°å·¦å­æ ‘æˆ–å³å­æ ‘
       if(p <= M) update(o*2, L, M); else update(o*2+1, M+1, R);
-      // È»ºó¼ÆËã±¾½áµãµÄminv
+      // ç„¶åè®¡ç®—æœ¬ç»“ç‚¹çš„minv
       minv[o] = min(minv[o*2], minv[o*2+1]);
     }
   }
 
   int query(int o, int L, int R) {
     int M = L + (R-L)/2, ans = INF;
-    if(qL <= L && R <= qR) return minv[o]; // µ±Ç°½áµãÍêÈ«°üº¬ÔÚ²éÑ¯Çø¼äÄÚ
-    if(qL <= M) ans = min(ans, query(o*2, L, M)); // Íù×ó×ß
-    if(M < qR) ans = min(ans, query(o*2+1, M+1, R)); // ÍùÓÒ×ß
+    if(qL <= L && R <= qR) return minv[o]; // å½“å‰ç»“ç‚¹å®Œå…¨åŒ…å«åœ¨æŸ¥è¯¢åŒºé—´å†…
+    if(qL <= M) ans = min(ans, query(o*2, L, M)); // å¾€å·¦èµ°
+    if(M < qR) ans = min(ans, query(o*2+1, M+1, R)); // å¾€å³èµ°
     return ans;
   }
 };

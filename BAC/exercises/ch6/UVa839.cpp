@@ -1,11 +1,11 @@
 // UVa839 Not so Mobile
 // Rujia Liu
-// ���⣺����һ����״��ƽ�������������ԭ���ж��Ƿ�ƽ�⡣���õݹ鷽ʽ���룬0��ʾ�м���
-// �㷨���ڡ�������ʱֱ�Ӷ��벢�жϣ��������������������
+// 题意：输入一个树状天平，根据力矩相等原则判断是否平衡。采用递归方式输入，0表示中间结点
+// 算法：在“建树”时直接读入并判断，并且无须把树保存下来
 #include<iostream>
 using namespace std;
 
-// ����һ������ƽ����������ƽ�Ƿ�ƽ�⣬����W�޸�Ϊ����ƽ��������
+// 输入一个子天平，返回子天平是否平衡，参数W修改为子天平的总重量
 bool solve(int& W) {
   int W1, D1, W2, D2;
   bool b1 = true, b2 = true;

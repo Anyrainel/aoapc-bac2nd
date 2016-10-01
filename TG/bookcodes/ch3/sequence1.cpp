@@ -1,9 +1,9 @@
 // Fast Sequence Operations I
 // Rujia Liu
-// ÊäÈë¸ñÊ½£º
-// n m     Êı×é·¶Î§ÊÇa[1]~a[n]£¬³õÊ¼»¯Îª0¡£²Ù×÷ÓĞm¸ö
-// 1 L R v ±íÊ¾Éèa[L]+=v, a[L+1]+v, ..., a[R]+=v
-// 2 L R   ²éÑ¯a[L]~a[R]µÄsum, minºÍmax
+// è¾“å…¥æ ¼å¼ï¼š
+// n m     æ•°ç»„èŒƒå›´æ˜¯a[1]~a[n]ï¼Œåˆå§‹åŒ–ä¸º0ã€‚æ“ä½œæœ‰mä¸ª
+// 1 L R v è¡¨ç¤ºè®¾a[L]+=v, a[L+1]+v, ..., a[R]+=v
+// 2 L R   æŸ¥è¯¢a[L]~a[R]çš„sum, minå’Œmax
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -16,7 +16,7 @@ int _sum, _min, _max, op, qL, qR, v;
 struct IntervalTree {
   int sumv[maxnode], minv[maxnode], maxv[maxnode], addv[maxnode];
 
-  // Î¬»¤ĞÅÏ¢
+  // ç»´æŠ¤ä¿¡æ¯
   void maintain(int o, int L, int R) {
     int lc = o*2, rc = o*2+1;
     sumv[o] = minv[o] = maxv[o] = 0;
@@ -30,22 +30,22 @@ struct IntervalTree {
 
   void update(int o, int L, int R) {
     int lc = o*2, rc = o*2+1;
-    if(qL <= L && qR >= R) { // µİ¹é±ß½ç      
-      addv[o] += v; // ÀÛ¼Ó±ß½çµÄaddÖµ
+    if(qL <= L && qR >= R) { // é€’å½’è¾¹ç•Œ      
+      addv[o] += v; // ç´¯åŠ è¾¹ç•Œçš„addå€¼
     } else {
       int M = L + (R-L)/2;
       if(qL <= M) update(lc, L, M);
       if(qR > M) update(rc, M+1, R);
     }
-    maintain(o, L, R); // µİ¹é½áÊøÇ°ÖØĞÂ¼ÆËã±¾½áµãµÄ¸½¼ÓĞÅÏ¢
+    maintain(o, L, R); // é€’å½’ç»“æŸå‰é‡æ–°è®¡ç®—æœ¬ç»“ç‚¹çš„é™„åŠ ä¿¡æ¯
   }
 
   void query(int o, int L, int R, int add) {
-    if(qL <= L && qR >= R) { // µİ¹é±ß½ç£ºÓÃ±ß½çÇø¼äµÄ¸½¼ÓĞÅÏ¢¸üĞÂ´ğ°¸
+    if(qL <= L && qR >= R) { // é€’å½’è¾¹ç•Œï¼šç”¨è¾¹ç•ŒåŒºé—´çš„é™„åŠ ä¿¡æ¯æ›´æ–°ç­”æ¡ˆ
       _sum += sumv[o] + add * (R-L+1);
       _min = min(_min, minv[o] + add);
       _max = max(_max, maxv[o] + add);
-    } else { // µİ¹éÍ³¼Æ£¬ÀÛ¼Ó²ÎÊıadd
+    } else { // é€’å½’ç»Ÿè®¡ï¼Œç´¯åŠ å‚æ•°add
       int M = L + (R-L)/2;
       if(qL <= M) query(o*2, L, M, add + addv[o]);
       if(qR > M) query(o*2+1, M+1, R, add + addv[o]);

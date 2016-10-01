@@ -1,6 +1,6 @@
 /*
-  Ï°Ìâ1-4 ÕýÏÒºÍÓàÏÒ£¨sincos£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜1-4 æ­£å¼¦å’Œä½™å¼¦ï¼ˆsincosï¼‰
+  åˆ˜æ±ä½³
 */
 
 #include<stdio.h>

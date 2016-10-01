@@ -1,7 +1,7 @@
 // UVa10986 Sending email
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸ön¸öµãmÌõ±ßµÄÎŞÏòÍ¼£¬´ÓSµ½TµÄ×î¶ÌÂ·³¤¶È
-// Ëã·¨£ºdijkstra
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªnä¸ªç‚¹mæ¡è¾¹çš„æ— å‘å›¾ï¼Œä»Såˆ°Tçš„æœ€çŸ­è·¯é•¿åº¦
+// ç®—æ³•ï¼šdijkstra
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -27,9 +27,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -66,7 +66,7 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 Dijkstra solver;
 
 int main() {

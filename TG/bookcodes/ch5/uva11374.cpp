@@ -24,9 +24,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -62,7 +62,7 @@ struct Dijkstra {
     }
   }
 
-  // dist[i]Îªsµ½iµÄ¾àÀë£¬paths[i]Îªsµ½iµÄ×î¶ÌÂ·¾¶£¨¾­¹ıµÄ½áµãÁĞ±í£¬°üÀ¨sºÍt£©
+  // dist[i]ä¸ºsåˆ°içš„è·ç¦»ï¼Œpaths[i]ä¸ºsåˆ°içš„æœ€çŸ­è·¯å¾„ï¼ˆç»è¿‡çš„ç»“ç‚¹åˆ—è¡¨ï¼ŒåŒ…æ‹¬så’Œtï¼‰
   void GetShortestPaths(int s, int* dist, vector<int>* paths) {
     dijkstra(s);
     for(int i = 0; i < n; i++) {
@@ -79,7 +79,7 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 Dijkstra solver;
 int d1[maxn], d2[maxn];
 vector<int> paths1[maxn], paths2[maxn];
@@ -89,27 +89,27 @@ int main() {
   while(scanf("%d%d%d%d", &N, &S, &E, &M) == 4) {
     solver.init(N);
 
-    S--; E--; // ±àºÅ´Ó0~N-1
+    S--; E--; // ç¼–å·ä»0~N-1
     for(int i = 0; i < M; i++) {
       scanf("%d%d%d", &X, &Y, &Z); X--; Y--;
       solver.AddEdge(X, Y, Z);
       solver.AddEdge(Y, X, Z);
     }
-    solver.GetShortestPaths(S, d1, paths1); // Sµ½ËùÓĞµãµÄ¾àÀëºÍÂ·¾¶
-    solver.GetShortestPaths(E, d2, paths2); // Tµ½ËùÓĞµãµÄ¾àÀëºÍÂ·¾¶
+    solver.GetShortestPaths(S, d1, paths1); // Såˆ°æ‰€æœ‰ç‚¹çš„è·ç¦»å’Œè·¯å¾„
+    solver.GetShortestPaths(E, d2, paths2); // Tåˆ°æ‰€æœ‰ç‚¹çš„è·ç¦»å’Œè·¯å¾„
 
-    int ans = d1[E];              // ³õÊ¼½â½âÎªÖ±´ï¾àÀë
-    vector<int> path = paths1[E]; // ³õÊ¼½âµÄstationĞòÁĞ
-    int midpoint = -1;            // ²»×øÉÌÒµÏß
+    int ans = d1[E];              // åˆå§‹è§£è§£ä¸ºç›´è¾¾è·ç¦»
+    vector<int> path = paths1[E]; // åˆå§‹è§£çš„stationåºåˆ—
+    int midpoint = -1;            // ä¸åå•†ä¸šçº¿
 
     scanf("%d", &K);
     for(int i = 0; i < K; i++) {
       scanf("%d%d%d", &X, &Y, &Z); X--; Y--;
-      for(int j = 0; j < 2; j++) { // j=0´ú±íÉÌÒµÏß×øX->Y£¬j=1´ú±íY->X
+      for(int j = 0; j < 2; j++) { // j=0ä»£è¡¨å•†ä¸šçº¿åX->Yï¼Œj=1ä»£è¡¨Y->X
         if(d1[X] + d2[Y] + Z < ans) {
           ans = d1[X] + d2[Y] + Z;
           path = paths1[X];
-          for(int j = paths2[Y].size()-1; j >= 0; j--) // ´ÓYµ½TµÄ¾àÀëÒª·´¹ıÀ´
+          for(int j = paths2[Y].size()-1; j >= 0; j--) // ä»Yåˆ°Tçš„è·ç¦»è¦åè¿‡æ¥
             path.push_back(paths2[Y][j]);
           midpoint = X;
         }

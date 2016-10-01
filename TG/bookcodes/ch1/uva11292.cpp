@@ -1,7 +1,7 @@
 // UVa11292 The Dragon of Loowater
 // Rujia Liu
 #include<cstdio>
-#include<algorithm>       // ÒòÎªÓÃµ½ÁËsort
+#include<algorithm>       // å› ä¸ºç”¨åˆ°äº†sort
 using namespace std;
 
 const int maxn = 20000 + 5;
@@ -13,12 +13,12 @@ int main() {
     for(int i = 0; i < m; i++) scanf("%d", &B[i]);
     sort(A, A+n);
     sort(B, B+m);
-    int cur = 0;         // µ±Ç°ĞèÒª¿³µôµÄÍ·µÄ±àºÅ
-    int cost = 0;        // µ±Ç°×Ü·ÑÓÃ
+    int cur = 0;         // å½“å‰éœ€è¦ç æ‰çš„å¤´çš„ç¼–å·
+    int cost = 0;        // å½“å‰æ€»è´¹ç”¨
     for(int i = 0; i < m; i++)
       if(B[i] >= A[cur]) {
-        cost += B[i];           // ¹ÍÓ¶¸ÃÆïÊ¿
-        if(++cur == n) break;   // Èç¹ûÍ·ÒÑ¾­¿³Íê£¬¼°Ê±ÍË³öÑ­»·
+        cost += B[i];           // é›‡ä½£è¯¥éª‘å£«
+        if(++cur == n) break;   // å¦‚æœå¤´å·²ç»ç å®Œï¼ŒåŠæ—¶é€€å‡ºå¾ªç¯
       }
     if(cur < n) printf("Loowater is doomed!\n");
     else printf("%d\n", cost);

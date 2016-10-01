@@ -1,6 +1,6 @@
 // UVa532 Dungeon Master
 // Rujia Liu
-// 题意：三维迷宫中给定起点（字符S）和终点（字符E），墙是'#'，空格是'.'，求最短路长度
+// 棰樻剰锛氫笁缁磋糠瀹腑缁欏畾璧风偣锛堝瓧绗锛夊拰缁堢偣锛堝瓧绗锛夛紝澧欐槸'#'锛岀┖鏍兼槸'.'锛屾眰鏈�鐭矾闀垮害
 #include<cstdio>
 #include<cstring>
 #include<queue>

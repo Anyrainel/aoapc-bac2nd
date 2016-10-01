@@ -75,12 +75,12 @@ int main() {
     Point Pa = P[0], Pb = Q[0];
     Min = 1e9, Max = -1e9;
     while(Sa < A-1 && Sb < B-1) {
-      double La = Length(P[Sa+1] - Pa); // ¼×µ½ÏÂÒ»¹ÕµãµÄ¾àÀë
-      double Lb = Length(Q[Sb+1] - Pb); // ÒÒµ½ÏÂÒ»¹ÕµãµÄ¾àÀë
-      double T = min(La/LenA, Lb/LenB); // È¡ºÏÊÊµÄµ¥Î»£¬¿ÉÒÔÈÃ¼×ºÍÒÒµÄËÙ¶È·Ö±ðÊÇLenAºÍLenB
-      Vector Va = (P[Sa+1] - Pa)/La*T*LenA; // ¼×µÄÎ»ÒÆÏòÁ¿
-      Vector Vb = (Q[Sb+1] - Pb)/Lb*T*LenB; // ÒÒµÄÎ»ÒÆÏòÁ¿
-      update(Pa, Pb, Pb+Vb-Va); // Çó½â¡°¼ò»¯°æ¡±£¬¸üÐÂ×îÐ¡×î´ó¾àÀë
+      double La = Length(P[Sa+1] - Pa); // ç”²åˆ°ä¸‹ä¸€æ‹ç‚¹çš„è·ç¦»
+      double Lb = Length(Q[Sb+1] - Pb); // ä¹™åˆ°ä¸‹ä¸€æ‹ç‚¹çš„è·ç¦»
+      double T = min(La/LenA, Lb/LenB); // å–åˆé€‚çš„å•ä½ï¼Œå¯ä»¥è®©ç”²å’Œä¹™çš„é€Ÿåº¦åˆ†åˆ«æ˜¯LenAå’ŒLenB
+      Vector Va = (P[Sa+1] - Pa)/La*T*LenA; // ç”²çš„ä½ç§»å‘é‡
+      Vector Vb = (Q[Sb+1] - Pb)/Lb*T*LenB; // ä¹™çš„ä½ç§»å‘é‡
+      update(Pa, Pb, Pb+Vb-Va); // æ±‚è§£â€œç®€åŒ–ç‰ˆâ€ï¼Œæ›´æ–°æœ€å°æœ€å¤§è·ç¦»
       Pa = Pa + Va;
       Pb = Pb + Vb;
       if(Pa == P[Sa+1]) Sa++;

@@ -1,7 +1,7 @@
 // UVa216 Getting in Line
 // Rujia Liu
-// 题意：给平面上n(2<=n<=8)个点，把它们连成一条折线使得长度最短。每段线有固定的16个单位的附加长度
-// 算法：枚举全排列
+// 棰樻剰锛氱粰骞抽潰涓妌(2<=n<=8)涓偣锛屾妸瀹冧滑杩炴垚涓�鏉℃姌绾夸娇寰楅暱搴︽渶鐭�傛瘡娈电嚎鏈夊浐瀹氱殑16涓崟浣嶇殑闄勫姞闀垮害
+// 绠楁硶锛氭灇涓惧叏鎺掑垪
 #include<cstdio>
 #include<cstring>
 #include<cmath>

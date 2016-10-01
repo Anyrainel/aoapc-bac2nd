@@ -2,13 +2,13 @@
 // Rujia Liu
 typedef long long LL;
 
-// ¼´Ê¹a, bÔÚint·¶Î§ÄÚ£¬xºÍyÓĞ¿ÉÄÜ³¬³öint·¶Î§
+// å³ä½¿a, båœ¨intèŒƒå›´å†…ï¼Œxå’Œyæœ‰å¯èƒ½è¶…å‡ºintèŒƒå›´
 void gcd(LL a, LL b, LL& d, LL& x, LL& y) {
   if(!b){ d = a; x = 1; y = 0; }
   else{ gcd(b, a%b, d, y, x); y -= x*(a/b); }
 }
 
-// n¸ö·½³Ì£ºx=a[i](mod m[i]) (0<=i<n)
+// nä¸ªæ–¹ç¨‹ï¼šx=a[i](mod m[i]) (0<=i<n)
 LL china(int n, int* a, int *m) {
   LL M = 1, d, y, x = 0;
   for(int i = 0; i < n; i++) M *= m[i];
@@ -41,7 +41,7 @@ void solve_enum(int S, int bc) {
   for(int t = 0; S != 0; t++) {
     for(int i = 0; i < k[bc]; i++) {
       LL n = (LL)X[bc]*t + Y[bc][i];
-      if(n == 0) continue; // Ö»Êä³öÕıÊı½â
+      if(n == 0) continue; // åªè¾“å‡ºæ­£æ•°è§£
       bool ok = true;
       for(int c = 0; c < C; c++) if(c != bc)
         if(!values[c].count(n % X[c])) { ok = false; break; }
@@ -50,7 +50,7 @@ void solve_enum(int S, int bc) {
   }
 }
 
-int a[maxc]; // ËÑË÷¶ÔÏó£¬ÓÃÓÚÖĞ¹úÊ£Óà¶¨Àí
+int a[maxc]; // æœç´¢å¯¹è±¡ï¼Œç”¨äºä¸­å›½å‰©ä½™å®šç†
 vector<LL> sol;
 
 void dfs(int dep) {

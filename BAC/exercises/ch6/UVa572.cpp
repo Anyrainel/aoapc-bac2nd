@@ -1,6 +1,6 @@
 // UVa572 Oil Deposits
 // Rujia Liu
-// 题意：输入一个字符矩阵，统计字符@组成多少个四连块
+// 棰樻剰锛氳緭鍏ヤ竴涓瓧绗︾煩闃碉紝缁熻瀛楃@缁勬垚澶氬皯涓洓杩炲潡
 #include<cstdio>
 #include<cstring>
 const int maxn = 100 + 5;

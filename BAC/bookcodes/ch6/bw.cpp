@@ -5,27 +5,27 @@ int n;
 
 int mat[MAXN][MAXN], vis[MAXN][MAXN];
 void dfs(int x, int y) {
-  if(!mat[x][y] || vis[x][y]) return;     // Ôø¾­·ÃÎÊ¹ıÕâ¸ö¸ñ×Ó£¬»òÕßµ±Ç°¸ñ×ÓÊÇ°×É«
-  vis[x][y] = 1;                          // ±ê¼Ç(x,y)ÒÑ·ÃÎÊ¹ı
+  if(!mat[x][y] || vis[x][y]) return;     // æ›¾ç»è®¿é—®è¿‡è¿™ä¸ªæ ¼å­ï¼Œæˆ–è€…å½“å‰æ ¼å­æ˜¯ç™½è‰²
+  vis[x][y] = 1;                          // æ ‡è®°(x,y)å·²è®¿é—®è¿‡
   dfs(x-1,y-1); dfs(x-1,y); dfs(x-1,y+1);
   dfs(x  ,y-1);             dfs(x  ,y+1);
-  dfs(x+1,y-1); dfs(x+1,y); dfs(x+1,y+1); // µİ¹é·ÃÎÊÖÜÎ§µÄ°Ë¸ö¸ñ×Ó
+  dfs(x+1,y-1); dfs(x+1,y); dfs(x+1,y+1); // é€’å½’è®¿é—®å‘¨å›´çš„å…«ä¸ªæ ¼å­
 }
 
 int main() {
   char s[MAXN + 10];
-  memset(mat, 0, sizeof(mat));  // ËùÓĞ¸ñ×Ó¶¼³õÊ¼»¯Îª°×É«£¬°üÀ¨ÖÜÎ§Ò»È¦µÄĞéÄâ¸ñ×Ó
-  memset(vis, 0, sizeof(vis));  // ËùÓĞ¸ñ×Ó¶¼Ã»ÓĞ·ÃÎÊ¹ı
+  memset(mat, 0, sizeof(mat));  // æ‰€æœ‰æ ¼å­éƒ½åˆå§‹åŒ–ä¸ºç™½è‰²ï¼ŒåŒ…æ‹¬å‘¨å›´ä¸€åœˆçš„è™šæ‹Ÿæ ¼å­
+  memset(vis, 0, sizeof(vis));  // æ‰€æœ‰æ ¼å­éƒ½æ²¡æœ‰è®¿é—®è¿‡
   scanf("%d", &n);
   for(int i = 0; i < n; i++) {
     scanf("%s", s);
     for(int j = 0; j < n; j++)
-      mat[i+1][j+1] = s[j]-'0'; // °ÑÍ¼ÏñÍùÖĞ¼äÒÆ¶¯Ò»µã£¬¿Õ³öÒ»È¦°×¸ñ×Ó
+      mat[i+1][j+1] = s[j]-'0'; // æŠŠå›¾åƒå¾€ä¸­é—´ç§»åŠ¨ä¸€ç‚¹ï¼Œç©ºå‡ºä¸€åœˆç™½æ ¼å­
   }
   int count = 0;
   for(int i = 1; i <= n; i++)
     for(int j = 1; j <= n; j++)
-      if(!vis[i][j] && mat[i][j]) { count++; dfs(i,j); } // ÕÒµ½Ã»ÓĞ·ÃÎÊ¹ıµÄºÚ¸ñ
+      if(!vis[i][j] && mat[i][j]) { count++; dfs(i,j); } // æ‰¾åˆ°æ²¡æœ‰è®¿é—®è¿‡çš„é»‘æ ¼
   printf("%d\n", count);
   return 0;
 }

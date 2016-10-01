@@ -31,7 +31,7 @@ int main() {
     scanf("%d%d", &x, &y);
     for(int i = 0; i < n; i++) scanf("%d", &A[i]);
 
-    // 每个子集中的元素之和
+    // 姣忎釜瀛愰泦涓殑鍏冪礌涔嬪拰
     memset(sum, 0, sizeof(sum));
     for(int S = 0; S < (1<<n); S++)
       for(int i = 0; i < n; i++) if(S & (1<<i)) sum[S] += A[i];

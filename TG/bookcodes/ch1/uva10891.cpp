@@ -13,15 +13,15 @@ int main() {
   while(scanf("%d", &n) && n) {
     S[0] = 0;
     for(int i = 1; i <= n; i++) { scanf("%d", &A[i]); S[i]=S[i-1]+A[i]; }
-    for(int i = 1; i <= n; i++) f[i][i] = g[i][i] = d[i][i] = A[i]; // ±ß½ç
-    for(int L = 1; L < n; L++) // °´ÕÕL=j-iµÝÔöµÄË³Ðò¼ÆËã
+    for(int i = 1; i <= n; i++) f[i][i] = g[i][i] = d[i][i] = A[i]; // è¾¹ç•Œ
+    for(int L = 1; L < n; L++) // æŒ‰ç…§L=j-ié€’å¢žçš„é¡ºåºè®¡ç®—
       for(int i = 1; i+L <= n; i++) {
         int j = i+L;
         int m = 0; // m = min{f(i+1,j), g(i,j-1), 0}
         m = min(m, f[i+1][j]);
         m = min(m, g[i][j-1]);
         d[i][j] = S[j]-S[i-1] - m;
-        f[i][j] = min(d[i][j], f[i+1][j]); // µÝÍÆfºÍg
+        f[i][j] = min(d[i][j], f[i+1][j]); // é€’æŽ¨få’Œg
         g[i][j] = min(d[i][j], g[i][j-1]);
       }
     printf("%d\n", 2*d[1][n]-S[n]);

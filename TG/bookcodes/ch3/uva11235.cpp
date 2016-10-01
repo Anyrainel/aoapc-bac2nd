@@ -8,7 +8,7 @@ using namespace std;
 const int maxn = 100000 + 5;
 const int maxlog = 20;
 
-// Çø¼ä×î*´ó*Öµ
+// åŒºé—´æœ€*å¤§*å€¼
 struct RMQ {
   int d[maxn][maxlog];
   void init(const vector<int>& A) {
@@ -21,7 +21,7 @@ struct RMQ {
 
   int query(int L, int R) {
     int k = 0;
-    while((1<<(k+1)) <= R-L+1) k++; // Èç¹û2^(k+1)<=R-L+1£¬ÄÇÃ´k»¹¿ÉÒÔ¼Ó1
+    while((1<<(k+1)) <= R-L+1) k++; // å¦‚æžœ2^(k+1)<=R-L+1ï¼Œé‚£ä¹ˆkè¿˜å¯ä»¥åŠ 1
     return max(d[L][k], d[R-(1<<k)+1][k]);
   }
 };
@@ -32,11 +32,11 @@ int main() {
   int n, q;
   while(scanf("%d%d", &n, &q) == 2) {
     for(int i = 0; i < n; i++) scanf("%d", &a[i]);
-    a[n] = a[n-1] + 1; // ÉÚ±ø
+    a[n] = a[n-1] + 1; // å“¨å…µ
     int start = -1;
     vector<int> count;
     for(int i = 0; i <= n; i++) {
-      if(i == 0 || a[i] > a[i-1]) { // ÐÂ¶Î¿ªÊ¼
+      if(i == 0 || a[i] > a[i-1]) { // æ–°æ®µå¼€å§‹
         if(i > 0) {
           count.push_back(i - start);
           for(int j = start; j < i; j++) {

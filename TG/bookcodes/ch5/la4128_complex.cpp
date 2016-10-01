@@ -1,4 +1,4 @@
-// LA4128 Steam Roller£ºÁíÒ»ÖÖ¹¹Í¼·¨£¬µÃµ½µÄÍ¼½ÏÎª¸´ÔÓ
+// LA4128 Steam Rollerï¼šå¦ä¸€ç§æ„å›¾æ³•ï¼Œå¾—åˆ°çš„å›¾è¾ƒä¸ºå¤æ‚
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
@@ -23,9 +23,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -62,12 +62,12 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 
 const int UP = 0, LEFT = 1, DOWN = 2, RIGHT = 3;
 
 const int inv[] = {2, 3, 0, 1};
-const int dr[] = {-1, 0, 1, 0}; // ÉÏ×óÏÂÓÒ
+const int dr[] = {-1, 0, 1, 0}; // ä¸Šå·¦ä¸‹å³
 const int dc[] = {0, -1, 0, 1};
 const int maxr = 100;
 const int maxc = 100;
@@ -78,7 +78,7 @@ int n, id[maxr][maxc][4][2];
 
 int ID(int r, int c, int dir, int doubled) {
   int& x = id[r][c][dir][doubled];
-  if(x == 0) x = ++n; // ´Ó1¿ªÊ¼±àºÅ
+  if(x == 0) x = ++n; // ä»1å¼€å§‹ç¼–å·
   return x;
 }
 
@@ -91,8 +91,8 @@ int readint() {
 int R, C;
 
 bool cango(int r, int c, int dir) {
-  if(r < 0 || r >= R || c < 0 || c >= C) return false; // ×ß³öÍø¸ñ
-  return grid[r][c][dir] > 0; // ´ËÂ·²»Í¨£¿
+  if(r < 0 || r >= R || c < 0 || c >= C) return false; // èµ°å‡ºç½‘æ ¼
+  return grid[r][c][dir] > 0; // æ­¤è·¯ä¸é€šï¼Ÿ
 }
 
 Dijkstra solver;
@@ -112,11 +112,11 @@ int main() {
     n = 0;
     memset(id, 0, sizeof(id));
 
-    // Ô´µã³ö·¢µÄ±ß
+    // æºç‚¹å‡ºå‘çš„è¾¹
     for(int dir = 0; dir < 4; dir++) if(cango(r1, c1, dir))
        solver.AddEdge(0, ID(r1+dr[dir], c1+dc[dir], dir, 1), grid[r1][c1][dir]*2);
 
-    // ¼ÆËãÃ¿¸ö×´Ì¬(r,c,dir,doubled)µÄºó¼Ì×´Ì¬
+    // è®¡ç®—æ¯ä¸ªçŠ¶æ€(r,c,dir,doubled)çš„åç»§çŠ¶æ€
     for(int r = 0; r < R; r++)
       for(int c = 0; c < C; c++)
         for(int dir = 0; dir < 4; dir++) if(cango(r, c, inv[dir]))
@@ -126,16 +126,16 @@ int main() {
               int newc = c + dc[newdir];
               int v = grid[r][c][newdir], newdoubled = 0;
               if(dir != newdir) {
-                if(!doubled) v += grid[r][c][inv[dir]]; // ÉÏÌõ±ß¼Ó±¶
-                newdoubled = 1; v += grid[r][c][newdir]; // ±¾Ìõ±ß¼Ó±¶
+                if(!doubled) v += grid[r][c][inv[dir]]; // ä¸Šæ¡è¾¹åŠ å€
+                newdoubled = 1; v += grid[r][c][newdir]; // æœ¬æ¡è¾¹åŠ å€
               }
               solver.AddEdge(ID(r, c, dir, doubled), ID(newr, newc, newdir, newdoubled), v);
             }
 
-    // ÅÜdijkstra
+    // è·‘dijkstra
     solver.dijkstra(0);
 
-    // ÕÒ×îÓÅ½â
+    // æ‰¾æœ€ä¼˜è§£
     int ans = INF;
     for(int dir = 0; dir < 4; dir++) if(cango(r2, c2, inv[dir])) 
       for(int doubled = 0; doubled < 2; doubled++) {

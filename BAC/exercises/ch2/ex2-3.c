@@ -1,6 +1,6 @@
 /*
-  Ï°Ìâ2-3. º«ÐÅµã±ø£¨hanxin£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜2-3. éŸ©ä¿¡ç‚¹å…µï¼ˆhanxinï¼‰
+  åˆ˜æ±ä½³
 */
 
 #include<stdio.h>

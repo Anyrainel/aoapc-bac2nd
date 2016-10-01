@@ -2,7 +2,7 @@
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
-#include<cctype> // ÎªÁËÊ¹ÓÃisdigitºê
+#include<cctype> // ä¸ºäº†ä½¿ç”¨isdigitå®
 
 inline int readint() {
   char c = getchar();
@@ -16,15 +16,15 @@ inline int readint() {
   return x;
 }
 
-int buf[10]; // ÉùÃ÷³ÉÈ«¾Ö±äÁ¿¿ÉÒÔ¼õĞ¡¿ªÏú
+int buf[10]; // å£°æ˜æˆå…¨å±€å˜é‡å¯ä»¥å‡å°å¼€é”€
 inline void writeint(int i) {
   int p = 0;
-  if(i == 0) p++; // ÌØÊâÇé¿ö£ºiµÈÓÚ0µÄÊ±ºòĞèÒªÊä³ö0£¬¶ø²»ÊÇÊ²Ã´Ò²²»Êä³ö
+  if(i == 0) p++; // ç‰¹æ®Šæƒ…å†µï¼šiç­‰äº0çš„æ—¶å€™éœ€è¦è¾“å‡º0ï¼Œè€Œä¸æ˜¯ä»€ä¹ˆä¹Ÿä¸è¾“å‡º
   else while(i) {
     buf[p++] = i % 10;
     i /= 10;
   }
-  for(int j = p-1; j >=0; j--) putchar('0' + buf[j]); // ÄæĞòÊä³ö
+  for(int j = p-1; j >=0; j--) putchar('0' + buf[j]); // é€†åºè¾“å‡º
 }
 
 int main() {

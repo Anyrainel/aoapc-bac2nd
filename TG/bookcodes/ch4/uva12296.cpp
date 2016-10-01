@@ -47,7 +47,7 @@ bool OnSegment(Point p, Point a1, Point a2) {
   return dcmp(Cross(a1-p, a2-p)) == 0 && dcmp(Dot(a1-p, a2-p)) < 0;
 }
 
-// ¶à±ßĞÎµÄÓĞÏòÃæ»ı
+// å¤šè¾¹å½¢çš„æœ‰å‘é¢ç§¯
 double PolygonArea(Polygon poly) {
   double area = 0;
   int n = poly.size();
@@ -77,38 +77,38 @@ int isPointInPolygon(Point p, Polygon v){
   int wn = 0;
   int n = v.size();
   for(int i = 0; i < n; i++){
-    if(OnSegment(p, v[i], v[(i+1)%n])) return -1; // ÔÚ±ß½çÉÏ
+    if(OnSegment(p, v[i], v[(i+1)%n])) return -1; // åœ¨è¾¹ç•Œä¸Š
     int k = dcmp(Cross(v[(i+1)%n]-v[i], p-v[i]));
     int d1 = dcmp(v[i].y - p.y);
     int d2 = dcmp(v[(i+1)%n].y - p.y);
     if(k > 0 && d1 <= 0 && d2 > 0) wn++;
     if(k < 0 && d2 <= 0 && d1 > 0) wn--;
   }
-  if (wn != 0) return 1; // ÄÚ²¿
-  return 0; // Íâ²¿
+  if (wn != 0) return 1; // å†…éƒ¨
+  return 0; // å¤–éƒ¨
 }
 
-// µãÔÚÔ²ĞÄÄÚ¡£Ô²ÖÜÉÏ²»Ëã
+// ç‚¹åœ¨åœ†å¿ƒå†…ã€‚åœ†å‘¨ä¸Šä¸ç®—
 bool isInCircle(Point p, Point center, double R) {
   return dcmp(Length2(p-center) - R*R) < 0;
 }
 
-// Ö±ÏßABºÍÔ²ĞÄÎªC£¬°ë¾¶ÎªrµÄÔ²µÄ½»µã
-// ·µ»Ø½»µã¸öÊı£¬t1, t2·Ö±ğÎªÁ½¸ö½»µãÔÚÖ±Ïß·½³ÌÖĞµÄ²ÎÊı£¬p1ºÍp2Îª½»µã±¾Éí
+// ç›´çº¿ABå’Œåœ†å¿ƒä¸ºCï¼ŒåŠå¾„ä¸ºrçš„åœ†çš„äº¤ç‚¹
+// è¿”å›äº¤ç‚¹ä¸ªæ•°ï¼Œt1, t2åˆ†åˆ«ä¸ºä¸¤ä¸ªäº¤ç‚¹åœ¨ç›´çº¿æ–¹ç¨‹ä¸­çš„å‚æ•°ï¼Œp1å’Œp2ä¸ºäº¤ç‚¹æœ¬èº«
 int getLineCircleIntersection(Point A, Point B, Point C, double r, double& t1, double& t2){
-  // ³õÊ¼·½³Ì£º(A.x + t(B.x - A.x) - C.x)^2 + (A.y + t(B.y - A.y) - C.y)^2 = r^2
-  // ÕûÀíµÃ£º(at + b)^2 + (ct + d)^2 = r^2
+  // åˆå§‹æ–¹ç¨‹ï¼š(A.x + t(B.x - A.x) - C.x)^2 + (A.y + t(B.y - A.y) - C.y)^2 = r^2
+  // æ•´ç†å¾—ï¼š(at + b)^2 + (ct + d)^2 = r^2
   double a = B.x - A.x;
   double b = A.x - C.x;
   double c = B.y - A.y;
   double d = A.y - C.y;
-  // Õ¹¿ªµÃ£º(a^2 + c^2)t^2 + 2(ab + cd)t + b^2 + d^2 - r^2 = 0£¬¼´et^2 + ft + g = 0
+  // å±•å¼€å¾—ï¼š(a^2 + c^2)t^2 + 2(ab + cd)t + b^2 + d^2 - r^2 = 0ï¼Œå³et^2 + ft + g = 0
   double e = a * a + c * c;
   double f = 2 * (a * b + c * d);
   double g = b * b + d * d - r * r;
-  double delta = f * f - 4 * e * g; // ÅĞ±ğÊ½
-  if(dcmp(delta) < 0) return 0; // ÏàÀë
-  if(dcmp(delta) == 0){ // ÏàÇĞ
+  double delta = f * f - 4 * e * g; // åˆ¤åˆ«å¼
+  if(dcmp(delta) < 0) return 0; // ç›¸ç¦»
+  if(dcmp(delta) == 0){ // ç›¸åˆ‡
     t1 = t2 = -f / (2 * e);
     return 1;
   }
@@ -117,17 +117,17 @@ int getLineCircleIntersection(Point A, Point B, Point C, double r, double& t1, d
   return 2;
 }
 
-// Ô²ºÍÏß¶ÎÊÇ·ñÏà½»£¨ÏàÇĞ²»Ëã£©¡£Ïß¶Î²»¿¼ÂÇ¶Ëµã
+// åœ†å’Œçº¿æ®µæ˜¯å¦ç›¸äº¤ï¼ˆç›¸åˆ‡ä¸ç®—ï¼‰ã€‚çº¿æ®µä¸è€ƒè™‘ç«¯ç‚¹
 bool CircleIntersectSegment(Point A, Point B, Point p, double R) {
   double t1, t2;
   int c = getLineCircleIntersection(A, B, p, R, t1, t2);
   if(c <= 1) return false;
-  if(dcmp(t1) > 0 && dcmp(t1-1) < 0) return true; // ¶ËµãÔÚÔ²ÉÏ
+  if(dcmp(t1) > 0 && dcmp(t1-1) < 0) return true; // ç«¯ç‚¹åœ¨åœ†ä¸Š
   if(dcmp(t2) > 0 && dcmp(t2-1) < 0) return true;
   return false;
 }
 
-/////////// ÌâÄ¿Ïà¹Ø
+/////////// é¢˜ç›®ç›¸å…³
 vector<Polygon> pieces, new_pieces;
 
 void cut(int x1, int y1, int x2, int y2) {
@@ -147,10 +147,10 @@ bool DiscIntersectPolygon(Polygon poly, Point p, double R) {
   int n = poly.size();
   for(int i = 0; i < n; i++) {
     if(CircleIntersectSegment(poly[i], poly[(i+1)%n], p, R)) {
-      return true; // ²»¿¼ÂÇÏß¶Î¶Ëµã
+      return true; // ä¸è€ƒè™‘çº¿æ®µç«¯ç‚¹
     }
     if(isInCircle((poly[i]+poly[(i+1)%n])*0.5, p, R)) {
-      return true; // Á½¸ö¶Ëµã¶¼ÔÚÔ²ÉÏ
+      return true; // ä¸¤ä¸ªç«¯ç‚¹éƒ½åœ¨åœ†ä¸Š
     }
   }
   return false;

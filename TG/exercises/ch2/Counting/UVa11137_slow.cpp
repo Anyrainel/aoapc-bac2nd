@@ -1,6 +1,6 @@
 // UVa11137 Ingenuous Cubrency
 // Rujia Liu
-// 复杂度较高的方法
+// 澶嶆潅搴﹁緝楂樼殑鏂规硶
 #include<cstring>
 #include<iostream>
 using namespace std;

@@ -30,15 +30,15 @@ int ID(const char* name) {
   return n;
 }
 
-int r[maxn], color[maxn][6]; // Ã¿¸öÁ¢·½ÌåµÄĞı×ª·½Ê½ºÍĞı×ªºó¸÷¸öÃæµÄÑÕÉ«
+int r[maxn], color[maxn][6]; // æ¯ä¸ªç«‹æ–¹ä½“çš„æ—‹è½¬æ–¹å¼å’Œæ—‹è½¬åå„ä¸ªé¢çš„é¢œè‰²
 
 void check() {
   for(int i = 0; i < n; i++)
     for(int j = 0; j < 6; j++) color[i][dice24[r[i]][j]] = dice[i][j];
 
-  int tot = 0; // ĞèÒªÖØĞÂÍ¿É«µÄÃæÊı
-  for(int j = 0; j < 6; j++) { // ¿¼ÂÇÃ¿¸öÃæ
-    int cnt[maxn*6]; // Ã¿ÖÖÑÕÉ«³öÏÖµÄ´ÎÊı
+  int tot = 0; // éœ€è¦é‡æ–°æ¶‚è‰²çš„é¢æ•°
+  for(int j = 0; j < 6; j++) { // è€ƒè™‘æ¯ä¸ªé¢
+    int cnt[maxn*6]; // æ¯ç§é¢œè‰²å‡ºç°çš„æ¬¡æ•°
     memset(cnt, 0, sizeof(cnt));
     int maxface = 0;
     for(int i = 0; i < n; i++)
@@ -65,8 +65,8 @@ int main() {
         scanf("%s", name);
         dice[i][j] = ID(name);
       }
-    ans = n*6; // ÉÏ½ç£ºËùÓĞÃæ¶¼ÖØÍ¿É«
-    r[0] = 0; // µÚÒ»¸öÁ¢·½Ìå²»Ğı×ª
+    ans = n*6; // ä¸Šç•Œï¼šæ‰€æœ‰é¢éƒ½é‡æ¶‚è‰²
+    r[0] = 0; // ç¬¬ä¸€ä¸ªç«‹æ–¹ä½“ä¸æ—‹è½¬
     dfs(1);
     printf("%d\n", ans);
   }

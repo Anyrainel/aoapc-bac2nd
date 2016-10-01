@@ -1,7 +1,7 @@
 // UVa270 Lining Up
 // Rujia Liu
-// 题意：输入平面上n个不同点，判断最多有几个点在同一条直线上
-// 算法：枚举起点，算其他所有点到它的斜率，最后排序后扫描，看有多少个相同
+// 棰樻剰锛氳緭鍏ュ钩闈笂n涓笉鍚岀偣锛屽垽鏂渶澶氭湁鍑犱釜鐐瑰湪鍚屼竴鏉＄洿绾夸笂
+// 绠楁硶锛氭灇涓捐捣鐐癸紝绠楀叾浠栨墍鏈夌偣鍒板畠鐨勬枩鐜囷紝鏈�鍚庢帓搴忓悗鎵弿锛岀湅鏈夊灏戜釜鐩稿悓
 #include<cstdio>
 #include<cmath>
 #include<algorithm>

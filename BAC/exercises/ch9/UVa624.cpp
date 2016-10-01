@@ -1,7 +1,7 @@
 // UVa624 CD
 // Rujia Liu
-// ���⣺����N, k��k�׸裬ѡһЩ��ʹ�ó���֮�Ͳ������������ӽ�N��Ҫ���������
-// �㷨����ֵ��������ͬ��0-1����
+// 题意：输入N, k和k首歌，选一些歌使得长度之和不超过但尽量接近N。要求输出方案
+// 算法：价值和重量相同的0-1背包
 #include<cstdio>
 #include<cstring>
 const int maxk = 20 + 5;

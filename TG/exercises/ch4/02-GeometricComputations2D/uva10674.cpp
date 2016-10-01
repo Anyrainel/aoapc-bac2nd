@@ -47,7 +47,7 @@ bool operator == (const Point& a, const Point &b) {
 double Dot(Vector A, Vector B) { return A.x*B.x + A.y*B.y; }
 double Length(Vector A) { return sqrt(Dot(A, A)); }
 
-// ±¾ÌâÏà¹Ø
+// æœ¬é¢˜ç›¸å…³
 
 struct Circle {
   int x, y, r;
@@ -65,19 +65,19 @@ int getTangents(Circle A, Circle B, Point* a, Point* b) {
   if(d2 < rdiff*rdiff) return 0;
 
   double base = atan2(B.y-A.y, B.x-A.x);
-  if(d2 == 0 && A.r == B.r) return -1; // ÎŞÏŞ¶àÌõÇĞÏß
-  if(d2 == rdiff*rdiff) { // ÄÚÇĞ£¬1ÌõÇĞÏß
+  if(d2 == 0 && A.r == B.r) return -1; // æ— é™å¤šæ¡åˆ‡çº¿
+  if(d2 == rdiff*rdiff) { // å†…åˆ‡ï¼Œ1æ¡åˆ‡çº¿
     a[cnt] = A.getPoint(base); b[cnt] = B.getPoint(base); cnt++;
     return 1;
   }
-  // ÓĞÍâ¹²ÇĞÏß
+  // æœ‰å¤–å…±åˆ‡çº¿
   double ang = acos((A.r-B.r) / sqrt(d2));
   a[cnt] = A.getPoint(base+ang); b[cnt] = B.getPoint(base+ang); cnt++;
   a[cnt] = A.getPoint(base-ang); b[cnt] = B.getPoint(base-ang); cnt++;
-  if(d2 == rsum*rsum) { // Ò»ÌõÄÚ¹²ÇĞÏß
+  if(d2 == rsum*rsum) { // ä¸€æ¡å†…å…±åˆ‡çº¿
     a[cnt] = A.getPoint(base); b[cnt] = B.getPoint(PI+base); cnt++;
   }
-  else if(d2 > rsum*rsum) { // Á½ÌõÄÚ¹²ÇĞÏß
+  else if(d2 > rsum*rsum) { // ä¸¤æ¡å†…å…±åˆ‡çº¿
     double ang = acos((A.r+B.r) / sqrt(d2));
     a[cnt] = A.getPoint(base+ang); b[cnt] = B.getPoint(PI+base+ang); cnt++;
     a[cnt] = A.getPoint(base-ang); b[cnt] = B.getPoint(PI+base-ang); cnt++;

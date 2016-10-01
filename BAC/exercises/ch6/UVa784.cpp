@@ -1,6 +1,6 @@
 // UVa784 Maze Exploration
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÒ»¸öÃÔ¹¬£¬´Ó*¿ªÊ¼±éÀú£¬°Ñ¿É´ïµã±ê¼ÇÎª×Ö·û#
+// é¢˜æ„ï¼šè¾“å…¥ä¸€ä¸ªè¿·å®«ï¼Œä»*å¼€å§‹éå†ï¼ŒæŠŠå¯è¾¾ç‚¹æ ‡è®°ä¸ºå­—ç¬¦#
 #include<cstdio>
 #include<cstring>
 const int maxn = 100 + 5;
@@ -31,7 +31,7 @@ int main() {
       for(int j = 0; j < strlen(maze[i]); j++)
         if(maze[i][j] == '*') dfs(i, j);
     for(int i = 0; i < R; i++)
-      printf("%s", maze[i]); // ×Ô´ø»Ø³µ
+      printf("%s", maze[i]); // è‡ªå¸¦å›è½¦
   }
   return 0;
 }

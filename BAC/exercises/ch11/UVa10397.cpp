@@ -1,7 +1,7 @@
 // UVa10397 Connect the Campus
 // Rujia Liu
-// ���⣺����ƽ����n���㣬�Ѿ���m�Ե���������Ҫ������е��������������ٻ�Ҫ���೤�ľ���
-// �㷨���ѱ߳���Ϊ0��Ȼ����Kruskal�㷨
+// 题意：输入平面上n个点，已经有m对点连起来。要求把所有点连起来，问至少还要连多长的距离
+// 算法：把边长设为0，然后用Kruskal算法
 #include<cstdio>
 #include<cmath>
 #include<cstring>

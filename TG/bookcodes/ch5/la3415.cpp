@@ -6,14 +6,14 @@
 #include <algorithm>
 using namespace std;
 
-const int maxn = 500 + 5; // µ¥²à¶¥µãµÄ×î´óÊıÄ¿
+const int maxn = 500 + 5; // å•ä¾§é¡¶ç‚¹çš„æœ€å¤§æ•°ç›®
 
-// ¶ş·ÖÍ¼×î´ó»ùÊıÆ¥Åä£¬ÁÚ½Ó¾ØÕóĞ´·¨
+// äºŒåˆ†å›¾æœ€å¤§åŸºæ•°åŒ¹é…ï¼Œé‚»æ¥çŸ©é˜µå†™æ³•
 struct BPM {
-  int n, m;               // ×óÓÒ¶¥µã¸öÊı
-  int G[maxn][maxn];      // ÁÚ½Ó±í
-  int left[maxn];         // left[i]ÎªÓÒ±ßµÚi¸öµãµÄÆ¥Åäµã±àºÅ£¬-1±íÊ¾²»´æÔÚ
-  bool T[maxn];           // T[i]ÎªÓÒ±ßµÚi¸öµãÊÇ·ñÒÑ±ê¼Ç
+  int n, m;               // å·¦å³é¡¶ç‚¹ä¸ªæ•°
+  int G[maxn][maxn];      // é‚»æ¥è¡¨
+  int left[maxn];         // left[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹çš„åŒ¹é…ç‚¹ç¼–å·ï¼Œ-1è¡¨ç¤ºä¸å­˜åœ¨
+  bool T[maxn];           // T[i]ä¸ºå³è¾¹ç¬¬iä¸ªç‚¹æ˜¯å¦å·²æ ‡è®°
 
   void init(int n, int m) {
     this->n = n;
@@ -32,11 +32,11 @@ struct BPM {
     return false;
   }
 
-  // Çó×î´óÆ¥Åä
+  // æ±‚æœ€å¤§åŒ¹é…
   int solve() {
     memset(left, -1, sizeof(left));
     int ans = 0;
-    for(int u = 0; u < n; u++) { // ´Ó×ó±ß½áµãu¿ªÊ¼Ôö¹ã
+    for(int u = 0; u < n; u++) { // ä»å·¦è¾¹ç»“ç‚¹uå¼€å§‹å¢å¹¿
       memset(T, 0, sizeof(T));
       if(match(u)) ans++;
     }

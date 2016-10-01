@@ -1,7 +1,7 @@
 // UVa10048 Audiophobia
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÒ»¸öÎŞÏî´øÈ¨Í¼£¬»Ø´ğÒ»Ğ©Ñ¯ÎÊ£¬Ñ¯ÎÊÄÚÈİÊÇÎÊÄ³Á½µã¼ä×î´óÈ¨×îĞ¡µÄÂ·¾¶
-// Ëã·¨£º±äĞÎµÄfloyd
+// é¢˜æ„ï¼šè¾“å…¥ä¸€ä¸ªæ— é¡¹å¸¦æƒå›¾ï¼Œå›ç­”ä¸€äº›è¯¢é—®ï¼Œè¯¢é—®å†…å®¹æ˜¯é—®æŸä¸¤ç‚¹é—´æœ€å¤§æƒæœ€å°çš„è·¯å¾„
+// ç®—æ³•ï¼šå˜å½¢çš„floyd
 #include<cstdio>
 #include<algorithm>
 using namespace std;
@@ -13,7 +13,7 @@ int d[maxn][maxn];
 int main() {
   int n, m, Q, u, v, w, kase = 0;
   while(scanf("%d%d%d", &n, &m, &Q) == 3 && n) {
-    // ³õÊ¼»¯
+    // åˆå§‹åŒ–
     for(int i = 0; i < n; i++) {
       d[i][i] = 0;
       for(int j = i+1; j < n; j++) { d[i][j] = d[j][i] = INF; }
@@ -23,13 +23,13 @@ int main() {
       d[u][v] = min(d[u][v], w);
       d[v][u] = d[u][v];
     }
-    // Ö÷Ëã·¨
+    // ä¸»ç®—æ³•
     for(int k = 0; k < n; k++)
       for(int i = 0; i < n; i++)
         for(int j = 0; j < n; j++)
           if(d[i][k] < INF && d[k][j] < INF)
             d[i][j] = min(d[i][j], max(d[i][k], d[k][j]));
-    // Ñ¯ÎÊ
+    // è¯¢é—®
     if(kase) printf("\n");
     printf("Case #%d\n", ++kase);
     while(Q--) {

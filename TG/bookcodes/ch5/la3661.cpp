@@ -1,4 +1,4 @@
-// LA3661 Animal Run£ºÃ¿¸öÈı½ÇĞÎÒ»¸ö½áµã
+// LA3661 Animal Runï¼šæ¯ä¸ªä¸‰è§’å½¢ä¸€ä¸ªç»“ç‚¹
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
@@ -24,9 +24,9 @@ struct Dijkstra {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  bool done[maxn];    // ÊÇ·ñÒÑÓÀ¾Ã±êºÅ
-  int d[maxn];        // sµ½¸÷¸öµãµÄ¾àÀë
-  int p[maxn];        // ×î¶ÌÂ·ÖĞµÄÉÏÒ»Ìõ»¡
+  bool done[maxn];    // æ˜¯å¦å·²æ°¸ä¹…æ ‡å·
+  int d[maxn];        // såˆ°å„ä¸ªç‚¹çš„è·ç¦»
+  int p[maxn];        // æœ€çŸ­è·¯ä¸­çš„ä¸Šä¸€æ¡å¼§
 
   void init(int n) {
     this->n = n;
@@ -63,7 +63,7 @@ struct Dijkstra {
   }
 };
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 #define REP(i,n) for(int i = 0; i < (n); ++i)
 
 int n, m;
@@ -77,34 +77,34 @@ Dijkstra solver;
 int main() {
   int kase = 0;
   while(scanf("%d%d", &n, &m) == 2 && n && m) {
-    REP(i,n) REP(j,m-1) scanf("%d", &cost[i][j][0]); // ºáÏß
-    REP(i,n-1) REP(j,m) scanf("%d", &cost[i][j][1]); // ÊúÏß
-    REP(i,n-1) REP(j,m-1) scanf("%d", &cost[i][j][2]); // Ğ±Ïß
+    REP(i,n) REP(j,m-1) scanf("%d", &cost[i][j][0]); // æ¨ªçº¿
+    REP(i,n-1) REP(j,m) scanf("%d", &cost[i][j][1]); // ç«–çº¿
+    REP(i,n-1) REP(j,m-1) scanf("%d", &cost[i][j][2]); // æ–œçº¿
     solver.init(2*n*m+2);
     REP(i,n-1) REP(j,m-1) {
-      // ×óÏÂhalf=0
+      // å·¦ä¸‹half=0
       int id1 = ID(i, j, 0);
-      if(j > 0) solver.AddEdge(id1, ID(i, j-1, 1), cost[i][j][1]); // ×ó
-      if(i < n-1) solver.AddEdge(id1, ID(i+1, j, 1), cost[i+1][j][0]); // ÏÂ
+      if(j > 0) solver.AddEdge(id1, ID(i, j-1, 1), cost[i][j][1]); // å·¦
+      if(i < n-1) solver.AddEdge(id1, ID(i+1, j, 1), cost[i+1][j][0]); // ä¸‹
 
-      // ÓÒÉÏhalf=1
+      // å³ä¸Šhalf=1
       int id2 = ID(i, j, 1);
-      if(j < m-1) solver.AddEdge(id2, ID(i, j+1, 0), cost[i][j+1][1]); // ÓÒ
-      if(i > 0) solver.AddEdge(id2, ID(i-1, j, 0), cost[i][j][0]); // ÉÏ
+      if(j < m-1) solver.AddEdge(id2, ID(i, j+1, 0), cost[i][j+1][1]); // å³
+      if(i > 0) solver.AddEdge(id2, ID(i-1, j, 0), cost[i][j][0]); // ä¸Š
 
       solver.AddEdge(id1, id2, cost[i][j][2]);
       solver.AddEdge(id2, id1, cost[i][j][2]);
     }
-    // ´ÓÆğµãµ½×ó/ÏÂ±ß½çµÄ»¡
-    REP(i, n-1) solver.AddEdge(0, ID(i, 0, 0), cost[i][0][1]); // ×ó
-    REP(i, m-1) solver.AddEdge(0, ID(n-2, i, 0), cost[n-1][i][0]); // ÏÂ
+    // ä»èµ·ç‚¹åˆ°å·¦/ä¸‹è¾¹ç•Œçš„å¼§
+    REP(i, n-1) solver.AddEdge(0, ID(i, 0, 0), cost[i][0][1]); // å·¦
+    REP(i, m-1) solver.AddEdge(0, ID(n-2, i, 0), cost[n-1][i][0]); // ä¸‹
 
-    // ´ÓÓÒ/ÉÏ±ß½çµ½ÖÕµãµÄ»¡
-    REP(i, n-1) solver.AddEdge(ID(i, m-2, 1), 2*n*m+1, cost[i][m-1][1]); // ÓÒ
-    REP(i, m-1) solver.AddEdge(ID(0, i, 1), 2*n*m+1, cost[0][i][0]); // ÉÏ
+    // ä»å³/ä¸Šè¾¹ç•Œåˆ°ç»ˆç‚¹çš„å¼§
+    REP(i, n-1) solver.AddEdge(ID(i, m-2, 1), 2*n*m+1, cost[i][m-1][1]); // å³
+    REP(i, m-1) solver.AddEdge(ID(0, i, 1), 2*n*m+1, cost[0][i][0]); // ä¸Š
     solver.dijkstra(0);
 
-    // ÕÒ³öÓÒ/ÉÏ±ß½çµÄ×îÉÙdÖµ
+    // æ‰¾å‡ºå³/ä¸Šè¾¹ç•Œçš„æœ€å°‘då€¼
     printf("Case %d: Minimum = %d\n", ++kase, solver.d[2*n*m+1]);
   }
   return 0;

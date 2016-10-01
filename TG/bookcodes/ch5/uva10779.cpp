@@ -20,11 +20,11 @@ bool operator < (const Edge& a, const Edge& b) {
 
 struct Dinic {
   int n, m, s, t;
-  vector<Edge> edges;    // ±ßÊıµÄÁ½±¶
-  vector<int> G[maxn];   // ÁÚ½Ó±í£¬G[i][j]±íÊ¾½áµãiµÄµÚjÌõ±ßÔÚeÊı×éÖĞµÄĞòºÅ
-  bool vis[maxn];        // BFSÊ¹ÓÃ
-  int d[maxn];           // ´ÓÆğµãµ½iµÄ¾àÀë
-  int cur[maxn];         // µ±Ç°»¡Ö¸Õë
+  vector<Edge> edges;    // è¾¹æ•°çš„ä¸¤å€
+  vector<int> G[maxn];   // é‚»æ¥è¡¨ï¼ŒG[i][j]è¡¨ç¤ºç»“ç‚¹içš„ç¬¬jæ¡è¾¹åœ¨eæ•°ç»„ä¸­çš„åºå·
+  bool vis[maxn];        // BFSä½¿ç”¨
+  int d[maxn];           // ä»èµ·ç‚¹åˆ°içš„è·ç¦»
+  int cur[maxn];         // å½“å‰å¼§æŒ‡é’ˆ
 
   void ClearAll(int n) {
     for(int i = 0; i < n; i++) G[i].clear();
@@ -97,7 +97,7 @@ int main() {
   scanf("%d", &T);
   for(int kase = 1; kase <= T; kase++) {
     scanf("%d%d", &n, &m);
-    g.ClearAll(n+m+1); // s=0, ÎïÆ·Îª½áµã1~m, ³ıBobÍâµÄÈËÎª½áµãm+1~m+n-1£¬t=m+n
+    g.ClearAll(n+m+1); // s=0, ç‰©å“ä¸ºç»“ç‚¹1~m, é™¤Bobå¤–çš„äººä¸ºç»“ç‚¹m+1~m+n-1ï¼Œt=m+n
     for(int i = 0; i < n; i++) {
       int k, kind;
       scanf("%d", &k);
@@ -105,11 +105,11 @@ int main() {
       for(int j = 0; j < k; j++) { scanf("%d", &kind); cnt[kind]++; }
       if(i == 0) { // Bob
         for(int j = 1; j <= m; j++)
-          if(cnt[j] >= 1) g.AddEdge(0, j, cnt[j]); // sÁ¬±ßµ½ÎïÆ·
-      } else { // ÆäËûÈË
+          if(cnt[j] >= 1) g.AddEdge(0, j, cnt[j]); // sè¿è¾¹åˆ°ç‰©å“
+      } else { // å…¶ä»–äºº
         for(int j = 1; j <= m; j++) {
-          if(cnt[j] >= 2) g.AddEdge(m+i, j, cnt[j]-1); // ´ËÈË¿ÉÒÔ¸ø³öcnt[j]-1¸öÎïÆ·j
-          else if(cnt[j] == 0) g.AddEdge(j, m+i, 1); // ´ËÈË¿ÉÒÔ½ÓÊÜ1¸öÎïÆ·j
+          if(cnt[j] >= 2) g.AddEdge(m+i, j, cnt[j]-1); // æ­¤äººå¯ä»¥ç»™å‡ºcnt[j]-1ä¸ªç‰©å“j
+          else if(cnt[j] == 0) g.AddEdge(j, m+i, 1); // æ­¤äººå¯ä»¥æ¥å—1ä¸ªç‰©å“j
         }
       }
     }

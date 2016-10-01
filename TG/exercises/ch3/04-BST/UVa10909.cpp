@@ -1,7 +1,7 @@
 // UVa10909 Lucky Number
 // Rujia Liu
-// Ë¼Â·Ïê¼û£ºhttp://www.algorithmist.com/index.php/User:Sweepline/UVa_10909.cpp
-// ±¾³ÌĞòÖ»ÊÇTreapµÄÓ¦ÓÃÕ¹Ê¾£¬±¾Ìâ¸ü¿ìµÄ·½·¨ÊÇÓÃ¾²Ì¬BST
+// æ€è·¯è¯¦è§ï¼šhttp://www.algorithmist.com/index.php/User:Sweepline/UVa_10909.cpp
+// æœ¬ç¨‹åºåªæ˜¯Treapçš„åº”ç”¨å±•ç¤ºï¼Œæœ¬é¢˜æ›´å¿«çš„æ–¹æ³•æ˜¯ç”¨é™æ€BST
 
 #include <cstring>
 #include <cstdio>
@@ -9,13 +9,13 @@
 
 using namespace std;
 
-const int maxnode = 600000; // Êµ¼ÊÓĞ571458¸ö½áµã
+const int maxnode = 600000; // å®é™…æœ‰571458ä¸ªç»“ç‚¹
 
 struct Node {
-  Node *ch[2]; // ×óÓÒ×ÓÊ÷
-  int r; // Ëæ»úÓÅÏÈ¼¶
-  int v; // Öµ
-  int s; // ½áµã×ÜÊı
+  Node *ch[2]; // å·¦å³å­æ ‘
+  int r; // éšæœºä¼˜å…ˆçº§
+  int v; // å€¼
+  int s; // ç»“ç‚¹æ€»æ•°
   Node(int v = 0):v(v) { ch[0] = ch[1] = NULL; r = rand(); s = 1; }
   int cmp(int x) const {
     if (x == v) return -1;
@@ -26,7 +26,7 @@ struct Node {
     if(ch[0] != NULL) s += ch[0]->s;
     if(ch[1] != NULL) s += ch[1]->s;
   }
-} pool[maxnode]; // ½áµã³Ø
+} pool[maxnode]; // ç»“ç‚¹æ± 
 
 int pool_head;
 
@@ -44,7 +44,7 @@ void rotate(Node* &o, int d) {
 void insert(Node* &o, int x) {
   if(o == NULL) o = new_node(x);
   else {
-    int d = (x < o->v ? 0 : 1); // ²»ÒªÓÃcmpº¯Êı£¬ÒòÎª¿ÉÄÜ»áÓĞÏàÍ¬½áµã
+    int d = (x < o->v ? 0 : 1); // ä¸è¦ç”¨cmpå‡½æ•°ï¼Œå› ä¸ºå¯èƒ½ä¼šæœ‰ç›¸åŒç»“ç‚¹
     insert(o->ch[d], x);
     if(o->ch[d]->r > o->r) rotate(o, d^1);
   }
@@ -57,7 +57,7 @@ Node* find(Node* o, int x) {
   return x < o->v ? find(o->ch[0], x) : find(o->ch[1], x);
 }
 
-// ÒªÈ·±£½áµã´æÔÚ
+// è¦ç¡®ä¿ç»“ç‚¹å­˜åœ¨
 void remove(Node* &o, int x) {
   int d = o->cmp(x);
   if(d == -1) {
@@ -81,14 +81,14 @@ int kth(Node* o, int k) {
   else return kth(o->ch[1], k-s-1);
 }
 
-// ÔÚÒÔoÎª¸ùµÄ×ÓÊ÷ÖĞ£¬Öµ±ÈxĞ¡µÄ½áµã×ÜÊı¼Ó1
+// åœ¨ä»¥oä¸ºæ ¹çš„å­æ ‘ä¸­ï¼Œå€¼æ¯”xå°çš„ç»“ç‚¹æ€»æ•°åŠ 1
 int rank(Node* o, int x) {
   if(o == NULL) return 1;
   if(x <= o->v) return rank(o->ch[0], x);
   return rank(o->ch[1], x) + (o->ch[0] == NULL ? 0 : o->ch[0]->s) + 1;
 }
 
-//////// ÌâÄ¿Ïà¹Ø
+//////// é¢˜ç›®ç›¸å…³
 
 const int maxn = 2000000;
 int lucky[maxn + 10];
@@ -105,13 +105,13 @@ int main() {
   Node* root = NULL;
   memset(lucky, 0, sizeof(lucky));
 
-  // ²åÈë³õÊ¼½áµã£¬Ö±½ÓÌø¹ıÇ°ÈıÂÖ»á±»É¾³ıµÄ½áµã
+  // æ’å…¥åˆå§‹ç»“ç‚¹ï¼Œç›´æ¥è·³è¿‡å‰ä¸‰è½®ä¼šè¢«åˆ é™¤çš„ç»“ç‚¹
   for(int i = 1, k = 1; k <= maxn; k += 6) {
     if(i % 7 != 0) insert(root, k); i++;
     if(i % 7 != 0) insert(root, k+2); i++;
   }
 
-  // É¾³ı²Ù×÷´ÓµÚËÄÂÖ¿ªÊ¼Ö´ĞĞ
+  // åˆ é™¤æ“ä½œä»ç¬¬å››è½®å¼€å§‹æ‰§è¡Œ
   for(int i = 4; i <= root->s; i++) {
     int step = kth(root, i);
     if(step > root->s) break;
@@ -119,14 +119,14 @@ int main() {
       remove(root, kth(root, j));
   }
 
-  // ±ê¼Çlucky number
+  // æ ‡è®°lucky number
   dfs(root);
 
-  // »Ø´ğÑ¯ÎÊ
+  // å›ç­”è¯¢é—®
   int n;
   while(scanf("%d", &n) == 1) {
     int ok = 0;
-    if(n % 2 == 0) { // Å¼Êı²Å¿ÉÄÜÓĞ½â
+    if(n % 2 == 0) { // å¶æ•°æ‰å¯èƒ½æœ‰è§£
       for(int x = n/2; x > 0; x--) if(lucky[x] && lucky[n-x]) {
         printf("%d is the sum of %d and %d.\n", n, x, n-x);
         ok = 1;

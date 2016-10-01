@@ -1,7 +1,7 @@
 // UVa820 Internet Bandwidth
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸öÎŞÏòÍøÂç£¬Çó×î´óÁ÷
-// Ëã·¨£º¹æÄ£²»´ó£¬ÓÃEdmondsKarpËã·¨¼´¿É¡£
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªæ— å‘ç½‘ç»œï¼Œæ±‚æœ€å¤§æµ
+// ç®—æ³•ï¼šè§„æ¨¡ä¸å¤§ï¼Œç”¨EdmondsKarpç®—æ³•å³å¯ã€‚
 #include<cstdio>
 #include<cstring>
 #include<queue>
@@ -19,10 +19,10 @@ struct Edge {
 
 struct EdmondsKarp {
   int n, m;
-  vector<Edge> edges;    // ±ßÊıµÄÁ½±¶
-  vector<int> G[maxn];   // ÁÚ½Ó±í£¬G[i][j]±íÊ¾½áµãiµÄµÚjÌõ±ßÔÚeÊı×éÖĞµÄĞòºÅ
-  int a[maxn];           // µ±Æğµãµ½iµÄ¿É¸Ä½øÁ¿
-  int p[maxn];           // ×î¶ÌÂ·Ê÷ÉÏpµÄÈë»¡±àºÅ
+  vector<Edge> edges;    // è¾¹æ•°çš„ä¸¤å€
+  vector<int> G[maxn];   // é‚»æ¥è¡¨ï¼ŒG[i][j]è¡¨ç¤ºç»“ç‚¹içš„ç¬¬jæ¡è¾¹åœ¨eæ•°ç»„ä¸­çš„åºå·
+  int a[maxn];           // å½“èµ·ç‚¹åˆ°içš„å¯æ”¹è¿›é‡
+  int p[maxn];           // æœ€çŸ­è·¯æ ‘ä¸Špçš„å…¥å¼§ç¼–å·
 
   void init(int n) {
     for(int i = 0; i < n; i++) G[i].clear();

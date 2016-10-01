@@ -1,13 +1,13 @@
 // UVa10673 Play with Floor and Ceil
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÁ½¸öÕıÕûÊıx, k£¬ÕÒÁ½¸öÕûÊıp, qÊ¹µÃx = p*floor(x/k) + q*ceil(x/k)¡£
-// Ëã·¨£ºÈç¹ûxÊÇkµÄ±¶Êı£¬ÔòÖ»Òªp+q=k¼´¿É£¬·ñÔòfloor(x/k)+1=ceil(x/k)£¬Òò´Ë¶şÕß»¥ËØ£¬ÓÃÀ©Õ¹Å·¼¸ÀïµÃËã·¨¼´¿É
+// é¢˜æ„ï¼šè¾“å…¥ä¸¤ä¸ªæ­£æ•´æ•°x, kï¼Œæ‰¾ä¸¤ä¸ªæ•´æ•°p, qä½¿å¾—x = p*floor(x/k) + q*ceil(x/k)ã€‚
+// ç®—æ³•ï¼šå¦‚æœxæ˜¯kçš„å€æ•°ï¼Œåˆ™åªè¦p+q=kå³å¯ï¼Œå¦åˆ™floor(x/k)+1=ceil(x/k)ï¼Œå› æ­¤äºŒè€…äº’ç´ ï¼Œç”¨æ‰©å±•æ¬§å‡ é‡Œå¾—ç®—æ³•å³å¯
 #include<iostream>
 using namespace std;
 
 typedef long long LL;
 
-// ¼´Ê¹a, bÔÚint·¶Î§ÄÚ£¬xºÍyÓĞ¿ÉÄÜ³¬³öint·¶Î§
+// å³ä½¿a, båœ¨intèŒƒå›´å†…ï¼Œxå’Œyæœ‰å¯èƒ½è¶…å‡ºintèŒƒå›´
 void gcd(LL a, LL b, LL& d, LL& x, LL& y) {
   if(!b){ d = a; x = 1; y = 0; }
   else{ gcd(b, a%b, d, y, x); y -= x*(a/b); }

@@ -1,4 +1,4 @@
-// UVa11248 Frequency Hopping£ºÊ¹ÓÃISAPËã·¨£¬¼ÓÓÅ»¯
+// UVa11248 Frequency Hoppingï¼šä½¿ç”¨ISAPç®—æ³•ï¼ŒåŠ ä¼˜åŒ–
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
@@ -21,12 +21,12 @@ bool operator < (const Edge& a, const Edge& b) {
 struct ISAP {
   int n, m, s, t;
   vector<Edge> edges;
-  vector<int> G[maxn];   // ÁÚ½Ó±í£¬G[i][j]±íÊ¾½áµãiµÄµÚjÌõ±ßÔÚeÊı×éÖĞµÄĞòºÅ
-  bool vis[maxn];        // BFSÊ¹ÓÃ
-  int d[maxn];           // ´ÓÆğµãµ½iµÄ¾àÀë
-  int cur[maxn];        // µ±Ç°»¡Ö¸Õë
-  int p[maxn];          // ¿ÉÔö¹ãÂ·ÉÏµÄÉÏÒ»Ìõ»¡
-  int num[maxn];        // ¾àÀë±êºÅ¼ÆÊı
+  vector<int> G[maxn];   // é‚»æ¥è¡¨ï¼ŒG[i][j]è¡¨ç¤ºç»“ç‚¹içš„ç¬¬jæ¡è¾¹åœ¨eæ•°ç»„ä¸­çš„åºå·
+  bool vis[maxn];        // BFSä½¿ç”¨
+  int d[maxn];           // ä»èµ·ç‚¹åˆ°içš„è·ç¦»
+  int cur[maxn];        // å½“å‰å¼§æŒ‡é’ˆ
+  int p[maxn];          // å¯å¢å¹¿è·¯ä¸Šçš„ä¸Šä¸€æ¡å¼§
+  int num[maxn];        // è·ç¦»æ ‡å·è®¡æ•°
 
   void AddEdge(int from, int to, int cap) {
     edges.push_back((Edge){from, to, cap, 0});
@@ -102,20 +102,20 @@ struct ISAP {
         if(e.cap > e.flow && d[x] == d[e.to] + 1) { // Advance
           ok = 1;
           p[e.to] = G[x][i];
-          cur[x] = i; // ×¢Òâ
+          cur[x] = i; // æ³¨æ„
           x = e.to;
           break;
         }
       }
       if(!ok) { // Retreat
-        int m = n-1; // ³õÖµ×¢Òâ
+        int m = n-1; // åˆå€¼æ³¨æ„
         for(int i = 0; i < G[x].size(); i++) {
           Edge& e = edges[G[x][i]];
           if(e.cap > e.flow) m = min(m, d[e.to]);
         }
         if(--num[d[x]] == 0) break;
         num[d[x] = m+1]++;
-        cur[x] = 0; // ×¢Òâ
+        cur[x] = 0; // æ³¨æ„
         if(x != s) x = edges[p[x]].from;
       }
     }

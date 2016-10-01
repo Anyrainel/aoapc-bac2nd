@@ -1,18 +1,18 @@
-// UVa11361 Investigating Div-Sum Property £¨ÏŞÓÚÆª·ù£¬ÊéÉÏÎŞ´Ë´úÂë£©
+// UVa11361 Investigating Div-Sum Property ï¼ˆé™äºç¯‡å¹…ï¼Œä¹¦ä¸Šæ— æ­¤ä»£ç ï¼‰
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
 using namespace std;
 
-int MOD; // ÌâÄ¿ÖĞ½Ğk£¬¸ÄÃûÎªMOD¿ÉÒÔÈÃ´úÂë¸üÇåÎú
+int MOD; // é¢˜ç›®ä¸­å«kï¼Œæ”¹åä¸ºMODå¯ä»¥è®©ä»£ç æ›´æ¸…æ™°
 int pow10[10];
 
-// ÕûÊın³ıÒÔMODµÄÓàÊı£¬·µ»Ø0~MOD-1
+// æ•´æ•°né™¤ä»¥MODçš„ä½™æ•°ï¼Œè¿”å›0~MOD-1
 int mod(int n) {
   return (n % MOD + MOD) % MOD;
 }
 
-// ¹²d¸öÊı×Ö£¬Êı×ÖÖ®ºÍ³ıÒÔkµÄÓàÊıÎªm1£¬ÕûÊı±¾Éí³ıÒÔkµÄÓàÊıÎªm2
+// å…±dä¸ªæ•°å­—ï¼Œæ•°å­—ä¹‹å’Œé™¤ä»¥kçš„ä½™æ•°ä¸ºm1ï¼Œæ•´æ•°æœ¬èº«é™¤ä»¥kçš„ä½™æ•°ä¸ºm2
 int memo[11][90][90];
 int f(int d, int m1, int m2) {
   if(d == 0) return m1 == 0 && m2 == 0 ? 1 : 0;
@@ -25,17 +25,17 @@ int f(int d, int m1, int m2) {
   return ans;
 }
 
-// Í³¼Æ0~n-1ÖĞÂú×ãÌõ¼şµÄÕûÊı¸öÊı£¨ºÍÊéÉÏµÄ·ÖÎöÓĞÒ»µã³öÈë£¬µ«Ã»ÓĞ±¾ÖÊÇø±ğ£©
+// ç»Ÿè®¡0~n-1ä¸­æ»¡è¶³æ¡ä»¶çš„æ•´æ•°ä¸ªæ•°ï¼ˆå’Œä¹¦ä¸Šçš„åˆ†ææœ‰ä¸€ç‚¹å‡ºå…¥ï¼Œä½†æ²¡æœ‰æœ¬è´¨åŒºåˆ«ï¼‰
 int sumf(int n) {
   char digits[11];
   sprintf(digits, "%d", n);
   int nd = strlen(digits);
 
-  int base = 0; // µ±Ç°Çø¼äµÄ×ó±ß½ç
-  int sumd = 0; // µ±Ç°Çø¼äµÄ×ó±ß½çµÄÊı×ÖºÍ
+  int base = 0; // å½“å‰åŒºé—´çš„å·¦è¾¹ç•Œ
+  int sumd = 0; // å½“å‰åŒºé—´çš„å·¦è¾¹ç•Œçš„æ•°å­—å’Œ
   int ans = 0;
-  for(int i = 0; i < nd; i++) { // ÓĞi¸öÊı×Ö(i>=0)
-    int na = nd - 1 - i; // ĞÇºÅµÄ¸öÊı
+  for(int i = 0; i < nd; i++) { // æœ‰iä¸ªæ•°å­—(i>=0)
+    int na = nd - 1 - i; // æ˜Ÿå·çš„ä¸ªæ•°
     for(int d = 0; d < digits[i] - '0'; d++) {
       int cnt = f(na, mod(-sumd - d), mod(-base - d*pow10[na]));
       ans += cnt;
@@ -56,7 +56,7 @@ int main() {
     int a, b;
     scanf("%d%d%d", &a, &b, &MOD);
     memset(memo, -1, sizeof(memo));
-    if(MOD > 85) printf("0\n"); // Êı×ÖºÍ×î¶àÎª1+9*9=82£¬Èç¹ûMOD´óÓÚ´ËÖµ£¬Ò»¶¨ÎŞ½â
+    if(MOD > 85) printf("0\n"); // æ•°å­—å’Œæœ€å¤šä¸º1+9*9=82ï¼Œå¦‚æœMODå¤§äºæ­¤å€¼ï¼Œä¸€å®šæ— è§£
     else printf("%d\n", sumf(b+1) - sumf(a));
   }
   return 0;

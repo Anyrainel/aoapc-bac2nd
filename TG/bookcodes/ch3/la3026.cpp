@@ -9,7 +9,7 @@ int main() {
   int n, kase = 0;
   while(scanf("%d", &n) == 1 && n) {
     scanf("%s", P);
-    f[0] = 0; f[1] = 0; // µİÍÆ±ß½ç³õÖµ
+    f[0] = 0; f[1] = 0; // é€’æ¨è¾¹ç•Œåˆå€¼
     for(int i = 1; i < n; i++) {
       int j = f[i];
       while(j && P[i]!=P[j]) j = f[j];

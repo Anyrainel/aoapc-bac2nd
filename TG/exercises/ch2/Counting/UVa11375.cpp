@@ -116,21 +116,21 @@ struct bign{
 
 typedef bign<500> LL;
 
-const int c[] = {6, 2, 5, 5, 4, 5, 6, 3, 7, 6}; // ¸÷Êı×ÖĞèÒªµÄ»ğ²ñÊıÁ¿
+const int c[] = {6, 2, 5, 5, 4, 5, 6, 3, 7, 6}; // å„æ•°å­—éœ€è¦çš„ç«æŸ´æ•°é‡
 const int MAXN = 2000;
 const int SIZE = MAXN + 48;
-LL d[SIZE], f[SIZE]; // Êı×é´óĞ¡Îª2µÄÃİÊ±£¬Ğ§ÂÊ»á¸ü¸ß
+LL d[SIZE], f[SIZE]; // æ•°ç»„å¤§å°ä¸º2çš„å¹‚æ—¶ï¼Œæ•ˆç‡ä¼šæ›´é«˜
 int main() {
-  memset(d, 0, sizeof(d)); // d[i]ÎªÇ¡ºÃÓÃi¸ù»ğ²ñ¿ÉÒÔ×é³ÉµÄÕıÕûÊı£¨²»º¬0£©
+  memset(d, 0, sizeof(d)); // d[i]ä¸ºæ°å¥½ç”¨iæ ¹ç«æŸ´å¯ä»¥ç»„æˆçš„æ­£æ•´æ•°ï¼ˆä¸å«0ï¼‰
   d[0] = 1;
   for(int i = 0; i <= MAXN; i++)
     for(int j = 0; j < 10; j++)
-      if(!(i==0&&j==0) && i+c[j] <= MAXN) d[i+c[j]] += d[i]; // i=j=0Ê±²»ÔÊĞí×ªÒÆ
+      if(!(i==0&&j==0) && i+c[j] <= MAXN) d[i+c[j]] += d[i]; // i=j=0æ—¶ä¸å…è®¸è½¬ç§»
   f[0] = 0;
   for(int i = 1; i <= MAXN; i++)
     f[i] = f[i-1] + d[i];
   for(int i = 1; i <= MAXN; i++)
-    if(i >= 6) f[i] += 1; // n>=6Ê±£¬¿ÉÒÔ×é³É¡°0¡±
+    if(i >= 6) f[i] += 1; // n>=6æ—¶ï¼Œå¯ä»¥ç»„æˆâ€œ0â€
 
   int n;
   while(scanf("%d", &n) == 1)

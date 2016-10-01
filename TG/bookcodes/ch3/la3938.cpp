@@ -22,7 +22,7 @@ LL sum(Interval p) {
 
 Interval better(Interval a, Interval b) {
   if(sum(a) != sum(b)) return sum(a) > sum(b) ? a : b;
-  return a < b ? a : b; // ÀûÓÃpair×Ô´øµÄ×ÖµäÐò
+  return a < b ? a : b; // åˆ©ç”¨pairè‡ªå¸¦çš„å­—å…¸åº
 }
 
 int qL, qR;
@@ -38,26 +38,26 @@ struct IntervalTree {
       max_sub[o] = make_pair(L, L);
     } else {
       int M = L + (R-L)/2;
-      // µÝ¹é´´½¨×ÓÊ÷
+      // é€’å½’åˆ›å»ºå­æ ‘
       int lc = o*2, rc = o*2+1;
       build(lc, L, M);
       build(rc, M+1, R);
 
-      // µÝÍÆmax_prefix
+      // é€’æŽ¨max_prefix
       LL v1 = sum(L, max_prefix[lc]);
       LL v2 = sum(L, max_prefix[rc]);
       if(v1 == v2) max_prefix[o] = min(max_prefix[lc], max_prefix[rc]);
       else max_prefix[o] = v1 > v2 ? max_prefix[lc] : max_prefix[rc];
 
-      // µÝÍÆmax_suffix
+      // é€’æŽ¨max_suffix
       v1 = sum(max_suffix[lc], R);
       v2 = sum(max_suffix[rc], R);
       if(v1 == v2) max_suffix[o] = min(max_suffix[lc], max_suffix[rc]);
       else max_suffix[o] = v1 > v2 ? max_suffix[lc] : max_suffix[rc];
 
-      // µÝÍÆmax_sub      
-      max_sub[o] = better(max_sub[lc], max_sub[rc]); // ÍêÈ«ÔÚ×ó×ÓÊ÷»òÕßÓÒ×ÓÊ÷
-      max_sub[o] = better(max_sub[o], make_pair(max_suffix[lc], max_prefix[rc])); // ¿çÔ½ÖÐÏß
+      // é€’æŽ¨max_sub      
+      max_sub[o] = better(max_sub[lc], max_sub[rc]); // å®Œå…¨åœ¨å·¦å­æ ‘æˆ–è€…å³å­æ ‘
+      max_sub[o] = better(max_sub[o], make_pair(max_suffix[lc], max_prefix[rc])); // è·¨è¶Šä¸­çº¿
     }
   }
 
@@ -87,8 +87,8 @@ struct IntervalTree {
     int lc = o*2, rc = o*2+1;
     if(qR <= M) return query(lc, L, M);
     if(qL > M) return query(rc, M+1, R);
-    Interval i1 = query_prefix(rc, M+1, R); // ÓÒ°ëµÄÇ°×º
-    Interval i2 = query_suffix(lc, L, M); // ×ó°ëµÄºó×º
+    Interval i1 = query_prefix(rc, M+1, R); // å³åŠçš„å‰ç¼€
+    Interval i2 = query_suffix(lc, L, M); // å·¦åŠçš„åŽç¼€
     Interval i3 = better(query(lc, L, M), query(rc, M+1, R));
     return better(make_pair(i2.first, i1.second), i3);
   }

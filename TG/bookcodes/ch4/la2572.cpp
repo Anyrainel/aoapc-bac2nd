@@ -38,10 +38,10 @@ double angle(Vector v) {
   return atan2(v.y, v.x);
 }
 
-// ½»µãÏà¶ÔÓÚÔ²1µÄ¼«½Ç±£´æÔÚradÖĞ
+// äº¤ç‚¹ç›¸å¯¹äºåœ†1çš„æè§’ä¿å­˜åœ¨radä¸­
 void getCircleCircleIntersection(Point c1, double r1, Point c2, double r2, vector<double>& rad) {
   double d = Length(c1 - c2);
-  if(dcmp(d) == 0) return; // ²»¹ÜÊÇÄÚº¬»¹ÊÇÖØºÏ£¬¶¼²»Ïà½»
+  if(dcmp(d) == 0) return; // ä¸ç®¡æ˜¯å†…å«è¿˜æ˜¯é‡åˆï¼Œéƒ½ä¸ç›¸äº¤
   if(dcmp(r1 + r2 - d) < 0) return;
   if(dcmp(fabs(r1-r2) - d) > 0) return;
 
@@ -57,7 +57,7 @@ Point center[maxn];
 double radius[maxn];
 bool vis[maxn];
 
-// ¸²¸ÇµãpµÄ×îÉÏ²ãµÄÔ²
+// è¦†ç›–ç‚¹pçš„æœ€ä¸Šå±‚çš„åœ†
 int topmost(Point p) {
   for(int i = n-1; i >= 0; i--)
     if(Length(center[i]-p) < radius[i]) return i;
@@ -75,7 +75,7 @@ int main() {
     }
     memset(vis, 0, sizeof(vis));
     for(int i = 0; i < n; i++) {
-      // ¿¼ÂÇÔ²i±»ÇĞ¸î³ÉµÄ¸÷¸öÔ²»¡¡£°ÑÔ²ÖÜµ±×öÇø¼äÀ´´¦Àí£¬ÆğµãÊÇ0£¬ÖÕµãÊÇ2PI
+      // è€ƒè™‘åœ†iè¢«åˆ‡å‰²æˆçš„å„ä¸ªåœ†å¼§ã€‚æŠŠåœ†å‘¨å½“åšåŒºé—´æ¥å¤„ç†ï¼Œèµ·ç‚¹æ˜¯0ï¼Œç»ˆç‚¹æ˜¯2PI
       vector<double> rad;
       rad.push_back(0);
       rad.push_back(PI*2);
@@ -84,9 +84,9 @@ int main() {
       sort(rad.begin(), rad.end());
 
       for(int j = 0; j < rad.size(); j++) {
-        double mid = (rad[j] + rad[j+1]) / 2.0; // Ô²»¡ÖĞµãÏà¶ÔÓÚÔ²iÔ²ĞÄµÄ¼«½Ç
+        double mid = (rad[j] + rad[j+1]) / 2.0; // åœ†å¼§ä¸­ç‚¹ç›¸å¯¹äºåœ†iåœ†å¿ƒçš„æè§’
         for(int side = -1; side <= 1; side += 2) {
-          double r2 = radius[i] - side*eps; // ÍùÀïÃæ»òÕßÍâÃæÉÔÎ¢Ò»¶¯Ò»µãµã
+          double r2 = radius[i] - side*eps; // å¾€é‡Œé¢æˆ–è€…å¤–é¢ç¨å¾®ä¸€åŠ¨ä¸€ç‚¹ç‚¹
           int t = topmost(Point(center[i].x + cos(mid)*r2, center[i].y + sin(mid)*r2));
           if(t >= 0) vis[t] = true;
         }

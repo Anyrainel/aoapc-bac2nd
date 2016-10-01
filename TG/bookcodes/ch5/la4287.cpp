@@ -1,4 +1,4 @@
-// LA4287 Proving Equivalences：使用Tarjan算法计算SCC
+// LA4287 Proving Equivalences锛氫娇鐢═arjan绠楁硶璁＄畻SCC
 // Rujia Liu
 #include<cstdio>
 #include<algorithm>

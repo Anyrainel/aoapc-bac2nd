@@ -9,24 +9,24 @@
 using namespace std;
 
 const int SIGMA_SIZE = 64;
-const int MAXNODE = 500; // ½áµã×ÜÊı
-const int MAXS = 20 + 10; // Ä£°å¸öÊı
+const int MAXNODE = 500; // ç»“ç‚¹æ€»æ•°
+const int MAXS = 20 + 10; // æ¨¡æ¿ä¸ªæ•°
 
 int idx[256], n;
 double prob[SIGMA_SIZE];
 
 struct AhoCorasickAutomata {
   int ch[MAXNODE][SIGMA_SIZE];
-  int f[MAXNODE];    // failº¯Êı
-  int match[MAXNODE];  // ÊÇ·ñ°üº¬Ä³Ò»¸ö×Ö·û´®
-  int sz;            // ½áµã×ÜÊı
+  int f[MAXNODE];    // failå‡½æ•°
+  int match[MAXNODE];  // æ˜¯å¦åŒ…å«æŸä¸€ä¸ªå­—ç¬¦ä¸²
+  int sz;            // ç»“ç‚¹æ€»æ•°
 
   void init() {
     sz = 1;
     memset(ch[0], 0, sizeof(ch[0]));
   }
 
-  // ²åÈë×Ö·û´®
+  // æ’å…¥å­—ç¬¦ä¸²
   void insert(char *s) {
     int u = 0, n = strlen(s);
     for(int i = 0; i < n; i++) {
@@ -41,16 +41,16 @@ struct AhoCorasickAutomata {
     match[u] = 1;
   }
 
-  // ¼ÆËãfailº¯Êı
+  // è®¡ç®—failå‡½æ•°
   void getFail() {
     queue<int> q;
     f[0] = 0;
-    // ³õÊ¼»¯¶ÓÁĞ
+    // åˆå§‹åŒ–é˜Ÿåˆ—
     for(int c = 0; c < SIGMA_SIZE; c++) {
       int u = ch[0][c];
       if(u) { f[u] = 0; q.push(u); }
     }
-    // °´BFSË³Ğò¼ÆËãfail
+    // æŒ‰BFSé¡ºåºè®¡ç®—fail
     while(!q.empty()) {
       int r = q.front(); q.pop();
       for(int c = 0; c < SIGMA_SIZE; c++) {

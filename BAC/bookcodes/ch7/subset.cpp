@@ -1,12 +1,12 @@
 #include<stdio.h>
 
 void print_subset(int n, int* A, int cur) {
-  for(int i = 0; i < cur; i++) printf("%d ", A[i]); // ´òÓ¡µ±Ç°¼¯ºÏ    
+  for(int i = 0; i < cur; i++) printf("%d ", A[i]); // æ‰“å°å½“å‰é›†åˆ    
   printf("\n");
-  int s = cur ? A[cur-1]+1 : 0; // È·¶¨µ±Ç°ÔªËØµÄ×îÐ¡¿ÉÄÜÖµ
+  int s = cur ? A[cur-1]+1 : 0; // ç¡®å®šå½“å‰å…ƒç´ çš„æœ€å°å¯èƒ½å€¼
   for(int i = s; i < n; i++) {
     A[cur] = i;
-    print_subset(n, A, cur+1); // µÝ¹é¹¹Ôì×Ó¼¯
+    print_subset(n, A, cur+1); // é€’å½’æž„é€ å­é›†
   }
 }
 

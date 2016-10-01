@@ -6,16 +6,16 @@ using namespace std;
 const int maxn = 1001 * 100 + 10;
 
 struct SuffixArray {
-  int s[maxn];      // Ô­Ê¼×Ö·ûÊı×é£¨×îºóÒ»¸ö×Ö·ûÓ¦±ØĞëÊÇ0£¬¶øÇ°ÃæµÄ×Ö·û±ØĞë·Ç0£©
-  int sa[maxn];     // ºó×ºÊı×é
-  int rank[maxn];   // Ãû´ÎÊı×é. rank[0]Ò»¶¨ÊÇn-1£¬¼´×îºóÒ»¸ö×Ö·û
-  int height[maxn]; // heightÊı×é
-  int t[maxn], t2[maxn], c[maxn]; // ¸¨ÖúÊı×é
-  int n; // ×Ö·û¸öÊı
+  int s[maxn];      // åŸå§‹å­—ç¬¦æ•°ç»„ï¼ˆæœ€åä¸€ä¸ªå­—ç¬¦åº”å¿…é¡»æ˜¯0ï¼Œè€Œå‰é¢çš„å­—ç¬¦å¿…é¡»é0ï¼‰
+  int sa[maxn];     // åç¼€æ•°ç»„
+  int rank[maxn];   // åæ¬¡æ•°ç»„. rank[0]ä¸€å®šæ˜¯n-1ï¼Œå³æœ€åä¸€ä¸ªå­—ç¬¦
+  int height[maxn]; // heightæ•°ç»„
+  int t[maxn], t2[maxn], c[maxn]; // è¾…åŠ©æ•°ç»„
+  int n; // å­—ç¬¦ä¸ªæ•°
 
   void clear() { n = 0; memset(sa, 0, sizeof(sa)); }
 
-  // mÎª×î´ó×Ö·ûÖµ¼Ó1¡£µ÷ÓÃÖ®Ç°ĞèÉèÖÃºÃsºÍn
+  // mä¸ºæœ€å¤§å­—ç¬¦å€¼åŠ 1ã€‚è°ƒç”¨ä¹‹å‰éœ€è®¾ç½®å¥½så’Œn
   void build_sa(int m) {
     int i, *x = t, *y = t2;
     for(i = 0; i < m; i++) c[i] = 0;
@@ -51,8 +51,8 @@ struct SuffixArray {
   }
 };
 
-const int maxc = 100 + 10; // ´®µÄ¸öÊı
-const int maxl = 1000 + 10; // Ã¿¸ö´®µÄ³¤¶È
+const int maxc = 100 + 10; // ä¸²çš„ä¸ªæ•°
+const int maxl = 1000 + 10; // æ¯ä¸ªä¸²çš„é•¿åº¦
 
 SuffixArray sa;
 int n;
@@ -60,7 +60,7 @@ char word[maxl];
 int idx[maxn];
 int flag[maxc];
 
-// ×Ó´®[L,R) ÊÇ·ñ·ûºÏÒªÇó
+// å­ä¸²[L,R) æ˜¯å¦ç¬¦åˆè¦æ±‚
 bool good(int L, int R) {
   memset(flag, 0, sizeof(flag));
   if(R - L <= n/2) return false;
@@ -81,7 +81,7 @@ void print_sub(int L, int R) {
 bool print_solutions(int len, bool print) {
   int L = 0;
   for(int R = 1; R <= sa.n; R++) {
-    if(R == sa.n || sa.height[R] < len) { // ĞÂ¿ªÒ»¶Î
+    if(R == sa.n || sa.height[R] < len) { // æ–°å¼€ä¸€æ®µ
       if(good(L, R)) {
         if(print) print_sub(sa.sa[L], sa.sa[L] + len); else return true;
       }
@@ -105,7 +105,7 @@ void solve(int maxlen) {
   }
 }
 
-// ¸ø×Ö·û´®¼ÓÉÏÒ»¸ö×Ö·û£¬ÊôÓÚ×Ö·û´®i
+// ç»™å­—ç¬¦ä¸²åŠ ä¸Šä¸€ä¸ªå­—ç¬¦ï¼Œå±äºå­—ç¬¦ä¸²i
 void add(int ch, int i) {
   idx[sa.n] = i;
   sa.s[sa.n++] = ch;
@@ -123,7 +123,7 @@ int main() {
       maxlen = max(maxlen, sz);
       for(int j = 0; j < sz; j++)
         add(word[j] - 'a' + 1, i);
-      add(100 + i, n); // ½áÊø×Ö·û
+      add(100 + i, n); // ç»“æŸå­—ç¬¦
     }
     add(0, n);
 

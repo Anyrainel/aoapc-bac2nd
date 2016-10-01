@@ -1,7 +1,7 @@
 // UVa991 Safe Salutations
 // Rujia Liu
-// ÌâÒâ£º
-// Ëã·¨£º¾ÍÊÇCatalanÊı£¨´ÓC[0]¿ªÊ¼£©£¬¼´£º1, 1, 2, 5, 14, ... C[n+1] = C[n] * (4n+2)/(n+2)
+// é¢˜æ„ï¼š
+// ç®—æ³•ï¼šå°±æ˜¯Catalanæ•°ï¼ˆä»C[0]å¼€å§‹ï¼‰ï¼Œå³ï¼š1, 1, 2, 5, 14, ... C[n+1] = C[n] * (4n+2)/(n+2)
 #include<iostream>
 using namespace std;
 

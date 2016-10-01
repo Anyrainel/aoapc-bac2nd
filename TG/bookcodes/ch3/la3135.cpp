@@ -4,11 +4,11 @@
 #include<queue>
 using namespace std;
 
-// ÓÅÏÈ¶ÓÁĞÖĞµÄÔªËØ
+// ä¼˜å…ˆé˜Ÿåˆ—ä¸­çš„å…ƒç´ 
 struct Item { 
   int QNum, Period, Time;
-  // ÖØÒª£¡ÓÅÏÈ¼¶±È½Ïº¯Êı¡£ÓÅÏÈ¼¶¸ßµÄÏÈ³ö¶Ó
-  bool operator < (const Item& a) const { // ÕâÀïµÄconst±Ø²»¿ÉÉÙ£¬Çë¶ÁÕß×¢Òâ
+  // é‡è¦ï¼ä¼˜å…ˆçº§æ¯”è¾ƒå‡½æ•°ã€‚ä¼˜å…ˆçº§é«˜çš„å…ˆå‡ºé˜Ÿ
+  bool operator < (const Item& a) const { // è¿™é‡Œçš„constå¿…ä¸å¯å°‘ï¼Œè¯·è¯»è€…æ³¨æ„
     return Time > a.Time || (Time == a.Time && QNum > a.QNum);
   }
 };
@@ -20,18 +20,18 @@ int main() {
   while(scanf("%s", s) && s[0] != '#'){
     Item item;
     scanf("%d%d", &item.QNum, &item.Period);
-    item.Time = item.Period; // ³õÊ¼»¯¡°ÏÂÒ»´ÎÊÂ¼şµÄÊ±¼ä¡±ÎªËüµÄÖÜÆÚ
+    item.Time = item.Period; // åˆå§‹åŒ–â€œä¸‹ä¸€æ¬¡äº‹ä»¶çš„æ—¶é—´â€ä¸ºå®ƒçš„å‘¨æœŸ
     pq.push(item); 
   }
 
   int K;
   scanf("%d" , &K);
   while(K--) {    
-    Item r = pq.top(); // È¡ÏÂÒ»¸öÊÂ¼ş
+    Item r = pq.top(); // å–ä¸‹ä¸€ä¸ªäº‹ä»¶
     pq.pop();
     printf("%d\n" , r.QNum);    
-    r.Time += r.Period; // ¸üĞÂ¸Ã´¥·¢Æ÷µÄ¡°ÏÂÒ»¸öÊÂ¼ş¡±µÄÊ±¼ä 
-    pq.push(r); // ÖØĞÂ²åÈëÓÅÏÈ¶ÓÁĞ
+    r.Time += r.Period; // æ›´æ–°è¯¥è§¦å‘å™¨çš„â€œä¸‹ä¸€ä¸ªäº‹ä»¶â€çš„æ—¶é—´ 
+    pq.push(r); // é‡æ–°æ’å…¥ä¼˜å…ˆé˜Ÿåˆ—
   }
   return 0;
 }

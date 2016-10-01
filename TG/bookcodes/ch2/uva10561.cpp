@@ -1,4 +1,4 @@
-// UVa10561 Treblecross £¨ÏŞÓÚÆª·ù£¬ÊéÉÏÎŞ´Ë´úÂë£©
+// UVa10561 Treblecross ï¼ˆé™äºç¯‡å¹…ï¼Œä¹¦ä¸Šæ— æ­¤ä»£ç ï¼‰
 // Rujia Liu
 #include<cstdio>
 #include<cstring>
@@ -12,24 +12,24 @@ int g[maxn + 10];
 bool winning(const char* state) {
   int n = strlen(state);
   for(int i = 0; i < n-2; i++)
-    if(state[i] == 'X' && state[i+1] == 'X' && state[i+2] == 'X') return false; // ÒÑ¾­ÊäµôÁË
+    if(state[i] == 'X' && state[i+1] == 'X' && state[i+2] == 'X') return false; // å·²ç»è¾“æ‰äº†
 
-  int no[maxn+1]; // no[i] = 1±íÊ¾ÏÂ±êÎªiµÄ¸ñ×ÓÊÇ¡°½ûÇø¡±£¨ÀëÄ³¸ö'X'µÄ¾àÀë²»³¬¹ı2£©
+  int no[maxn+1]; // no[i] = 1è¡¨ç¤ºä¸‹æ ‡ä¸ºiçš„æ ¼å­æ˜¯â€œç¦åŒºâ€ï¼ˆç¦»æŸä¸ª'X'çš„è·ç¦»ä¸è¶…è¿‡2ï¼‰
   memset(no, 0, sizeof(no));
-  no[n] = 1; // ÉÚ±ø
+  no[n] = 1; // å“¨å…µ
   for(int i = 0; i < n; i++) if(state[i] == 'X') {
     for(int d = -2; d <= 2; d++)
       if(i+d >= 0 && i+d < n) {
-        if(d != 0 && state[i+d] == 'X') return true; // ÓĞÁ½¸ö¾àÀë²»³¬¹ı2µÄ'X'£¬Ò»²½¼´¿ÉÈ¡Ê¤
+        if(d != 0 && state[i+d] == 'X') return true; // æœ‰ä¸¤ä¸ªè·ç¦»ä¸è¶…è¿‡2çš„'X'ï¼Œä¸€æ­¥å³å¯å–èƒœ
         no[i+d] = 1;
       }
   }
 
   int sg = 0;
-  int start = -1; // µ±Ç°¿éµÄÆğµã×ø±ê
-  for(int i = 0; i <= n; i++) { // ×¢ÒâÒªÑ­»·µ½¡°ÉÚ±ø¡±ÎªÖ¹
-    if(start < 0 && !no[i]) start = i; // ĞÂµÄ¿é
-    if(no[i] && start >= 0) sg ^= g[i-start]; // µ±Ç°¿é½áÊø
+  int start = -1; // å½“å‰å—çš„èµ·ç‚¹åæ ‡
+  for(int i = 0; i <= n; i++) { // æ³¨æ„è¦å¾ªç¯åˆ°â€œå“¨å…µâ€ä¸ºæ­¢
+    if(start < 0 && !no[i]) start = i; // æ–°çš„å—
+    if(no[i] && start >= 0) sg ^= g[i-start]; // å½“å‰å—ç»“æŸ
     if(no[i]) start = -1;
   }
   return sg != 0;
@@ -44,17 +44,17 @@ int mex(vector<int>& s) {
   return s[s.size()-1] + 1;
 }
 
-// Ô¤´¦Àí¼ÆËãgÊı×é
+// é¢„å¤„ç†è®¡ç®—gæ•°ç»„
 void init() {
   g[0] = 0;
   g[1] = g[2] = g[3] = 1;
   for(int i = 4; i <= maxn; i++) {
     vector<int> s;
-    s.push_back(g[i-3]); // ×î×ó±ß£¨ÏÂ±êÎª0µÄ¸ñ×Ó£©
-    s.push_back(g[i-4]); // ÏÂ±êÎª1µÄ¸ñ×Ó
-    if(i >= 5) s.push_back(g[i-5]);   // ÏÂ±êÎª2µÄ¸ñ×Ó
-    for(int j = 3; j < i-3; j++)      // ÏÂ±êÎª3~i-3µÄ¸ñ×Ó
-      s.push_back(g[j-2] ^ g[i-j-3]); // ×ó±ßÓĞj-2¸ö¸ñ×Ó£¬ÓÒ±ßÓĞi-j-3µÄ¸ñ×Ó
+    s.push_back(g[i-3]); // æœ€å·¦è¾¹ï¼ˆä¸‹æ ‡ä¸º0çš„æ ¼å­ï¼‰
+    s.push_back(g[i-4]); // ä¸‹æ ‡ä¸º1çš„æ ¼å­
+    if(i >= 5) s.push_back(g[i-5]);   // ä¸‹æ ‡ä¸º2çš„æ ¼å­
+    for(int j = 3; j < i-3; j++)      // ä¸‹æ ‡ä¸º3~i-3çš„æ ¼å­
+      s.push_back(g[j-2] ^ g[i-j-3]); // å·¦è¾¹æœ‰j-2ä¸ªæ ¼å­ï¼Œå³è¾¹æœ‰i-j-3çš„æ ¼å­
     g[i] = mex(s);
   }
 }

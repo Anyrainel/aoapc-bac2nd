@@ -1,8 +1,8 @@
 // UVa10422 Knights in FEN
 // Rujia Liu
-// ÌâÒâ£º 5x5ÆåÅÌÉÏ12¸öºÚÂí£¬12¸ö°×ÂíºÍ1¸ö¿Õ¸ñ¡£Ã¿´Î¿ÉÒÔ°ÑÒ»¸öÂíÒÆ¶¯µ½¿Õ¸ñÖÐ£¨×ñÊØ¹ú¼ÊÏóÆåÖÐÂíµÄÒÆ¶¯¹æÔò£©¡£
-// ÓÃ×îÉÙ²½Êý°ÑÆåÅÌ±ä³ÉÒ»¸öÌØ¶¨Ñù×Ó£¨¼ûÌâÍ¼£©¡£Èç¹û10²½ÄÚÎÞ½âÔòÊä³öÎÞ½â
-// Ëã·¨£ºIDA*£¬Æô·¢º¯ÊýÎª£ºÈç¹û»¹ÓÐd¸öÂíÃ»×ßµ½Ä¿±êÎ»ÖÃ£¬ÖÁÉÙ»¹Òªd²½
+// é¢˜æ„ï¼š 5x5æ£‹ç›˜ä¸Š12ä¸ªé»‘é©¬ï¼Œ12ä¸ªç™½é©¬å’Œ1ä¸ªç©ºæ ¼ã€‚æ¯æ¬¡å¯ä»¥æŠŠä¸€ä¸ªé©¬ç§»åŠ¨åˆ°ç©ºæ ¼ä¸­ï¼ˆéµå®ˆå›½é™…è±¡æ£‹ä¸­é©¬çš„ç§»åŠ¨è§„åˆ™ï¼‰ã€‚
+// ç”¨æœ€å°‘æ­¥æ•°æŠŠæ£‹ç›˜å˜æˆä¸€ä¸ªç‰¹å®šæ ·å­ï¼ˆè§é¢˜å›¾ï¼‰ã€‚å¦‚æžœ10æ­¥å†…æ— è§£åˆ™è¾“å‡ºæ— è§£
+// ç®—æ³•ï¼šIDA*ï¼Œå¯å‘å‡½æ•°ä¸ºï¼šå¦‚æžœè¿˜æœ‰dä¸ªé©¬æ²¡èµ°åˆ°ç›®æ ‡ä½ç½®ï¼Œè‡³å°‘è¿˜è¦dæ­¥
 
 #include<cstdio>
 #include<cstring>
@@ -24,11 +24,11 @@ int solution_diff() {
   return d;
 }
 
-// dfsº¯Êý·µ»Øºó(board, sx, sy)±£³Ö²»±ä
+// dfså‡½æ•°è¿”å›žåŽ(board, sx, sy)ä¿æŒä¸å˜
 bool dfs(int d) {
   int diff = solution_diff();
   if(diff == 0) return true;
-  if(d + diff > dmax) return false; // IDA*¼ôÖ¦
+  if(d + diff > dmax) return false; // IDA*å‰ªæž
   for(int i = 0; i < 8; i++) {
     int nx = sx + dx[i];
     int ny = sy + dy[i];

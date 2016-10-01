@@ -1,8 +1,8 @@
-// UVa11992 Fast Matrix Operations £¨ÊéÉÏµÄ°æ±¾£©
+// UVa11992 Fast Matrix Operations ï¼ˆä¹¦ä¸Šçš„ç‰ˆæœ¬ï¼‰
 // Rujia Liu
-// ×¢Òâ£ºËùÓĞÒ¶×ÓÉÏ×ÜÊÇ±£Áôset±ê¼Ç¶ø²»»á±»Çå³ı£¨pushdownÖ»ÄÜÕë¶Ô·ÇÒ¶½áµã£©£¬Òò´Ëmaintainº¯Êı¶ÔÓÚÒ¶×ÓÀ´Ëµ²¢²»»áÖØ¸´ÀÛ¼Óaddv[o]
-// ±¾³ÌĞòÔÚqueryµÄÊ±ºòÃ»ÓĞ½øĞĞ±ê¼Ç´«µİ£¨¼´pushdown£©£¬¶øÊÇÓÃÆäËû·½·¨Íê³ÉÁË²éÑ¯¡£ËäÈ»Ö´ĞĞĞ§ÂÊÌá¸ß£¬µ«ÔÚÒ»¶¨³Ì¶ÈÉÏÎşÉüÁË¿É¶ÁĞÔ
-// ÓĞĞËÈ¤µÄ¶ÁÕßÇë²Î¿¼´úÂë²Ö¿âÖĞµÄuva11992b.cpp£¬ÄÇ¸öĞ´·¨¸ü¾ßÒ»°ãĞÔ£¬Ö»ÊÇÖ´ĞĞĞ§ÂÊ½ÏµÍ
+// æ³¨æ„ï¼šæ‰€æœ‰å¶å­ä¸Šæ€»æ˜¯ä¿ç•™setæ ‡è®°è€Œä¸ä¼šè¢«æ¸…é™¤ï¼ˆpushdownåªèƒ½é’ˆå¯¹éå¶ç»“ç‚¹ï¼‰ï¼Œå› æ­¤maintainå‡½æ•°å¯¹äºå¶å­æ¥è¯´å¹¶ä¸ä¼šé‡å¤ç´¯åŠ addv[o]
+// æœ¬ç¨‹åºåœ¨queryçš„æ—¶å€™æ²¡æœ‰è¿›è¡Œæ ‡è®°ä¼ é€’ï¼ˆå³pushdownï¼‰ï¼Œè€Œæ˜¯ç”¨å…¶ä»–æ–¹æ³•å®Œæˆäº†æŸ¥è¯¢ã€‚è™½ç„¶æ‰§è¡Œæ•ˆç‡æé«˜ï¼Œä½†åœ¨ä¸€å®šç¨‹åº¦ä¸Šç‰ºç‰²äº†å¯è¯»æ€§
+// æœ‰å…´è¶£çš„è¯»è€…è¯·å‚è€ƒä»£ç ä»“åº“ä¸­çš„uva11992b.cppï¼Œé‚£ä¸ªå†™æ³•æ›´å…·ä¸€èˆ¬æ€§ï¼Œåªæ˜¯æ‰§è¡Œæ•ˆç‡è¾ƒä½
 
 #include<cstdio>
 #include<cstring>
@@ -16,7 +16,7 @@ int _sum, _min, _max, op, x1, x2, y1, y2, x, v;
 struct IntervalTree {
   int sumv[maxnode], minv[maxnode], maxv[maxnode], setv[maxnode], addv[maxnode];
 
-  // Î¬»¤ĞÅÏ¢
+  // ç»´æŠ¤ä¿¡æ¯
   void maintain(int o, int L, int R) {
     int lc = o*2, rc = o*2+1;
     if(R > L) {
@@ -28,24 +28,24 @@ struct IntervalTree {
     if(addv[o]) { minv[o] += addv[o]; maxv[o] += addv[o]; sumv[o] += addv[o] * (R-L+1); }
   }
 
-  // ±ê¼Ç´«µİ
+  // æ ‡è®°ä¼ é€’
   void pushdown(int o) {
     int lc = o*2, rc = o*2+1;
     if(setv[o] >= 0) {
       setv[lc] = setv[rc] = setv[o];
       addv[lc] = addv[rc] = 0;
-      setv[o] = -1; // Çå³ı±¾½áµã±ê¼Ç
+      setv[o] = -1; // æ¸…é™¤æœ¬ç»“ç‚¹æ ‡è®°
     }
     if(addv[o]) {
       addv[lc] += addv[o];
       addv[rc] += addv[o];
-      addv[o] = 0; // Çå³ı±¾½áµã±ê¼Ç
+      addv[o] = 0; // æ¸…é™¤æœ¬ç»“ç‚¹æ ‡è®°
     }
   }
 
   void update(int o, int L, int R) {
     int lc = o*2, rc = o*2+1;
-    if(y1 <= L && y2 >= R) { // ±ê¼ÇĞŞ¸Ä      
+    if(y1 <= L && y2 >= R) { // æ ‡è®°ä¿®æ”¹      
       if(op == 1) addv[o] += v;
       else { setv[o] = v; addv[o] = 0; }
     } else {

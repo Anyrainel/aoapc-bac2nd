@@ -1,7 +1,7 @@
 // UVa10714 Ants
 // Rujia Liu
-// ���⣺�����ڡ�ѵ��ָ�ϡ��е��������⣬����ľ�峤��L�����ϸ���n���Լ��������ϵ�ľ����˵��λ�á������ٶ�Ϊ1�������ʱ����ʱ��
-// �㷨��
+// 题意：类似于《训练指南》中的蚂蚁问题，输入木板长度L和蚂蚁个数n，以及各个蚂蚁到木板左端点的位置。蚂蚁速度为1，求最短时间和最长时间
+// 算法：
 #include<cstdio>
 #include<algorithm>
 using namespace std;

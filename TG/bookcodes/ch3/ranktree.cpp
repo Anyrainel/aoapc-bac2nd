@@ -1,18 +1,18 @@
 // Rank Tree
 // Rujia Liu
-// ÊäÈë¸ñÊ½£º
-// m     ²Ù×÷ÓĞm¸ö
-// 1 x   ²åÈëÔªËØx
-// 2 x   É¾³ıÔªËØx¡£Èç¹û³É¹¦£¬ÊäÈë1£¬·ñÔòÊä³ö0
-// 3 k   Êä³öµÚkĞ¡ÔªËØ¡£k=1Îª×îĞ¡ÔªËØ
-// 4 x   Êä³öÖµxµÄ¡°Ãû´Î¡±£¬¼´±ÈxĞ¡µÄ½áµã¸öÊı¼Ó1
+// è¾“å…¥æ ¼å¼ï¼š
+// m     æ“ä½œæœ‰mä¸ª
+// 1 x   æ’å…¥å…ƒç´ x
+// 2 x   åˆ é™¤å…ƒç´ xã€‚å¦‚æœæˆåŠŸï¼Œè¾“å…¥1ï¼Œå¦åˆ™è¾“å‡º0
+// 3 k   è¾“å‡ºç¬¬kå°å…ƒç´ ã€‚k=1ä¸ºæœ€å°å…ƒç´ 
+// 4 x   è¾“å‡ºå€¼xçš„â€œåæ¬¡â€ï¼Œå³æ¯”xå°çš„ç»“ç‚¹ä¸ªæ•°åŠ 1
 #include<cstdlib>
 
 struct Node {
-  Node *ch[2]; // ×óÓÒ×ÓÊ÷
-  int r; // Ëæ»úÓÅÏÈ¼¶
-  int v; // Öµ
-  int s; // ½áµã×ÜÊı
+  Node *ch[2]; // å·¦å³å­æ ‘
+  int r; // éšæœºä¼˜å…ˆçº§
+  int v; // å€¼
+  int s; // ç»“ç‚¹æ€»æ•°
   Node(int v = 0):v(v) { ch[0] = ch[1] = NULL; r = rand(); s = 1; }
   int cmp(int x) const {
     if (x == v) return -1;
@@ -33,7 +33,7 @@ void rotate(Node* &o, int d) {
 void insert(Node* &o, int x) {
   if(o == NULL) o = new Node(x);
   else {
-    int d = (x < o->v ? 0 : 1); // ²»ÒªÓÃcmpº¯Êı£¬ÒòÎª¿ÉÄÜ»áÓĞÏàÍ¬½áµã
+    int d = (x < o->v ? 0 : 1); // ä¸è¦ç”¨cmpå‡½æ•°ï¼Œå› ä¸ºå¯èƒ½ä¼šæœ‰ç›¸åŒç»“ç‚¹
     insert(o->ch[d], x);
     if(o->ch[d]->r > o->r) rotate(o, d^1);
   }
@@ -46,7 +46,7 @@ Node* find(Node* o, int x) {
   return x < o->v ? find(o->ch[0], x) : find(o->ch[1], x);
 }
 
-// ÒªÈ·±£½áµã´æÔÚ
+// è¦ç¡®ä¿ç»“ç‚¹å­˜åœ¨
 void remove(Node* &o, int x) {
   int d = o->cmp(x);
   if(d == -1) {
@@ -71,7 +71,7 @@ int kth(Node* o, int k) {
   else return kth(o->ch[1], k-s-1);
 }
 
-// ÔÚÒÔoÎª¸ùµÄ×ÓÊ÷ÖĞ£¬Öµ±ÈxĞ¡µÄ½áµã×ÜÊı¼Ó1
+// åœ¨ä»¥oä¸ºæ ¹çš„å­æ ‘ä¸­ï¼Œå€¼æ¯”xå°çš„ç»“ç‚¹æ€»æ•°åŠ 1
 int rank(Node* o, int x) {
   if(o == NULL) return 1;
   if(x <= o->v) return rank(o->ch[0], x);

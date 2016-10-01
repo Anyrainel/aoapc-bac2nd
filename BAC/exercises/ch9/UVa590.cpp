@@ -1,7 +1,7 @@
 // UVa590 Always on the run
 // Rujia Liu
-// ���⣺��n�����У�ÿ��������֮��ĺ��߶��������Եġ�ĳ����ӳ���1������ǡ�ó�k�ηɻ�֮�󵽴����n������С������
-// �㷨����̬�滮����d[i][j]Ϊ��i�ηɻ��Ժ󵽴����j����С��������ˢ�����ȽϺ�д��
+// 题意：有n个城市，每两个城市之间的航线都是周期性的。某人想从城市1出发，恰好乘k次飞机之后到达城市n，求最小开销。
+// 算法：动态规划。设d[i][j]为坐i次飞机以后到达城市j的最小开销，用刷表法比较好写。
 #include<cstdio>
 #include<cstring>
 const int maxn = 10;

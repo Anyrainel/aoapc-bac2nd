@@ -1,12 +1,12 @@
-// LA5031/UVa1479 Graph and Queries: ²»»ØÊÕÄÚ´æµÄ°æ±¾
+// LA5031/UVa1479 Graph and Queries: ä¸å›æ”¶å†…å­˜çš„ç‰ˆæœ¬
 // Rujia Liu
 #include<cstdlib>
 
 struct Node {
-  Node *ch[2]; // ×óÓÒ×ÓÊ÷
-  int r; // Ëæ»úÓÅÏÈ¼¶
-  int v; // Öµ
-  int s; // ½áµã×ÜÊı
+  Node *ch[2]; // å·¦å³å­æ ‘
+  int r; // éšæœºä¼˜å…ˆçº§
+  int v; // å€¼
+  int s; // ç»“ç‚¹æ€»æ•°
   Node(int v):v(v) { ch[0] = ch[1] = NULL; r = rand(); s = 1; }
   bool operator < (const Node& rhs) const {
     return r < rhs.r;
@@ -30,7 +30,7 @@ void rotate(Node* &o, int d) {
 void insert(Node* &o, int x) {
   if(o == NULL) o = new Node(x);
   else {
-    int d = (x < o->v ? 0 : 1); // ²»ÒªÓÃcmpº¯Êı£¬ÒòÎª¿ÉÄÜ»áÓĞÏàÍ¬½áµã
+    int d = (x < o->v ? 0 : 1); // ä¸è¦ç”¨cmpå‡½æ•°ï¼Œå› ä¸ºå¯èƒ½ä¼šæœ‰ç›¸åŒç»“ç‚¹
     insert(o->ch[d], x);
     if(o->ch[d]->r > o->r) rotate(o, d^1);
   }
@@ -62,21 +62,21 @@ using namespace std;
 const int maxc = 500000 + 10;
 struct Command {
   char type;
-  int x, p; // ¸ù¾İtype, p´ú±ík»òÕßv
+  int x, p; // æ ¹æ®type, pä»£è¡¨kæˆ–è€…v
 } commands[maxc];
 
 const int maxn = 20000 + 10;
 const int maxm = 60000 + 10;
 int n, m, weight[maxn], from[maxm], to[maxm], removed[maxm];
 
-// ²¢²é¼¯Ïà¹Ø
+// å¹¶æŸ¥é›†ç›¸å…³
 int pa[maxn];     
 int findset(int x) { return pa[x] != x ? pa[x] = findset(pa[x]) : x; } 
 
-// Ãû´ÎÊ÷Ïà¹Ø
+// åæ¬¡æ ‘ç›¸å…³
 Node* root[maxn]; // Treap
 
-int kth(Node* o, int k) { // µÚk´óµÄÖµ
+int kth(Node* o, int k) { // ç¬¬kå¤§çš„å€¼
   if(o == NULL || k <= 0 || k > o->s) return 0;
   int s = (o->ch[1] == NULL ? 0 : o->ch[1]->s);
   if(k == s+1) return o->v;
@@ -90,7 +90,7 @@ void mergeto(Node* &src, Node* &dest) {
   insert(dest, src->v);
 }
 
-// Ö÷³ÌĞòÏà¹Ø
+// ä¸»ç¨‹åºç›¸å…³
 void add_edge(int x) {
   int u = findset(from[x]), v = findset(to[x]);
   if(u != v) {
@@ -120,7 +120,7 @@ int main() {
     for(int i = 1; i <= m; i++) scanf("%d%d", &from[i], &to[i]);
     memset(removed, 0, sizeof(removed));
 
-    // ¶ÁÃüÁî
+    // è¯»å‘½ä»¤
     int c = 0;
     for(;;) {
       char type;
@@ -138,13 +138,13 @@ int main() {
       commands[c++] = (Command){ type, x, p };
     }
 
-    // ×îÖÕµÄÍ¼
+    // æœ€ç»ˆçš„å›¾
     for(int i = 1; i <= n; i++) {
       pa[i] = i; root[i] = new Node(weight[i]);
     }
     for(int i = 1; i <= m; i++) if(!removed[i]) add_edge(i);
 
-    // ·´Ïò²Ù×÷
+    // åå‘æ“ä½œ
     query_tot = query_cnt = 0;
     for(int i = c-1; i >= 0; i--) {
       if(commands[i].type == 'D') add_edge(commands[i].x);

@@ -1,7 +1,7 @@
 // UVa10594 Data Flow
 // Rujia Liu
-// ÌâÒâ£º¸øÒ»¸öÎŞÏòÍøÂç£¬Çó´Ó1µ½nµÄÁ÷Á¿ÎªDµÄ×îĞ¡·ÑÓÃÁ÷
-// Ëã·¨£º¼ÓÒ»¸öµã0£¬Á¬Ò»Ìõ0->1µÄÈİÁ¿ÎªD·ÑÓÃÎª0µÄ»¡£¬Çó0µ½nµÄ×îĞ¡·ÑÓÃ×î´óÁ÷
+// é¢˜æ„ï¼šç»™ä¸€ä¸ªæ— å‘ç½‘ç»œï¼Œæ±‚ä»1åˆ°nçš„æµé‡ä¸ºDçš„æœ€å°è´¹ç”¨æµ
+// ç®—æ³•ï¼šåŠ ä¸€ä¸ªç‚¹0ï¼Œè¿ä¸€æ¡0->1çš„å®¹é‡ä¸ºDè´¹ç”¨ä¸º0çš„å¼§ï¼Œæ±‚0åˆ°nçš„æœ€å°è´¹ç”¨æœ€å¤§æµ
 #include<cstdio>
 #include<cstring>
 #include<queue>
@@ -24,10 +24,10 @@ struct MCMF {
   int n, m;
   vector<Edge> edges;
   vector<int> G[maxn];
-  int inq[maxn];         // ÊÇ·ñÔÚ¶ÓÁĞÖĞ
+  int inq[maxn];         // æ˜¯å¦åœ¨é˜Ÿåˆ—ä¸­
   int d[maxn];           // Bellman-Ford
-  int p[maxn];           // ÉÏÒ»Ìõ»¡
-  int a[maxn];           // ¿É¸Ä½øÁ¿
+  int p[maxn];           // ä¸Šä¸€æ¡å¼§
+  int a[maxn];           // å¯æ”¹è¿›é‡
 
   void init(int n) {
     this->n = n;
@@ -73,7 +73,7 @@ struct MCMF {
     return true;
   }
 
-  // ĞèÒª±£Ö¤³õÊ¼ÍøÂçÖĞÃ»ÓĞ¸ºÈ¨È¦
+  // éœ€è¦ä¿è¯åˆå§‹ç½‘ç»œä¸­æ²¡æœ‰è´Ÿæƒåœˆ
   int MincostMaxflow(int s, int t, LL& cost) {
     int flow = 0; cost = 0;
     while(BellmanFord(s, t, flow, cost));

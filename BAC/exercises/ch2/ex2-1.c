@@ -1,6 +1,6 @@
 /*
-  Ï°Ìâ2-1. Î»Êý£¨digit£©
-  ÁõÈê¼Ñ
+  ä¹ é¢˜2-1. ä½æ•°ï¼ˆdigitï¼‰
+  åˆ˜æ±ä½³
 */
 
 #include<stdio.h>

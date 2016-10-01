@@ -1,7 +1,7 @@
 // UVa457 Linear Cellular Automata
 // Rujia Liu
-// ÌâÒâ£ºÓÐÒ»¸öÊý×éA[1~40]£¬ÆäÖÐA[20]=1£¬ÆäËûÎª0¡£ÊäÈëÒ»¸öÊý×éDNA[0~9]£¬°´ÒÔÏÂ·½·¨Ä£Äâ50´Î£º
-// Í¬Ê±°ÑÃ¿¸öÊýA[i]Ìæ»»ÎªDNA[A[i-1]+A[i]+A[i+1]]£¬ÆäÖÐÔ½½çA[i]µÄ°´0Ëã
+// é¢˜æ„ï¼šæœ‰ä¸€ä¸ªæ•°ç»„A[1~40]ï¼Œå…¶ä¸­A[20]=1ï¼Œå…¶ä»–ä¸º0ã€‚è¾“å…¥ä¸€ä¸ªæ•°ç»„DNA[0~9]ï¼ŒæŒ‰ä»¥ä¸‹æ–¹æ³•æ¨¡æ‹Ÿ50æ¬¡ï¼š
+// åŒæ—¶æŠŠæ¯ä¸ªæ•°A[i]æ›¿æ¢ä¸ºDNA[A[i-1]+A[i]+A[i+1]]ï¼Œå…¶ä¸­è¶Šç•ŒA[i]çš„æŒ‰0ç®—
 #include<cstdio>
 #include<cstring>
 int A[50], oldA[50], DNA[10];

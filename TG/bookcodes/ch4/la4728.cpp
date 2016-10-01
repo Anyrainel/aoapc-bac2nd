@@ -37,11 +37,11 @@ bool operator == (const Point& p1, const Point& p2) {
   return p1.x == p2.x && p1.y == p2.y;
 }
 
-// µã¼¯Í¹°ü
-// Èç¹û²»Ï£ÍûÔÚÍ¹°üµÄ±ßÉÏÓĞÊäÈëµã£¬°ÑÁ½¸ö <= ¸Ä³É <
-// ×¢Òâ£ºÊäÈëµã¼¯»á±»ĞŞ¸Ä
+// ç‚¹é›†å‡¸åŒ…
+// å¦‚æœä¸å¸Œæœ›åœ¨å‡¸åŒ…çš„è¾¹ä¸Šæœ‰è¾“å…¥ç‚¹ï¼ŒæŠŠä¸¤ä¸ª <= æ”¹æˆ <
+// æ³¨æ„ï¼šè¾“å…¥ç‚¹é›†ä¼šè¢«ä¿®æ”¹
 vector<Point> ConvexHull(vector<Point>& p) {
-  // Ô¤´¦Àí£¬É¾³ıÖØ¸´µã
+  // é¢„å¤„ç†ï¼Œåˆ é™¤é‡å¤ç‚¹
   sort(p.begin(), p.end());
   p.erase(unique(p.begin(), p.end()), p.end());
 
@@ -62,25 +62,25 @@ vector<Point> ConvexHull(vector<Point>& p) {
   return ch;
 }
 
-// ·µ»Øµã¼¯Ö±¾¶µÄÆ½·½
+// è¿”å›ç‚¹é›†ç›´å¾„çš„å¹³æ–¹
 int diameter2(vector<Point>& points) {
   vector<Point> p = ConvexHull(points);
   int n = p.size();
   if(n == 1) return 0;
   if(n == 2) return Dist2(p[0], p[1]);
-  p.push_back(p[0]); // ÃâµÃÈ¡Ä£
+  p.push_back(p[0]); // å…å¾—å–æ¨¡
   int ans = 0;
   for(int u = 0, v = 1; u < n; u++) {
-    // Ò»ÌõÖ±ÏßÌù×¡±ßp[u]-p[u+1]
+    // ä¸€æ¡ç›´çº¿è´´ä½è¾¹p[u]-p[u+1]
     for(;;) {
-      // µ±Area(p[u], p[u+1], p[v+1]) <= Area(p[u], p[u+1], p[v])Ê±Í£Ö¹Ğı×ª
-      // ¼´Cross(p[u+1]-p[u], p[v+1]-p[u]) - Cross(p[u+1]-p[u], p[v]-p[u]) <= 0
-      // ¸ù¾İCross(A,B) - Cross(A,C) = Cross(A,B-C)
-      // »¯¼òµÃCross(p[u+1]-p[u], p[v+1]-p[v]) <= 0
+      // å½“Area(p[u], p[u+1], p[v+1]) <= Area(p[u], p[u+1], p[v])æ—¶åœæ­¢æ—‹è½¬
+      // å³Cross(p[u+1]-p[u], p[v+1]-p[u]) - Cross(p[u+1]-p[u], p[v]-p[u]) <= 0
+      // æ ¹æ®Cross(A,B) - Cross(A,C) = Cross(A,B-C)
+      // åŒ–ç®€å¾—Cross(p[u+1]-p[u], p[v+1]-p[v]) <= 0
       int diff = Cross(p[u+1]-p[u], p[v+1]-p[v]);
       if(diff <= 0) {
-        ans = max(ans, Dist2(p[u], p[v])); // uºÍvÊÇ¶Ôõàµã
-        if(diff == 0) ans = max(ans, Dist2(p[u], p[v+1])); // diff == 0Ê±uºÍv+1Ò²ÊÇ¶Ôõàµã
+        ans = max(ans, Dist2(p[u], p[v])); // uå’Œvæ˜¯å¯¹è¸µç‚¹
+        if(diff == 0) ans = max(ans, Dist2(p[u], p[v+1])); // diff == 0æ—¶uå’Œv+1ä¹Ÿæ˜¯å¯¹è¸µç‚¹
         break;
       }
       v = (v + 1) % n;

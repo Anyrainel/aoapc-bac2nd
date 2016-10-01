@@ -7,9 +7,9 @@ using namespace std;
 const int maxn = 10000 + 5;
 
 struct Ant {
-  int id; // ÊäÈëË³Ğò
-  int p;  // Î»ÖÃ
-  int d;  // ³¯Ïò¡£ -1: ×ó; 0:×ªÉíÖĞ; 1:ÓÒ
+  int id; // è¾“å…¥é¡ºåº
+  int p;  // ä½ç½®
+  int d;  // æœå‘ã€‚ -1: å·¦; 0:è½¬èº«ä¸­; 1:å³
   bool operator < (const Ant& a) const {
     return p < a.p;
   }
@@ -17,7 +17,7 @@ struct Ant {
 
 const char dirName[][10] = {"L", "Turning", "R"};
 
-int order[maxn]; // ÊäÈëµÄµÚiÖ»ÂìÒÏÊÇÖÕÌ¬ÖĞµÄ×óÊıµÚorder[i]Ö»ÂìÒÏ
+int order[maxn]; // è¾“å…¥çš„ç¬¬iåªèš‚èšæ˜¯ç»ˆæ€ä¸­çš„å·¦æ•°ç¬¬order[i]åªèš‚èš
 
 int main() {
   int K;
@@ -32,20 +32,20 @@ int main() {
       scanf("%d %c", &p, &c);
       d = (c == 'L' ? -1 : 1);
       before[i] = (Ant){i, p, d};
-      after[i] = (Ant){0, p+T*d, d}; // ÕâÀïµÄidÊÇÎ´ÖªµÄ
+      after[i] = (Ant){0, p+T*d, d}; // è¿™é‡Œçš„idæ˜¯æœªçŸ¥çš„
     }
 
-    // ¼ÆËãorderÊı×é
+    // è®¡ç®—orderæ•°ç»„
     sort(before, before+n);
     for(int i = 0; i < n; i++)
       order[before[i].id] = i;
 
-    // ¼ÆËãÖÕÌ¬
+    // è®¡ç®—ç»ˆæ€
     sort(after, after+n);    
-    for(int i = 0; i < n-1; i++) // ĞŞ¸ÄÅö×²ÖĞµÄÂìÒÏµÄ·½Ïò
+    for(int i = 0; i < n-1; i++) // ä¿®æ”¹ç¢°æ’ä¸­çš„èš‚èšçš„æ–¹å‘
       if(after[i].p == after[i+1].p) after[i].d = after[i+1].d = 0;
 
-    // Êä³ö½á¹û
+    // è¾“å‡ºç»“æœ
     for(int i = 0; i < n; i++) {
       int a = order[i]; 
       if(after[a].p < 0 || after[a].p > L) printf("Fell off\n");

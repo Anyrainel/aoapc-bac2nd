@@ -1,6 +1,6 @@
 // UVa490 Rotating Sentences
 // Rujia Liu
-// 注意事项：UVaOJ要求输出必须严格为字符方阵，用空格补齐，但其实题目描述里并没有提出这一要求
+// 娉ㄦ剰浜嬮」锛歎VaOJ瑕佹眰杈撳嚭蹇呴』涓ユ牸涓哄瓧绗︽柟闃碉紝鐢ㄧ┖鏍艰ˉ榻愶紝浣嗗叾瀹為鐩弿杩伴噷骞舵病鏈夋彁鍑鸿繖涓�瑕佹眰
 #include<cstdio>
 #include<cstring>
 const int maxn = 100 + 5;

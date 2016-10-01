@@ -1,7 +1,7 @@
 // UVa10954 Add All
 // Rujia Liu
-// ���⣺��n�����ļ���S��ÿ�ο��Դ�S��ɾ����������Ȼ������ǵĺͷŻؼ��ϣ�ֱ��ʣһ������ÿ�β����Ŀ�������ɾ����������֮�͡�����С�ܿ�����
-// �㷨��Huffman����
+// 题意：有n个数的集合S，每次可以从S中删除两个数，然后把它们的和放回集合，直到剩一个数。每次操作的开销等于删除的两个数之和。求最小总开销。
+// 算法：Huffman编码
 #include<cstdio>
 #include<queue>
 using namespace std;

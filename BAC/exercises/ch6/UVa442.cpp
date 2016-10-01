@@ -1,7 +1,7 @@
 // UVa442 Matrix Chain Multiplication
 // Rujia Liu
-// 题意：输入n个矩阵的维度和一些矩阵链乘表达式，输出乘法的次数。假定A和m*n的，B是n*p的，那么AB是m*p的，乘法次数为m*n*p
-// 算法：用一个栈。遇到字母时入栈，右括号时出栈并计算，然后结果入栈。因为输入保证合法，括号无序入栈
+// 棰樻剰锛氳緭鍏涓煩闃电殑缁村害鍜屼竴浜涚煩闃甸摼涔樿〃杈惧紡锛岃緭鍑轰箻娉曠殑娆℃暟銆傚亣瀹欰鍜宮*n鐨勶紝B鏄痭*p鐨勶紝閭ｄ箞AB鏄痬*p鐨勶紝涔樻硶娆℃暟涓簃*n*p
+// 绠楁硶锛氱敤涓�涓爤銆傞亣鍒板瓧姣嶆椂鍏ユ爤锛屽彸鎷彿鏃跺嚭鏍堝苟璁＄畻锛岀劧鍚庣粨鏋滃叆鏍堛�傚洜涓鸿緭鍏ヤ繚璇佸悎娉曪紝鎷彿鏃犲簭鍏ユ爤
 #include<cstdio>
 #include<stack>
 #include<iostream>

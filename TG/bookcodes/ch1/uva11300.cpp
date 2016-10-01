@@ -8,16 +8,16 @@ const int maxn = 1000000 + 10;
 long long A[maxn], C[maxn], tot, M;
 int main() {
   int n;
-  while(scanf("%d", &n) == 1) { // ÊäÈëÊı¾İ´ó£¬scanf±Ècin¿ì 
+  while(scanf("%d", &n) == 1) { // è¾“å…¥æ•°æ®å¤§ï¼Œscanfæ¯”cinå¿« 
     tot = 0;
-    for(int i = 1; i <= n; i++) { scanf("%lld", &A[i]); tot += A[i]; } // ÓÃ%lldÊäÈëlong long
+    for(int i = 1; i <= n; i++) { scanf("%lld", &A[i]); tot += A[i]; } // ç”¨%lldè¾“å…¥long long
     M = tot / n;
     C[0] = 0; 
-    for(int i = 1; i < n; i++) C[i] = C[i-1] + A[i] - M; // µİÍÆCÊı×é
+    for(int i = 1; i < n; i++) C[i] = C[i-1] + A[i] - M; // é€’æ¨Cæ•°ç»„
     sort(C, C+n);
-    long long x1 = C[n/2], ans = 0; // ¼ÆËãx1
+    long long x1 = C[n/2], ans = 0; // è®¡ç®—x1
     for(int i = 0; i < n; i++) ans += abs(x1 - C[i]); 
-    // °Ñx1´úÈë£¬¼ÆËã×ªÊÖµÄ×Ü½ğ±ÒÊı
+    // æŠŠx1ä»£å…¥ï¼Œè®¡ç®—è½¬æ‰‹çš„æ€»é‡‘å¸æ•°
     printf("%lld\n", ans);
   }
   return 0;

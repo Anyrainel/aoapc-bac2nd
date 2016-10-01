@@ -1,7 +1,7 @@
 // UVa10026 Shoemaker's Problem
 // Rujia Liu
-// ÌâÒâ£ºÐ¬½³½ÓÊÕÁËÐí¶à¶©µ¥£¬ÓÐÐ©Ð¬×ÓÓÐÒ»¶¨µÄÐÞÀíÆÚÏÞ£¬³¬¹ýÁËÕâ¸öÆÚÏÞ¾Í»á·£¿î£¬ÈÃÄãÇó³ö×îÉÙÅâ¿îµÄ·½°¸£¬Èç¹ûÓÐ¶à¸öÏàÍ¬µÄ£¬Çë°´ÊäÈëµÄË³Ðò´ÓÐ¡µ½´óÊä³ö¡£
-// Ëã·¨£º°´ÕÕfine/time´Ó´óµ½Ð¡ÐÞ
+// é¢˜æ„ï¼šéž‹åŒ æŽ¥æ”¶äº†è®¸å¤šè®¢å•ï¼Œæœ‰äº›éž‹å­æœ‰ä¸€å®šçš„ä¿®ç†æœŸé™ï¼Œè¶…è¿‡äº†è¿™ä¸ªæœŸé™å°±ä¼šç½šæ¬¾ï¼Œè®©ä½ æ±‚å‡ºæœ€å°‘èµ”æ¬¾çš„æ–¹æ¡ˆï¼Œå¦‚æžœæœ‰å¤šä¸ªç›¸åŒçš„ï¼Œè¯·æŒ‰è¾“å…¥çš„é¡ºåºä»Žå°åˆ°å¤§è¾“å‡ºã€‚
+// ç®—æ³•ï¼šæŒ‰ç…§fine/timeä»Žå¤§åˆ°å°ä¿®
 #include<cstdio>
 #include<algorithm>
 using namespace std;

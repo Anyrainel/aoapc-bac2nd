@@ -50,7 +50,7 @@ struct TwoSAT {
   }
 };
 
-///////// 题目相关
+///////// 棰樼洰鐩稿叧
 #include<algorithm>
 
 TwoSAT solver;

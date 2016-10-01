@@ -13,15 +13,15 @@ CirculantMatrix operator * (const CirculantMatrix& a, const CirculantMatrix& b) 
   int n = a.size();
   assert(b.size() == n);
   CirculantMatrix c(n);
-  for(int i = 0; i < n; i++) { // ¼ÆËãC(0,i)
+  for(int i = 0; i < n; i++) { // è®¡ç®—C(0,i)
     c[i] = 0;
-    for(int j = 0; j < n; j++) // ÀÛ¼ÓA(0,j)*B(j,i)
-      c[i] = ((long long)a[j]*b[(i-j+n)%n] + c[i]) % MOD; // µÚjÐÐÊÇÓÉµÚ0ÐÐÑ­»·ÓÒÒÆjÎ»µÃµ½
+    for(int j = 0; j < n; j++) // ç´¯åŠ A(0,j)*B(j,i)
+      c[i] = ((long long)a[j]*b[(i-j+n)%n] + c[i]) % MOD; // ç¬¬jè¡Œæ˜¯ç”±ç¬¬0è¡Œå¾ªçŽ¯å³ç§»jä½å¾—åˆ°
   }
   return c;
 }
 
-// ¼ÆËãa^kµÄÖµ¡£ÒªÇóaÖ§³Ö*ÔËËã·û
+// è®¡ç®—a^kçš„å€¼ã€‚è¦æ±‚aæ”¯æŒ*è¿ç®—ç¬¦
 template<typename T>
 T fast_pow(const T& a, int k) {
   assert(k > 0);
@@ -38,9 +38,9 @@ int main() {
     MOD = m;
     CirculantMatrix mat(n);
     for(int i = 0; i < n; i++)
-      mat[i] = min(i, n - i) <= d ? 1 : 0; // Àë¸ñ×Ó0µÄ¾àÀë<=dµÄÎ»ÖÃÏµÊýÉèÎª1£¬ÆäÓàÎª0
+      mat[i] = min(i, n - i) <= d ? 1 : 0; // ç¦»æ ¼å­0çš„è·ç¦»<=dçš„ä½ç½®ç³»æ•°è®¾ä¸º1ï¼Œå…¶ä½™ä¸º0
 
-    CirculantMatrix v(n); // ¿ÉÒÔ°Ñ³õÊ¼×´Ì¬µ±×÷Ñ­»·¾ØÕó½øÐÐ¼ÆËã
+    CirculantMatrix v(n); // å¯ä»¥æŠŠåˆå§‹çŠ¶æ€å½“ä½œå¾ªçŽ¯çŸ©é˜µè¿›è¡Œè®¡ç®—
     for(int i = 0; i < n; i++) scanf("%d", &v[i]);
     v = v * fast_pow(mat, k);
 

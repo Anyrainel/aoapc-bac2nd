@@ -29,11 +29,11 @@ double PolygonArea(vector<Point> p) {
   return area/2;
 }
 
-// ÓĞÏòÖ±Ïß¡£ËüµÄ×ó±ß¾ÍÊÇ¶ÔÓ¦µÄ°ëÆ½Ãæ
+// æœ‰å‘ç›´çº¿ã€‚å®ƒçš„å·¦è¾¹å°±æ˜¯å¯¹åº”çš„åŠå¹³é¢
 struct Line {
-  Point P;    // Ö±ÏßÉÏÈÎÒâÒ»µã
-  Vector v;   // ·½ÏòÏòÁ¿
-  double ang; // ¼«½Ç£¬¼´´ÓxÕı°ëÖáĞı×ªµ½ÏòÁ¿vËùĞèÒªµÄ½Ç£¨»¡¶È£©
+  Point P;    // ç›´çº¿ä¸Šä»»æ„ä¸€ç‚¹
+  Vector v;   // æ–¹å‘å‘é‡
+  double ang; // æè§’ï¼Œå³ä»xæ­£åŠè½´æ—‹è½¬åˆ°å‘é‡væ‰€éœ€è¦çš„è§’ï¼ˆå¼§åº¦ï¼‰
   Line() {}
   Line(Point P, Vector v):P(P),v(v){ ang = atan2(v.y, v.x); }
   bool operator < (const Line& L) const {
@@ -41,12 +41,12 @@ struct Line {
   }
 };
 
-// µãpÔÚÓĞÏòÖ±ÏßLµÄ×ó±ß£¨ÏßÉÏ²»Ëã£©
+// ç‚¹påœ¨æœ‰å‘ç›´çº¿Lçš„å·¦è¾¹ï¼ˆçº¿ä¸Šä¸ç®—ï¼‰
 bool OnLeft(const Line& L, const Point& p) {
   return Cross(L.v, p-L.P) > 0;
 }
 
-// ¶şÖ±Ïß½»µã£¬¼Ù¶¨½»µãÎ©Ò»´æÔÚ
+// äºŒç›´çº¿äº¤ç‚¹ï¼Œå‡å®šäº¤ç‚¹æƒŸä¸€å­˜åœ¨
 Point GetLineIntersection(const Line& a, const Line& b) {
   Vector u = a.P-b.P;
   double t = Cross(b.v, u) / Cross(a.v, b.v);
@@ -55,32 +55,32 @@ Point GetLineIntersection(const Line& a, const Line& b) {
 
 const double eps = 1e-6;
 
-// °ëÆ½Ãæ½»Ö÷¹ı³Ì
+// åŠå¹³é¢äº¤ä¸»è¿‡ç¨‹
 vector<Point> HalfplaneIntersection(vector<Line>& L) {
   int n = L.size();
-  sort(L.begin(), L.end()); // °´¼«½ÇÅÅĞò
+  sort(L.begin(), L.end()); // æŒ‰æè§’æ’åº
   
-  int first, last;         // Ë«¶Ë¶ÓÁĞµÄµÚÒ»¸öÔªËØºÍ×îºóÒ»¸öÔªËØµÄÏÂ±ê
-  vector<Point> p(n);      // p[i]Îªq[i]ºÍq[i+1]µÄ½»µã
-  vector<Line> q(n);       // Ë«¶Ë¶ÓÁĞ
-  vector<Point> ans;       // ½á¹û
+  int first, last;         // åŒç«¯é˜Ÿåˆ—çš„ç¬¬ä¸€ä¸ªå…ƒç´ å’Œæœ€åä¸€ä¸ªå…ƒç´ çš„ä¸‹æ ‡
+  vector<Point> p(n);      // p[i]ä¸ºq[i]å’Œq[i+1]çš„äº¤ç‚¹
+  vector<Line> q(n);       // åŒç«¯é˜Ÿåˆ—
+  vector<Point> ans;       // ç»“æœ
 
-  q[first=last=0] = L[0];  // Ë«¶Ë¶ÓÁĞ³õÊ¼»¯ÎªÖ»ÓĞÒ»¸ö°ëÆ½ÃæL[0]
+  q[first=last=0] = L[0];  // åŒç«¯é˜Ÿåˆ—åˆå§‹åŒ–ä¸ºåªæœ‰ä¸€ä¸ªåŠå¹³é¢L[0]
   for(int i = 1; i < n; i++) {
     while(first < last && !OnLeft(L[i], p[last-1])) last--;
     while(first < last && !OnLeft(L[i], p[first])) first++;
     q[++last] = L[i];
-    if(fabs(Cross(q[last].v, q[last-1].v)) < eps) { // Á½ÏòÁ¿Æ½ĞĞÇÒÍ¬Ïò£¬È¡ÄÚ²àµÄÒ»¸ö
+    if(fabs(Cross(q[last].v, q[last-1].v)) < eps) { // ä¸¤å‘é‡å¹³è¡Œä¸”åŒå‘ï¼Œå–å†…ä¾§çš„ä¸€ä¸ª
       last--;
       if(OnLeft(q[last], L[i].P)) q[last] = L[i];
     }
     if(first < last) p[last-1] = GetLineIntersection(q[last-1], q[last]);
   }
-  while(first < last && !OnLeft(q[first], p[last-1])) last--; // É¾³ıÎŞÓÃÆ½Ãæ
-  if(last - first <= 1) return ans; // ¿Õ¼¯
-  p[last] = GetLineIntersection(q[last], q[first]); // ¼ÆËãÊ×Î²Á½¸ö°ëÆ½ÃæµÄ½»µã
+  while(first < last && !OnLeft(q[first], p[last-1])) last--; // åˆ é™¤æ— ç”¨å¹³é¢
+  if(last - first <= 1) return ans; // ç©ºé›†
+  p[last] = GetLineIntersection(q[last], q[first]); // è®¡ç®—é¦–å°¾ä¸¤ä¸ªåŠå¹³é¢çš„äº¤ç‚¹
 
-  // ´Ódeque¸´ÖÆµ½Êä³öÖĞ
+  // ä»dequeå¤åˆ¶åˆ°è¾“å‡ºä¸­
   for(int i = first; i <= last; i++) ans.push_back(p[i]);
   return ans;
 }
@@ -89,7 +89,7 @@ const int maxn = 50000 + 10;
 int n;
 Point P[maxn];
 
-// Á¬Ğøm¸öµãÊÇ·ñ¿ÉÒÔ±£Ö¤Õ¨µ½×Ü²¿
+// è¿ç»­mä¸ªç‚¹æ˜¯å¦å¯ä»¥ä¿è¯ç‚¸åˆ°æ€»éƒ¨
 bool check(int m) {
   vector<Line> lines;
   for(int i = 0; i < n; i++)
@@ -99,7 +99,7 @@ bool check(int m) {
 
 int solve() {
   if(n == 3) return 1;
-  int L = 1, R = n-3, M; // Õ¨n-3¸öµãÒ»¶¨¿ÉÒÔ´İ»Ù
+  int L = 1, R = n-3, M; // ç‚¸n-3ä¸ªç‚¹ä¸€å®šå¯ä»¥æ‘§æ¯
   while(L < R) {
     M = L + (R-L)/2;
     if(check(M)) R = M; else L = M+1;

@@ -1,7 +1,7 @@
 // UVa10034 Freckles
 // Rujia Liu
-// ÌâÒâ£ºÊäÈëÆ½ÃæÉÏn¸öµã£¬Çó×îĞ¡Éú³ÉÊ÷È¨Öµ
-// Ëã·¨£ºKruskalËã·¨
+// é¢˜æ„ï¼šè¾“å…¥å¹³é¢ä¸Šnä¸ªç‚¹ï¼Œæ±‚æœ€å°ç”Ÿæˆæ ‘æƒå€¼
+// ç®—æ³•ï¼šKruskalç®—æ³•
 #include<cstdio>
 #include<cmath>
 #include<cstring>

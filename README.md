@@ -6,15 +6,13 @@ This repo contains source codes for the book series:
 - *Beginning Algorithm Contests* (BAC & BAC_2nd)
 - *Training Guide* (TG)
 
-Found on online open-sources repos, all rights belongs to original authors.
-
 中文：
 
 《算法艺术与信息学竞赛》-- 刘汝佳
 - 《入门经典》
 - 《训练指南》
 
-大部分来自官方repo。针对vivid提供的第三方资料过滤了exe，转换了txt的encoding。
+全部来自官方repo。
 
 ==============
 ### Sources
@@ -23,7 +21,7 @@ Found on online open-sources repos, all rights belongs to original authors.
 	- [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0)
 - https://github.com/aoapc-book/aoapc-bac2nd
 	- forked from this repo, no license stated.
-- http://vivid.name/tech/aoapc-book.html
-	- visit site for more info, license not found.
 
-First two are from official source. The last one is mentioned on the official google code site. Please refer to their websites for copyright issue.
+All from official source. Please refer to their websites for copyright issue.
+
+There is another code library mentioned on the official google code site: [vivid's BAC Codes](http://vivid.name/tech/aoapc-book.html). It is originally included in this repo, but dropped due to incompatibility.

@@ -14,7 +14,11 @@ This repo contains source codes for the book series:
 
 全部来自官方repo。
 
-==============
+======
+### Note
+Some codes for chapter 1-4 in BAC are removed. Since they are basicly about language and won't be as useful for reference. Note that Haskell (ch 1-2) and Lisp (ch 1) codes are also removed. Python (ch 1-2) codes are remained for potential reference.
+
+======
 ### Sources
 
 - https://code.google.com/archive/p/aoapc-book/source/default/source
